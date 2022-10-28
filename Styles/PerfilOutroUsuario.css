@@ -1,0 +1,448 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat';
+}
+
+html {
+    font-size: 1vh;
+    height: 100%;
+}
+
+form {
+    height: 100%;
+}
+
+
+body {
+    height: 100%;
+    background-color: #f1f1f1;
+}
+
+.all {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+main {
+    background-color: white;
+    width: 70%;
+    height: 100%;
+    padding: 30px;
+}
+
+.h2 {
+    font-size: 3.5vh;
+    margin: 10px;
+    /*padding: 10px;*/
+    text-decoration: underline;
+}
+
+.header {
+    width: 100%;
+    display: flex;
+    /*justify-content: space-between;*/
+    align-content: center;
+    height: 9vh;
+    background: #fff;
+}
+
+.usuario {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    right: 0;
+}
+
+.imgperfilUser {
+    width: 7.5vw;
+    height: 16vh;
+}
+
+.perfilUsuario {
+    border-bottom: 1px solid black;
+    /*margin: 15px;*/
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.nmUser {
+    margin: 10px;
+}
+
+.userTUsuario {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.nmCompleto {
+    font-size: 5vh;
+}
+
+.arroba {
+    font-size: 2.7vh;
+    margin: 10px;
+}
+
+.tipoUsuario {
+    font-size: 2.2vh;
+    margin: 10px;
+    background-color: #f1f1f1;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    font-weight: 500;
+}
+
+/*A partir daqui Css do card apenas*/
+
+.card {
+    width: 23.63vw;
+    height: fit-content;
+    background: #fff;
+    border-radius: 20px;
+    padding: 1.5vh 1vw;
+    border: 1px solid black;
+    margin: 10px;
+    transition: box-shadow;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-in-out;
+}
+
+   /* .card:hover {
+        box-shadow: 0 0 11px rgba(33,33,33,.6);
+    }*/
+
+.card-header {
+    display: flex;
+    justify-content: left;
+}
+
+.perfil {
+    width: 4vw;
+    height: 4vw;
+}
+
+.card-header-nome {
+    padding-top: 1.5vh;
+    padding-left: 0.8vw;
+    width: 100%;
+}
+
+    .card-header-nome h2 {
+        font-size: 2.5rem;
+    }
+
+    .card-header-nome h5 {
+        font-size: 2rem;
+        font-weight: 400;
+    }
+
+.save {
+    width: 25px;
+    height: 25px;
+    margin-top: 1vh;
+    margin-right: 0.5vw;
+}
+
+.card-tittle {
+    margin-top: 1vh;
+    padding-left: 1vw;
+    padding-right: 1vw;
+}
+
+    .card-tittle h2 {
+        font-size: 4rem;
+    }
+
+.card-tags {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 1.5vh;
+}
+
+    .card-tags .tag {
+        background: #526ACE;
+        padding: 1vh;
+        height: auto;
+        margin-right: 0px;
+        font-weight: 400;
+        margin-top: 0px;
+    }
+
+.card-image {
+    margin-top: 1.5vh;
+}
+
+.foto-evento {
+    width: 23.28vw;
+    height: 21.12vh;
+}
+
+.card-dateTime, .card-local {
+    display: flex;
+    justify-content: left;
+    font-size: 2rem;
+    font-weight: 400;
+}
+
+.date {
+    width: 100%;
+}
+
+.dateTime, .card-local {
+    margin-top: 1.5vh;
+    padding-right: 0.5vw;
+}
+
+.calendar-icon, .time-icon, .local-icon {
+    width: 16px;
+    height: 16px;
+    margin-right: 0.5vw;
+}
+
+.tag {
+    font-size: 2.5vh;
+    border-radius: 50px;
+}
+
+/*Fim do Css do Card*/
+
+/*Css do Menu Dropdown*/
+.menuUsuario {
+    position: relative;
+    display: inline-block;
+    font-weight: 900;
+}
+
+.dropbtn {
+    color: black;
+    padding: 10px;
+    font-size: 15px;
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+    font-weight: 900;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    min-width: 150px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    margin: 5px;
+    border-radius: 5px;
+}
+
+    .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        font-size: 12px;
+    }
+
+
+        .dropdown-content a:hover {
+            background-color: #ffffff;
+        }
+
+
+.menuUsuario:hover .dropdown-content {
+    display: block;
+    background-color: #f1f1f1;
+}
+
+/*Fim do Menu Dropdown*/
+
+.logo-header {
+    width: 9vw;
+    height: 7.5vh;
+    margin-top: 1vh;
+    margin-left: 1vw;
+}
+
+.imgPerfil {
+    width: 2.8vw;
+    height: 6vh;
+    margin: 10px;
+}
+
+/*Faixa Voltar #222222*/
+
+.sectionBack {
+    width: 100%;
+    background-color: #222222;
+    height: fit-content;
+}
+
+#btnVoltar {
+    padding: 10px;
+    color: white;
+    border: none;
+    background-color: transparent;
+}
+
+    #btnVoltar:hover {
+        cursor: pointer;
+    }
+
+/*Fim da Faixa Voltar*/
+
+
+
+/*Section e Divisória dos Eventos do Criador*/
+.eventosCriador {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid black;
+}
+
+.feedEventos {
+    /*padding: 10px;*/
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(360px, 1fr));
+}
+/*Fim da Section e Divisória dos Eventos do Criador*/
+
+
+
+/*Parte da Avaliação*/
+
+.avaliacaoCriador {
+    display: flex;
+    flex-direction: column;
+    /* align-items: center;*/
+    margin: 10px;
+    width: 70%;
+    /*background-color: crimson;*/
+}
+
+.imgPerfilAvaliacao {
+    width: 2.8vw;
+    height: 6vh;
+    margin: 5px;
+}
+
+.imgEstrelaMedia {
+    width: 2.0vw;
+    height: 4.5vh;
+    margin: 5px;
+}
+
+.nmrMedia {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    /*background-color: deepskyblue;*/
+    width: 100%;
+}
+
+.avaliacoes {
+    display: flex;
+    flex-direction: column;
+    /* background-color: rebeccapurple;*/
+}
+
+.umaAvaliacao {
+    display: flex;
+    flex-direction: column;
+    /*background-color: lightseagreen;*/
+    margin: 10px;
+    border-bottom: 1px solid black;
+    padding: 10px;
+}
+
+.infosAvaliador {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    /*background-color: orangered;*/
+    width: 100%;
+    font-size: 3vh;
+}
+
+.infosNmAtDtAv {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    width: 60%;
+    /*background-color: hotpink;*/
+}
+
+
+.notaAvaliacao {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    /*background-color: yellow;*/
+    width: 15%;
+}
+
+.textoAvaliacao {
+    width: 100%;
+    font-size: 2.6vh;
+}
+
+.suaAvaliacao {
+    display: flex;
+    flex-direction: column;
+    background-color: #f1f1f1;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.suaNota {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 2.4vh;
+}
+
+#ddlEstrelas {
+    border: none;
+    border-bottom: 1px black solid;
+    border-radius: 5px 5px 0px 0px;
+    padding: 5px;
+}
+
+.seuTexto {
+    margin-top: 10px;
+    /*background-color: powderblue;*/
+}
+
+#txtBoxAvaliacao {
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    height: 20vh;
+}
+
+    #txtBoxAvaliacao::placeholder {
+        padding: 10px;
+    }
+
+/*Fim da Parte da Avaliação*/
+
+#btnAvaliar {
+    width: 100%;
+    background-color: #526ace;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    color: white;
+    font-weight: 900;
+    margin-top: 5px;
+    cursor: pointer;
+}

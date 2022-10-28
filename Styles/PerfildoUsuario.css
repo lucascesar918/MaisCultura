@@ -1,0 +1,534 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    color: #000;
+    font-weight: 600;
+}
+
+body {
+    background-color: #f1f1f1;
+    height: 100%;
+}
+
+form {
+    height: 100%;
+}
+
+.all {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+main {
+    width: 70%;
+    height: fit-content;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+html {
+    font-size: 1vh;
+    overflow-y: scroll;
+}
+
+.header {
+    width: 100%;
+    display: flex;
+    /*justify-content: space-between;*/
+    align-content: center;
+    height: 9vh;
+    background: #fff;
+}
+
+.usuario {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    right: 0;
+}
+
+.menuUsuario {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    color: black;
+    padding: 10px;
+    font-size: 15px;
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    margin: 5px;
+    border-radius: 5px;
+}
+
+    .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        font-size: 12px;
+    }
+
+
+        .dropdown-content a:hover {
+            background-color: #ffffff;
+        }
+
+
+.menuUsuario:hover .dropdown-content {
+    display: block;
+    background-color: #f1f1f1;
+}
+
+.logo-header {
+    width: 9vw;
+    height: 7.5vh;
+    margin-top: 1vh;
+    margin-left: 1vw;
+}
+
+.imgPerfil {
+    width: 2.8vw;
+    height: 6vh;
+    margin: 10px;
+}
+
+.sectionBack {
+    width: 100%;
+    background-color: #222222;
+    height: fit-content;
+}
+
+#btnVoltar {
+    padding: 10px;
+    color: white;
+    border: none;
+    background-color: transparent;
+}
+
+    #btnVoltar:hover {
+        cursor: pointer;
+    }
+
+ul {
+    list-style: none;
+}
+
+.imgperfilUser {
+    width: 7.5vw;
+    height: 16vh;
+}
+
+.user {
+    height: fit-content;
+    width: 80%;
+}
+
+.perfilUsuario {
+    border-bottom: 1px solid black;
+    margin: 15px;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.preferencias {
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.prefs {
+    padding: 10px;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border-bottom: 1px solid black;
+}
+
+.preferencias h3 {
+    font-size: 3vh;
+    font-weight: 900;
+}
+
+.preferencias li {
+    font-size: 2.5vh;
+    margin: 5px;
+}
+
+#btnEditarPreferencias {
+    padding: 5px;
+    background-color: #526ace;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    transition: background-color;
+    border: 1px solid #526ace;
+}
+
+    #btnEditarPreferencias:hover {
+        cursor: pointer;
+        background-color: white;
+        border: 1px solid #526ace;
+        color: #526ace;
+        transition-duration: 0.5s;
+        transition-timing-function: ease-in-out;
+    }
+
+.nmUser {
+    margin: 10px;
+}
+
+.userTUsuario {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.nmCompleto {
+    font-size: 5vh;
+}
+
+.arroba {
+    font-size: 2.7vh;
+    margin: 10px;
+}
+
+.tipoUsuario {
+    font-size: 2.2vh;
+    margin: 10px;
+    background-color: #f1f1f1;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    font-weight: 500;
+}
+
+.infosUsuario {
+    padding: 10px;
+    border-bottom: 1px solid black;
+}
+
+.informacoes {
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tituloDados {
+    font-size: 3vh;
+    margin: 10px;
+}
+
+.divInfo {
+    width: 100%;
+    font-size: 2.5vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 5px;
+}
+
+
+.item {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+}
+
+a {
+    text-decoration: none;
+    color: #526ace;
+}
+
+#btnExcluirConta {
+    margin: 10px;
+    color: crimson;
+    padding: 5px;
+    width: 90%;
+    border: none;
+    background-color: white;
+}
+
+    #btnExcluirConta:hover {
+        text-decoration: underline;
+        cursor: pointer;
+    }
+
+.titleInteresse {
+    font-size: 3vh;
+    margin: 10px;
+    width: fit-content;
+    background-color: white;
+    border: none;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.titleSalvos {
+    font-size: 3vh;
+    margin: 10px;
+    width: fit-content;
+    background-color: white;
+    border: none;
+    cursor: pointer;
+}
+
+/*A partir daqui Css do card apenas*/
+
+.card {
+    width: 23.63vw;
+    height: 57.83vh;
+    background: #fff;
+    border-radius: 20px;
+    padding: 1.5vh 1vw;
+    border: 1px solid black;
+}
+
+.card-header {
+    display: flex;
+    justify-content: left;
+}
+
+.perfil {
+    width: 4vw;
+    height: 4vw;
+}
+
+.card-header-nome {
+    padding-top: 1.5vh;
+    padding-left: 0.8vw;
+    width: 100%;
+}
+
+    .card-header-nome h2 {
+        font-size: 2.5rem;
+    }
+
+    .card-header-nome h5 {
+        font-size: 2rem;
+        font-weight: 400;
+    }
+
+.save {
+    width: 25px;
+    height: 25px;
+    margin-top: 1vh;
+    margin-right: 0.5vw;
+}
+
+.card-tittle {
+    margin-top: 1vh;
+    padding-left: 1vw;
+    padding-right: 1vw;
+}
+
+    .card-tittle h2 {
+        font-size: 4rem;
+    }
+
+.card-tags {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 1.5vh;
+}
+
+    .card-tags .tag {
+        background: #526ACE;
+        padding: 1vh;
+        height: auto;
+        margin-right: 0px;
+        font-weight: 400;
+        margin-top: 0px;
+    }
+
+.card-image {
+    margin-top: 1.5vh;
+}
+
+.foto-evento {
+    width: 23.28vw;
+    height: 21.12vh;
+}
+
+.card-dateTime, .card-local {
+    display: flex;
+    justify-content: left;
+    font-size: 2rem;
+    font-weight: 400;
+}
+
+.date {
+    width: 100%;
+}
+
+.dateTime, .card-local {
+    margin-top: 1.5vh;
+    padding-right: 0.5vw;
+}
+
+.calendar-icon, .time-icon, .local-icon {
+    width: 16px;
+    height: 16px;
+    margin-right: 0.5vw;
+}
+
+.tag {
+    font-size: 2.5vh;
+    border-radius: 50px;
+}
+
+/*Fim do Css do Card*/
+
+.interessesEsalvos {
+    width: 100%;
+    padding: 10px;
+    margin: 10px;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+.hidden {
+    display: none !important;
+}
+
+#boxExcluir {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 30vw;
+    height: 30vh;
+    background-color: #f1f1f1;
+    padding: 10px;
+    position: absolute;
+    top: 35%;
+    left: 35%;
+    text-align: center;
+    border-radius: 5px;
+}
+
+#box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 30vw;
+    height: 30vh;
+    background-color: #f1f1f1;
+    padding: 30px;
+    position: absolute;
+    top: 35%;
+    left: 35%;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.h3 {
+    font-size: 4rem;
+}
+
+.boxBtn {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    margin: 10px;
+}
+
+.btnBox {
+    border: none;
+    background-color: #526ace;
+    border-radius: 5px;
+    width: 50%;
+    height: 35px;
+    padding: 5px;
+    color: white;
+    margin: 10px;
+}
+
+.editar {
+    width: 80%;
+    height: 35px;
+    margin: 10px;
+    background-color: #526ace;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    padding: 5px;
+}
+
+.ulEdit {
+    font-size: 16px;
+}
+
+.h3Edit {
+    font-size: 20px;
+}
+
+#alteraSenha {
+    border: none;
+    border-radius: 5px;
+    background-color: transparent;
+    color: #526ace;
+}
+
+#boxSenha {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 30vw;
+    height: 30vh;
+    background-color: #f1f1f1;
+    padding: 30px;
+    position: absolute;
+    top: 35%;
+    left: 35%;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.btnSenha {
+    width: 80%;
+    height: 35px;
+    margin: 10px;
+    background-color: #526ace;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    padding: 5px;
+}
+
+.inputSenha {
+    width: 100%;
+    height: 35px;
+    border: none;
+    margin: 10px;
+    background-color: #ffffff;
+    padding: 5px;
+    border-radius: 5px;
+}
