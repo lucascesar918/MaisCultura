@@ -101,6 +101,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Banco\insert.sql" />
+    <Content Include="Banco\procedures.sql" />
+    <Content Include="Banco\script.sql" />
     <Content Include="denuncia.aspx" />
     <Content Include="eventos.aspx" />
     <Content Include="EventosdoCriador.aspx" />
