@@ -3,4 +3,8 @@ Projeto de TCC +Cultura
 
 ## Observações
 
-* Toda vez que baixar o projeto, baixar o pacote **MySql.Data** via **NuGet**.
+* Definir a página ***eventos.aspx*** como página inicial.
+
+## Troubleshoot
+
+* Baixar o pacote ***MySql.Data*** via ***NuGet***.
