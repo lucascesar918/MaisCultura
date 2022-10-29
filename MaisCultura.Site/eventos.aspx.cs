@@ -57,82 +57,74 @@ namespace MaisCultura
     }
     public partial class Index : System.Web.UI.Page
     {
-        Filtro filtro =  new Filtro();
+        Filtro filtro;
+        ListaUsuario ListaUsuario = new ListaUsuario();
+        ListaEvento ListaEvento = new ListaEvento();
         private void ListarEventos(string usuario) {
-            ListaUsuario ListaUsuario = new ListaUsuario();
-            ListaEvento ListaEvento = new ListaEvento();
+
             List<Evento> Eventos;
-            List<Categoria> categorias = new List<Categoria>();
-            List<DiaEvento> dias = new List<DiaEvento>();
-
-
-
             if (ListaUsuario.Buscar(usuario) != null)
                 Eventos = ListaEvento.Feed(usuario);
-
             else
                 Eventos = ListaEvento.Feed();
+
             Eventos = Eventos.FindAll((e) => filtro.Verificar(e));
-            Usuario usuarioEvento;
+           
             litEventos.Text = "";
             foreach (Evento evento in Eventos)
             {
-                usuarioEvento = ListaUsuario.Buscar(evento.Responsavel);
-                categorias = evento.Categorias;
-                dias = evento.Dias;
-
-                litEventos.Text += "<section class=\"card\">";
-                litEventos.Text += "<article class=\"card-header\">";
-                litEventos.Text += "<figure>";
-                litEventos.Text += "<img src=\"Images/perfil.png\" alt=\"Imagem de Perfil\" class=\"perfil\">";
-                litEventos.Text += "</figure>";
-
-                litEventos.Text += "<article class=\"card-header-nome\">";
-                litEventos.Text += $"<h2>{usuarioEvento.Nome}</h2>";
-                litEventos.Text += $"<h5>{usuarioEvento.Codigo}</h5>";
-                litEventos.Text += "</article>";
-
-                litEventos.Text += "<figure>";
-                litEventos.Text += "<img src=\"Images/save.png\" alt=\"Salvar\" class=\"save\">";
-                litEventos.Text += "</figure>";
-                litEventos.Text += "</article>";
-
-                litEventos.Text += "<article class=\"card-tittle\">";
-                litEventos.Text += $"<h2>{evento.Titulo}</h2>";
-                litEventos.Text += "</article>";
-
-                litEventos.Text += "<article class=\"card-tags\">";
+                Usuario usuarioEvento = ListaUsuario.Buscar(evento.Responsavel);
+                List<Categoria> categorias = evento.Categorias;
+                List<DiaEvento> dias = evento.Dias;
+                litEventos.Text += $@"<section class='card'>
+                    <article class='card-header'>
+                        <figure>
+                            <img src='Images/perfil.png' alt='Imagem de Perfil' class='perfil'>
+                        </figure>
+                        <article class='card-header-nome'>
+                            <h2>{usuarioEvento.Nome}</h2>
+                            <h5>{usuarioEvento.Codigo}</h5>
+                        </article>
+                        <figure>
+                            <img src='Images/save.png' alt='Salvar' class='save'>
+                        </figure>
+                    </article>
+                    <article class='card-tittle'>
+                        <h2>{evento.Titulo}</h2>
+                    </article>
+                    <article class='card-tags'>";
                 foreach (Categoria categoria in categorias)
-                    litEventos.Text += $"<h2 class=\"tag\">{categoria.Nome}</h2>";
-                litEventos.Text += "</article>";
-                litEventos.Text += "<article class=\"card-image\">";
-                litEventos.Text += "<figure>";
-                litEventos.Text += $"<img src=\"{ListaEvento.BuscarImagem(evento.Codigo)}\" alt=\"Interclasse de cria\" class=\"foto-evento\">";
-                litEventos.Text += "</figure>";
-                litEventos.Text += "</article>";
+                    litEventos.Text += $@"<h2 class='tag'>{categoria.Nome}</h2>
+                    </article>
+                    <article class='card-image'>
+                        <figure>
+                            <img src='{ListaEvento.BuscarImagem(evento.Codigo)}' alt='Interclasse de cria' class='foto-evento'>
+                        </figure>
+                    </article>
+                    <article class='card-dateTime dateTime'>
+                        <article class='card-dateTime date'>
+                            <figure>
+                                <img src='Images/calendar.png' alt='Ícone calendário' class='calendar-icon'>
+                            </figure>
+                            <h3>{dias[0].Data.ToShortDateString()} a {dias[dias.Count - 1].Data.ToShortDateString()}</h3>
+                        </article>
+                        <article class='card-dateTime time'>
+                            <figure>
+                                <img src='Images/time.png' alt='Ícone Tempo' class='time-icon'>
+                            </figure>
+                            {dias[0].Inicio.ToShortTimeString()}
+                        </article>
+                    </article>
+                    <article class='card-local'>
+                        <figure>
+                            <img src='Images/local.png' alt='Ícone Local' class='local-icon'>
+                        </figure>
+                        <h3>{
+                            evento.Local // Trocar pelo formato "Cidade, Estado" depois
+                        }</h3>
 
-                litEventos.Text += "<article class=\"card-dateTime dateTime\">";
-                litEventos.Text += "<article class=\"card-dateTime date\">";
-                litEventos.Text += "<figure>";
-                litEventos.Text += "<img src=\"Images/calendar.png\" alt=\"Ícone calendário\" class=\"calendar-icon\">";
-                litEventos.Text += "</figure>";
-                litEventos.Text += $"<h3>{dias[0].Data.ToShortDateString()} a {dias[dias.Count - 1].Data.ToShortDateString()}</h3>";
-                litEventos.Text += "</article>";
-                litEventos.Text += "<article class=\"card-dateTime time\">";
-                litEventos.Text += "<figure>";
-                litEventos.Text += "<img src=\"Images/time.png\" alt=\"Ícone Tempo\" class=\"time-icon\">";
-                litEventos.Text += "</figure>";
-                litEventos.Text += $"{dias[0].Inicio.ToShortTimeString()}";
-                litEventos.Text += "</article>";
-                litEventos.Text += "</article>";
-
-                litEventos.Text += "<article class=\"card-local\">";
-                litEventos.Text += "<figure>";
-                litEventos.Text += "<img src=\"Images/local.png\" alt=\"Ícone Local\" class=\"local-icon\">";
-                litEventos.Text += "</figure>";
-                litEventos.Text += $"<h3>{evento.Local}</h3>"; // Trocar pelo formato "Cidade, Estado" depois
-                litEventos.Text += "</article>";
-                litEventos.Text += "</section>";
+                    </article>
+                </section>";
             }
         }
         DateTime? StrinToDate(string strDate)

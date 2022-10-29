@@ -81,18 +81,17 @@ namespace MaisCultura
                 return Str.Substring(0, TamanhoMaximo - 3) + "...";
             return Str;
         }
-        public List<Evento> Feed(string codigo_usuario)
+        public List<Evento> Feed(string codigo_usuario = null)
         {
             List<Evento> eventos = new List<Evento>();
-            List<MySqlParameter> parametroPreferencia = new List<MySqlParameter>();
 
-
-           MySqlDataReader dadosEventos = Query("EventosFeed", ("pUsuario", codigo_usuario));
+            MySqlDataReader dadosEventos;
+            if (codigo_usuario == null)
+                dadosEventos = Query("EventosFeed");
+            else 
+                dadosEventos = Query("EventosFeed", ("pUsuario", codigo_usuario));
            while (dadosEventos.Read())
-           {
-                //<< Eu nao sei pra que serve essa linha, mas ela nao é usada;
-                // if (parametroEvento.Count == 0)
-                //    parametroEvento.Add(new MySqlParameter("pEvento", dadosEventos["Codigo"].ToString()));
+           { 
                 eventos.Add(DataReaderToEvento(dadosEventos, true));
            }
 
@@ -100,19 +99,6 @@ namespace MaisCultura
             return eventos;
         }
 
-        public List<Evento> Feed()
-        {
-            List<Evento> eventos = new List<Evento>();
-
-            MySqlDataReader dadosEventos = Query("EventosFeedDeslogado");
-            while (dadosEventos.Read())
-            {
-                eventos.Add(DataReaderToEvento(dadosEventos, false));
-            }
-
-            Desconectar();
-            return eventos;
-        }
          
         public void AdicionarCategorias(int evento, List<Categoria> categorias)
         {
