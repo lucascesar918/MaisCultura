@@ -55,10 +55,7 @@ namespace MaisCultura
         public List<Categoria> BuscarCategorias(int codigo_evento)
         {
             List<Categoria> categorias = new List<Categoria>();
-            List<MySqlParameter> parametro = new List<MySqlParameter>();
-            parametro.Add(new MySqlParameter("pEvento", codigo_evento));
-
-            MySqlDataReader data = Query("BuscarCategoriasEvento", parametro);
+            MySqlDataReader data = Query("BuscarCategoriasEvento", ("pEvento", codigo_evento));
             while (data.Read())
                 categorias.Add(new Categoria(Int32.Parse(data["CodigoCategoria"].ToString()), data["Nome"].ToString()));
 
@@ -69,10 +66,8 @@ namespace MaisCultura
         public List<DiaEvento> BuscarDias(int codigo_evento)
         {
             List<DiaEvento> dias = new List<DiaEvento>();
-            List<MySqlParameter> parametro = new List<MySqlParameter>();
-            parametro.Add(new MySqlParameter("pEvento", codigo_evento));
 
-            MySqlDataReader data = Query("BuscarDiasEvento", parametro);
+            MySqlDataReader data = Query("BuscarDiasEvento", ("pEvento", codigo_evento));
 
             while (data.Read())
                 dias.Add(new DiaEvento(data["Data"].ToString(), data["Inicio"].ToString(), data["Fim"].ToString()));
@@ -91,9 +86,8 @@ namespace MaisCultura
             List<Evento> eventos = new List<Evento>();
             List<MySqlParameter> parametroPreferencia = new List<MySqlParameter>();
 
-            parametroPreferencia.Add(new MySqlParameter("pUsuario", codigo_usuario));
 
-           MySqlDataReader dadosEventos = Query("EventosFeed", parametroPreferencia);
+           MySqlDataReader dadosEventos = Query("EventosFeed", ("pUsuario", codigo_usuario));
            while (dadosEventos.Read())
            {
                 //<< Eu nao sei pra que serve essa linha, mas ela nao é usada;
@@ -122,55 +116,42 @@ namespace MaisCultura
          
         public void AdicionarCategorias(int evento, List<Categoria> categorias)
         {
-            List<MySqlParameter> parametros = new List<MySqlParameter>();
-            parametros.Add(new MySqlParameter("pEvento", evento));
 
-            foreach (Categoria categoria in categorias)
-            {
-                if (parametros.Count > 1) parametros.RemoveAt(parametros.Count - 1);
-                parametros.Add(new MySqlParameter("pCategoria", categoria.Codigo));
-                NonQuery("CadastrarCategoriaEvento", parametros);
+            foreach (Categoria categoria in categorias) {
+                NonQuery("CadastrarCategoriaEvento", ("pEvento", evento), ("pCategoria", categoria.Codigo));
             }
         }
 
         public Evento Buscar(int codigo)
         {
-            List<MySqlParameter> parametros = new List<MySqlParameter>();
             Evento evento = null;
-            parametros.Add(new MySqlParameter("pCodigo", codigo));
 
 
             MySqlDataReader data = Query("ListarEventos"); 
-            List<MySqlParameter> parametroEvento = new List<MySqlParameter>();
-   
-
-            parametroEvento.Add(new MySqlParameter("pEvento", codigo));
 
             while (data.Read())
             {
                 evento = DataReaderToEvento(data, false);    
             }
 
-
             Desconectar();
             return evento;
         }
 
         public void Criar(Evento evento)
-        {
-            List<MySqlParameter> parametros = new List<MySqlParameter>();
-            parametros.Add(new MySqlParameter("pCodigo", MaxCodigo()));
-            parametros.Add(new MySqlParameter("pResponsavel", evento.Responsavel));
-            parametros.Add(new MySqlParameter("pNome", evento.Titulo));
-            parametros.Add(new MySqlParameter("pLocal", evento.Local));
-            parametros.Add(new MySqlParameter("pDescricao", evento.Descricao));
-
-            NonQuery("CadastrarEvento", parametros);
+        { 
+            NonQuery("CadastrarEvento",
+                ("pCodigo", MaxCodigo()),
+                ("pResponsavel", evento.Responsavel),
+                ("pNome"    , evento.Titulo),
+                ("pLocal", evento.Local),
+                ("pDescricao", evento.Descricao)    
+            );
         }
 
         public List<Categoria> ListarCategorias()
         {
-            List<Categoria> categorias = new List<Categoria>();
+            List<Categoria> categorias = new List<Categoria>(); 
 
             MySqlDataReader data = Query("ListarCategorias");
             while (data.Read())
@@ -182,10 +163,8 @@ namespace MaisCultura
         public List<Avaliacao> BuscarAvaliacoes(int codigo)
         {
             List<Avaliacao> avaliacoes = new List<Avaliacao>();
-            List<MySqlParameter> parametro = new List<MySqlParameter>();
-            parametro.Add(new MySqlParameter("pEvento", codigo));
 
-            MySqlDataReader data = Query("BuscarAvaliacoesEvento", parametro);
+            MySqlDataReader data = Query("BuscarAvaliacoesEvento", ("pEvento", codigo));
 
             while (data.Read())
                 avaliacoes.Add(new Avaliacao(data["@"].ToString(), Int32.Parse(data["CodigoEvento"].ToString()), data["Descricao"].ToString(), Int32.Parse(data["Estrelas"].ToString())));
@@ -197,10 +176,7 @@ namespace MaisCultura
         {
             string imagem = "";
 
-            List<MySqlParameter> parametro = new List<MySqlParameter>();
-            parametro.Add(new MySqlParameter("pEvento", codigo));
-
-            MySqlDataReader data = Query("BuscarImagemEvento", parametro);
+            MySqlDataReader data = Query("BuscarImagemEvento", ("pEvento", codigo));
 
             while (data.Read())
                 imagem = data["Imagem"].ToString();

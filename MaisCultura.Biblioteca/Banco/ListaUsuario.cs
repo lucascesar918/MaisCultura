@@ -11,9 +11,8 @@ namespace MaisCultura
         Usuario DataReaderToUsuario(MySqlDataReader data){
             var cdUsuario = data["@"].ToString();
             List<Categoria> categorias = new List<Categoria>();
-            List<MySqlParameter> parametro = new List<MySqlParameter>();
-            parametro.Add(new MySqlParameter("pCodigo", cdUsuario));
-            MySqlDataReader dataPref = Query("ListarPreferenciasUsuario", parametro);
+            MySqlDataReader dataPref = Query("ListarPreferenciasUsuario", ("pCodigo", cdUsuario));
+
             while (dataPref.Read())
                 categorias.Add(new Categoria(Int32.Parse(dataPref["CodigoCategoria"].ToString()), dataPref["Nome"].ToString()));
 
@@ -36,9 +35,7 @@ namespace MaisCultura
         {
             List<MySqlParameter> parametros = new List<MySqlParameter>();
             Usuario usuario = null;
-            parametros.Add(new MySqlParameter("pCodigo", codigo));
-
-            MySqlDataReader data = Query("BuscarUsuario", parametros);
+            MySqlDataReader data = Query("BuscarUsuario", ("pCodigo", codigo));
 
             while (data.Read())
             {
@@ -53,10 +50,7 @@ namespace MaisCultura
         {
             List<MySqlParameter> parametros = new List<MySqlParameter>();
             Usuario usuario = null;
-            parametros.Add(new MySqlParameter("pCodigo", codigo));
-            parametros.Add(new MySqlParameter("pSenha", senha));
-
-            MySqlDataReader data = Query("BuscarLogin", parametros);
+            MySqlDataReader data = Query("BuscarLogin", ("pCodigo", codigo), ("pSenha", senha));
 
             while (data.Read())
             {
@@ -70,39 +64,31 @@ namespace MaisCultura
         public void CriarUsuario(Usuario usuario)
         {
             List<MySqlParameter> parametros = new List<MySqlParameter>();
-            parametros.Add(new MySqlParameter("pCodigo", usuario.Codigo));
-            parametros.Add(new MySqlParameter("pTipo", usuario.Tipo));
-            parametros.Add(new MySqlParameter("pSigla", usuario.Sexo));
-            parametros.Add(new MySqlParameter("pNome", usuario.Nome));
-            parametros.Add(new MySqlParameter("pEmail", usuario.Email));
-            parametros.Add(new MySqlParameter("pSenha", usuario.Senha));
-            parametros.Add(new MySqlParameter("pDocumento", usuario.Documento));
-            parametros.Add(new MySqlParameter("pNascimento", usuario.Nascimento));
 
-            NonQuery("CadastrarUsuario", parametros);
+
+            NonQuery("CadastrarUsuario",
+                ("pCodigo", usuario.Codigo),
+                ("pTipo", usuario.Tipo),
+                ("pSigla", usuario.Sexo),
+                ("pNome", usuario.Nome),
+                ("pEmail", usuario.Email),
+                ("pSenha", usuario.Senha),
+                ("pDocumento", usuario.Documento),
+                ("pNascimento", usuario.Nascimento)
+            );
         }
 
         public void AdicionarPreferencias(string codigo, List<Categoria> preferencias)
         {
-            List<MySqlParameter> parametros = new List<MySqlParameter>();
-            parametros.Add(new MySqlParameter("pUsuario", codigo));
-
             foreach (Categoria preferencia in preferencias)
-            {
-                if (parametros.Count > 1) parametros.RemoveAt(parametros.Count - 1);
-                parametros.Add(new MySqlParameter("pCategoria", preferencia.Codigo));
-                NonQuery("CadastrarPreferencia", parametros);
-            }
+                NonQuery("CadastrarPreferencia", ("pUsuario", codigo), ("pCategoria", preferencia.Codigo));
         }
 
         public List<Avaliacao> BuscarAvaliacoes(string codigo)
         {
             List<Avaliacao> avaliacoes = new List<Avaliacao>();
-            List<MySqlParameter> parametro = new List<MySqlParameter>();
-            parametro.Add(new MySqlParameter("pUsuario", codigo));
-
-            MySqlDataReader data = Query("BuscarAvaliacoesUsuario", parametro);
-
+            MySqlDataReader data = Query("BuscarAvaliacoesUsuario", ("pUsuario", codigo));
+            
             while (data.Read())
                 avaliacoes.Add(new Avaliacao(data["@"].ToString(), Int32.Parse(data["CodigoEvento"].ToString()), data["Descricao"].ToString(), Int32.Parse(data["Estrelas"].ToString())));
 

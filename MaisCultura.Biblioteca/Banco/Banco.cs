@@ -37,54 +37,50 @@ namespace MaisCultura
                 this._conexao.Close();
         }
 
-        public MySqlDataReader Query(string comando)
+        public MySqlCommand CriarProcedure(string comando, params (string nome, object valor)[] parametros)
+        {
+            MySqlCommand cSQL = new MySqlCommand(comando, _conexao);
+            cSQL.CommandType = System.Data.CommandType.StoredProcedure;
+            foreach (var parametro in parametros)
+                cSQL.Parameters.AddWithValue(parametro.nome, parametro.valor);
+            return cSQL;
+        }
+        public MySqlDataReader Query(string comando, params (string nome, object valor)[] parametros)
         {
             try
             {
                 Conectar();
-
-                MySqlCommand cSQL = new MySqlCommand(comando, this._conexao);
-                cSQL.CommandType = System.Data.CommandType.StoredProcedure;
+                MySqlCommand cSQL = CriarProcedure(comando, parametros);
                 return cSQL.ExecuteReader();
 
             }
-            catch
+            catch(Exception Ex)
             {
-                throw new Exception("Erro ao contatar o servidor!");
+                throw new Exception("Erro ao contatar o servidor!", Ex);
+            }
+        }
+        public object Scalar(string comando, params (string nome, object valor)[] parametros)
+        {
+            try
+            {
+                Conectar();
+                MySqlCommand cSQL = CriarProcedure(comando, parametros);
+                return cSQL.ExecuteScalar();
+
+            }
+            catch(Exception Ex)
+            {
+                throw new Exception("Erro ao contatar o servidor!", Ex);
             }
         }
 
-        public MySqlDataReader Query(string comando, List<MySqlParameter> parametros)
+        public void NonQuery(string comando, params (string nome, object valor)[] parametros)
         {
             try
             {
                 Conectar();
 
-                MySqlCommand cSQL = new MySqlCommand(comando, this._conexao);
-                cSQL.CommandType = System.Data.CommandType.StoredProcedure;
-                foreach (MySqlParameter parametro in parametros)
-                    cSQL.Parameters.Add(parametro);
-
-                return cSQL.ExecuteReader();
-
-            }
-            catch
-            {
-                throw new Exception("Erro ao contatar o servidor!");
-            }
-        }
-
-        public void NonQuery(string comando, List<MySqlParameter> parametros)
-        {
-            try
-            {
-                Conectar();
-
-                MySqlCommand cSQL = new MySqlCommand(comando, this._conexao);
-                cSQL.CommandType = System.Data.CommandType.StoredProcedure;
-                foreach (MySqlParameter parametro in parametros)
-                    cSQL.Parameters.Add(parametro);
-
+                MySqlCommand cSQL = CriarProcedure(comando, parametros);
 
                 cSQL.ExecuteNonQuery();
                 Desconectar();
