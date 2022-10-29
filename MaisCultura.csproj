@@ -130,17 +130,6 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\Avaliacao.cs" />
-    <Compile Include="Classes\Banco.cs" />
-    <Compile Include="Classes\Categoria.cs" />
-    <Compile Include="Classes\Conexao.cs" />
-    <Compile Include="Classes\Denuncia.cs" />
-    <Compile Include="Classes\DiaEvento.cs" />
-    <Compile Include="Classes\Evento.cs" />
-    <Compile Include="Classes\ListaDenuncia.cs" />
-    <Compile Include="Classes\ListaEvento.cs" />
-    <Compile Include="Classes\ListaUsuario.cs" />
-    <Compile Include="Classes\Usuario.cs" />
     <Compile Include="denuncia.aspx.cs">
       <DependentUpon>denuncia.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -193,6 +182,12 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Classes\Classes.csproj">
+      <Project>{50006402-1b4a-4844-9675-1ad0a3de0abf}</Project>
+      <Name>Classes</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

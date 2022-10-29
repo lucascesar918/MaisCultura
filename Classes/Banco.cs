@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using MySql.Data.MySqlClient;
 
-namespace AlfaMaisCultura.Classes
+namespace Classes
 {
     public class Banco
     {
