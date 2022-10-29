@@ -24,7 +24,7 @@ CREATE PROCEDURE ListarEventos()
 BEGIN
 	SELECT
 		e.cd_evento "CodigoEvento",
-		e.cd_responsavel "Responsavel",
+		e.cd_responsavel "@",
 		e.nm_titulo "Titulo",
 		e.ds_local "Local",
 		e.ds_evento "Descricao",
@@ -261,7 +261,7 @@ CREATE PROCEDURE EventoEspecifico( pEvento INT )
 BEGIN
 	SELECT 
 		e.nm_titulo "Titulo",
-		e.cd_responsavel "Responsável",
+		e.cd_responsavel "@",
 		GROUP_CONCAT(" ", c.nm_categoria) "Categorias",
 		DATE_FORMAT(MIN(de.dt_dia), "%d/%m/%Y") "Dia",
 		de.hr_inicial "Início",

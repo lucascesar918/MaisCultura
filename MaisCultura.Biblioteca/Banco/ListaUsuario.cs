@@ -8,22 +8,24 @@ namespace MaisCultura
 {
     public class ListaUsuario : Banco
     {
+        Usuario DataReaderToUsuario(MySqlDataReader data){
+            var cdUsuario = data["@"].ToString();
+            List<Categoria> categorias = new List<Categoria>();
+            List<MySqlParameter> parametro = new List<MySqlParameter>();
+            parametro.Add(new MySqlParameter("pCodigo", cdUsuario));
+            MySqlDataReader dataPref = Query("ListarPreferenciasUsuario", parametro);
+            while (dataPref.Read())
+                categorias.Add(new Categoria(Int32.Parse(dataPref["CodigoCategoria"].ToString()), dataPref["Nome"].ToString()));
+
+            return new Usuario(data["@"].ToString(), data["Tipo"].ToString(), data["Sexo"].ToString(), data["Nome"].ToString(), data["Email"].ToString(), data["Senha"].ToString(), data["Documento"].ToString(), data["Nascimento"].ToString(), categorias);
+        }
         public List<Usuario> Listar()
         {
             List<Usuario> Usuarios = new List<Usuario>();
-
             MySqlDataReader data = Query("ListarUsuarios");
             while (data.Read())
             {
-                List<Categoria> categorias = new List<Categoria>();
-                List<MySqlParameter> parametro = new List<MySqlParameter>();
-                parametro.Add(new MySqlParameter("pCodigo", data["@"].ToString()));
-                MySqlDataReader dataPref = Query("ListarPreferenciasUsuario", parametro);
-                while (dataPref.Read())
-                    categorias.Add(new Categoria(Int32.Parse(dataPref["CodigoCategoria"].ToString()), dataPref["Nome"].ToString()));
-
-
-                Usuarios.Add(new Usuario(data["@"].ToString(), data["Tipo"].ToString(), data["Sexo"].ToString(), data["Nome"].ToString(), data["Email"].ToString(), data["Senha"].ToString(), data["Documento"].ToString(), data["Nascimento"].ToString(), categorias));
+                Usuarios.Add(DataReaderToUsuario(data));
             }
 
             Desconectar();
@@ -40,14 +42,7 @@ namespace MaisCultura
 
             while (data.Read())
             {
-                List<Categoria> categorias = new List<Categoria>();
-                List<MySqlParameter> parametro = new List<MySqlParameter>();
-                parametro.Add(new MySqlParameter("pCodigo", codigo));
-                MySqlDataReader dataPref = Query("ListarPreferenciasUsuario", parametro);
-                while (dataPref.Read())
-                    categorias.Add(new Categoria(Int32.Parse(dataPref["CodigoCategoria"].ToString()), dataPref["Nome"].ToString()));
-
-                usuario = new Usuario(data["@"].ToString(), data["Tipo"].ToString(), data["Sexo"].ToString(), data["Nome"].ToString(), data["Email"].ToString(), data["Senha"].ToString(), data["Documento"].ToString(), data["Nascimento"].ToString(), categorias);
+                usuario = DataReaderToUsuario(data);
             }
 
             Desconectar();
