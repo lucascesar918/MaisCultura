@@ -73,9 +73,9 @@
                 
                 <h2 class="filtros-titulos">Datas e horários</h2>
                 <h2 class="filtros-subtitulos data">Início</h2>
-                <input type="datetime-local" id="dtStart" name="dtStart" class="dt dtStart" runat="server"/>
+                <asp:TextBox type="datetime-local" ID="dtStart" name="dtStart" class="dt dtStart" runat="server"></asp:TextBox>
                 <h2 class="filtros-subtitulos data">Fim</h2>
-                <input type="datetime-local" id="dtEnd" name="dtEnd" class="dt dtEnd" runat="server"/>
+                <asp:TextBox type="datetime-local" ID="dtEnd" name="dtEnd" class="dt dtEnd" runat="server"></asp:TextBox>
 
                 <h2 class="filtros-titulos aval">Avaliação</h2>
                 <asp:DropDownList ID="dpdAval" runat="server" CssClass="dpdAval">

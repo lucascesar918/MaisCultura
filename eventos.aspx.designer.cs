@@ -147,7 +147,7 @@ namespace MenosCultura
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl dtStart;
+        protected global::System.Web.UI.WebControls.TextBox dtStart;
 
         /// <summary>
         /// Controle dtEnd.
@@ -156,7 +156,7 @@ namespace MenosCultura
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl dtEnd;
+        protected global::System.Web.UI.WebControls.TextBox dtEnd;
 
         /// <summary>
         /// Controle dpdAval.
