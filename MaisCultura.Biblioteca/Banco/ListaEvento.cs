@@ -87,7 +87,7 @@ namespace MaisCultura
 
             MySqlDataReader dadosEventos;
             if (codigo_usuario == null)
-                dadosEventos = Query("EventosFeed");
+                dadosEventos = Query("EventosFeedDeslogado");
             else 
                 dadosEventos = Query("EventosFeed", ("pUsuario", codigo_usuario));
            while (dadosEventos.Read())
