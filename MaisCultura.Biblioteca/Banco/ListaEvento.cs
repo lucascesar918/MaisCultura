@@ -30,7 +30,6 @@ namespace MaisCultura
 
             List<Evento> Eventos = new List<Evento>();
             MySqlDataReader data = Query("ListarEventos");
-            List<MySqlParameter> parametroEvento = new List<MySqlParameter>();
 
             while (data.Read())
             {
@@ -175,6 +174,12 @@ namespace MaisCultura
             
 
             return Denuncias;
+        }
+
+        public int? MediaEstrelas(int codigo)
+        {
+            var Media = (Decimal)Scalar("MediaAvaliacao", ("pEvento", codigo));
+            return Decimal.ToInt32(Media);
         }
     }
 }
