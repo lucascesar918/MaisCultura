@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using MySql.Data.MySqlClient;
-using Biblioteca;
+using MaisCultura.Biblioteca;
 
-namespace Biblioteca
+namespace MaisCultura.Biblioteca
 {
     public class ListaUsuario : Banco
     {
