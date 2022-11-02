@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.0.31903.59
+VisualStudioVersion = 17.3.32929.385
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaisCultura.Site", "MaisCultura.Site\MaisCultura.Site.csproj", "{8517BD47-F2B9-4EB8-A483-BA23E22BFA5B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaisCultura.Site", "MaisCultura.Site\MaisCultura.Site.csproj", "{1A91EF52-500C-420E-85A0-0D0B243D091F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MaisCultura.Biblioteca", "MaisCultura.Biblioteca\MaisCultura.Biblioteca.csproj", "{F6618323-CCC2-4657-BDA6-604827E700C1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaisCultura.Biblioteca", "MaisCultura.Biblioteca\MaisCultura.Biblioteca.csproj", "{831C6E1F-3D1B-4266-AB67-1246340B8F34}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaisCultura.API", "MaisCultura.API\MaisCultura.API.csproj", "{91EECD17-B440-4718-8B52-4681B6AFAC02}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,19 +15,23 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{8517BD47-F2B9-4EB8-A483-BA23E22BFA5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8517BD47-F2B9-4EB8-A483-BA23E22BFA5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8517BD47-F2B9-4EB8-A483-BA23E22BFA5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8517BD47-F2B9-4EB8-A483-BA23E22BFA5B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F6618323-CCC2-4657-BDA6-604827E700C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F6618323-CCC2-4657-BDA6-604827E700C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F6618323-CCC2-4657-BDA6-604827E700C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F6618323-CCC2-4657-BDA6-604827E700C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A91EF52-500C-420E-85A0-0D0B243D091F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A91EF52-500C-420E-85A0-0D0B243D091F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A91EF52-500C-420E-85A0-0D0B243D091F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A91EF52-500C-420E-85A0-0D0B243D091F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{831C6E1F-3D1B-4266-AB67-1246340B8F34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{831C6E1F-3D1B-4266-AB67-1246340B8F34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{831C6E1F-3D1B-4266-AB67-1246340B8F34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{831C6E1F-3D1B-4266-AB67-1246340B8F34}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91EECD17-B440-4718-8B52-4681B6AFAC02}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91EECD17-B440-4718-8B52-4681B6AFAC02}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91EECD17-B440-4718-8B52-4681B6AFAC02}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91EECD17-B440-4718-8B52-4681B6AFAC02}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {583747F6-A91E-4005-9172-FF87736207CA}
+		SolutionGuid = {0C453157-7280-433B-A4D0-96F307D68958}
 	EndGlobalSection
 EndGlobal

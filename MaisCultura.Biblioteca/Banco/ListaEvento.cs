@@ -5,8 +5,9 @@ using System.Linq;
 using System.Net.Http.Headers;
 using System.Web;
 using MySql.Data.MySqlClient;
+using Biblioteca;
 
-namespace MaisCultura
+namespace Biblioteca
 {
     public class ListaEvento : Banco
     {
@@ -30,7 +31,6 @@ namespace MaisCultura
 
             List<Evento> Eventos = new List<Evento>();
             MySqlDataReader data = Query("ListarEventos");
-            List<MySqlParameter> parametroEvento = new List<MySqlParameter>();
 
             while (data.Read())
             {
@@ -87,7 +87,7 @@ namespace MaisCultura
 
             MySqlDataReader dadosEventos;
             if (codigo_usuario == null)
-                dadosEventos = Query("EventosFeed");
+                dadosEventos = Query("EventosFeedDeslogado");
             else 
                 dadosEventos = Query("EventosFeed", ("pUsuario", codigo_usuario));
            while (dadosEventos.Read())
@@ -175,6 +175,12 @@ namespace MaisCultura
             
 
             return Denuncias;
+        }
+
+        public int? MediaEstrelas(int codigo)
+        {
+            var Media = (Decimal)Scalar("MediaAvaliacao", ("pEvento", codigo));
+            return Decimal.ToInt32(Media);
         }
     }
 }
