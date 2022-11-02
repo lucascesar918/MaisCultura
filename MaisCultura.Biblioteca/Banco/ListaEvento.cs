@@ -5,8 +5,9 @@ using System.Linq;
 using System.Net.Http.Headers;
 using System.Web;
 using MySql.Data.MySqlClient;
+using Biblioteca;
 
-namespace MaisCultura
+namespace Biblioteca
 {
     public class ListaEvento : Banco
     {

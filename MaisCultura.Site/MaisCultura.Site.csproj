@@ -98,7 +98,6 @@
     <Compile Include="EventosdoCriador.aspx.designer.cs">
       <DependentUpon>EventosdoCriador.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Filtro.cs" />
     <Compile Include="PainelDenuncias.aspx.cs">
       <DependentUpon>PainelDenuncias.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
