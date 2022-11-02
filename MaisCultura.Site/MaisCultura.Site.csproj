@@ -106,11 +106,11 @@
   <ItemGroup>
     <Content Include="denuncia.aspx" />
     <Content Include="eventos.aspx" />
-    <Content Include="EventosdoCriador.aspx" />
+    <Content Include="meus-eventos.aspx" />
     <Content Include="MaisCultura.Site.csproj.user" />
-    <Content Include="PainelDenuncias.aspx" />
+    <Content Include="denuncias.aspx" />
     <Content Include="perfil.aspx" />
-    <Content Include="PerfilOutroUsuario.aspx" />
+    <Content Include="criador.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -128,19 +128,19 @@
     <Compile Include="eventos.aspx.designer.cs">
       <DependentUpon>eventos.aspx</DependentUpon>
     </Compile>
-    <Compile Include="EventosdoCriador.aspx.cs">
-      <DependentUpon>EventosdoCriador.aspx</DependentUpon>
+    <Compile Include="meus-eventos.aspx.cs">
+      <DependentUpon>meus-eventos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="EventosdoCriador.aspx.designer.cs">
-      <DependentUpon>EventosdoCriador.aspx</DependentUpon>
+    <Compile Include="meus-eventos.aspx.designer.cs">
+      <DependentUpon>meus-eventos.aspx</DependentUpon>
     </Compile>
-    <Compile Include="PainelDenuncias.aspx.cs">
-      <DependentUpon>PainelDenuncias.aspx</DependentUpon>
+    <Compile Include="denuncias.aspx.cs">
+      <DependentUpon>denuncias.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="PainelDenuncias.aspx.designer.cs">
-      <DependentUpon>PainelDenuncias.aspx</DependentUpon>
+    <Compile Include="denuncias.aspx.designer.cs">
+      <DependentUpon>denuncias.aspx</DependentUpon>
     </Compile>
     <Compile Include="perfil.aspx.cs">
       <DependentUpon>perfil.aspx</DependentUpon>
@@ -149,12 +149,12 @@
     <Compile Include="perfil.aspx.designer.cs">
       <DependentUpon>perfil.aspx</DependentUpon>
     </Compile>
-    <Compile Include="PerfilOutroUsuario.aspx.cs">
-      <DependentUpon>PerfilOutroUsuario.aspx</DependentUpon>
+    <Compile Include="criador.aspx.cs">
+      <DependentUpon>criador.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="PerfilOutroUsuario.aspx.designer.cs">
-      <DependentUpon>PerfilOutroUsuario.aspx</DependentUpon>
+    <Compile Include="criador.aspx.designer.cs">
+      <DependentUpon>criador.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

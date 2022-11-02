@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="PainelDenuncias.aspx.cs" Inherits="MaisCultura.PainelDenuncias" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="denuncias.aspx.cs" Inherits="MaisCultura.PainelDenuncias" %>
 
 <!DOCTYPE html>
 

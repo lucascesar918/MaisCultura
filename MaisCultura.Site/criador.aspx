@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="PerfilOutroUsuario.aspx.cs" Inherits="MaisCultura.PerfilOutroUsuario" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="criador.aspx.cs" Inherits="MaisCultura.PerfilOutroUsuario" %>
 
 <!DOCTYPE html>
 
