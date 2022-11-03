@@ -21,15 +21,9 @@ namespace MaisCultura
             lblUser.Text = Usuario.Codigo;
             lblNmEvento.Text = Evento.Titulo;
             lblMotivo.Text = Denuncias[0].Motivo.Nome;
+            litPerfil.Text = $"<a href=\"perfil.aspx?u={Usuario.Codigo}\">Perfil</a>";
 
-               ///////////////////////////////
-             //                             //
-            //  Pensar em como implementar  //
-            //  a classe ser aplicável      //
-            //  tanto na busca por eventos  //
-            //  quanto na por usuario.      //
-            //                              //
-            //////////////////////////////////
+            dropbtnUsuario.Text = Usuario.Nome;
         }
     }
 }

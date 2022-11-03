@@ -26,6 +26,7 @@
                      <a href="eventos.aspx">Eventos</a>
                      <a href="PainelDenuncias.aspx">Denúncias</a>
                      <%--<a href="perfil.aspx">Perfil</a>--%>
+                     <asp:Literal ID="litPerfil" runat="server"></asp:Literal>
                      <a href="eventos.aspx">Sair</a>
                     </div>
                 </div>

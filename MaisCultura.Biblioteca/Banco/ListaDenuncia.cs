@@ -8,12 +8,25 @@ namespace Biblioteca
 {
     public class ListaDenuncia : Banco
     {
-        //public List<AlfaMaisCultura.Denuncia> Listar() {
-        //    List<AlfaMaisCultura.Denuncia> denuncias = new List<AlfaMaisCultura.Denuncia>();
+        Denuncia DataReaderToDenuncia(MySqlDataReader data) {
+            int CodigoDenuncia = Int32.Parse(data["CodigoDenuncia"].ToString());
+            int CodigoEvento = Int32.Parse(data["CodigoEvento"].ToString());
+            string CodigoUsuario = data["@"].ToString();
+            DateTime Data = Convert.ToDateTime(data["Data"].ToString() + " " + data["Hora"].ToString());
+            string Descricao = data["Descricao"].ToString();
 
-        //    MySqlDataReader data = Query();
+            return new Denuncia(CodigoDenuncia, CodigoEvento, Descricao, CodigoUsuario, Data);
+        }
 
-        //    return denuncias;
-        //}
+        public List<Denuncia> Listar() {
+            List<Denuncia> Denuncias = new List<Denuncia>();
+
+            MySqlDataReader data = Query("ListarDenuncias");
+
+            while (data.Read())
+                Denuncias.Add(DataReaderToDenuncia(data));
+
+            return Denuncias;
+        }
     }
 }

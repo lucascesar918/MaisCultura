@@ -11,6 +11,10 @@ namespace Biblioteca
 {
     public class ListaEvento : Banco
     {
+        string AdicionarReticencia(string str, int TamanhoMaximo)
+        {
+            return str.Length > TamanhoMaximo ? str.Substring(0, TamanhoMaximo - 3) + "..." : str;
+        }
  
         Evento DataReaderToEvento(MySqlDataReader data, bool Reticencias) {
             var cdEvento = Int32.Parse(data["Codigo"].ToString());
@@ -74,12 +78,6 @@ namespace Biblioteca
 
             Desconectar();
             return dias;
-        }
-        string AdicionarReticencia(string Str, int TamanhoMaximo)
-        {
-            if(Str.Length > TamanhoMaximo)
-                return Str.Substring(0, TamanhoMaximo - 3) + "...";
-            return Str;
         }
         public List<Evento> Feed(string codigo_usuario = null)
         {

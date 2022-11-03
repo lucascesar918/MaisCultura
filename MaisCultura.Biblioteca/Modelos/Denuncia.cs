@@ -11,8 +11,8 @@ namespace Biblioteca
         {
             CodigoDenuncia = codigoDenuncia;
             CodigoEvento = codigoEvento;
-            Descricao = descricao;
             CodigoUsuario = codigoUsuario;
+            Descricao = descricao;
             Data = date;
         }
 
