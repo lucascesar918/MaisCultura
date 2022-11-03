@@ -95,20 +95,5 @@ namespace MaisCultura.Biblioteca
 
             return avaliacoes;
         }
-
-        public List<Denuncia> BuscarDenuncias(string codigo)
-        {
-            List<Denuncia> denuncias = new List<Denuncia>();
-
-            MySqlDataReader data = Query("BuscarDenuncias");
-
-            while (data.Read()) {
-                denuncias.Add(new Denuncia(Int32.Parse(data["CodigoDenuncia"].ToString()), Int32.Parse(data["CodigoEvento"].ToString()), data["Descricao"].ToString(), data["@"].ToString(), DateTime.Parse(data["Data"].ToString())));                
-            }
-
-            Desconectar();
-
-            return denuncias;
-        }
     }
 }

@@ -28,5 +28,42 @@ namespace MaisCultura.Biblioteca
 
             return Denuncias;
         }
+
+        public List<Denuncia> BuscarPorUsuario(string cdUsuario) { 
+            List<Denuncia> denuncias = new List<Denuncia>();
+
+            MySqlDataReader data = Query("BuscarDenunciasUsuario", ("pCodigo", cdUsuario));
+
+            while (data.Read())
+                denuncias.Add(DataReaderToDenuncia(data));
+
+            return denuncias;
+        }
+
+        public List<Denuncia> BuscarPorEvento(int cdEvento) {
+            List<Denuncia> denuncias = new List<Denuncia>();
+
+            MySqlDataReader data = Query("BuscarDenunciasEvento", ("pEvento", cdEvento));
+
+            while (data.Read())
+                denuncias.Add(DataReaderToDenuncia(data));
+
+            return denuncias;
+        }
+
+        public List<Denuncia> BuscarPorUsuarioEvento(string cdUsuario, int cdEvento) {
+            List<Denuncia> denuncias = new List<Denuncia>();
+
+            MySqlDataReader data = Query("BuscarDenunciasUsuarioEvento", ("pCodigo", cdUsuario), ("pEvento", cdEvento));
+
+            while (data.Read())
+                denuncias.Add(DataReaderToDenuncia(data));
+
+            return denuncias;
+        }
+
+        //public Denuncia Buscar() { 
+        
+        //}
     }
 }

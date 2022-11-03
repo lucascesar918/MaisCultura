@@ -474,3 +474,19 @@ BEGIN
 	JOIN lista_motivo lm ON m.cd_motivo = lm.cd_motivo
 	WHERE d.cd_denuncia = pCodigo;
 END$$
+
+DROP PROCEDURE IF EXISTS DeletarUsuario$$
+CREATE PROCEDURE DeletarUsuario(pCodigo VARCHAR(20))
+BEGIN
+	DELETE FROM usuario WHERE cd_usuario = pCodigo;
+END$$
+
+DROP PROCEDURE IF EXISTS DeletarEvento$$
+CREATE PROCEDURE DeletarEvento(pCodigo VARCHAR(20))
+BEGIN
+	DELETE FROM dia_evento WHERE cd_evento = pCodigo;
+	DELETE FROM categoria_evento WHERE cd_evento = pCodigo;
+	DELETE FROM evento WHERE cd_evento = pCodigo;
+END$$
+
+DELIMITER ;

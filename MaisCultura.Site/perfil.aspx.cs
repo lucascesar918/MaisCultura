@@ -18,6 +18,7 @@ namespace MaisCultura
             Usuario usuario = ListaUsuario.Buscar(usuarioCd);
             if (usuario == null) usuario = ListaUsuario.Buscar("adriano.fraga");
 
+            litEventos.Text = $"<a href=\"eventos.aspx?u={usuario.Codigo}\">Eventos</a>";
             dropbtnUsuario.Text = usuario.Nome;
             lblNomeUsuario.Text = usuario.Nome;
             lblArroba.Text = $"@{usuario.Codigo}";

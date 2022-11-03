@@ -22,6 +22,7 @@ namespace MaisCultura
             Usuario Usuario = ListaUsuario.Buscar(Request.QueryString["u"]);
             List<Denuncia> Denuncias = ListaDenuncia.Listar();
 
+            litEventos.Text = $"<a href=\"eventos.aspx?u={Usuario.Codigo}\">Eventos</a>";
             dropbtnUsuario.Text = Usuario.Nome;
             litPerfil.Text = $"<a href=\"perfil.aspx?u={Usuario.Codigo}\">Perfil</a>";
 
