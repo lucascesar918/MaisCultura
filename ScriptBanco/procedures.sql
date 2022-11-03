@@ -36,6 +36,7 @@ BEGIN
 			ON i.cd_imagem = ie.cd_imagem;
 END$$
 
+
 DROP PROCEDURE IF EXISTS ListarCategorias$$
 CREATE PROCEDURE ListarCategorias()
 BEGIN
@@ -98,16 +99,17 @@ DROP PROCEDURE IF EXISTS BuscarUsuario$$
 CREATE PROCEDURE BuscarUsuario(pCodigo VARCHAR(20))
 BEGIN
 	SELECT 
-    u.cd_usuario "@",
-    tu.nm_tipo_usuario "Tipo",
-    u.sg_sexo "Sexo",
-    u.nm_usuario "Nome",
-    u.nm_email "Email",
-    u.cd_senha "Senha",
-    u.nm_documento "Documento",
-    u.dt_nascimento "Nascimento"
-	FROM usuario u
-	INNER JOIN tipo_usuario tu ON u.cd_tipo_usuario = tu.cd_tipo_usuario
+		u.cd_usuario "@",
+		tu.nm_tipo_usuario "Tipo",
+		u.sg_sexo "Sexo",
+		u.nm_usuario "Nome",
+		u.nm_email "Email",
+		u.cd_senha "Senha",
+		u.nm_documento "Documento",
+		u.dt_nascimento "Nascimento"
+	FROM 
+		usuario u
+		INNER JOIN tipo_usuario tu ON u.cd_tipo_usuario = tu.cd_tipo_usuario
 	WHERE 
 		cd_usuario = pCodigo;
 END$$
@@ -142,10 +144,36 @@ BEGIN
 		cd_evento = pCodigo;
 END$$
 
-DROP PROCEDURE IF EXISTS CadastrarUsuario$$
-CREATE PROCEDURE CadastrarUsuario(pCodigo varchar(20), pTipo int, pSigla varchar(3), pNome varchar(100), pEmail varchar(50), pSenha varchar(35), pDocumento varchar(15), pNascimento date)
+DROP PROCEDURE IF EXISTS BuscarEventoUsuario$$
+CREATE PROCEDURE BuscarEventoUsuario(pCodigo VARCHAR(20))
 BEGIN
-	INSERT INTO usuario VALUES ( pCodigo, pTipo, pSigla, pNome, pEmail, md5(pSenha), pDocumento, pNascimento );
+	SELECT * FROM evento
+	WHERE 
+		cd_responsavel = pCodigo;
+END$$
+
+DROP PROCEDURE IF EXISTS CadastrarUsuario$$
+CREATE PROCEDURE CadastrarUsuario(
+	pCodigo varchar(20), 
+	pTipo int, 
+	pSigla varchar(3), 
+	pNome varchar(100), 
+	pEmail varchar(50), 
+	pSenha varchar(35), 
+	pDocumento varchar(15), 
+	pNascimento date)
+BEGIN
+	INSERT INTO usuario VALUES 
+	( 
+		pCodigo,
+		pTipo, 
+		pSigla, 
+		pNome, 
+		pEmail, 
+		md5(pSenha), 
+		pDocumento, 
+		pNascimento 
+	);
 END$$
 
 DROP PROCEDURE IF EXISTS CadastrarEvento$$
@@ -154,8 +182,8 @@ BEGIN
 	INSERT INTO evento VALUES (pCodigo, pResponsavel, pNome, pLocal, pDescricao);
 END$$
 
-DROP PROCEDURE IF EXISTS EventosFeed$$
-CREATE PROCEDURE EventosFeed( pUsuario VARCHAR(20) )
+DROP PROCEDURE IF EXISTS ListarEventosFeed$$
+CREATE PROCEDURE ListarEventosFeed( pUsuario VARCHAR(20) )
 BEGIN
 	SELECT 
 		e.cd_evento "Codigo",
@@ -185,8 +213,8 @@ BEGIN
 	ORDER BY de.dt_dia;
 END$$
 
-DROP PROCEDURE IF EXISTS EventosFeedDeslogado$$
-CREATE PROCEDURE EventosFeedDeslogado()
+DROP PROCEDURE IF EXISTS ListarEventosFeedDeslogado$$
+CREATE PROCEDURE ListarEventosFeedDeslogado()
 BEGIN
 	SELECT 
 		e.cd_evento "Codigo",
@@ -211,14 +239,19 @@ BEGIN
 	ORDER BY de.dt_dia;
 END$$
 
-DROP PROCEDURE IF EXISTS salvarEvento$$
-CREATE PROCEDURE salvarEvento ( pUsuario VARCHAR(20), pEvento INT)
+DROP PROCEDURE IF EXISTS CadastrarEventoSalvo$$
+CREATE PROCEDURE CadastrarEventoSalvo ( pUsuario VARCHAR(20), pEvento INT)
 BEGIN
 	INSERT INTO salvar VALUES ( pEvento, pUsuario);
 END$$
 
 DROP PROCEDURE IF EXISTS filtrarEventos$$
-CREATE PROCEDURE filtrarEventos ( pCategoria INT, pDia DATE, pHora TIME, pEstrelas INT, pTitulo VARCHAR(140))
+CREATE PROCEDURE filtrarEventos ( 
+	pCategoria INT, 
+	pDia DATE, 
+	pHora TIME, 
+	pEstrelas INT, 
+	pTitulo VARCHAR(140))
 BEGIN
 	SELECT 
 		e.cd_evento "Codigo",
@@ -256,8 +289,8 @@ BEGIN
 	ORDER BY e.cd_evento;
 END$$
 
-DROP PROCEDURE IF EXISTS EventoEspecifico$$
-CREATE PROCEDURE EventoEspecifico( pEvento INT )
+DROP PROCEDURE IF EXISTS BuscarInformacoesEvento$$
+CREATE PROCEDURE BuscarInformacoesEvento( pEvento INT )
 BEGIN
 	SELECT 
 		e.nm_titulo "Titulo",
@@ -276,8 +309,8 @@ BEGIN
 	GROUP BY de.dt_dia;
 END$$
 
-DROP PROCEDURE IF EXISTS InteressesEvento$$
-CREATE PROCEDURE InteressesEvento( pEvento INT )
+DROP PROCEDURE IF EXISTS BuscarInteressesEvento$$
+CREATE PROCEDURE BuscarInteressesEvento( pEvento INT )
 BEGIN
 	SELECT count(cd_usuario) "Interesses" FROM interesse WHERE cd_evento = pEvento;
 END$$
@@ -318,8 +351,12 @@ BEGIN
 	WHERE a.cd_usuario = pUsuario;
 END$$
 
-DROP PROCEDURE IF EXISTS criarAvaliacao$$
-CREATE PROCEDURE criarAvaliacao( pUsuario VARCHAR(20), pEvento INT, pDescricao TEXT, pEstrelas INT)
+DROP PROCEDURE IF EXISTS CadastrarAvaliacao$$
+CREATE PROCEDURE CadastrarAvaliacao( 
+	pUsuario VARCHAR(20), 
+	pEvento INT, 
+	pDescricao TEXT, 
+	pEstrelas INT)
 BEGIN
 	INSERT INTO avaliacao VALUES ( pUsuario, pEvento, pDescricao, pEstrelas );
 END$$
@@ -365,6 +402,47 @@ BEGIN
     (pCategoria, pUsuario);
 END$$
 
+DROP PROCEDURE IF EXISTS AlterarPreferencia$$
+CREATE PROCEDURE AlterarPreferencia(pCategoria INT, pUsuario VARCHAR(20))
+BEGIN
+	IF pCategoria NOT IN (SELECT cd_categoria FROM preferencia WHERE cd_usuario = pUsuario)
+	THEN
+		INSERT INTO preferencia VALUES (pCategoria, pUsuario);
+	END IF;
+END$$
+
+DROP PROCEDURE IF EXISTS AlterarEvento$$
+CREATE PROCEDURE AlterarEvento(pCodigo INT, pResponsavel VARCHAR(20), pNome VARCHAR(140), pLocal TEXT, pDescricao TEXT)
+BEGIN
+	UPDATE evento
+		SET 
+			cd_responsavel = pResponsavel,
+			nm_titulo = pNome,
+			ds_local = pLocal,
+			ds_evento = pDescricao
+	WHERE cd_evento = pCodigo;
+END$$
+
+DROP PROCEDURE IF EXISTS AlterarCategoriaEvento$$
+CREATE PROCEDURE AlterarCategoriaEvento(pCodigo INT, pCategoria INT)
+BEGIN
+	UPDATE categoria_evento
+		SET 
+			cd_categoria = pCategoria
+	WHERE cd_evento = pCodigo;
+END$$
+
+DROP PROCEDURE IF EXISTS AlterarDiaEvento$$
+CREATE PROCEDURE AlterarDiaEvento(pCodigo INT, pData DATE, pInicial TIME, pFinal TIME)
+BEGIN
+	UPDATE dia_evento
+		SET 
+			dt_dia = pData,
+			hr_inicial = pInicial,
+			hr_final = pFinal
+	WHERE cd_evento = pCodigo;
+END$$
+
 DROP PROCEDURE IF EXISTS CadastrarCategoriaEvento$$
 CREATE PROCEDURE CadastrarCategoriaEvento(pEvento INT, pCategoria INT)
 BEGIN
@@ -372,14 +450,63 @@ BEGIN
     (pCategoria, pEvento);
 END$$
 
+DROP PROCEDURE IF EXISTS CadastrarDiaEvento$$
+CREATE PROCEDURE CadastrarDiaEvento(pEvento INT, pDia DATE, pInicio TIME, pFim TIME)
+BEGIN
+	INSERT INTO dia_evento VALUES
+    (pEvento, pDia, pInicio, pFim);
+END$$
+
+DROP PROCEDURE IF EXISTS BuscarMediaEvento$$
+CREATE PROCEDURE BuscarMediaEvento(pEvento int)
+BEGIN
+	SELECT
+		ROUND(AVG(a.qt_estrela), 1) as "Media"
+	FROM evento e
+	JOIN avaliacao a ON (e.cd_evento = a.cd_evento)
+	WHERE e.cd_evento = pEvento;
+END$$
+
 DROP PROCEDURE IF EXISTS BuscarMediaCriador$$
 CREATE PROCEDURE BuscarMediaCriador(pCodigo VARCHAR(20))
 BEGIN
-	SELECT
-		AVG(qt_estrela) "Media"
-	FROM evento e
-		JOIN avaliacao a
-	WHERE e.cd_responsavel = pCodigo;
+	DECLARE soma DOUBLE DEFAULT 0.0;
+	DECLARE codigoEvento INT DEFAULT 0;
+	DECLARE media INT DEFAULT 0;
+	DECLARE contador INT DEFAULT 0;
+	DECLARE parar INT DEFAULT 0;
+
+	DECLARE dados CURSOR FOR 
+		SELECT cd_evento 
+		FROM evento 
+		WHERE cd_responsavel = pCodigo 
+		ORDER BY cd_evento;
+	
+	DECLARE CONTINUE HANDLER FOR NOT FOUND
+		SET parar = 1;
+
+	OPEN dados;
+
+	todos:LOOP
+		FETCH dados INTO codigoEvento;
+
+		IF (parar = 1) THEN
+			LEAVE todos;
+		END IF;
+
+		SELECT
+			ROUND(AVG(a.qt_estrela), 1) INTO media
+		FROM evento e
+		JOIN avaliacao a ON (e.cd_evento = a.cd_evento)
+		WHERE e.cd_evento = codigoEvento;
+
+		SET soma = soma + media;
+		SET contador = contador + 1;
+	END LOOP;
+	
+	SET soma = soma / contador;
+	
+	SELECT soma;
 END$$
 
 DROP PROCEDURE IF EXISTS AlterarSenha$$
@@ -449,3 +576,32 @@ BEGIN
 	JOIN lista_motivo lm ON m.cd_motivo = lm.cd_motivo
 	WHERE d.cd_usuario = pCodigo;
 END$$
+
+DROP PROCEDURE IF EXISTS DeletarUsuario$$
+CREATE PROCEDURE DeletarUsuario(pCodigo VARCHAR(20))
+BEGIN
+	DELETE FROM equipe_evento WHERE cd_usuario = pCodigo;
+	DELETE FROM denuncia WHERE cd_usuario = pCodigo;
+	DELETE FROM preferencia WHERE cd_usuario = pCodigo;
+	DELETE FROM salvar WHERE cd_usuario = pCodigo;
+	DELETE FROM interesse WHERE cd_usuario = pCodigo;
+	DELETE FROM avaliacao WHERE cd_usuario = pCodigo;
+	DELETE FROM evento WHERE cd_responsavel = pCodigo;
+	DELETE FROM usuario WHERE cd_usuario = pCodigo;
+END$$
+
+DROP PROCEDURE IF EXISTS DeletarEvento$$
+CREATE PROCEDURE DeletarEvento(pCodigo INT)
+BEGIN
+	DELETE FROM imagem_evento WHERE cd_evente = pCodigo;
+	DELETE FROM avaliacao WHERE cd_evento = pCodigo;
+	DELETE FROM dia_evento WHERE cd_evento = pCodigo;
+	DELETE FROM interesse WHERE cd_evento = pCodigo;
+	DELETE FROM salvar WHERE cd_evento = pCodigo;
+	DELETE FROM categoria_evento WHERE cd_evento = pCodigo;
+	DELETE FROM denuncia WHERE cd_evento = pCodigo;
+	DELETE FROM equipe_evento WHERE cd_evento = pCodigo;
+	DELETE FROM evento WHERE cd_evento = pCodigo;
+END$$
+
+DELIMITER ;
