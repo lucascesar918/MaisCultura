@@ -111,7 +111,7 @@ namespace MaisCultura.Biblioteca
             Evento evento = null;
 
 
-            MySqlDataReader data = Query("ListarEventos"); 
+            MySqlDataReader data = Query("BuscarEvento", ("pCodigo", codigo)); 
 
             while (data.Read())
             {

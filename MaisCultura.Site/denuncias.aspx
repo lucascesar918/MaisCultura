@@ -21,7 +21,7 @@
 
             <article class="usuario">
                 <div class="menuUsuario">
-                    <asp:Button CssClass="dropbtn" ID="dropbtnUsuario" runat="server" Text="Adriano Fraga Ribeiro" />
+                    <asp:Button CssClass="dropbtn" ID="dropbtnUsuario" runat="server" Text="" />
                     <div class="dropdown-content">
                      <a href="eventos.aspx">Eventos</a>
                      <a href="denuncias.aspx">Denúncias</a>
@@ -48,90 +48,8 @@
 
         <section class="all">
 
-            <section class="denuncia">      
-                    <div class="divInfo">
-                        <h4 class="title"> DENÚNCIA FEITA POR </h4>
-                        <asp:Label ID="lblUser" runat="server" Text="@Usuário"></asp:Label>
-                    </div>
-
-                <div class="divInfo">
-                    <h4 class="title"> EVENTO </h4>
-                    <asp:Label ID="lblNmEvento" runat="server" Text="Título do Evento"></asp:Label>
-                </div>
-
-                <div class="divInfo">
-                    <h4 class="title"> MOTIVO </h4>
-                    <asp:Label ID="lblMotivo" runat="server" Text="Motivo da Denúncia"></asp:Label>
-                </div>
-               
-                <div class="divInfo">
-                    <div class="divdthr">
-                        <h4 class="title"> DATA </h4>
-                        <asp:Label ID="lblData" runat="server" Text="00/00/0000"></asp:Label>
-                    </div>
-                    <div class="divdthr">
-                        <h4 class="title"> HORA </h4>
-                        <asp:Label ID="lblHora" runat="server" Text="00:00"></asp:Label>
-                    </div>
-                </div>
-            </section>
-
-             <section class="denuncia">      
-                    <div class="divInfo">
-                        <h4 class="title"> DENÚNCIA FEITA POR </h4>
-                        <asp:Label ID="Label1" runat="server" Text="@Usuário"></asp:Label>
-                    </div>
-
-                <div class="divInfo">
-                    <h4 class="title"> EVENTO </h4>
-                    <asp:Label ID="Label2" runat="server" Text="Título do Evento"></asp:Label>
-                </div>
-
-                <div class="divInfo">
-                    <h4 class="title"> MOTIVO </h4>
-                    <asp:Label ID="Label3" runat="server" Text="Motivo da Denúncia"></asp:Label>
-                </div>
-               
-                <div class="divInfo">
-                    <div class="divdthr">
-                        <h4 class="title"> DATA </h4>
-                        <asp:Label ID="Label4" runat="server" Text="00/00/0000"></asp:Label>
-                    </div>
-                    <div class="divdthr">
-                        <h4 class="title"> HORA </h4>
-                        <asp:Label ID="Label5" runat="server" Text="00:00"></asp:Label>
-                    </div>
-                </div>
-            </section>
-
-             <section class="denuncia">      
-                    <div class="divInfo">
-                        <h4 class="title"> DENÚNCIA FEITA POR </h4>
-                        <asp:Label ID="Label6" runat="server" Text="@Usuário"></asp:Label>
-                    </div>
-
-                <div class="divInfo">
-                    <h4 class="title"> EVENTO </h4>
-                    <asp:Label ID="Label7" runat="server" Text="Título do Evento"></asp:Label>
-                </div>
-
-                <div class="divInfo">
-                    <h4 class="title"> MOTIVO </h4>
-                    <asp:Label ID="Label8" runat="server" Text="Motivo da Denúncia"></asp:Label>
-                </div>
-               
-                <div class="divInfo">
-                    <div class="divdthr">
-                        <h4 class="title"> DATA </h4>
-                        <asp:Label ID="Label9" runat="server" Text="00/00/0000"></asp:Label>
-                    </div>
-                    <div class="divdthr">
-                        <h4 class="title"> HORA </h4>
-                        <asp:Label ID="Label10" runat="server" Text="00:00"></asp:Label>
-                    </div>
-                </div>
-            </section>
-        
+            <asp:Literal ID="litDenuncias" runat="server"></asp:Literal>
+            
         </section>
 
     </form>

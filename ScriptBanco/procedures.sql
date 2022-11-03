@@ -137,7 +137,13 @@ END$$
 DROP PROCEDURE IF EXISTS BuscarEvento$$
 CREATE PROCEDURE BuscarEvento(pCodigo INT)
 BEGIN
-	SELECT * FROM evento
+	SELECT
+		cd_evento "Codigo",
+		cd_responsavel "@",
+		nm_titulo "Titulo",
+		ds_local "Local",
+		ds_evento "Descricao"
+	FROM evento
 	WHERE 
 		cd_evento = pCodigo;
 END$$
@@ -451,4 +457,20 @@ BEGIN
 	JOIN motivo m ON d.cd_denuncia = m.cd_denuncia
 	JOIN lista_motivo lm ON m.cd_motivo = lm.cd_motivo
 	WHERE d.cd_usuario = pCodigo;
+END$$
+
+DROP PROCEDURE IF EXISTS BuscarDenuncia$$
+CREATE PROCEDURE BuscarDenuncia(pCodigo INT)
+BEGIN
+	SELECT
+		d.cd_denuncia "CodigoDenuncia",
+		d.cd_evento "CodigoEvento",
+		d.cd_usuario "@",
+		DATE_FORMAT(d.dt_denuncia, "%d/%m/%Y") "Data",
+		d.hr_denuncia "Hora",
+		lm.nm_motivo "Descricao"
+	FROM denuncia d
+	JOIN motivo m ON d.cd_denuncia = m.cd_denuncia
+	JOIN lista_motivo lm ON m.cd_motivo = lm.cd_motivo
+	WHERE d.cd_denuncia = pCodigo;
 END$$
