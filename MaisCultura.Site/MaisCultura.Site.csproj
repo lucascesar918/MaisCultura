@@ -106,6 +106,7 @@
   <ItemGroup>
     <Content Include="denuncia.aspx" />
     <Content Include="eventos.aspx" />
+    <Content Include="js\eventos.js" />
     <Content Include="meus-eventos.aspx" />
     <Content Include="MaisCultura.Site.csproj.user" />
     <Content Include="denuncias.aspx" />

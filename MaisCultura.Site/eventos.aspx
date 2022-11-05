@@ -102,5 +102,7 @@
             </div>
         </main>
     </form>
+    
+    <script type="text/javascript" src="js/eventos.js"></script>
 </body>
 </html>
