@@ -7,13 +7,14 @@ namespace MaisCultura.Biblioteca
 {
     public class Denuncia
     {
-        public Denuncia(int codigoDenuncia, int codigoEvento, string descricao, string codigoUsuario, DateTime date)
+        public Denuncia(int codigoDenuncia, int codigoEvento, string descricao, string codigoUsuario, DateTime data, Motivo motivo)
         {
             CodigoDenuncia = codigoDenuncia;
             CodigoEvento = codigoEvento;
-            CodigoUsuario = codigoUsuario;
             Descricao = descricao;
-            Data = date;
+            CodigoUsuario = codigoUsuario;
+            Data = data;
+            Motivo = motivo;
         }
 
         public int CodigoDenuncia { get; set; }

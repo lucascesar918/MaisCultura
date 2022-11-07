@@ -14,8 +14,9 @@ namespace MaisCultura.Biblioteca
             string CodigoUsuario = data["@"].ToString();
             DateTime Data = Convert.ToDateTime(data["Data"].ToString() + " " + data["Hora"].ToString());
             string Descricao = data["Descricao"].ToString();
+            Motivo Motivo = new Motivo(Int32.Parse(data["CodigoMotivo"].ToString()), data["Motivo"].ToString());
 
-            return new Denuncia(CodigoDenuncia, CodigoEvento, Descricao, CodigoUsuario, Data);
+            return new Denuncia(CodigoDenuncia, CodigoEvento, Descricao, CodigoUsuario, Data, Motivo);
         }
 
         public List<Denuncia> Listar() {
@@ -65,8 +66,12 @@ namespace MaisCultura.Biblioteca
         public Denuncia Buscar(int codigo) {
 
             MySqlDataReader data = Query("BuscarDenuncia", ("pCodigo", codigo));
+            Denuncia Denuncia = null;
 
-            return DataReaderToDenuncia(data);
+            while (data.Read())
+                Denuncia = DataReaderToDenuncia(data);
+
+            return Denuncia;
         }
     }
 }

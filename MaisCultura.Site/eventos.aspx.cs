@@ -95,7 +95,7 @@ namespace MaisCultura
             filtro.Local = txtLocal.Text;
             filtro.Categorias = new List<string>();
             filtro.Categorias.Add((string)ViewState["Cateoria"]);
-            string usuario = Request.QueryString["u"];
+            string usuario = Request.QueryString["l"];
 
             ListarEventos(usuario);
             LoadComplete += Page_Load;
