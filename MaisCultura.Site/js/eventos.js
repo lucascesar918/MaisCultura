@@ -1,6 +1,6 @@
 ﻿console.log("TO AQUI CORNO");
 
-var categoria = document.getElementById('btnCatPintura');
+var categoria = document.getElementById('CatPintura');
 
 categoria.addEventListener('Click', teste);
 
