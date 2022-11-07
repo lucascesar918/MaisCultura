@@ -62,8 +62,11 @@ namespace MaisCultura.Biblioteca
             return denuncias;
         }
 
-        //public Denuncia Buscar() { 
-        
-        //}
+        public Denuncia Buscar(int codigo) {
+
+            MySqlDataReader data = Query("BuscarDenuncia", ("pCodigo", codigo));
+
+            return DataReaderToDenuncia(data);
+        }
     }
 }
