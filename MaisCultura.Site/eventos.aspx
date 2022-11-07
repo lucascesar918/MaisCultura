@@ -59,13 +59,13 @@
         <main class="principal">
             <div class="filtros">
                 <h2 class="filtros-titulos">Categoria</h2>
-                <asp:Button ID="btnCatPintura" runat="server" Text="Pintura" class="button filtros-subtitulos categoria"/>
-                <asp:Button ID="btnCatMusica" runat="server" Text="Música" class="button filtros-subtitulos categoria"/>
-                <asp:Button ID="btnCatEsporte" runat="server" Text="Esporte" class="button filtros-subtitulos categoria"/>
-                <asp:Button ID="btnCatCinema" runat="server" Text="Cinema" class="button filtros-subtitulos categoria"/>
-                <asp:Button ID="btnCatTeatro" runat="server" Text="Teatro" class="button filtros-subtitulos categoria"/>
-                <asp:Button ID="btnCatJogos" runat="server" Text="Jogos" class="button filtros-subtitulos categoria"/>
-                <asp:Button ID="btnCatRPG" runat="server" Text="RPG" class="button filtros-subtitulos categoria"/>
+                <article ID="CatPintura" class="button filtros-subtitulos categoria">Pintura</article>
+                <article ID="CatMusica" class="button filtros-subtitulos categoria">Musica</article>
+                <article ID="CatEsporte" class="button filtros-subtitulos categoria">Esporte</article>
+                <article ID="CatCinema" class="button filtros-subtitulos categoria">Cinema</article>
+                <article ID="CatTeatro" class="button filtros-subtitulos categoria">Teatro</article>
+                <article ID="CatJogos" class="button filtros-subtitulos categoria">Jogos</article>
+                <article ID="CatRPG" class="button filtros-subtitulos categoria">RPG</article>
                 <asp:Button ID="btnVerMais" runat="server" Text="Ver mais categorias" class="button filtros-subtitulos verMais"/>
                 <br />
                 <h2 class="filtros-titulos">Local</h2>

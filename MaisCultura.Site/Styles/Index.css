@@ -195,7 +195,8 @@ html{
 .filtros-subtitulos {
     font-weight: 400;
     background: none;
-    width: auto;
+    width: fit-content;
+    height: fit-content;
     display: grid;
     padding: 1vh;
 }
