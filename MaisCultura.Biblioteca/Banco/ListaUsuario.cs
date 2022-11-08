@@ -93,6 +93,7 @@ namespace MaisCultura.Biblioteca
             while (data.Read())
                 avaliacoes.Add(new Avaliacao(data["@"].ToString(), Int32.Parse(data["CodigoEvento"].ToString()), data["Descricao"].ToString(), Int32.Parse(data["Estrelas"].ToString())));
 
+            Desconectar();
             return avaliacoes;
         }
     }
