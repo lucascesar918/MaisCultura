@@ -96,5 +96,10 @@ namespace MaisCultura.Biblioteca
             Desconectar();
             return avaliacoes;
         }
+
+        public void Deletar(string codigo) {
+
+            NonQuery("DeletarUsuario", ("pCodigo", codigo));
+        }
     }
 }

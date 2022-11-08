@@ -167,7 +167,7 @@
 
         <h3 class="h3"> Você tem certeza que deseja excluir sua conta? </h3>
         <div class="boxBtn">
-            <asp:Button ID="btnExcluir" runat="server" Text="Excluir Conta" CssClass="btnBox"/>
+            <asp:Button ID="btnExcluir" runat="server" Text="Excluir Conta" CssClass="btnBox" OnClick="btnExcluir_Click"/>
             <asp:Button ID="cancelarExcluir" runat="server" Text="Cancelar" CssClass="btnBox"/>
         </div>
 
