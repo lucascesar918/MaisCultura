@@ -194,8 +194,8 @@ BEGIN
 	INSERT INTO evento VALUES (pCodigo, pResponsavel, pNome, pLocal, pDescricao);
 END$$
 
-DROP PROCEDURE IF EXISTS ListarEventosFeed$$
-CREATE PROCEDURE ListarEventosFeed( pUsuario VARCHAR(20) )
+DROP PROCEDURE IF EXISTS EventosFeed$$
+CREATE PROCEDURE EventosFeed( pUsuario VARCHAR(20) )
 BEGIN
 	SELECT 
 		e.cd_evento "Codigo",
