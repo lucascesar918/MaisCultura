@@ -1,0 +1,367 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat';
+}
+
+html {
+    font-size: 1vh;
+    height: 100%;
+}
+
+form {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    background-color: #f1f1f1;
+}
+
+.all{
+    /*background-color: mediumpurple;*/
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+
+main {
+    width: 75%;
+    height: 100%;
+    background-color: #ffffff;
+    padding: 15px;
+    box-shadow: rgba(0,0,0, 0.6);
+    box-sizing: border-box;
+}
+
+.header {
+    height: 45px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 10px 0px 10px 0px;
+}
+
+.usuario {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    right: 0;
+}
+
+/*Css do Menu Dropdown*/
+.menuUsuario {
+    position: relative;
+    display: inline-block;
+    font-weight: 700;
+}
+
+.dropbtn {
+    color: black;
+    padding: 10px;
+    font-size: 15px;
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+    font-weight: 800;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    min-width: fit-content;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    margin: 5px;
+    border-radius: 5px;
+}
+
+    .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        font-size: 12px;
+    }
+
+
+        .dropdown-content a:hover {
+            background-color: #ffffff;
+        }
+
+
+.menuUsuario:hover .dropdown-content {
+    display: block;
+    background-color: #f1f1f1;
+}
+
+/*Fim do Menu Dropdown*/
+
+.logo-header {
+    width: 90px;
+    height: 35px;
+    padding: 10px;
+}
+
+.imgPerfil {
+    width: 2.4vw;
+    height: 2.4vw;
+    margin: 10px;
+}
+/*Faixa Voltar #222222*/
+
+.sectionBack {
+    width: 100%;
+    background-color: #222222;
+    height: 30px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#btnVoltar {
+    padding: 10px;
+    color: white;
+    border: none;
+    background-color: transparent;
+    font-weight: 900;
+    font-size: 12px;
+}
+
+    #btnVoltar:hover {
+        cursor: pointer;
+    }
+
+/*Fim da Faixa Voltar*/
+
+.infos {
+/*    background-color: crimson;
+*/    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    height: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    height: fit-content;
+}
+
+.addCategs{
+    width: 20%;
+/*    background-color: orangered;
+*/    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 10px;
+}
+
+.txts {
+    padding: 10px;
+/*    background-color: darkseagreen;
+*/    width: 80%;
+    box-sizing: border-box;
+    height: fit-content;
+}
+
+.local {
+/*    background-color: hotpink;
+*/    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px;
+    align-items: center;
+}
+
+#ddlUF{
+    width: fit-content;
+}
+
+
+
+.divDtHr{
+/*    background-color: lightpink;
+*/    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-bottom: 10px;
+    align-items: center;
+}
+
+.divDts{
+/*    background-color: deeppink;
+*/    display: flex;
+    flex-direction: column;
+    padding: 0px 10px 0px 10px;
+}
+
+
+.txtBoxDtHr{
+    width: fit-content;
+    padding: 10px;
+    border: 1px solid #526ace;
+    border-radius: 5px;
+}
+
+.txtBox{
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #526ace;
+    background-color: #ffffff;
+    box-sizing: border-box;
+    border-radius: 5px;
+}
+
+.txtBox::placeholder{
+    color: black;
+}
+
+.label{
+    font-size: 2.2vh;
+    margin: 10px;
+}
+
+
+
+#btnAdicionarDtHr{
+    border: none;
+    background-color: #526ace;
+    color: white;
+    /*padding: 5px;*/
+    /*display: flex;
+    align-items: center;
+    justify-content: center;*/
+    font-size: 20px;
+    width: 35px;
+    height: 35px;
+    border-radius: 2.5px;
+    font-weight:900;
+}
+
+
+#ddlCategs{
+    width: 80%;
+    border: 1px solid #526ace;
+    border-radius: 2.5px;
+}
+
+#listBoxCateg{
+    width: 100%;
+    height: 40%;
+    padding: 10px;
+    border: 1px solid #526ace;
+    border-radius: 5px 0px 0px 5px;
+}
+
+.categs{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+/*    background-color: lawngreen;
+*/    width: 100%;
+    margin-bottom: 10px;
+}
+
+#btnAddCateg{
+    width: 25px;
+    height: 25px;
+    font-size: 15px;
+    font-weight: 900;
+    border: none;
+    border-radius: 2.5px;
+    background-color: #526ace;
+    color: white;
+}
+
+
+.divTitle{
+    width: 100%;
+/*    background-color: indianred;
+*/    /*padding: 0px;*/
+    border-bottom: 1px solid black;
+    font-size: 20px;
+    font-weight: 800;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: left;
+    margin-bottom: 10px;
+}
+
+.h2{
+    padding: 10px;
+}
+
+.outrosInfoEvento{
+    padding: 10px;
+/*    background-color: blueviolet;
+*/    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: fit-content;
+}
+
+
+
+.tituloEvento{
+    padding:10px;
+}
+
+#txtBoxAvaliacao{
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    margin-top:10px;
+    background-color: #f1f1f1;
+    box-sizing: border-box;
+    height: 130px;
+}
+
+#btnAddEvento{
+    width: 100%;
+    height: 40px;
+    box-sizing: border-box;
+    padding: 5px;
+    color: white;
+    font-weight: 900;
+    background-color: #526ace;
+    border:none;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+
+button{
+    cursor: pointer;
+}
+
+/*#listBoxDtHr{
+    border: 1px solid #526ace;
+    border-radius: 5px 0px 0px 5px;
+}*/
+
+#itemListaDtHr{
+    padding: 10px;
+}
+
+table{
+    font-size: 15px;
+    padding: 10px;
+}
+
+td{
+    text-align: center;
+}
+
+#txtCidade{
+    width: 70%;
+}
+
+

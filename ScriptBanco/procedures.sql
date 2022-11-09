@@ -139,27 +139,15 @@ END$$
 DROP PROCEDURE IF EXISTS BuscarEvento$$
 CREATE PROCEDURE BuscarEvento(pCodigo INT)
 BEGIN
-	SELECT
-		cd_evento "Codigo",
-		cd_responsavel "@",
-		nm_titulo "Titulo",
-		ds_local "Local",
-		ds_evento "Descricao"
-	FROM evento
+	SELECT * FROM evento
 	WHERE 
 		cd_evento = pCodigo;
 END$$
 
-DROP PROCEDURE IF EXISTS BuscarEventosUsuario$$
-CREATE PROCEDURE BuscarEventosUsuario(pCodigo VARCHAR(20))
+DROP PROCEDURE IF EXISTS BuscarEventoUsuario$$
+CREATE PROCEDURE BuscarEventoUsuario(pCodigo VARCHAR(20))
 BEGIN
-	SELECT
-		cd_evento "Codigo",
-		cd_responsavel "@",
-		nm_titulo "Titulo",
-		ds_local "Local",
-		ds_evento "Descricao"
-	FROM evento
+	SELECT * FROM evento
 	WHERE 
 		cd_responsavel = pCodigo;
 END$$
@@ -194,8 +182,8 @@ BEGIN
 	INSERT INTO evento VALUES (pCodigo, pResponsavel, pNome, pLocal, pDescricao);
 END$$
 
-DROP PROCEDURE IF EXISTS EventosFeed$$
-CREATE PROCEDURE EventosFeed( pUsuario VARCHAR(20) )
+DROP PROCEDURE IF EXISTS ListarEventosFeed$$
+CREATE PROCEDURE ListarEventosFeed( pUsuario VARCHAR(20) )
 BEGIN
 	SELECT 
 		e.cd_evento "Codigo",
@@ -225,8 +213,8 @@ BEGIN
 	ORDER BY de.dt_dia;
 END$$
 
-DROP PROCEDURE IF EXISTS EventosFeedDeslogado$$
-CREATE PROCEDURE EventosFeedDeslogado()
+DROP PROCEDURE IF EXISTS ListarEventosFeedDeslogado$$
+CREATE PROCEDURE ListarEventosFeedDeslogado()
 BEGIN
 	SELECT 
 		e.cd_evento "Codigo",
@@ -539,24 +527,6 @@ BEGIN
 		dt_denuncia "Data",
 		hr_denuncia "Hora"
 	FROM denuncia;
-END$$
-
-DROP PROCEDURE IF EXISTS BuscarDenuncia$$
-CREATE PROCEDURE BuscarDenuncia (pCodigo INT)
-BEGIN
-	SELECT
-		d.cd_denuncia "CodigoDenuncia",
-		d.cd_evento "CodigoEvento",
-		d.cd_usuario "@",
-		DATE_FORMAT(d.dt_denuncia, "%d/%m/%Y") "Data",
-		d.hr_denuncia "Hora",
-		lm.nm_motivo "Motivo",
-		m.ds_denuncia "Descricao",
-		m.cd_motivo "CodigoMotivo"
-	FROM denuncia d
-	JOIN motivo m ON d.cd_denuncia = m.cd_denuncia
-	JOIN lista_motivo lm ON m.cd_motivo = lm.cd_motivo
-	WHERE d.cd_denuncia = pCodigo;
 END$$
 
 DROP PROCEDURE IF EXISTS BuscarDenunciasUsuario$$

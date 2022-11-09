@@ -21,12 +21,13 @@ body {
 }
 
 .header {
+    height: 45px;
     width: 100%;
     display: flex;
-    /*justify-content: space-between;*/
-    align-content: center;
-    height: 9vh;
-    background: #fff;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 10px 0px 10px 0px;
 }
 
 .usuario {
@@ -35,12 +36,11 @@ body {
     position: absolute;
     right: 0;
 }
-
 /*Css do Menu Dropdown*/
 .menuUsuario {
     position: relative;
     display: inline-block;
-    font-weight: 900;
+    font-weight: 700;
 }
 
 .dropbtn {
@@ -50,7 +50,7 @@ body {
     border: none;
     cursor: pointer;
     background-color: transparent;
-    font-weight: 900;
+    font-weight: 800;
 }
 
 .dropdown-content {
@@ -85,15 +85,15 @@ body {
 /*Fim do Menu Dropdown*/
 
 .logo-header {
-    width: 9vw;
-    height: 7.5vh;
-    margin-top: 1vh;
-    margin-left: 1vw;
+    width: 90px;
+    height: 35px;
+    padding: 10px;
 }
 
+
 .imgPerfil {
-    width: 2.8vw;
-    height: 6vh;
+    width: 2.4vw;
+    height: 2.4vw;
     margin: 10px;
 }
 
@@ -102,7 +102,10 @@ body {
 .sectionBack {
     width: 100%;
     background-color: #222222;
-    height: fit-content;
+    height: 30px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 #btnVoltar {
@@ -111,6 +114,7 @@ body {
     border: none;
     background-color: transparent;
     font-weight: 900;
+    font-size: 12px;
 }
 
     #btnVoltar:hover {
@@ -136,8 +140,8 @@ main{
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-size: 3vh;
-    padding: 30px;
+    font-size: 15px;
+    padding: 25px;
     background-color: #ffffff;
     /*justify-content: center;*/
 }
@@ -149,10 +153,10 @@ main{
 /*Fim da Main e Etc */
 
 .sectionTitle {
-    font-size: 2.3vh;
+    font-size: 15px;
     border-bottom: 1px solid black;
     background-color: #ffffff;
-    padding: 5vh;
+    padding: 15px;
 }
 
 .divInfo {
@@ -172,6 +176,7 @@ main{
 
 .title {
     font-weight: 900;
+    font-size: 15px;
 }
 
 .descricaoDenuncia{
@@ -216,9 +221,11 @@ main{
 #btnRetirar{
     color: white;
     background-color: #526ace;
+    font-size: 15px;
 }
 
 #btnExcluir {
     color: white;
     background-color: black;
+    font-size: 15px;
 }

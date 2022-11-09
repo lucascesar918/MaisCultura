@@ -10,18 +10,13 @@ namespace MaisCultura
 {
     public partial class perfil : System.Web.UI.Page
     {
-        Usuario usuario;
-        Usuario Login;
-
         protected void Page_Load(object sender, EventArgs e)
         {
             ListaUsuario ListaUsuario = new ListaUsuario();
 
-            usuario = ListaUsuario.Buscar(Request.QueryString["u"]);
+            string usuarioCd = Request.QueryString["u"];
+            Usuario usuario = ListaUsuario.Buscar(usuarioCd);
             if (usuario == null) usuario = ListaUsuario.Buscar("adriano.fraga");
-
-            Login = ListaUsuario.Buscar(Request.QueryString["l"]);
-            if (Login == null) Login = ListaUsuario.Buscar("lucas.serio");
 
             litEventos.Text = $"<a href=\"eventos.aspx?u={usuario.Codigo}\">Eventos</a>";
             dropbtnUsuario.Text = usuario.Nome;
@@ -44,14 +39,10 @@ namespace MaisCultura
             if (txtSenhaAntiga.Text != txtSenhaNova.Text) return;
 
             ListaUsuario ListaUsuario = new ListaUsuario();
-
-            //falta trocar a senha
-        }
-
-        protected void btnExcluir_Click(object sender, EventArgs e)
-        {
-            ListaUsuario ListaUsuario = new ListaUsuario();
-            ListaUsuario.Deletar(usuario.Codigo);
+            string usuario;
+            if (Request.QueryString["u"] != null) usuario = Request.QueryString["u"];
+            else usuario = "adriano.fraga";
+            
         }
     }
 }

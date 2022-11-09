@@ -34,7 +34,7 @@ namespace MaisCultura
                     </div>
 
                 <div class='divInfo'>
-                    <h4 class='title'> EVENTO</h4>
+                    <h4 class='title'>EVENTO</h4>
                     <p>⠀{AdicionarReticencias(ListaEvento.Buscar(denuncia.CodigoEvento).Titulo, 30)}</p>
                 </div>
 

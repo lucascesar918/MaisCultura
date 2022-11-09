@@ -10,13 +10,13 @@ namespace MaisCultura.Biblioteca
     {
         Denuncia DataReaderToDenuncia(MySqlDataReader data) {
             int CodigoDenuncia = Int32.Parse(data["CodigoDenuncia"].ToString());
-            int CodigoEvento = Int32.Parse(data["CodigoEvento"].ToString());
+            
+            int CodigoEvento = Int32.Parse(data["Codigo"].ToString());
             string CodigoUsuario = data["@"].ToString();
             DateTime Data = Convert.ToDateTime(data["Data"].ToString() + " " + data["Hora"].ToString());
             string Descricao = data["Descricao"].ToString();
-            Motivo Motivo = new Motivo(Int32.Parse(data["CodigoMotivo"].ToString()), data["Motivo"].ToString());
 
-            return new Denuncia(CodigoDenuncia, CodigoEvento, Descricao, CodigoUsuario, Data, Motivo);
+            return new Denuncia(CodigoDenuncia, CodigoEvento, Descricao, CodigoUsuario, Data);
         }
 
         public List<Denuncia> Listar() {
@@ -27,7 +27,6 @@ namespace MaisCultura.Biblioteca
             while (data.Read())
                 Denuncias.Add(DataReaderToDenuncia(data));
 
-            Desconectar();
             return Denuncias;
         }
 
@@ -39,7 +38,6 @@ namespace MaisCultura.Biblioteca
             while (data.Read())
                 denuncias.Add(DataReaderToDenuncia(data));
 
-            Desconectar();
             return denuncias;
         }
 
@@ -51,7 +49,6 @@ namespace MaisCultura.Biblioteca
             while (data.Read())
                 denuncias.Add(DataReaderToDenuncia(data));
 
-            Desconectar();
             return denuncias;
         }
 
@@ -63,21 +60,11 @@ namespace MaisCultura.Biblioteca
             while (data.Read())
                 denuncias.Add(DataReaderToDenuncia(data));
 
-
-            Desconectar();
             return denuncias;
         }
 
-        public Denuncia Buscar(int codigo) {
-
-            MySqlDataReader data = Query("BuscarDenuncia", ("pCodigo", codigo));
-            Denuncia Denuncia = null;
-
-            while (data.Read())
-                Denuncia = DataReaderToDenuncia(data);
-
-            Desconectar();
-            return Denuncia;
-        }
+        //public Denuncia Buscar() { 
+        
+        //}
     }
 }

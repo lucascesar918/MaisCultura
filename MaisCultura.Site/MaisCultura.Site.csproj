@@ -104,23 +104,49 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CriarEvento.aspx" />
     <Content Include="denuncia.aspx" />
+    <Content Include="EventoEspecifico.aspx" />
+    <Content Include="EventoEspecificoCriador.aspx" />
     <Content Include="eventos.aspx" />
+    <Content Include="js\CadastroLogin.js" />
     <Content Include="js\eventos.js" />
+    <Content Include="js\perfil.js" />
     <Content Include="meus-eventos.aspx" />
     <Content Include="MaisCultura.Site.csproj.user" />
     <Content Include="denuncias.aspx" />
     <Content Include="perfil.aspx" />
-    <Content Include="criador.aspx" />
+    <Content Include="PerfilOutroUsuario.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CriarEvento.aspx.cs">
+      <DependentUpon>CriarEvento.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CriarEvento.aspx.designer.cs">
+      <DependentUpon>CriarEvento.aspx</DependentUpon>
+    </Compile>
     <Compile Include="denuncia.aspx.cs">
       <DependentUpon>denuncia.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="denuncia.aspx.designer.cs">
       <DependentUpon>denuncia.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EventoEspecifico.aspx.cs">
+      <DependentUpon>EventoEspecifico.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EventoEspecifico.aspx.designer.cs">
+      <DependentUpon>EventoEspecifico.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EventoEspecificoCriador.aspx.cs">
+      <DependentUpon>EventoEspecificoCriador.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EventoEspecificoCriador.aspx.designer.cs">
+      <DependentUpon>EventoEspecificoCriador.aspx</DependentUpon>
     </Compile>
     <Compile Include="eventos.aspx.cs">
       <DependentUpon>eventos.aspx</DependentUpon>
@@ -150,12 +176,12 @@
     <Compile Include="perfil.aspx.designer.cs">
       <DependentUpon>perfil.aspx</DependentUpon>
     </Compile>
-    <Compile Include="criador.aspx.cs">
-      <DependentUpon>criador.aspx</DependentUpon>
+    <Compile Include="PerfilOutroUsuario.aspx.cs">
+      <DependentUpon>PerfilOutroUsuario.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="criador.aspx.designer.cs">
-      <DependentUpon>criador.aspx</DependentUpon>
+    <Compile Include="PerfilOutroUsuario.aspx.designer.cs">
+      <DependentUpon>PerfilOutroUsuario.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

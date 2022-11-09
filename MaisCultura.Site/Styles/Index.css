@@ -3,7 +3,11 @@
     padding: 0;
     font-family: 'Montserrat', sans-serif;
     color: #000;
-    font-weight: 600;
+}
+
+a {
+    text-decoration: none;
+    color: black;
 }
 
 html{
@@ -12,7 +16,7 @@ html{
 }
 
     html::-webkit-scrollbar {
-        width: 1vw;
+        width: 20px;
     }
 
     html::-webkit-scrollbar-track {
@@ -29,149 +33,223 @@ html{
     width: 100%;
     display: flex;
     justify-content: space-between;
+    align-items: center; 
+}
+
+
+.usuario {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    right: 0;
+}
+
+.menuUsuario {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    color: black;
+    padding: 10px;
+    font-size: 15px;
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    margin: 5px;
+    border-radius: 5px;
+}
+
+    .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        font-size: 12px;
+    }
+
+        .dropdown-content a:hover {
+            background-color: #ffffff;
+        }
+
+.menuUsuario:hover .dropdown-content {
+    display: block;
+    background-color: #f1f1f1;
+}
+
+.imgPerfil {
+    width: 2.4vw;
+    height: 2.4vw;
+    margin: 10px;
 }
 
 .header-primaria {
-    height: 9vh;
-    background: #fff;
-  /*  box-shadow: 0px 15px 10px -15px #11111161;*/
+    height: 45px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0px 10px 0px;
 }
 
 .header-secundaria {
-    margin-top: 2vh;
     width: 100%;
     background: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
-
+ 
 .logo-header {
-    width: 9vw;
-    height: 7.5vh;
-    margin-top: 1vh;
-    margin-left: 1vw;
+    width: 90px;
+    height: 35px;
+    padding: 10px;
 }
-
+ 
 .grafismo-header {
     width: 72vw;
     height: 22vh;
 }
-
+ 
 .header-texto {
-    width: 24vw;
-    height: 10vh;
+    width: 280px;
+    height: 60px;
     background: #fff;
-    margin-left: 4vw;
-    margin-top: 8vh;
+    margin: 20px;
 }
-
-    .header-texto p {
-        font-size: 3.7rem;
-    }
-
+ 
+.header-texto p {
+    font-size: 25px;
+}
+ 
 .highlight {
-    color: #526ACE;
+    color: #526ACE; 
 }
-
+ 
 .buttons {
-    margin-right: 1vw;
-    margin-top: 3vh;
+    padding: 5px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;   
 }
-
+ 
 .button {
-    width: 10.3vw;
-    height: 4.5vh;
+    width: 100px;
+    height: 80%;
     border: none;
-    font-size: 2.4rem;
+    font-size: 12px;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 2.5px;
 }
-
+ 
     .button:hover {
         cursor: pointer;
     }
-
+ 
 .button-log {
     background: none;
 }
-
+ 
     .button-log:hover {
         background-color: #f1f1f4;
     }
-
+ 
 .button-cad {
     background: #526ACE;
     color: white;
 }
-
+ 
     .button-cad:hover {
         background: #293d90;
     }
-
+ 
 .button-clear {
     background: none;
+    border: none;
     color: #fff;
+    width: 84px;
+    height: fit-content;
+    font-size: 12px;
+    padding: 5px;
+    margin: 5px; 
+    border-radius: 2.5px;
 }
 
     .button-clear:hover {
         background: #505050;
+	cursor: pointer;
     }
-
+ 
 .button-exclude {
     width: auto;
     border-radius: 50%;
-    padding: 0.754vh;
     background: none;
+    border: none;
+    margin: 2.5px;
 }
-
+ 
     .button-exclude:hover {
         background-color: rgba(241, 241, 244, 0.5);
     }
-
+ 
 .nav {
-    height: 6vh;
-    width: 97.5%;
-    margin-top: 2vh;
-    padding-top: 2vh;
-    padding-left: 1.5vw;
-    padding-right: 1vw;
+    height: 40px;
+    width: 100%;
     justify-content: left;
     background: #333333;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
-
+ 
 .section-tags {
     width: 100%;
     display: flex;
     justify-content: left;
 }
-
+ 
 .tag {
     background: #D64558;
-    padding: 0.7vh;
-    padding-left: 1.5vh;
-    height: 4.8vh;
+    width: fit-content;
+    height: 19px;
     border-radius: 20px;
-    margin-right: 1vw;
-    font-size: 2.2rem;
-    margin-top: -0.9vh;
+    font-size: 12px;
     color: white;
+    margin: 5px;
+    padding: 6px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .principal {
     display: flex;
     justify-content: left;
     background: #f1f1f1;
-    height:100%;
+    height: 100%;
 }
-
+ 
 .filtros {
     height: auto;
+    width: 15%;
     background: #fff;
-    /*box-shadow: 15px 0px 10px -15px #11111161;*/
-    padding: 2vh 1vw 3vh 1.5vw;
-    overflow-y: hidden;
-    overflow-x: hidden;
-}
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    padding: 20px;
 
-    /*.filtros:hover {
-        overflow-y: scroll;
-    }*/
+}
 
     .filtros::-webkit-scrollbar {
         width: 0.3vw;
@@ -188,22 +266,30 @@ html{
     }
 
 .filtros-titulos {
-    font-size: 3rem;
-    margin-bottom: 1.5vh;
+    font-size: 15px;
+    margin-bottom: 5px;
 }
 
 .filtros-subtitulos {
-    font-weight: 400;
+    font-weight: 500;
     background: none;
-    width: fit-content;
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
     height: fit-content;
-    display: grid;
-    padding: 1vh;
+    width: fit-content;
+    font-size: 12px;
+    padding: 5px 5px 5px 5px;
+    margin: 5px 5px 5px 0px;
+    border: none;
+    border-radius: 2.5px;
 }
 
 .categoria:hover {
     background: #D64558;
     color: white;
+    cursor: pointer;
 }
 
 .verMais {
@@ -215,7 +301,7 @@ html{
         font-weight: bold;
     }
 
-.txt{
+.txt {
     width: 90%;
     border-radius: 20px;
     border-style: solid;
@@ -224,47 +310,80 @@ html{
     padding-left: 2rem;
 }
 
-.txtLocal{
-    margin-bottom: 3vh;
+.txtLocal {
+    width: 100%;
+    height: 30px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid #526ace;
+    margin: 10px 10px 20px 0px;
+}
+
+.txtLocal::placeholder{
+    padding: 5px;
+    color: black;
+    font-weight: 400;
+    font-size: 12px;
 }
 
 .dt {
-    width: 95%;
+    width: 100%;
+    height: 30px;
+    box-sizing: border-box;
     margin-bottom: 1vh;
+    font-size: 12px;
+    border: 1px solid #526ace;
+    border-radius: 5px;
+    padding: 5px;
 }
 
 .data {
     font-size: 2rem;
+    height: 3vh;
 }
 
-.aval{
+.aval {
     margin-top: 2vh;
 }
 
 .dpdAval {
-    width: 95%;
+    width: 100%;
+    height: 30px;
+    box-sizing: border-box;
     border: none;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid #526ace;
+    font-size: 12px;
+    padding: 5px;
 }
 
     .dpdAval::selection {
         background: #D64558;
     }
 
-.corpo{
+.corpo {
     width: 100%;
 }
 
-.txtIcon{
-    margin: 1.5vh 1vw;
-    width: 95.5%;
+.txtIcon {
+    box-sizing: border-box;
+    width: 100%;
     border: 1px solid black;
     border-radius: 20px;
     display: flex;
     justify-content: left;
+    background: #f1f1f1;
 }
 
-.icon{
+
+
+.inputPesquisa{
+    background: #fff;
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.icon {
     width: 26px;
     height: 26px;
 }
@@ -277,111 +396,531 @@ html{
 }
 
 .eventos {
-    padding: 2vh 2vw;
+    padding: 15px;
     display: flex;
     justify-content: space-around;
-    width: 80.2vw;
     flex-wrap: wrap;
 }
 
+/* Css do Card*/
 .card {
-    width: 23.63vw;
-    height: 57.83vh;
-    background: #fff;
+    width: 300px;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     border-radius: 20px;
-    padding: 1.5vh 1vw;
-    margin-bottom: 2.5vh;
     border: 1px solid black;
+    padding: 10px;
+    margin-bottom: 25px;
+    transition: box-shadow;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-in-out;
+    background-color: #ffffff;
 }
 
-   
-
-
+    .card:hover {
+        transition-duration: 0.3s;
+        transition-timing-function: ease-in-out;
+        box-shadow: rgba(100, 100, 111, 0.8) 0px 7px 20px 0px;
+    }
 
 .card-header {
+    width: 100%;
+    box-sizing: border-box;
     display: flex;
     justify-content: left;
+    align-items: center;
 }
 
-.perfil{
-    width: 4vw;
-    height: 4vw;
+.perfil {
+    width: 3vw;
+    height: 3vw;
+    margin: 5px;
 }
 
 .card-header-nome {
-    padding-top: 1.5vh;
-    padding-left: 0.8vw;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
-    .card-header-nome h2{
-        font-size: 2.5rem;
+    .card-header-nome h2 {
+        font-size: 15px;
     }
 
     .card-header-nome h5 {
-        font-size: 2rem;
+        font-size: 12px;
         font-weight: 400;
     }
 
 .save {
-    width: 28px;
-    height: 30px;
-    margin-top: 1vh;
-    margin-right: 0.5vw;
+    width: 25px;
+    height: 25px;
 }
 
-.card-tittle{
-    margin-top: 1vh;
-    padding-left: 1vw;
-    padding-right: 1vw;
+.card-tittle {
+    width: 100%;
+    padding: 10px;
 }
 
     .card-tittle h2 {
-        font-size: 4rem;
+        font-size: 15px;
     }
 
-.card-tags{
+.card-tags {
+    width: 100%;
+    box-sizing: border-box;
     display: flex;
-    justify-content:space-around;
-    margin-top: 1.5vh;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 10px;
 }
 
     .card-tags .tag {
         background: #526ACE;
-        padding: 1vh;
+        padding: 5px;
         height: auto;
         margin-right: 0px;
         font-weight: 400;
         margin-top: 0px;
     }
 
-.card-image{
-    margin-top: 1.5vh;
+.card-image {
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
 .foto-evento {
-    width: 23.28vw;
-    height: 21.12vh;
+    width: 290px;
+    height: 150px;
+    border-radius: 5px;
 }
 
-.card-dateTime, .card-local{
-    display: flex;
-    justify-content:left;
-    font-size: 2rem;
-    font-weight: 400;
-}
-
-.date{
+.card-dateTime, .card-local {
     width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    font-size: 12px;
+    font-weight: 400;
+    padding-top: 2%;
 }
 
-.dateTime, .card-local{
-    margin-top: 1.5vh;
-    padding-right: 0.5vw;
+.date {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: left;
+}
+
+.time {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: right;
+}
+
+.dateTime, .card-local {
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .calendar-icon, .time-icon, .local-icon {
     width: 16px;
     height: 16px;
-    margin-right: 0.5vw;
+    margin-right: 2px;
+}
+/*Fim do Css do Card*/
+
+table {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    justify-content: center;
+    text-align: center;
+    border: solid #526ace;
+    border-radius: 5px;
+    background-color: #FFFAF6;
+    width: 30%;
+    height: 65%;
+    position: absolute;
+    top: 18%;
+    left: 35%;
+}
+
+.entrar {
+    color: #526ace;
+}
+
+.cadastrar {
+    position: absolute;
+    top: 2.5%;
+    left: 0%;
+    border-bottom: solid #526ace;
+    border-radius: 0px;
+    width: 100%;
+    margin-bottom: 10%;
+}
+
+.logar {
+    border-radius: 0px;
+    width: 100%;
+    margin-bottom: 10%;
+}
+
+.tablelogar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    justify-content: center;
+    text-align: center;
+    border: 2px solid #526ace;
+    border-radius: 5px;
+    background-color: #FFFAF6;
+    width: 32%;
+    height: fit-content;
+    position: absolute;
+    top: 32%;
+    left: 35%;
+}
+
+.h2 {
+    margin: auto;
+    padding: 20px;
+    font-size: 20px;
+}
+
+.input {
+    background-color: #f1f1f1;
+    color: black;
+    padding: 10px;
+    margin: 1px;
+    height: 25px;
+    width: 100%;
+    border: none;
+    font-size: 12px;
+    border-radius: 5px;
+}
+
+.nome {
+    background-color: #babaca;
+    color: black;
+    padding: 10px;
+    height: 2.5vh;
+    width: 23vh;
+    border: none;
+    margin-top: 40px;
+    font-size: 2vh;
+}
+
+.sNome {
+    background-color: #babaca;
+    color: black;
+    padding: 10px;
+    height: 2.5vh;
+    width: 23vh;
+    border: none;
+    margin-top: 40px;
+    font-size: 2vh;
+}
+
+
+.Ddata {
+    background-color: #babaca;
+    color: black;
+    padding: 10px;
+    height: 4.5vh;
+    width: 16.5vh;
+    border: none;
+    cursor: pointer;
+    margin: 1px;
+    font-size: 2vh;
+}
+
+.btnCadastrar {
+    background-color: #526ace;
+    color: white;
+    padding: 10px;
+    height: fit-content;
+    width: 100%;
+    box-sizing: border-box;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.txtData {
+    text-align: start;
+    margin: auto;
+    padding: 5px;
+    margin-left: 10px;
+    cursor: pointer;
+    font-size: 2vh;
+}
+
+.input:hover {
+    filter: opacity(90%);
+}
+
+.input::placeholder {
+    color: black;
+}
+
+.usuario:hover {
+    filter: opacity(90%);
+}
+
+.data:hover {
+    filter: opacity(90%);
+}
+
+.erro {
+    color: red;
+    text-align: center;
+    width: 100%;
+    font-size: 12pt;
+    padding-top: 0px;
+    margin-top: 10px;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+    font-size: 2vh;
+}
+
+.sair {
+    position: absolute;
+    right: 1%;
+    top: 1%;
+    cursor: pointer;
+}
+
+.login {
+    background: #f1f1f1;
+    position: absolute;
+    top: 40%;
+    left: 38%;
+    font-size: 13px;
+    border: 1px solid #526ace;
+    border-radius: 5px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+    height: fit-content;
+}
+
+.headerLogin {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+    .headerLogin h4 {
+        font-size: 16px;
+        font-weight: 800;
+    }
+
+
+.txtLog {
+    width: 100%;
+    margin-bottom: 5px;
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    background-color: #fff;
+    box-sizing: border-box;
+}
+
+#btnLogar {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #526ace;
+    background-color: #526ace;
+    color: white;
+    border-radius: 5px;
+}
+
+#btnSairLogin {
+    width: 100%;
+    border: none;
+    font-size: 12px;
+    font-weight: 700;
+    color: black;
+    margin-top: 5px;
+}
+
+    #btnSairLogin:hover {
+        cursor: pointer;
+    }
+
+#btnSairCad {
+    width: 100%;
+    border: none;
+    font-size: 12px;
+    font-weight: 700;
+    color: black;
+    margin-top: 5px;
+}
+
+    #btnSairCad:hover {
+        cursor: pointer;
+    }
+
+.cadastrar {
+    background: #f1f1f1;
+    width: 450px;
+    padding: 30px;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 25%;
+    left: 35%;
+    border: 1px solid #526ace;
+    border-radius: 5px;
+}
+
+.headerCad {
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+    .headerCad h4 {
+        font-size: 16px;
+        font-weight: 800;
+    }
+
+.nms {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 5px;
+    box-sizing: border-box;
+}
+
+.txtCadNm {
+    width: 49%;
+    padding: 5px;
+    font-size: 12px;
+    border: none;
+    color: black;
+    border-radius: 2.5px;
+}
+
+    .txtCadNm::placeholder {
+        color: black;
+    }
+
+.txtCad {
+    width: 100%;
+    padding: 5px;
+    font-size: 12px;
+    margin-bottom: 5px;
+    border: none;
+    color: black;
+    border-radius: 2.5px;
+    box-sizing: border-box;
+}
+
+    .txtCad::placeholder {
+        color: black;
+    }
+
+.dtNasc {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ddlsDtNasc {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.txtCadDt {
+    width: 32%;
+    padding: 5px;
+    font-size: 12px;
+    margin-bottom: 5px;
+    border: none;
+    color: black;
+    border-radius: 2.5px;
+}
+
+#lblNasc {
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+#ddlSexo {
+    width: 100%;
+    padding: 5px;
+    font-size: 12px;
+    margin-bottom: 5px;
+    border: none;
+    color: black;
+    border-radius: 2.5px;
+}
+
+.sexo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#lblSexo {
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+#btnCadastrar {
+    width: 100%;
+    padding: 5px;
+    color: white;
+    background-color: #526ace;
+    border: none;
+    font-size: 13.5px;
+    border-radius: 2.5px;
+}
+
+    #btnCadastrar:hover {
+        cursor: pointer;
+    }
+
+.pop {
+    display: none;
+    z-index: 31;
+}
+
+.shade {
+    position: absolute;
+    top: 0%;
+    right: 0%;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.50);
+    z-index: 0;
+    display: none;
+}
+
+.hidden{
+    display: none !important;
 }
