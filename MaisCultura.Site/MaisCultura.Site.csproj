@@ -109,6 +109,18 @@
     <Content Include="EventoEspecifico.aspx" />
     <Content Include="EventoEspecificoCriador.aspx" />
     <Content Include="eventos.aspx" />
+    <Content Include="Images\Background_Grafismo_Hexagono.png" />
+    <Content Include="Images\calendar.png" />
+    <Content Include="Images\interclasse.jpg" />
+    <Content Include="Images\local.png" />
+    <Content Include="Images\logoNomeMenor.png" />
+    <Content Include="Images\perfil.png" />
+    <Content Include="Images\perfil526ace.png" />
+    <Content Include="Images\pesquisa.png" />
+    <Content Include="Images\save.png" />
+    <Content Include="Images\save2.png" />
+    <Content Include="Images\star.png" />
+    <Content Include="Images\time.png" />
     <Content Include="js\CadastroLogin.js" />
     <Content Include="js\eventos.js" />
     <Content Include="js\perfil.js" />
@@ -117,6 +129,15 @@
     <Content Include="denuncias.aspx" />
     <Content Include="perfil.aspx" />
     <Content Include="PerfilOutroUsuario.aspx" />
+    <Content Include="Styles\CriarEvento.css" />
+    <Content Include="Styles\denuncia.css" />
+    <Content Include="Styles\EventoEspecifico.css" />
+    <Content Include="Styles\EventoEspecificoCriador.css" />
+    <Content Include="Styles\EventosdoCriador.css" />
+    <Content Include="Styles\Index.css" />
+    <Content Include="Styles\PainelDenuncias.css" />
+    <Content Include="Styles\PerfildoUsuario.css" />
+    <Content Include="Styles\PerfilOutroUsuario.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

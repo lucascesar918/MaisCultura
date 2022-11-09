@@ -456,8 +456,12 @@ html{
     }
 
 .save {
-    width: 25px;
-    height: 25px;
+    width: 44px;
+    height: 32px;
+    background-color: transparent;
+    border: none;
+    background-image: url(../Images/save.png);
+    background-size: cover;
 }
 
 .card-tittle {
