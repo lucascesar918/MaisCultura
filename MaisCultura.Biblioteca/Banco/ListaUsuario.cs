@@ -9,16 +9,24 @@ namespace MaisCultura.Biblioteca
 {
     public class ListaUsuario : Banco
     {
-        Usuario DataReaderToUsuario(MySqlDataReader data){
-            var cdUsuario = data["@"].ToString();
+        Usuario DataReaderToUsuario(MySqlDataReader data)
+        {
+            var cdUsuario = data["@"].ToString(); 
+
+            return new Usuario(data["@"].ToString(), data["Tipo"].ToString(), data["Sexo"].ToString(), data["Nome"].ToString(), data["Email"].ToString(), data["Senha"].ToString(), data["Documento"].ToString(), data["Nascimento"].ToString(), null);
+        }
+
+        private List<Categoria> BuscarPreferencias(string cdUsuario)
+        {
             List<Categoria> categorias = new List<Categoria>();
             MySqlDataReader dataPref = Query("ListarPreferenciasUsuario", ("pCodigo", cdUsuario));
 
             while (dataPref.Read())
                 categorias.Add(new Categoria(Int32.Parse(dataPref["CodigoCategoria"].ToString()), dataPref["Nome"].ToString()));
-
-            return new Usuario(data["@"].ToString(), data["Tipo"].ToString(), data["Sexo"].ToString(), data["Nome"].ToString(), data["Email"].ToString(), data["Senha"].ToString(), data["Documento"].ToString(), data["Nascimento"].ToString(), categorias);
+            Desconectar();
+            return categorias;
         }
+
         public List<Usuario> Listar()
         {
             List<Usuario> Usuarios = new List<Usuario>();
@@ -29,6 +37,9 @@ namespace MaisCultura.Biblioteca
             }
 
             Desconectar();
+            foreach(Usuario usuario in Usuarios)
+                usuario.Preferencias = BuscarPreferencias(usuario.Codigo);
+
             return Usuarios;
         }
 
@@ -44,6 +55,9 @@ namespace MaisCultura.Biblioteca
             }
 
             Desconectar();
+            if(usuario != null)
+                usuario.Preferencias = BuscarPreferencias(usuario.Codigo);
+
             return usuario;
         }
 

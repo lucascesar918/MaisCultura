@@ -18,8 +18,6 @@ namespace MaisCultura.Biblioteca
  
         Evento DataReaderToEvento(MySqlDataReader data, bool Reticencias) {
             var cdEvento = Int32.Parse(data["Codigo"].ToString());
-            List<Categoria> categorias = BuscarCategorias(cdEvento);
-            List<DiaEvento> dias = BuscarDias(cdEvento);
             string responsavel = data["@"].ToString();
             string local = data["Local"].ToString();
             string titulo = data["Titulo"].ToString();
@@ -28,7 +26,7 @@ namespace MaisCultura.Biblioteca
                 titulo = AdicionarReticencia(titulo, 35);
                 local = AdicionarReticencia(local, 27);
             }
-            return new Evento( cdEvento,responsavel , titulo, local, descricao,  categorias, dias);
+            return new Evento( cdEvento,responsavel , titulo, local, descricao,  null, null);
         }
         public List<Evento> Listar()
         {
@@ -42,6 +40,11 @@ namespace MaisCultura.Biblioteca
             }
 
             Desconectar();
+            foreach (Evento Evento in Eventos)
+            {
+                Evento.Categorias = BuscarCategorias(Evento.Codigo);
+                Evento.Dias = BuscarDias(Evento.Codigo);
+            }
             return Eventos;
         }
 
@@ -94,6 +97,12 @@ namespace MaisCultura.Biblioteca
            }
 
             Desconectar();
+
+            foreach (Evento Evento in eventos)
+            {
+                Evento.Categorias = BuscarCategorias(Evento.Codigo);
+                Evento.Dias = BuscarDias(Evento.Codigo);
+            }
             return eventos;
         }
 
@@ -119,6 +128,10 @@ namespace MaisCultura.Biblioteca
             }
 
             Desconectar();
+
+            evento.Categorias = BuscarCategorias(evento.Codigo);
+            evento.Dias = BuscarDias(evento.Codigo);
+
             return evento;
         }
 
@@ -140,7 +153,7 @@ namespace MaisCultura.Biblioteca
             MySqlDataReader data = Query("ListarCategorias");
             while (data.Read())
                 categorias.Add(new Categoria(Int32.Parse(data["Codigo"].ToString()), data["Nome"].ToString()));
-
+            Desconectar();
             return categorias;
         }
 
@@ -152,7 +165,7 @@ namespace MaisCultura.Biblioteca
 
             while (data.Read())
                 avaliacoes.Add(new Avaliacao(data["@"].ToString(), Int32.Parse(data["CodigoEvento"].ToString()), data["Descricao"].ToString(), Int32.Parse(data["Estrelas"].ToString())));
-
+            Desconectar();
             return avaliacoes;
         }
 
@@ -164,6 +177,7 @@ namespace MaisCultura.Biblioteca
 
             while (data.Read())
                 imagem = data["Imagem"].ToString();
+            Desconectar();
 
             return imagem;
         }
