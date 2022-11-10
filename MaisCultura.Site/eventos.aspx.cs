@@ -40,9 +40,7 @@ namespace MaisCultura
                             <h5>{usuarioEvento.Codigo}</h5>
                         </article>
 
-                        <figure>
-                            <img src='Images/save.png' alt='Salvar' class='save'>
-                        </figure>
+                        <input id='btnSave{evento.Codigo}' type='button' value='' class='save salvando' />
 
                     </article>
 
