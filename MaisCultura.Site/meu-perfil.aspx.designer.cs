@@ -7,11 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MaisCultura.Site
+namespace MaisCultura
 {
 
 
-    public partial class PerfilOutroUsuario
+    public partial class perfil
     {
 
         /// <summary>
@@ -24,6 +24,15 @@ namespace MaisCultura.Site
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
+        /// dropbtnUsuario control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button dropbtnUsuario;
+
+        /// <summary>
         /// btnVoltar control.
         /// </summary>
         /// <remarks>
@@ -33,13 +42,13 @@ namespace MaisCultura.Site
         protected global::System.Web.UI.WebControls.Button btnVoltar;
 
         /// <summary>
-        /// nmCompleto control.
+        /// lblNomeUsuario control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label nmCompleto;
+        protected global::System.Web.UI.WebControls.Label lblNomeUsuario;
 
         /// <summary>
         /// lblArroba control.
@@ -51,93 +60,111 @@ namespace MaisCultura.Site
         protected global::System.Web.UI.WebControls.Label lblArroba;
 
         /// <summary>
-        /// lblTUser control.
+        /// lblTipo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblTUser;
+        protected global::System.Web.UI.WebControls.Label lblTipo;
 
         /// <summary>
-        /// lblMedia control.
+        /// lblEmail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMedia;
+        protected global::System.Web.UI.WebControls.Label lblEmail;
 
         /// <summary>
-        /// lblNmUser control.
+        /// lblNascimento control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblNmUser;
+        protected global::System.Web.UI.WebControls.Label lblNascimento;
 
         /// <summary>
-        /// lblArrobaUser control.
+        /// lblSexo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblArrobaUser;
+        protected global::System.Web.UI.WebControls.Label lblSexo;
 
         /// <summary>
-        /// lblDtAval control.
+        /// btnInteresse control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDtAval;
+        protected global::System.Web.UI.WebControls.Button btnInteresse;
 
         /// <summary>
-        /// lblNotaAvaliacao control.
+        /// btnSalvos control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblNotaAvaliacao;
+        protected global::System.Web.UI.WebControls.Button btnSalvos;
 
         /// <summary>
-        /// litDesc control.
+        /// litPrefs control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal litDesc;
+        protected global::System.Web.UI.WebControls.Literal litPrefs;
 
         /// <summary>
-        /// ddlEstrelas control.
+        /// btnExcluir control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlEstrelas;
+        protected global::System.Web.UI.WebControls.Button btnExcluir;
 
         /// <summary>
-        /// txtBoxAvaliacao control.
+        /// cancelarExcluir control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtBoxAvaliacao;
+        protected global::System.Web.UI.WebControls.Button cancelarExcluir;
 
         /// <summary>
-        /// btnAvaliar control.
+        /// txtSenhaAntiga control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAvaliar;
+        protected global::System.Web.UI.WebControls.TextBox txtSenhaAntiga;
+
+        /// <summary>
+        /// txtSenhaNova control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtSenhaNova;
+
+        /// <summary>
+        /// btnSenha control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSenha;
     }
 }

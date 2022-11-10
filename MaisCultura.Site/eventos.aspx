@@ -13,7 +13,7 @@
 
     <link rel="stylesheet" type="text/css" href="Styles/Index.css" />
 
-    <title>+Cultura</title>
+    <title>+Cultura | Eventos</title>
 </head>
 <body>
 

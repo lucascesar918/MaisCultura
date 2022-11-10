@@ -11,7 +11,7 @@ namespace MaisCultura.Site
 {
 
 
-    public partial class PerfilOutroUsuario
+    public partial class EventoEspecificoCriador
     {
 
         /// <summary>
@@ -24,6 +24,15 @@ namespace MaisCultura.Site
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
+        /// dropbtnUsuario control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button dropbtnUsuario;
+
+        /// <summary>
         /// btnVoltar control.
         /// </summary>
         /// <remarks>
@@ -33,111 +42,129 @@ namespace MaisCultura.Site
         protected global::System.Web.UI.WebControls.Button btnVoltar;
 
         /// <summary>
-        /// nmCompleto control.
+        /// btnCriarEvento control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label nmCompleto;
+        protected global::System.Web.UI.WebControls.Button btnCriarEvento;
 
         /// <summary>
-        /// lblArroba control.
+        /// btnCatPintura control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblArroba;
+        protected global::System.Web.UI.WebControls.Button btnCatPintura;
 
         /// <summary>
-        /// lblTUser control.
+        /// btnCatMusica control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblTUser;
+        protected global::System.Web.UI.WebControls.Button btnCatMusica;
 
         /// <summary>
-        /// lblMedia control.
+        /// btnCatEsporte control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMedia;
+        protected global::System.Web.UI.WebControls.Button btnCatEsporte;
 
         /// <summary>
-        /// lblNmUser control.
+        /// btnCatCinema control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblNmUser;
+        protected global::System.Web.UI.WebControls.Button btnCatCinema;
 
         /// <summary>
-        /// lblArrobaUser control.
+        /// btnCatTeatro control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblArrobaUser;
+        protected global::System.Web.UI.WebControls.Button btnCatTeatro;
 
         /// <summary>
-        /// lblDtAval control.
+        /// btnCatJogos control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDtAval;
+        protected global::System.Web.UI.WebControls.Button btnCatJogos;
 
         /// <summary>
-        /// lblNotaAvaliacao control.
+        /// btnCatRPG control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblNotaAvaliacao;
+        protected global::System.Web.UI.WebControls.Button btnCatRPG;
 
         /// <summary>
-        /// litDesc control.
+        /// btnVerMais control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal litDesc;
+        protected global::System.Web.UI.WebControls.Button btnVerMais;
 
         /// <summary>
-        /// ddlEstrelas control.
+        /// txtLocal control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlEstrelas;
+        protected global::System.Web.UI.WebControls.TextBox txtLocal;
 
         /// <summary>
-        /// txtBoxAvaliacao control.
+        /// dtStart control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtBoxAvaliacao;
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl dtStart;
 
         /// <summary>
-        /// btnAvaliar control.
+        /// dtEnd control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAvaliar;
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl dtEnd;
+
+        /// <summary>
+        /// dpdAval control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList dpdAval;
+
+        /// <summary>
+        /// txtPesquisa control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtPesquisa;
     }
 }

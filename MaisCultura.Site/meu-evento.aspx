@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="EventoEspecificoCriador.aspx.cs"
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="meu-evento.aspx.cs"
     Inherits="MaisCultura.Site.EventoEspecificoCriador" %>
 
     <!DOCTYPE html>
