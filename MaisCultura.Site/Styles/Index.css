@@ -458,10 +458,16 @@ html{
 .save {
     width: 44px;
     height: 32px;
-    background-color: transparent;
     border: none;
-    background-image: url(../Images/save.png);
     background-size: cover;
+}
+
+.naoSalvo {
+    background-image: url(../Images/save.png);
+}
+
+.salvo {
+    background-image: url(../Images/save2.png);
 }
 
 .card-tittle {
