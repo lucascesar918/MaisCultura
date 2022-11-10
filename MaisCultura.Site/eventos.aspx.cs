@@ -28,7 +28,7 @@ namespace MaisCultura
                 Usuario usuarioEvento = ListaUsuario.Buscar(evento.Responsavel);
                 List<Categoria> categorias = evento.Categorias;
                 List<DiaEvento> dias = evento.Dias;
-                litEventos.Text += $@"<a href='EventoEspecifico.aspx'>
+                litEventos.Text += $@"
                 <section class='card'>
                     <article class='card-header'>
                         <figure>
@@ -40,13 +40,15 @@ namespace MaisCultura
                             <h5>{usuarioEvento.Codigo}</h5>
                         </article>
 
-                        <input id='btnSave{evento.Codigo}' type='button' value='' class='save salvando' />
+                        <input id='btnSave{evento.Codigo}' type='button' value='' class='save naoSalvo' />
 
                     </article>
 
-                    <article class='card-tittle'>
-                        <h2>{evento.Titulo}</h2>
-                    </article>
+                    <a href='EventoEspecifico.aspx'>
+                        <article class='card-tittle'>
+                                <h2>{evento.Titulo}</h2>
+                        </article>
+                    </a>
 
                     <article class='card-tags'>";
                 foreach (Categoria categoria in categorias)
@@ -54,9 +56,11 @@ namespace MaisCultura
                     </article>
 
                     <article class='card-image'>
-                        <figure>
-                            <img src='{ListaEvento.BuscarImagem(evento.Codigo)}' alt='Interclasse de cria' class='foto-evento'>
-                        </figure>
+                        <a href='EventoEspecifico.aspx'>
+                            <figure>
+                                <img src='{ListaEvento.BuscarImagem(evento.Codigo)}' alt='Interclasse de cria' class='foto-evento'>
+                            </figure>
+                        </a>
                     </article>
 
                     <article class='card-dateTime dateTime'>
@@ -84,8 +88,7 @@ namespace MaisCultura
                         }</h3>
 
                     </article>
-                </section>
-            </a>";
+                </section>";
             }
         }
         DateTime? StrinToDate(string strDate)

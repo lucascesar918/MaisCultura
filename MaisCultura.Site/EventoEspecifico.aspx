@@ -63,11 +63,8 @@
                             <asp:Label ID="lblTituloEvento" runat="server" Text="Interclasse Ablas FIlho x Etecaf"
                                 CssClass="titulo"></asp:Label>
 
-                            <figure class="save">
+                            <input id='btnSave' type='button' value='' class='save naoSalvo' />
 
-                                <img class="save" src="Images/save.png" />
-
-                            </figure>
                         </div>
                         <article class="tags">
                             <h2 class="categorias">
@@ -212,7 +209,8 @@ Acontecerão aulas de Karatê e Judô em dias intercalados. Nos dias 2 e 4 haver
                             <asp:Label ID="lblNmrInteresse" runat="server" Text="580"></asp:Label>
                             pessoas já demonstraram interesse em participar
                         </h4>
-                        <asp:Button ID="btnInteresse" runat="server" Text="Demonstrar Interesse" />
+
+                        <asp:Button ID="btnInteresse" runat="server" Text="Demonstrar Interesse" OnClick="btnInteresse_Click" CssClass="naoInt" AutoPostBack="False"/>
                     </section>
 
                     <section class="dtHr">
@@ -371,9 +369,10 @@ Acontecerão aulas de Karatê e Judô em dias intercalados. Nos dias 2 e 4 haver
     
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="js/CadastroLogin.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script> 
 
+    <script type="text/javascript" src="js/CadastroLogin.js"></script>
+    <script type="text/javascript" src="js/save.js"></script>
 </body>
 
 </html>

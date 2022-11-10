@@ -118,14 +118,3 @@ function mostrarTudo() {
         pai.style.display = 'block';
     }
 }
-
-var saves = document.querySelectorAll(".salvando");
-
-for (var i = 0; i < saves.length; i++) {
-    let save = saves[i];
-    save.addEventListener("click", () => { mudarSave(save) });
-}
-
-function mudarSave(save) {
-    save.style.background = 'Images/save2.png';
-}

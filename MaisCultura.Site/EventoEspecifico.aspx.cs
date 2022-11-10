@@ -13,5 +13,19 @@ namespace MaisCultura.Site
         {
 
         }
+
+        protected void btnInteresse_Click(object sender, EventArgs e)
+        {
+            if (btnInteresse.CssClass.Contains("naoInt"))   
+            {
+                btnInteresse.CssClass = "Int";
+                btnInteresse.Text = "Interesse Demonstrado";
+            }
+            else
+            {
+                btnInteresse.CssClass = "naoInt";
+                btnInteresse.Text = "Demonstrar Interesse";
+            }
+        }
     }
 }
