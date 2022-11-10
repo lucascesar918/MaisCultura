@@ -12,6 +12,9 @@ namespace MaisCultura
         Filtro filtro;
         ListaUsuario ListaUsuario = new ListaUsuario();
         ListaEvento ListaEvento = new ListaEvento();
+
+        Usuario Login;
+
         private void ListarEventos(string usuario) {
 
             List<Evento> Eventos;
@@ -28,7 +31,7 @@ namespace MaisCultura
                 Usuario usuarioEvento = ListaUsuario.Buscar(evento.Responsavel);
                 List<Categoria> categorias = evento.Categorias;
                 List<DiaEvento> dias = evento.Dias;
-                litEventos.Text += $@"<a href='EventoEspecifico.aspx'>
+                litEventos.Text += $@"<a href='evento.aspx?e={evento.Codigo}'>
                 <section class='card'>
                     <article class='card-header'>
                         <figure>
@@ -100,6 +103,23 @@ namespace MaisCultura
         }
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Request.QueryString["l"] != null)
+            {
+                Login = ListaUsuario.Buscar(Request.QueryString["l"]);      //Logado
+                dropbtnUsuario.Text = Login.Nome;
+                litDropDownHome.Text = $"<a href='eventos.aspx?l={Login.Codigo}'>Início</a>";
+                litDropDownPerfil.Text = $"<a href='perfil.aspx?l={Login.Codigo}'>Perfil</a>";
+                dropbtnUsuario.Visible = true;
+                btnLog.Visible = false;
+                btnCad.Visible = false;
+                litImgPerfil.Text = $@"<img src='Images/perfil526ace.png' class='imgPerfil'>";
+            } else
+            {
+                dropbtnUsuario.Visible = false;                             //Deslogado
+                btnLog.Visible = true;
+                btnCad.Visible = true;
+            }
+
             filtro = new Filtro();
             filtro.Inicio = StrinToDate(dtStart.Text);
             filtro.Fim = StrinToDate(dtEnd.Text);
@@ -116,6 +136,28 @@ namespace MaisCultura
         {
             var Botao = (Button)sender;
             ViewState["Cateoria"] = Botao.Text;
+        }
+
+        protected void btnLogar_Click(object sender, EventArgs e)
+        {
+            Login = ListaUsuario.BuscarLogin(txtBoxUser.Text, txtBoxSenha.Text);
+
+            if (Login != null)
+                Response.Redirect($"eventos.aspx?l={Login.Codigo}");
+        }
+
+        protected void btnCadastrar_Click(object sender, EventArgs e)
+        {
+            Usuario Cadastrado = new Usuario(txtBoxNmUsuario.Text, ddlTipoUser.Text, ddlSexo.Text, txtBoxNome.Text + txtBoxSobrenome.Text, txtBoxEmail.Text, txtBoxSenhaCad.Text, " ", txtData.Text, null);
+
+            ListaUsuario.CriarUsuario(Cadastrado);
+        }
+
+        protected void btnCadastrar_Click1(object sender, EventArgs e)
+        {
+            Usuario Cadastrado = new Usuario(txtBoxNmUsuario.Text, ddlTipoUser.Text, ddlSexo.Text, txtBoxNome.Text + txtBoxSobrenome.Text, txtBoxEmail.Text, txtBoxSenhaCad.Text, " ", txtData.Text, null);
+
+            ListaUsuario.CriarUsuario(Cadastrado);
         }
     }
 }

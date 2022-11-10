@@ -25,30 +25,31 @@
         <div id="shade" class="shade"></div>
 
         <form id="form1" runat="server">
-            <header class="header-primaria">
-                <figure class="figure-header">
-                    <img src="Images/logoNomeMenor.png" class="logo-header" />
-                </figure>
+           <header class="header-primaria">
+            <figure class="figure-header">
+                <img src="Images/logoNomeMenor.png" class="logo-header"/>
+            </figure>
 
-                <article class="buttons">
-                    <asp:Button ID="btnLog" runat="server" Text="Entrar" class="button button-log" />
-                    <button id="btnCad" class="button button-cad">Criar conta</button>
-                </article>
+            <article class="buttons">
+                <asp:Button ID="btnLog" runat="server" Text="Entrar" class="button button-log" OnClick="btnLog_Click" />
+                <asp:Button ID="btnCad" runat="server" Text="Cadastrar" class="button button-log" OnClick="btnCad_Click" />
+            </article>
 
-                <article class="usuario hidden">
-                    <div class="menuUsuario hidden">
-                        <asp:Button CssClass="dropbtn" ID="dropbtnUsuario" runat="server" Text="Nome" />
-                        <div class="dropdown-content">
-                            <a href="Inicio.aspx">Início</a>
-                            <a href="perfil.aspx">Perfil</a>
-                            <a href="Inicio.aspx">Sair</a>
-                        </div>
+            <article class="usuario">
+                <div class="menuUsuario">
+                    <asp:Button CssClass="dropbtn" ID="dropbtnUsuario" runat="server" Text="Nome" />
+                    <div class="dropdown-content">
+                    <asp:Literal ID="litDropDownHome" runat="server"></asp:Literal>  <%--Possível aplicar databinder--%>
+                    <asp:Literal ID="litDropDownPerfil" runat="server"></asp:Literal>
+                     <a href="eventos.aspx">Sair</a>
                     </div>
-
-                    <img src="Images/perfil526ace.png" class="imgPerfil">
-
-                </article>
-            </header>
+                </div>
+               
+                <%--<img src="Images/perfil526ace.png" class="imgPerfil">--%>
+                <asp:Literal ID="litImgPerfil" runat="server"></asp:Literal>
+                
+            </article>
+        </header>
 
             <section class="sectionBack">
                 <asp:Button ID="btnVoltar" runat="server" Text="Voltar"
@@ -73,8 +74,8 @@
                             <h2 class="categorias">
                                 CATEGORIAS
                             </h2>
-                            <asp:Label ID="lblCateg1" runat="server" Text="Esporte" CssClass="tag"></asp:Label>
-                            <asp:Label ID="lblCateg2" runat="server" Text="Saúde" CssClass="tag"></asp:Label>
+                            <asp:Literal ID="litCategorias" runat="server"></asp:Literal>
+
 
                         </article>
                     </section>
@@ -130,38 +131,9 @@ Acontecerão aulas de Karatê e Judô em dias intercalados. Nos dias 2 e 4 haver
                     </section>
 
                     <section class="avaliacaodoCriador">
-                        <h2 class="h2"> Avaliações do Criador </h2>
-                        <div class="nmrMedia">
-                            <h3 style="font-size: 18px; margin: 10px;"> Média </h3>
-                            <asp:Label ID="lblMedia" runat="server" Text="4,5" CssClass="lblMedia"></asp:Label>
-                            <figure>
-                                <img src="Images/star.png" class="imgEstrelaMedia" />
-                            </figure>
-                        </div>
+                        <h2 class="h2"> Avaliações do Evento </h2>
                         <section class="avaliacoes">
-                            <div class="umaAvaliacao">
-                                <div class="infosAvaliador">
-                                    <section class="infosNmAtDtAv">
-                                        <figure>
-                                            <img src="Images/perfil526ace.png" class="imgPerfilAvaliacao" />
-                                        </figure>
-                                        <asp:Label ID="lblNmUser" runat="server" Text="Arthur Gomes"></asp:Label>
-                                        <asp:Label ID="lblArrobaUser" runat="server" Text="@artoss"></asp:Label>
-                                        <asp:Label ID="lblDtAval" runat="server" Text="11 de janeiro"></asp:Label>
-                                    </section>
-                                    <div class="notaAvaliacao">
-                                        <asp:Label ID="lblNotaAvaliacao" runat="server" Text="5"></asp:Label>
-                                        <figure>
-                                            <img src="Images/star.png" class="imgEstrelaMedia" />
-                                        </figure>
-                                    </div>
-                                </div>
-                                <div class="textoAvaliacao">
-                                    <asp:Literal ID="litDesc" runat="server">A aula foi incrível e o professor é
-                                        obviamente um homem muito sábio e inteligente. Aprendi muito e vou levar esses
-                                        conhecimentos para a vida.</asp:Literal>
-                                </div>
-                            </div>
+                            <asp:Literal ID="litAvaliacoes" runat="server"></asp:Literal>
                             <section class="suaAvaliacao">
                                 <div class="suaNota">
                                     <h4> Deixe uma nota sobre esse criador... </h4>
@@ -255,92 +227,66 @@ Acontecerão aulas de Karatê e Judô em dias intercalados. Nos dias 2 e 4 haver
                 <asp:Button ID="btnSairLogin" runat="server" Text="Fechar" />
             </div>
             <div class="cadastrar pop" id="cad">
-                <section class="headerCad">
-                    <h4 class="titleCad">Cadastrar</h4>
-                </section>
-                <div class="nms">
-                    <asp:TextBox ID="txtBoxNome" runat="server" placeholder="Seu nome" CssClass="txtCadNm">
-                    </asp:TextBox>
-                    <asp:TextBox ID="txtBoxSobrenome" runat="server" placeholder="Seu sobrenome" CssClass="txtCadNm">
-                    </asp:TextBox>
-                </div>
-                <asp:TextBox ID="txtBoxEmail" runat="server" placeholder="Seu email" CssClass="txtCad"></asp:TextBox>
-                <asp:TextBox ID="txtBoxNmUsuario" runat="server" placeholder="Seu nome de usuário" CssClass="txtCad">
-                </asp:TextBox>
-                <asp:TextBox ID="txtBoxSenhaCad" runat="server" placeholder="Sua senha" CssClass="txtCad"></asp:TextBox>
-                <asp:DropDownList ID="ddlTipoUser" runat="server" CssClass="txtCad">
-                    <asp:ListItem runat="server" CssClass="listDdl" Value="Usuário Comum">Usuário Comum</asp:ListItem>
-                    <asp:ListItem runat="server" CssClass="listDdl" Value="Criador de Eventos">Criador de Eventos
-                    </asp:ListItem>
-                    <asp:ListItem runat="server" CssClass="listDdl" Value="Empresa">Empresa</asp:ListItem>
-                </asp:DropDownList>
-                <div class="dtNasc">
-                    <asp:Label ID="lblNasc" runat="server" Text="Data de Nascimento"></asp:Label>
-                    <div class="ddlsDtNasc">
-                        <asp:DropDownList CssClass="txtCadDt" ID="dia" runat="server">
-                            <asp:ListItem>Dia</asp:ListItem>
-                            <asp:ListItem>01</asp:ListItem>
-                            <asp:ListItem>02</asp:ListItem>
-                            <asp:ListItem>03</asp:ListItem>
-                            <asp:ListItem>04</asp:ListItem>
-                            <asp:ListItem>05</asp:ListItem>
-                            <asp:ListItem>06</asp:ListItem>
-                            <asp:ListItem>07</asp:ListItem>
-                            <asp:ListItem>08</asp:ListItem>
-                            <asp:ListItem>09</asp:ListItem>
-                            <asp:ListItem>10</asp:ListItem>
-                            <asp:ListItem>11</asp:ListItem>
-                            <asp:ListItem>12</asp:ListItem>
-                            <asp:ListItem>13</asp:ListItem>
-                            <asp:ListItem>14</asp:ListItem>
-                            <asp:ListItem>15</asp:ListItem>
-                            <asp:ListItem>16</asp:ListItem>
-                            <asp:ListItem>17</asp:ListItem>
-                            <asp:ListItem>18</asp:ListItem>
-                            <asp:ListItem>19</asp:ListItem>
-                            <asp:ListItem>20</asp:ListItem>
-                            <asp:ListItem>21</asp:ListItem>
-                            <asp:ListItem>22</asp:ListItem>
-                            <asp:ListItem>23</asp:ListItem>
-                            <asp:ListItem>24</asp:ListItem>
-                            <asp:ListItem>25</asp:ListItem>
-                            <asp:ListItem>26</asp:ListItem>
-                            <asp:ListItem>27</asp:ListItem>
-                            <asp:ListItem>28</asp:ListItem>
-                            <asp:ListItem>29</asp:ListItem>
-                            <asp:ListItem>30</asp:ListItem>
-                            <asp:ListItem>31</asp:ListItem>
-                        </asp:DropDownList>
-                        <asp:DropDownList CssClass="txtCadDt" ID="mes" runat="server">
-                            <asp:ListItem>Mês</asp:ListItem>
-                            <asp:ListItem>Janeiro</asp:ListItem>
-                            <asp:ListItem>Fevereiro</asp:ListItem>
-                            <asp:ListItem>Março</asp:ListItem>
-                            <asp:ListItem>Abril</asp:ListItem>
-                            <asp:ListItem>Maio</asp:ListItem>
-                            <asp:ListItem>Junho</asp:ListItem>
-                            <asp:ListItem>Julho</asp:ListItem>
-                            <asp:ListItem>Agosto</asp:ListItem>
-                            <asp:ListItem>Setembro</asp:ListItem>
-                            <asp:ListItem>Outubro</asp:ListItem>
-                            <asp:ListItem>Novembro</asp:ListItem>
-                            <asp:ListItem>Dezembro</asp:ListItem>
-                        </asp:DropDownList>
-                        <asp:DropDownList CssClass="txtCadDt" ID="ano" runat="server">
-                        </asp:DropDownList>
-                    </div>
-                </div>
-                <div class="sexo">
-                    <asp:Label ID="lblSexo" runat="server" Text="Sexo"></asp:Label>
-                    <asp:DropDownList ID="ddlSexo" runat="server">
-                        <asp:ListItem runat="server" CssClass="listDdl" Value="M">Masculino</asp:ListItem>
-                        <asp:ListItem runat="server" CssClass="listDdl" Value="F">Feminino</asp:ListItem>
-                        <asp:ListItem runat="server" CssClass="listDdl" Value="NO">Desejo não informar</asp:ListItem>
-                    </asp:DropDownList>
-                </div>
-                <asp:Button ID="btnCadastrar" runat="server" Text="Cadastrar" />
-                <asp:Button ID="btnSairCad" runat="server" Text="Fechar" />
+
+            <section class="headerCad">
+                <h4 class="titleCad">Cadastrar</h4>
+            </section>
+
+            <div class="nms">
+                <asp:TextBox ID="txtBoxNome" runat="server" placeholder="Seu nome" CssClass="txtCadNm"></asp:TextBox>
+                <asp:TextBox ID="txtBoxSobrenome" runat="server" placeholder="Seu sobrenome" CssClass="txtCadNm"></asp:TextBox>
             </div>
+
+            <asp:TextBox ID="txtBoxEmail" runat="server" placeholder="Seu email" CssClass="txtCad"></asp:TextBox>
+
+            <asp:TextBox ID="txtBoxNmUsuario" runat="server" placeholder="Seu nome de usuário" CssClass="txtCad"></asp:TextBox>
+
+            <asp:TextBox ID="txtBoxSenhaCad" runat="server" placeholder="Sua senha" CssClass="txtCad"></asp:TextBox>
+
+            <asp:DropDownList ID="ddlTipoUser" runat="server" CssClass="txtCad">
+                <asp:ListItem runat="server" CssClass="listDdl" Value="Usuário Comum">
+                    Usuário Comum
+                </asp:ListItem>
+
+                <asp:ListItem runat="server" CssClass="listDdl" Value="Criador de Eventos">
+                    Criador de Eventos
+                </asp:ListItem>
+
+                <asp:ListItem runat="server" CssClass="listDdl" Value="Empresa">
+                    Empresa
+                </asp:ListItem> 
+            </asp:DropDownList> 
+
+            <div class="dtNasc">
+                <asp:Label ID="lblNasc" runat="server" Text="Data de Nascimento"></asp:Label>
+
+                <div class="ddlsDtNasc">
+
+                    <asp:TextBox ID="txtData" runat="server" type="date"> CssClass="txtCadDt" ID="dia"</asp:TextBox>
+                </div>          
+            </div>
+            
+            <div class="sexo">
+                <asp:Label ID="lblSexo" runat="server" Text="Sexo"></asp:Label>
+
+                <asp:DropDownList ID="ddlSexo" runat="server">
+                    <asp:ListItem runat="server" CssClass="listDdl" Value="M">
+                        Masculino
+                    </asp:ListItem>
+
+                    <asp:ListItem runat="server" CssClass="listDdl" Value="F">
+                        Feminino
+                    </asp:ListItem>
+
+                    <asp:ListItem runat="server" CssClass="listDdl" Value="NO">
+                        Desejo não informar
+                    </asp:ListItem>
+                </asp:DropDownList>
+            </div>
+
+            <asp:Button ID="btnCadastrar" runat="server" Text="Cadastrar" OnClick="btnCadastrar_Click"/>
+            <asp:Button ID="btnSairCad" runat="server" Text="Fechar"/>
+        </div>
 
             <div class="denuncia pop" id="denuncia">
                 <div class="headerDenuncia">
