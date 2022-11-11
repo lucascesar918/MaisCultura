@@ -30,35 +30,37 @@
             <asp:ScriptManager ID="scriptmanager1" runat="server">
             </asp:ScriptManager>
             
-            <header class="header-primaria">
-                <figure class="figure-header">
-                    <img src="Images/logoNomeMenor.png" class="logo-header" />
-                </figure>
+            <div class="head">
+                <header class="header-primaria">
+                    <figure class="figure-header">
+                        <img src="Images/logoNomeMenor.png" class="logo-header" />
+                    </figure>
 
-                <article class="buttons">
-                    <asp:Button ID="btnLog" runat="server" Text="Entrar" class="button button-log" />
-                    <button id="btnCad" class="button button-cad">Criar conta</button>
-                </article>
+                    <article class="buttons">
+                        <asp:Button ID="btnLog" runat="server" Text="Entrar" class="button button-log" />
+                        <button id="btnCad" class="button button-cad">Criar conta</button>
+                    </article>
 
-                <article class="usuario hidden">
-                    <div class="menuUsuario hidden">
-                        <asp:Button CssClass="dropbtn" ID="dropbtnUsuario" runat="server" Text="Nome" />
-                        <div class="dropdown-content">
-                            <a href="Inicio.aspx">Início</a>
-                            <a href="perfil.aspx">Perfil</a>
-                            <a href="Inicio.aspx">Sair</a>
+                    <article class="usuario hidden">
+                        <div class="menuUsuario hidden">
+                            <asp:Button CssClass="dropbtn" ID="dropbtnUsuario" runat="server" Text="Nome" />
+                            <div class="dropdown-content">
+                                <a href="Inicio.aspx">Início</a>
+                                <a href="perfil.aspx">Perfil</a>
+                                <a href="Inicio.aspx">Sair</a>
+                            </div>
                         </div>
-                    </div>
 
-                    <img src="Images/perfil526ace.png" class="imgPerfil">
+                        <img src="Images/perfil526ace.png" class="imgPerfil">
+                    </article>
+                </header>
 
-                </article>
-            </header>
-
-            <section class="sectionBack">
-                <asp:Button ID="btnVoltar" runat="server" Text="Voltar"
-                    OnClientClick="JavaScript:window.history.back(1); return false;" />
-            </section>
+                <section class="sectionBack">
+                    <asp:Button ID="btnVoltar" runat="server" Text="Voltar"
+                        OnClientClick="JavaScript:window.history.back(1); return false;" />
+                </section>
+            </div>
+            
 
             <main class="principal">
 
