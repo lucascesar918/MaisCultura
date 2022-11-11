@@ -24,6 +24,15 @@ namespace MaisCultura.Site
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
+        /// Controle scriptmanager1.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.ScriptManager scriptmanager1;
+
+        /// <summary>
         /// Controle btnLog.
         /// </summary>
         /// <remarks>
@@ -58,6 +67,24 @@ namespace MaisCultura.Site
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblTituloEvento;
+
+        /// <summary>
+        /// Controle updBtnSave.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel updBtnSave;
+
+        /// <summary>
+        /// Controle btnSave.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSave;
 
         /// <summary>
         /// Controle lblCateg1.
@@ -211,6 +238,15 @@ namespace MaisCultura.Site
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblNmrInteresse;
+
+        /// <summary>
+        /// Controle updBtnInteresse.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel updBtnInteresse;
 
         /// <summary>
         /// Controle btnInteresse.

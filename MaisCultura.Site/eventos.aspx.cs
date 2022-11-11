@@ -39,8 +39,12 @@ namespace MaisCultura
                             <h2>{usuarioEvento.Nome}</h2>
                             <h5>{usuarioEvento.Codigo}</h5>
                         </article>
-
-                        <input id='btnSave{evento.Codigo}' type='button' value='' class='save naoSalvo' />
+                        
+                        <asp:UpdatePanel ID='updBtnSave{evento.Codigo}' runat='server' UpdateMode='Conditional'>
+                                <ContentTemplate>
+                                    <asp:Button ID='btnSave{evento.Codigo}' runat='server' Text='' cssClass='save naoSalvo' OnClick='btnSave_Click' />
+                                </ ContentTemplate >
+                        </ asp:UpdatePanel >
 
                     </article>
 
@@ -117,6 +121,20 @@ namespace MaisCultura
         {
             var Botao = (Button)sender;
             ViewState["Cateoria"] = Botao.Text;
+        }
+
+        protected void btnSave_Click(object sender, EventArgs e)
+        {
+            //if (btnSave.CssClass.Contains("naoSalvo"))
+            //{
+                //btnSave.CssClass = "save salvo";
+            //}
+            //else
+            //{
+                //btnSave.CssClass = "save naoSalvo";
+            //}
+
+            //Como referenciar o botão que está chamando a função
         }
     }
 }

@@ -6,7 +6,33 @@
     font-weight: 600;
 }
 
+@keyframes save {
+    0% {
+        transform: scale(0);
+    }
 
+    50% {
+        transform: scale(1.2);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes unsave {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(0.5);
+    }
+
+    100% {
+        transform: scale(0);
+    }
+}
 
 html {
     font-size: 1vh;
@@ -14,26 +40,10 @@ html {
     background: #f1f1f1;
 }
 
-
-
 body{
     background-color: #f1f1f1;
 }
 
-   /* html::-webkit-scrollbar {
-        width: 1vw;
-    }
-
-    html::-webkit-scrollbar-track {
-        background: #11111147;
-    }
-
-    html::-webkit-scrollbar-thumb {
-        background: #1111118c;
-        border-radius: 20px;
-        border: 1px solid #11111147;
-    }
-*/
 .header {
     width: 100%;
     display: flex;
@@ -51,18 +61,13 @@ body{
     background: #fff;
 }
 
-
-
 .header-secundaria {
-    /* margin-top: 2vh;*/
     width: 100%;
     background: #fff;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-
-
 
 .logo-header {
     width: 110px;
@@ -109,11 +114,9 @@ body{
         font-size: 12px;
     }
 
-
         .dropdown-content a:hover {
             background-color: #ffffff;
         }
-
 
 .menuUsuario:hover .dropdown-content {
     display: block;
@@ -165,8 +168,6 @@ body{
         background: #293d90;
     }
 
-/*Faixa Voltar #222222*/
-
 .sectionBack {
     width: 100%;
     background-color: #222222;
@@ -175,7 +176,6 @@ body{
     flex-direction: row;
     align-items: center;
 }
-
 
 #btnVoltar {
     padding: 10px;
@@ -189,8 +189,6 @@ body{
     #btnVoltar:hover {
         cursor: pointer;
     }
-
-/*Fim da Faixa Voltar*/
 
 .principal {
     height: fit-content;
@@ -223,7 +221,6 @@ body{
    padding: 10px;
 }
 
-
 .titulo {
     height: fit-content;
     width: 80%;
@@ -232,13 +229,10 @@ body{
     margin-bottom: 0px !important;
 }
 
-
 #lblDtAval{
     font-size: 14px;
     font-weight: 400;
 }
-
-
 
 .tags {
     background: deeppink;
@@ -252,7 +246,6 @@ body{
     border-radius: 5px;
     font-size: 13.5px;
 }
-
 
 .categorias {
     margin-bottom: 0px !important;
@@ -338,7 +331,6 @@ body{
         font-weight: 600;
     }
 
-
 .descricao{
     margin-top: 10px;
     height: fit-content;
@@ -361,19 +353,34 @@ body{
 }
 
 .save {
-    width: 3.5vw;
-    height: 3.5vw;
-    border: none;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    user-select: none;
     background-size: cover;
+    border: none;
+    -webkit-tap-highlight-color: transparent;
     background-color: transparent;
 }
 
-.naoSalvo {
-    background-image: url(../Images/save.png);
+.salvo, naoSalvo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .salvo {
+    animation: save 0.5s ease-in forwards;
     background-image: url(../Images/save2.png);
+}
+
+.naoSalvo {
+    animation: unsave 0.5s ease-in reverse forwards;
+    background-image: url(../Images/save.png);
+}
+
+#updBtnSave {
+    height: 40px;
 }
 
 .lblMedia {
@@ -381,15 +388,11 @@ body{
     margin: 10px;
 }
 
-/*Parte da Avaliação*/
-
 .avaliacaoCriador {
     display: flex;
     flex-direction: column;
-    /* align-items: center;*/
     margin: 10px;
     width: 70%;
-    /*background-color: crimson;*/
 }
 
 .imgPerfilAvaliacao {
@@ -401,27 +404,23 @@ body{
 .imgEstrelaMedia {
     width: 1.4vw;
     height: 1.4vw;
-    /*margin: 5px;*/
 }
 
 .nmrMedia {
     display: flex;
     flex-direction: row;
     align-items: center;
-    /*background-color: deepskyblue;*/
     width: 100%;
 }
 
 .avaliacoes {
     display: flex;
     flex-direction: column;
-    /* background-color: rebeccapurple;*/
 }
 
 .umaAvaliacao {
     display: flex;
     flex-direction: column;
-    /*background-color: lightseagreen;*/
     margin: 10px;
     border-bottom: 1px solid black;
     padding: 10px;
@@ -432,7 +431,6 @@ body{
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    /*background-color: orangered;*/
     width: 100%;
     font-size: 20px;
 }
@@ -443,7 +441,6 @@ body{
     align-items: center;
     justify-content: space-around;
     width: 55%;
-    /*background-color: hotpink;*/
 }
 
 .infosNmAtDtAv h4 {
@@ -461,16 +458,12 @@ body{
     margin-bottom: 0px !important;
 }
 
-
-
 .notaAvaliacao {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    /*background-color: yellow;*/
     width: 5%;
-    /* background-color: purple;*/
 }
 
 #lblNotaAvaliacao{
@@ -483,7 +476,6 @@ body{
     padding: 15px;
     font-weight: 500 !important;
 }
-
    
 .suaAvaliacao {
     display: flex;
@@ -510,7 +502,6 @@ body{
 
 .seuTexto {
     margin-top: 10px;
-    /*background-color: powderblue;*/
 }
 
 #txtBoxAvaliacao {
@@ -524,7 +515,6 @@ body{
         padding: 10px;
         font-size: 15px;
     }
-
 
 .avaliacaodoCriador{
     margin-top: 10px;
@@ -549,8 +539,6 @@ body{
     font-size: 16px !important;
 }
 
-
-
 .suaAvaliacao h4{
     margin-bottom: 0px !important;
     font-size: 16px;
@@ -558,7 +546,6 @@ body{
 
 #btnAvaliar{
     height: 30px;
-    /*padding: 10px;*/
     font-size: 14px;
     font-weight: 800;
     background-color: #526ace;
@@ -574,8 +561,6 @@ body{
         transition-timing-function: ease-in-out;
         cursor: pointer;
     }
-
-/*Fim da Parte da Avaliação*/
 
 .responsavel{
     width: 100%;
@@ -658,6 +643,7 @@ body{
 
 #btnInteresse {
     padding: 5px;
+    width: 100%;
     font-weight: 800;
     font-size: 12px;
     border-radius: 5px;
@@ -1027,16 +1013,6 @@ td {
 .error{
     background: green;
 }
-
-
-
-
-
-
-
-
-
-
 
 .pop {
     display: none;

@@ -5,6 +5,33 @@
     color: #000;
 }
 
+@keyframes save{
+    0%{
+        transform: scale(0);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes unsave {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(0.5);
+    }
+
+    100% {
+        transform: scale(0);
+    }
+}
+
+
 a {
     text-decoration: none;
     color: black;
@@ -16,16 +43,16 @@ html{
 }
 
     html::-webkit-scrollbar {
-        width: 20px;
+        width: 10px;
     }
 
     html::-webkit-scrollbar-track {
-        background: #11111147;
+        background: transparent;
     }
 
     html::-webkit-scrollbar-thumb {
         background: #1111118c;
-        border-radius: 20px;
+        border-radius: 10px;
         border: 1px solid #11111147;
     }
 
@@ -98,6 +125,9 @@ html{
     justify-content: space-between;
     align-items: center;
     padding: 10px 0px 10px 0px;
+    background-color: white;
+    position: fixed;
+    margin-top: -60px;
 }
 
 .header-secundaria {
@@ -106,6 +136,7 @@ html{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-top: 60px;
 }
  
 .logo-header {
@@ -189,21 +220,26 @@ html{
         background: #505050;
 	cursor: pointer;
     }
- 
+
 .button-exclude {
-    width: auto;
+    width: 12px;
+    height: 12px;
+    font-size: 1.7rem;
+    font-weight: 600;
+    text-align: center;
     border-radius: 50%;
     background: none;
     border: none;
-    margin: 2.5px;
+    margin: 5px;
+    margin-right: 0px;
 }
- 
+
     .button-exclude:hover {
         background-color: rgba(241, 241, 244, 0.5);
     }
  
 .nav {
-    height: 40px;
+    height: 50px;
     width: 100%;
     justify-content: left;
     background: #333333;
@@ -211,13 +247,14 @@ html{
     flex-direction: row;
     align-items: center;
 }
- 
+
 .section-tags {
     width: 100%;
     display: flex;
     justify-content: left;
+    margin-left: 10px;
 }
- 
+
 .tag {
     background: #D64558;
     width: fit-content;
@@ -227,6 +264,7 @@ html{
     color: white;
     margin: 5px;
     padding: 6px;
+    padding-left: 13px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -395,11 +433,17 @@ html{
     width: 95%;
 }
 
+.event-manager{
+    display: flex;
+    justify-content: space-around;
+}
+
 .eventos {
     padding: 15px;
     display: flex;
-    justify-content: space-around;
+    justify-content: left;
     flex-wrap: wrap;
+    width: 91%;
 }
 
 /* Css do Card*/
@@ -412,7 +456,7 @@ html{
     border-radius: 20px;
     border: 1px solid black;
     padding: 10px;
-    margin-bottom: 25px;
+    margin: 0px 0px 25px 25px;
     transition: box-shadow;
     transition-duration: 0.3s;
     transition-timing-function: ease-in-out;
@@ -456,18 +500,34 @@ html{
     }
 
 .save {
-    width: 44px;
-    height: 32px;
-    border: none;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    user-select: none;
     background-size: cover;
+    border: none;
+    -webkit-tap-highlight-color: transparent;
+    background-color: transparent;
 }
 
-.naoSalvo {
-    background-image: url(../Images/save.png);
+.salvo, naoSalvo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .salvo {
+    animation: save 0.5s ease-in forwards;
     background-image: url(../Images/save2.png);
+}
+
+.naoSalvo {
+    animation: unsave 0.5s ease-in reverse forwards;
+    background-image: url(../Images/save.png);
+}
+
+#updBtnSave {
+    height: 40px;
 }
 
 .card-tittle {
