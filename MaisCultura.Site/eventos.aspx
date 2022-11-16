@@ -116,8 +116,10 @@
 
                 <hr />
                 
-                <div class="eventos">
-                    <asp:Literal ID="litEventos" runat="server"></asp:Literal>
+                <div class="event-manager">
+                    <div class="eventos">
+                        <asp:Literal ID="litEventos" runat="server"></asp:Literal>
+                    </div>
                 </div>
             </div>
         </main>
@@ -227,6 +229,7 @@
     </form>
     
     <script type="text/javascript" src="js/eventos.js"></script>
+    <script type="text/javascript" src="js/save.js"></script>
     <script type="text/javascript" src="js/CadastroLogin.js"></script>
 </body>
 </html>

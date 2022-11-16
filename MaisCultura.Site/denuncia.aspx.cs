@@ -22,7 +22,7 @@ namespace MaisCultura
             if (Usuario == null) Usuario = ListaUsuario.Buscar("allan.fagner");
             List<Denuncia> Denuncias = ListaDenuncia.BuscarPorUsuario(Usuario.Codigo);
             Evento Evento = ListaEvento.Buscar(Denuncias[0].CodigoEvento);
-
+            
             litEventos.Text = $"<a href=\"eventos.aspx?u={Usuario.Codigo}\">Eventos</a>";
             lblUser.Text = Usuario.Codigo;
             lblNmEvento.Text = Evento.Titulo;

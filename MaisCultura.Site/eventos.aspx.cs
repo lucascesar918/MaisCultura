@@ -42,16 +42,20 @@ namespace MaisCultura
                             <h2>{usuarioEvento.Nome}</h2>
                             <h5>{usuarioEvento.Codigo}</h5>
                         </article>
-
-                        <figure>
-                            <img src='Images/save.png' alt='Salvar' class='save'>
-                        </figure>
+                        
+                        <asp:UpdatePanel ID='updBtnSave{evento.Codigo}' runat='server' UpdateMode='Conditional'>
+                                <ContentTemplate>
+                                    <asp:Button ID='btnSave{evento.Codigo}' runat='server' Text='' cssClass='save naoSalvo' OnClick='btnSave_Click' />
+                                </ ContentTemplate >
+                        </ asp:UpdatePanel >
 
                     </article>
 
-                    <article class='card-tittle'>
-                        <h2>{evento.Titulo}</h2>
-                    </article>
+                    <a href='EventoEspecifico.aspx'>
+                        <article class='card-tittle'>
+                                <h2>{evento.Titulo}</h2>
+                        </article>
+                    </a>
 
                     <article class='card-tags'>";
                 foreach (Categoria categoria in categorias)
@@ -59,9 +63,11 @@ namespace MaisCultura
                     </article>
 
                     <article class='card-image'>
-                        <figure>
-                            <img src='{ListaEvento.BuscarImagem(evento.Codigo)}' alt='Interclasse de cria' class='foto-evento'>
-                        </figure>
+                        <a href='EventoEspecifico.aspx'>
+                            <figure>
+                                <img src='{ListaEvento.BuscarImagem(evento.Codigo)}' alt='Interclasse de cria' class='foto-evento'>
+                            </figure>
+                        </a>
                     </article>
 
                     <article class='card-dateTime dateTime'>
@@ -89,8 +95,7 @@ namespace MaisCultura
                         }</h3>
 
                     </article>
-                </section>
-            </a>";
+                </section>";
             }
         }
         DateTime? StrinToDate(string strDate)
