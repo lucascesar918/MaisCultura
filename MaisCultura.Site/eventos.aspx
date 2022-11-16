@@ -13,7 +13,7 @@
 
     <link rel="stylesheet" type="text/css" href="Styles/Index.css" />
 
-    <title>+Cultura</title>
+    <title>+Cultura | Eventos</title>
 </head>
 <body>
 
@@ -28,20 +28,21 @@
 
             <article class="buttons">
                 <asp:Button ID="btnLog" runat="server" Text="Entrar" class="button button-log" />
-                <button id="btnCad" class="button button-cad">Criar conta</button>
+                <asp:Button ID="btnCad" runat="server" Text="Cadastrar" class="button button-log" />
             </article>
 
-            <article class="usuario hidden">
-                <div class="menuUsuario hidden">
+            <article class="usuario">
+                <div class="menuUsuario">
                     <asp:Button CssClass="dropbtn" ID="dropbtnUsuario" runat="server" Text="Nome" />
                     <div class="dropdown-content">
-                     <a href="Inicio.aspx">Início</a>
-                     <a href="perfil.aspx">Perfil</a>
-                     <a href="Inicio.aspx">Sair</a>
+                    <asp:Literal ID="litDropDownHome" runat="server"></asp:Literal>  <%--Possível aplicar databinder--%>
+                    <asp:Literal ID="litDropDownPerfil" runat="server"></asp:Literal>
+                     <a href="eventos.aspx">Sair</a>
                     </div>
                 </div>
                
-                <img src="Images/perfil526ace.png" class="imgPerfil">
+                <%--<img src="Images/perfil526ace.png" class="imgPerfil">--%>
+                <asp:Literal ID="litImgPerfil" runat="server"></asp:Literal>
                 
             </article>
         </header>
@@ -127,13 +128,14 @@
 
             <section class="headerLogin">
                 <h4 class="titleLogin">Entrar</h4>
+
             </section>
 
             <asp:TextBox ID="txtBoxUser" runat="server" placeholder="Seu nome de usuário" CssClass="txtLog"></asp:TextBox>
 
-            <asp:TextBox ID="txtBoxSenha" runat="server" placeholder="Sua senha" CssClass="txtLog"></asp:TextBox>
+            <asp:TextBox ID="txtBoxSenha" runat="server" placeholder="Sua senha" CssClass="txtLog" type="password"></asp:TextBox>
 
-            <asp:Button ID="btnLogar" runat="server" Text="Entrar" />
+            <asp:Button ID="btnLogar" runat="server" Text="Entrar" OnClick="btnLogar_Click" />
             <asp:Button ID="btnSairLogin" runat="server" Text="Fechar" />
 
         </div>
@@ -173,59 +175,8 @@
                 <asp:Label ID="lblNasc" runat="server" Text="Data de Nascimento"></asp:Label>
 
                 <div class="ddlsDtNasc">
-                    <asp:DropDownList CssClass="txtCadDt" ID="dia" runat="server">
-                            <asp:ListItem>Dia</asp:ListItem>
-                            <asp:ListItem>01</asp:ListItem>
-                            <asp:ListItem>02</asp:ListItem>
-                            <asp:ListItem>03</asp:ListItem>
-                            <asp:ListItem>04</asp:ListItem>
-                            <asp:ListItem>05</asp:ListItem>
-                            <asp:ListItem>06</asp:ListItem>
-                            <asp:ListItem>07</asp:ListItem>
-                            <asp:ListItem>08</asp:ListItem>
-                            <asp:ListItem>09</asp:ListItem>
-                            <asp:ListItem>10</asp:ListItem>
-                            <asp:ListItem>11</asp:ListItem>
-                            <asp:ListItem>12</asp:ListItem>
-                            <asp:ListItem>13</asp:ListItem>
-                            <asp:ListItem>14</asp:ListItem>
-                            <asp:ListItem>15</asp:ListItem>
-                            <asp:ListItem>16</asp:ListItem>
-                            <asp:ListItem>17</asp:ListItem>
-                            <asp:ListItem>18</asp:ListItem>
-                            <asp:ListItem>19</asp:ListItem>
-                            <asp:ListItem>20</asp:ListItem>
-                            <asp:ListItem>21</asp:ListItem>
-                            <asp:ListItem>22</asp:ListItem>
-                            <asp:ListItem>23</asp:ListItem>
-                            <asp:ListItem>24</asp:ListItem>
-                            <asp:ListItem>25</asp:ListItem>
-                            <asp:ListItem>26</asp:ListItem>
-                            <asp:ListItem>27</asp:ListItem>
-                            <asp:ListItem>28</asp:ListItem>
-                            <asp:ListItem>29</asp:ListItem>
-                            <asp:ListItem>30</asp:ListItem>
-                            <asp:ListItem>31</asp:ListItem>
-                    </asp:DropDownList>
 
-                    <asp:DropDownList CssClass="txtCadDt" ID="mes" runat="server">
-                        <asp:ListItem>Mês</asp:ListItem>
-                        <asp:ListItem>Janeiro</asp:ListItem>
-                        <asp:ListItem>Fevereiro</asp:ListItem>
-                        <asp:ListItem>Março</asp:ListItem>
-                        <asp:ListItem>Abril</asp:ListItem>
-                        <asp:ListItem>Maio</asp:ListItem>
-                        <asp:ListItem>Junho</asp:ListItem>
-                        <asp:ListItem>Julho</asp:ListItem>
-                        <asp:ListItem>Agosto</asp:ListItem>
-                        <asp:ListItem>Setembro</asp:ListItem>
-                        <asp:ListItem>Outubro</asp:ListItem>
-                        <asp:ListItem>Novembro</asp:ListItem>
-                        <asp:ListItem>Dezembro</asp:ListItem>
-                    </asp:DropDownList>
-
-                    <asp:DropDownList CssClass="txtCadDt" ID="ano" runat="server">
-                    </asp:DropDownList>
+                    <asp:TextBox ID="txtData" runat="server" type="date"> CssClass="txtCadDt" ID="dia"</asp:TextBox>
                 </div>          
             </div>
             
@@ -247,7 +198,7 @@
                 </asp:DropDownList>
             </div>
 
-            <asp:Button ID="btnCadastrar" runat="server" Text="Cadastrar"/>
+            <asp:Button ID="btnCadastrar" runat="server" Text="Cadastrar" OnClick="btnCadastrar_Click1"/>
             <asp:Button ID="btnSairCad" runat="server" Text="Fechar"/>
         </div>
 

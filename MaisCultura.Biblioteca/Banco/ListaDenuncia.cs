@@ -27,6 +27,7 @@ namespace MaisCultura.Biblioteca
             while (data.Read())
                 Denuncias.Add(DataReaderToDenuncia(data));
 
+            Desconectar();
             return Denuncias;
         }
 
@@ -38,6 +39,7 @@ namespace MaisCultura.Biblioteca
             while (data.Read())
                 denuncias.Add(DataReaderToDenuncia(data));
 
+            Desconectar();
             return denuncias;
         }
 
@@ -49,6 +51,7 @@ namespace MaisCultura.Biblioteca
             while (data.Read())
                 denuncias.Add(DataReaderToDenuncia(data));
 
+            Desconectar();
             return denuncias;
         }
 
@@ -60,6 +63,7 @@ namespace MaisCultura.Biblioteca
             while (data.Read())
                 denuncias.Add(DataReaderToDenuncia(data));
 
+            Desconectar();
             return denuncias;
         }
 

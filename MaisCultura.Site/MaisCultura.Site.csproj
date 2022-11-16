@@ -201,13 +201,6 @@
     <Compile Include="meu-perfil.aspx.designer.cs">
       <DependentUpon>meu-perfil.aspx</DependentUpon>
     </Compile>
-    <Compile Include="PerfilOutroUsuario.aspx.cs">
-      <DependentUpon>PerfilOutroUsuario.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="PerfilOutroUsuario.aspx.designer.cs">
-      <DependentUpon>PerfilOutroUsuario.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
