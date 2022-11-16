@@ -27,5 +27,17 @@ namespace MaisCultura.Site
                 btnInteresse.Text = "Demonstrar Interesse";
             }
         }
+
+        protected void btnSave_Click(object sender, EventArgs e)
+        {
+            if (btnSave.CssClass.Contains("naoSalvo"))
+            {
+                btnSave.CssClass = "save salvo";
+            }
+            else
+            {
+                btnSave.CssClass = "save naoSalvo";
+            }
+        }
     }
 }

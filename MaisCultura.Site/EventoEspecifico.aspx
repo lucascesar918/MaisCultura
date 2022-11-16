@@ -1,6 +1,8 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="EventoEspecifico.aspx.cs"
     Inherits="MaisCultura.Site.EventoEspecifico" %>
 
+<%@ Register Namespace="AjaxControlToolkit" Assembly="AjaxControlToolkit" tagPrefix="ajax" %>
+
     <!DOCTYPE html>
 
     <html xmlns="http://www.w3.org/1999/xhtml">
@@ -25,35 +27,40 @@
         <div id="shade" class="shade"></div>
 
         <form id="form1" runat="server">
-            <header class="header-primaria">
-                <figure class="figure-header">
-                    <img src="Images/logoNomeMenor.png" class="logo-header" />
-                </figure>
+            <asp:ScriptManager ID="scriptmanager1" runat="server">
+            </asp:ScriptManager>
+            
+            <div class="head">
+                <header class="header-primaria">
+                    <figure class="figure-header">
+                        <img src="Images/logoNomeMenor.png" class="logo-header" />
+                    </figure>
 
-                <article class="buttons">
-                    <asp:Button ID="btnLog" runat="server" Text="Entrar" class="button button-log" />
-                    <button id="btnCad" class="button button-cad">Criar conta</button>
-                </article>
+                    <article class="buttons">
+                        <asp:Button ID="btnLog" runat="server" Text="Entrar" class="button button-log" />
+                        <button id="btnCad" class="button button-cad">Criar conta</button>
+                    </article>
 
-                <article class="usuario hidden">
-                    <div class="menuUsuario hidden">
-                        <asp:Button CssClass="dropbtn" ID="dropbtnUsuario" runat="server" Text="Nome" />
-                        <div class="dropdown-content">
-                            <a href="Inicio.aspx">Início</a>
-                            <a href="perfil.aspx">Perfil</a>
-                            <a href="Inicio.aspx">Sair</a>
+                    <article class="usuario hidden">
+                        <div class="menuUsuario hidden">
+                            <asp:Button CssClass="dropbtn" ID="dropbtnUsuario" runat="server" Text="Nome" />
+                            <div class="dropdown-content">
+                                <a href="Inicio.aspx">Início</a>
+                                <a href="perfil.aspx">Perfil</a>
+                                <a href="Inicio.aspx">Sair</a>
+                            </div>
                         </div>
-                    </div>
 
-                    <img src="Images/perfil526ace.png" class="imgPerfil">
+                        <img src="Images/perfil526ace.png" class="imgPerfil">
+                    </article>
+                </header>
 
-                </article>
-            </header>
-
-            <section class="sectionBack">
-                <asp:Button ID="btnVoltar" runat="server" Text="Voltar"
-                    OnClientClick="JavaScript:window.history.back(1); return false;" />
-            </section>
+                <section class="sectionBack">
+                    <asp:Button ID="btnVoltar" runat="server" Text="Voltar"
+                        OnClientClick="JavaScript:window.history.back(1); return false;" />
+                </section>
+            </div>
+            
 
             <main class="principal">
 
@@ -63,7 +70,11 @@
                             <asp:Label ID="lblTituloEvento" runat="server" Text="Interclasse Ablas FIlho x Etecaf"
                                 CssClass="titulo"></asp:Label>
 
-                            <input id='btnSave' type='button' value='' class='save naoSalvo' />
+                            <asp:UpdatePanel ID="updBtnSave" runat="server" UpdateMode="Conditional">
+                                <ContentTemplate>
+                                    <asp:Button ID="btnSave" runat="server" Text="" cssClass="save naoSalvo" OnClick="btnSave_Click" AutoPostBack="False"/>
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
 
                         </div>
                         <article class="tags">
@@ -210,7 +221,11 @@ Acontecerão aulas de Karatê e Judô em dias intercalados. Nos dias 2 e 4 haver
                             pessoas já demonstraram interesse em participar
                         </h4>
 
-                        <asp:Button ID="btnInteresse" runat="server" Text="Demonstrar Interesse" OnClick="btnInteresse_Click" CssClass="naoInt" AutoPostBack="False"/>
+                        <asp:UpdatePanel ID="updBtnInteresse" runat="server" UpdateMode="Conditional">
+                            <ContentTemplate>
+                                <asp:Button ID="btnInteresse" runat="server" Text="Demonstrar Interesse" OnClick="btnInteresse_Click" CssClass="naoInt" AutoPostBack="False"/>
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
                     </section>
 
                     <section class="dtHr">
