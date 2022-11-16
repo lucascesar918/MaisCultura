@@ -529,7 +529,7 @@ BEGIN
 	SELECT
 		cd_denuncia "CodigoDenuncia",
 		cd_evento "CodigoEvento",
-		cd_usuario "CodigoUsuario",
+		cd_usuario "@",
 		dt_denuncia "Data",
 		hr_denuncia "Hora"
 	FROM denuncia;

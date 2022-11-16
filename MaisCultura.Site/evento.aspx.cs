@@ -10,10 +10,7 @@ namespace MaisCultura.Site
 {
     public partial class EventoEspecifico : System.Web.UI.Page
     {
-        protected void Page_Load(object sender, EventArgs e)
-        {
-
-        }
+   
 
         protected void btnInteresse_Click(object sender, EventArgs e)
         {

@@ -5,6 +5,7 @@
 
     <!DOCTYPE html>
 
+
     <html xmlns="http://www.w3.org/1999/xhtml">
 
     <head runat="server">
@@ -71,7 +72,11 @@
                                     <asp:Button ID="btnSave" runat="server" Text="" cssClass="save naoSalvo" OnClick="btnSave_Click" AutoPostBack="False"/>
                                 </ContentTemplate>
                             </asp:UpdatePanel>
+                            <figure class="save">
 
+                                <img class="save" src="Images/save.png" />
+
+                            </figure>
                         </div>
                         <article class="tags">
                             <h2 class="categorias">
@@ -192,7 +197,7 @@ Acontecerão aulas de Karatê e Judô em dias intercalados. Nos dias 2 e 4 haver
                             <ContentTemplate>
                                 <asp:Button ID="btnInteresse" runat="server" Text="Demonstrar Interesse" OnClick="btnInteresse_Click" CssClass="naoInt" AutoPostBack="False"/>
                             </ContentTemplate>
-                        </asp:UpdatePanel>
+                        </asp:UpdatePanel> 
                     </section>
 
                     <section class="dtHr">
