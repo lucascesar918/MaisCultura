@@ -33,6 +33,15 @@ namespace MaisCultura
         protected global::System.Web.UI.WebControls.Button btnLog;
 
         /// <summary>
+        /// Controle btnCad.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCad;
+
+        /// <summary>
         /// Controle dropbtnUsuario.
         /// </summary>
         /// <remarks>
@@ -40,6 +49,33 @@ namespace MaisCultura
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button dropbtnUsuario;
+
+        /// <summary>
+        /// Controle litDropDownHome.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal litDropDownHome;
+
+        /// <summary>
+        /// Controle litDropDownPerfil.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal litDropDownPerfil;
+
+        /// <summary>
+        /// Controle litImgPerfil.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal litImgPerfil;
 
         /// <summary>
         /// Controle btnVerMais.
@@ -204,31 +240,13 @@ namespace MaisCultura
         protected global::System.Web.UI.WebControls.Label lblNasc;
 
         /// <summary>
-        /// Controle dia.
+        /// Controle txtData.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList dia;
-
-        /// <summary>
-        /// Controle mes.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList mes;
-
-        /// <summary>
-        /// Controle ano.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ano;
+        protected global::System.Web.UI.WebControls.TextBox txtData;
 
         /// <summary>
         /// Controle lblSexo.

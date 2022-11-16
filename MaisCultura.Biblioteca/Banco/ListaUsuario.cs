@@ -80,10 +80,31 @@ namespace MaisCultura.Biblioteca
         {
             List<MySqlParameter> parametros = new List<MySqlParameter>();
 
+            int tipo;
+
+            switch (usuario.Tipo)
+            {
+                case "Usuário Comum":
+                    tipo = 2;
+                    break;
+
+                case "Criador de Eventos":
+                    tipo = 3;
+                    break;
+
+                case "Empresa":
+                    tipo = 4;
+                    break;
+
+                default:
+                    tipo = 1;
+                    break;
+            }
+
 
             NonQuery("CadastrarUsuario",
                 ("pCodigo", usuario.Codigo),
-                ("pTipo", usuario.Tipo),
+                ("pTipo", tipo),
                 ("pSigla", usuario.Sexo),
                 ("pNome", usuario.Nome),
                 ("pEmail", usuario.Email),
@@ -108,6 +129,16 @@ namespace MaisCultura.Biblioteca
                 avaliacoes.Add(new Avaliacao(data["@"].ToString(), Int32.Parse(data["CodigoEvento"].ToString()), data["Descricao"].ToString(), Int32.Parse(data["Estrelas"].ToString())));
 
             return avaliacoes;
+        }
+
+        public int BuscarMediaCriador(string codigo)
+        {
+            MySqlDataReader data = Query("BuscarMediaCriador", ("pCodigo", codigo));
+
+            data.Read();
+
+
+            return Int32.Parse(data["soma"].ToString());
         }
     }
 }

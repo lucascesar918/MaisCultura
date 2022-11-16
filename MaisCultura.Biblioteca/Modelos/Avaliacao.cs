@@ -19,6 +19,8 @@ namespace MaisCultura.Biblioteca
 
         public int CodigoEvento { get; set; }
 
+        public DateTime Data { get; set; }
+
         public string Descricao { get; set; }
 
         public int Estrelas { get; set; }

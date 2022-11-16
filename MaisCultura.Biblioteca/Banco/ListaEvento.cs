@@ -194,5 +194,13 @@ namespace MaisCultura.Biblioteca
             var Media = (Decimal)Scalar("MediaAvaliacao", ("pEvento", codigo));
             return Decimal.ToInt32(Media);
         }
+
+        public int BuscarInteresses(int codigo)
+        {
+            MySqlDataReader data = Query("BuscarInteressesEvento", ("pEvento", codigo));
+            data.Read();
+
+            return Int32.Parse(data["Soma"].ToString());
+        }
     }
 }
