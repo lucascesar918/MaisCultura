@@ -107,10 +107,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="CriarEvento.aspx" />
+    <Content Include="criar-evento.aspx" />
     <Content Include="denuncia.aspx" />
-    <Content Include="EventoEspecifico.aspx" />
-    <Content Include="EventoEspecificoCriador.aspx" />
+    <Content Include="evento.aspx" />
+    <Content Include="meu-evento.aspx" />
     <Content Include="eventos.aspx" />
     <Content Include="Images\Background_Grafismo_Hexagono.png" />
     <Content Include="Images\calendar.png" />
@@ -131,7 +131,7 @@
     <Content Include="meus-eventos.aspx" />
     <Content Include="MaisCultura.Site.csproj.user" />
     <Content Include="denuncias.aspx" />
-    <Content Include="perfil.aspx" />
+    <Content Include="meu-perfil.aspx" />
     <Content Include="PerfilOutroUsuario.aspx" />
     <Content Include="Styles\CriarEvento.css" />
     <Content Include="Styles\denuncia.css" />
@@ -145,12 +145,12 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CriarEvento.aspx.cs">
-      <DependentUpon>CriarEvento.aspx</DependentUpon>
+    <Compile Include="criar-evento.aspx.cs">
+      <DependentUpon>criar-evento.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="CriarEvento.aspx.designer.cs">
-      <DependentUpon>CriarEvento.aspx</DependentUpon>
+    <Compile Include="criar-evento.aspx.designer.cs">
+      <DependentUpon>criar-evento.aspx</DependentUpon>
     </Compile>
     <Compile Include="denuncia.aspx.cs">
       <DependentUpon>denuncia.aspx</DependentUpon>
@@ -159,19 +159,19 @@
     <Compile Include="denuncia.aspx.designer.cs">
       <DependentUpon>denuncia.aspx</DependentUpon>
     </Compile>
-    <Compile Include="EventoEspecifico.aspx.cs">
-      <DependentUpon>EventoEspecifico.aspx</DependentUpon>
+    <Compile Include="evento.aspx.cs">
+      <DependentUpon>evento.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="EventoEspecifico.aspx.designer.cs">
-      <DependentUpon>EventoEspecifico.aspx</DependentUpon>
+    <Compile Include="evento.aspx.designer.cs">
+      <DependentUpon>evento.aspx</DependentUpon>
     </Compile>
-    <Compile Include="EventoEspecificoCriador.aspx.cs">
-      <DependentUpon>EventoEspecificoCriador.aspx</DependentUpon>
+    <Compile Include="meu-evento.aspx.cs">
+      <DependentUpon>meu-evento.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="EventoEspecificoCriador.aspx.designer.cs">
-      <DependentUpon>EventoEspecificoCriador.aspx</DependentUpon>
+    <Compile Include="meu-evento.aspx.designer.cs">
+      <DependentUpon>meu-evento.aspx</DependentUpon>
     </Compile>
     <Compile Include="eventos.aspx.cs">
       <DependentUpon>eventos.aspx</DependentUpon>
@@ -194,12 +194,12 @@
     <Compile Include="denuncias.aspx.designer.cs">
       <DependentUpon>denuncias.aspx</DependentUpon>
     </Compile>
-    <Compile Include="perfil.aspx.cs">
-      <DependentUpon>perfil.aspx</DependentUpon>
+    <Compile Include="meu-perfil.aspx.cs">
+      <DependentUpon>meu-perfil.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="perfil.aspx.designer.cs">
-      <DependentUpon>perfil.aspx</DependentUpon>
+    <Compile Include="meu-perfil.aspx.designer.cs">
+      <DependentUpon>meu-perfil.aspx</DependentUpon>
     </Compile>
     <Compile Include="PerfilOutroUsuario.aspx.cs">
       <DependentUpon>PerfilOutroUsuario.aspx</DependentUpon>
