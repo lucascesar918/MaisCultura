@@ -1,8 +1,4 @@
-<<<<<<<< HEAD:MaisCultura.Site/meu-perfil.aspx
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="meu-perfil.aspx.cs" Inherits="MaisCultura.perfil" %>
-========
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="perfil.aspx.cs" Inherits="MaisCultura.Site.PerfilOutroUsuario" %>
->>>>>>>> unstable-lucas:MaisCultura.Site/perfil.aspx
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="perfil.aspx.cs" Inherits="MaisCultura.Site.perfil" %>
 
 <!DOCTYPE html>
 
