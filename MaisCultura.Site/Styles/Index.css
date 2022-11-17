@@ -787,7 +787,7 @@ table {
     font-size: 13px;
     border: 1px solid #526ace;
     border-radius: 5px;
-    padding: 30px;
+    padding: 40px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -806,7 +806,7 @@ table {
 }
 
     .headerLogin h4 {
-        font-size: 16px;
+        font-size: 18px;
         font-weight: 800;
     }
 
@@ -819,6 +819,7 @@ table {
     border-radius: 5px;
     background-color: #fff;
     box-sizing: border-box;
+    font-size: 14px;
 }
 
 #btnLogar {
@@ -828,6 +829,7 @@ table {
     background-color: #526ace;
     color: white;
     border-radius: 5px;
+    font-size: 14px;
 }
 
 #btnSairLogin {
@@ -859,7 +861,7 @@ table {
 .cadastrar {
     background: #f1f1f1;
     width: 450px;
-    padding: 15px 30px 30px 30px;
+    padding: 15px 40px 40px 40px;
     height: fit-content;
     display: flex;
     flex-direction: column;
