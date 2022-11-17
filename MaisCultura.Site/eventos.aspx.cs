@@ -9,6 +9,31 @@ namespace MaisCultura
 {
     public partial class Index : System.Web.UI.Page
     {
+        void HandleLogin()
+        {
+            if (Request.QueryString["l"] != null)
+            {
+                Login = ListaUsuario.Buscar(Request.QueryString["l"]);
+                dropbtnUsuario.Text = Login.Nome;
+                litDropDownHome.Text = $"<a href='eventos.aspx?l={Login.Codigo}'>Início</a>";
+                litDropDownPerfil.Text = $"<a href='perfil.aspx?l={Login.Codigo}&u={Login.Codigo}'>Perfil</a>";
+                if (Login.Tipo == "Administrador")                                                              //Logado
+                    litDropDownDenuncias.Text = $"<a href='denuncias.aspx?l={Login.Codigo}'>Denúncias</a>";
+                dropbtnUsuario.Visible = true;
+                btnLog.Visible = false;
+                btnCad.Visible = false;
+                litImgPerfil.Text = $@"<img src='Images/perfil526ace.png' class='imgPerfil'>";
+            }
+            else
+            {
+                dropbtnUsuario.Visible = false;
+                btnLog.Visible = true;                                                                          //Deslogado
+                btnCad.Visible = true;
+            }
+
+        }
+
+
         Filtro filtro;
         ListaUsuario ListaUsuario = new ListaUsuario();
         ListaEvento ListaEvento = new ListaEvento();
@@ -16,6 +41,8 @@ namespace MaisCultura
         Usuario Login;
 
         private void ListarEventos(string usuario) {
+
+
 
             List<Evento> Eventos;
             if (ListaUsuario.Buscar(usuario) != null)
@@ -108,22 +135,7 @@ namespace MaisCultura
         }
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Request.QueryString["l"] != null)
-            {
-                Login = ListaUsuario.Buscar(Request.QueryString["l"]);      //Logado
-                dropbtnUsuario.Text = Login.Nome;
-                litDropDownHome.Text = $"<a href='eventos.aspx?l={Login.Codigo}'>Início</a>";
-                litDropDownPerfil.Text = $"<a href='perfil.aspx?l={Login.Codigo}'>Perfil</a>";
-                dropbtnUsuario.Visible = true;
-                btnLog.Visible = false;
-                btnCad.Visible = false;
-                litImgPerfil.Text = $@"<img src='Images/perfil526ace.png' class='imgPerfil'>";
-            } else
-            {
-                dropbtnUsuario.Visible = false;                             //Deslogado
-                btnLog.Visible = true;
-                btnCad.Visible = true;
-            }
+            HandleLogin();
 
             filtro = new Filtro();
             filtro.Inicio = StrinToDate(dtStart.Text);

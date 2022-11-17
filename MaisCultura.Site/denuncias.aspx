@@ -21,18 +21,26 @@
                     <img src="Images/logoNomeMenor.png" class="logo-header" />
                 </figure>
 
-                <article class="usuario">
-                    <div class="menuUsuario">
-                        <asp:Button CssClass="dropbtn" ID="dropbtnUsuario" runat="server" Text="" />
-                        <div class="dropdown-content">
-                            <asp:Literal ID="litEventos" runat="server"></asp:Literal>
-                            <a href="denuncias.aspx">Denúncias</a>
-                            <asp:Literal ID="litPerfil" runat="server"></asp:Literal>
-                            <a href="eventos.aspx">Sair</a>
-                        </div>
+                <article class="buttons">
+                <asp:Button ID="btnLog" runat="server" Text="Entrar" class="button button-log" />
+                <asp:Button ID="btnCad" runat="server" Text="Cadastrar" class="button button-log" />
+            </article>
+
+            <article class="usuario">
+                <div class="menuUsuario">
+                    <asp:Button CssClass="dropbtn" ID="dropbtnUsuario" runat="server" Text="Nome" />
+                    <div class="dropdown-content">
+                    <asp:Literal ID="litDropDownHome" runat="server"></asp:Literal>  <%--Possível aplicar databinder--%>
+                    <asp:Literal ID="litDropDownPerfil" runat="server"></asp:Literal>
+                    <asp:Literal ID="litDropDownDenuncias" runat="server"></asp:Literal>
+                    <a href="eventos.aspx">Sair</a>
                     </div>
-                    <img src="Images/perfil526ace.png" class="imgPerfil">
-                </article>
+                </div>
+               
+                <%--<img src="Images/perfil526ace.png" class="imgPerfil">--%>
+                <asp:Literal ID="litImgPerfil" runat="server"></asp:Literal>
+                
+            </article>
             </header>
 
             <section class="sectionBack">
