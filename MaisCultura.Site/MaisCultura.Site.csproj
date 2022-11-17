@@ -132,6 +132,7 @@
     <Content Include="MaisCultura.Site.csproj.user" />
     <Content Include="denuncias.aspx" />
     <Content Include="meu-perfil.aspx" />
+    <Content Include="perfil.aspx" />
     <Content Include="PerfilOutroUsuario.aspx" />
     <Content Include="Styles\CriarEvento.css" />
     <Content Include="Styles\denuncia.css" />
@@ -200,6 +201,13 @@
     </Compile>
     <Compile Include="meu-perfil.aspx.designer.cs">
       <DependentUpon>meu-perfil.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="perfil.aspx.cs">
+      <DependentUpon>perfil.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="perfil.aspx.designer.cs">
+      <DependentUpon>perfil.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

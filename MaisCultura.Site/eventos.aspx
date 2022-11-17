@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,7 +23,7 @@
 
         <header class="header-primaria">
             <figure class="figure-header">
-                <img src="Images/logoNomeMenor.png" class="logo-header" />
+                <img src="Images/logoNomeMenor.png" class="logo-header"/>
             </figure>
 
             <article class="buttons">
@@ -35,16 +35,16 @@
                 <div class="menuUsuario">
                     <asp:Button CssClass="dropbtn" ID="dropbtnUsuario" runat="server" Text="Nome" />
                     <div class="dropdown-content">
-                        <asp:Literal ID="litDropDownHome" runat="server"></asp:Literal>
-                        <%--Possível aplicar databinder--%>
-                        <asp:Literal ID="litDropDownPerfil" runat="server"></asp:Literal>
-                        <a href="eventos.aspx">Sair</a>
+                    <asp:Literal ID="litDropDownHome" runat="server"></asp:Literal>  <%--Possível aplicar databinder--%>
+                    <asp:Literal ID="litDropDownPerfil" runat="server"></asp:Literal>
+                    <asp:Literal ID="litDropDownDenuncias" runat="server"></asp:Literal>
+                    <a href="eventos.aspx">Sair</a>
                     </div>
                 </div>
-
+               
                 <%--<img src="Images/perfil526ace.png" class="imgPerfil">--%>
                 <asp:Literal ID="litImgPerfil" runat="server"></asp:Literal>
-
+                
             </article>
         </header>
 
@@ -54,13 +54,13 @@
                     O
                     <p2 class="highlight">
                         +Cultura
-                    </p2>
+                    </p2> 
                     é uma plataforma para todos
                 </p>
             </article>
 
             <figure class="figure-header">
-                <img src="Images/Background_Grafismo_Hexagono.png" class="grafismo-header" />
+                <img src="Images/Background_Grafismo_Hexagono.png" class="grafismo-header"/>
             </figure>
         </header>
 
@@ -69,27 +69,27 @@
             </section>
 
             <section class="section-limpar">
-                <article id="btnLimpar" class="button-clear">Limpar Filtros</article>
+                <article ID="btnLimpar" class="button-clear">Limpar Filtros</article>
             </section>
         </div>
 
         <main class="principal">
             <div class="filtros">
                 <h2 class="filtros-titulos">Categoria</h2>
-                <article id="CatPintura" class="filtros-subtitulos categoria">Pintura</article>
-                <article id="CatMusica" class="filtros-subtitulos categoria">Musica</article>
-                <article id="CatEsporte" class="filtros-subtitulos categoria">Esporte</article>
-                <article id="CatCinema" class="filtros-subtitulos categoria">Cinema</article>
-                <article id="CatTeatro" class="filtros-subtitulos categoria">Teatro</article>
-                <article id="CatJogos" class="filtros-subtitulos categoria">Jogos</article>
-                <article id="CatRPG" class="filtros-subtitulos categoria">RPG</article>
-                <asp:Button ID="btnVerMais" runat="server" Text="Ver mais categorias" class="filtros-subtitulos verMais" />
+                <article ID="CatPintura" class="filtros-subtitulos categoria">Pintura</article>
+                <article ID="CatMusica" class="filtros-subtitulos categoria">Musica</article>
+                <article ID="CatEsporte" class="filtros-subtitulos categoria">Esporte</article>
+                <article ID="CatCinema" class="filtros-subtitulos categoria">Cinema</article>
+                <article ID="CatTeatro" class="filtros-subtitulos categoria">Teatro</article>
+                <article ID="CatJogos" class="filtros-subtitulos categoria">Jogos</article>
+                <article ID="CatRPG" class="filtros-subtitulos categoria">RPG</article>
+                <asp:Button ID="btnVerMais" runat="server" Text="Ver mais categorias" class="filtros-subtitulos verMais"/>
 
                 <br />
 
                 <h2 class="filtros-titulos">Local</h2>
                 <asp:TextBox ID="txtLocal" runat="server" CssClass="txtLocal" placeholder="Insira aqui a cidade..."></asp:TextBox>
-
+                
                 <h2 class="filtros-titulos">Datas e horários</h2>
                 <h2 class="filtros-subtitulos data">Início</h2>
                 <asp:TextBox type="datetime-local" ID="dtStart" name="dtStart" class="dt dtStart" runat="server"></asp:TextBox>
@@ -98,7 +98,7 @@
 
                 <h2 class="filtros-titulos aval">Avaliação</h2>
                 <asp:DropDownList ID="dpdAval" runat="server" CssClass="dpdAval">
-                    <asp:ListItem Selected>Todos</asp:ListItem>
+                    <asp:ListItem selected>Todos</asp:ListItem>
                     <asp:ListItem>Uma estrela</asp:ListItem>
                     <asp:ListItem>Duas estrelas</asp:ListItem>
                     <asp:ListItem>Três estrelas</asp:ListItem>
@@ -116,7 +116,7 @@
                 </section>
 
                 <hr />
-
+                
                 <div class="event-manager">
                     <div class="eventos">
                         <asp:Literal ID="litEventos" runat="server"></asp:Literal>
@@ -169,8 +169,8 @@
 
                 <asp:ListItem runat="server" CssClass="listDdl" Value="Empresa">
                     Empresa
-                </asp:ListItem>
-            </asp:DropDownList>
+                </asp:ListItem> 
+            </asp:DropDownList> 
 
             <div class="dtNasc">
                 <asp:Label ID="lblNasc" runat="server" Text="Data de Nascimento"></asp:Label>
@@ -178,9 +178,9 @@
                 <div class="ddlsDtNasc">
 
                     <asp:TextBox ID="txtData" runat="server" type="date"> CssClass="txtCadDt" ID="dia"</asp:TextBox>
-                </div>
+                </div>          
             </div>
-
+            
             <div class="sexo">
                 <asp:Label ID="lblSexo" runat="server" Text="Sexo"></asp:Label>
 
@@ -199,8 +199,8 @@
                 </asp:DropDownList>
             </div>
 
-            <asp:Button ID="btnCadastrar" runat="server" Text="Cadastrar" OnClick="btnCadastrar_Click1" />
-            <asp:Button ID="btnSairCad" runat="server" Text="Fechar" />
+            <asp:Button ID="btnCadastrar" runat="server" Text="Cadastrar" OnClick="btnCadastrar_Click1"/>
+            <asp:Button ID="btnSairCad" runat="server" Text="Fechar"/>
         </div>
 
         <div class="denuncia pop" id="denuncia">
@@ -228,7 +228,7 @@
             <asp:Button ID="btnSairDenuncia" runat="server" Text="Fechar" />
         </div>
     </form>
-
+    
     <script type="text/javascript" src="js/eventos.js"></script>
     <script type="text/javascript" src="js/save.js"></script>
     <script type="text/javascript" src="js/CadastroLogin.js"></script>

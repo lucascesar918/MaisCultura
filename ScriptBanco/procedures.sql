@@ -315,12 +315,6 @@ BEGIN
 	GROUP BY de.dt_dia;
 END$$
 
-DROP PROCEDURE IF EXISTS BuscarInteressesEvento$$
-CREATE PROCEDURE BuscarInteressesEvento( pEvento INT )
-BEGIN
-	SELECT count(cd_usuario) "Interesses" FROM interesse WHERE cd_evento = pEvento;
-END$$
-
 DROP PROCEDURE IF EXISTS BuscarImagemEvento$$
 CREATE PROCEDURE BuscarImagemEvento( pEvento INT )
 BEGIN
@@ -533,6 +527,22 @@ BEGIN
 		dt_denuncia "Data",
 		hr_denuncia "Hora"
 	FROM denuncia;
+END$$
+
+DROP PROCEDURE IF EXISTS BuscarDenuncias$$
+CREATE PROCEDURE BuscarDenuncias(pCodigo INT)
+BEGIN
+	SELECT
+		d.cd_denuncia "CodigoDenuncia",
+		d.cd_evento "CodigoEvento",
+		d.cd_usuario "@",
+		DATE_FORMAT(d.dt_denuncia, "%d/%m/%Y") "Data",
+		d.hr_denuncia "Hora",
+		lm.nm_motivo "Descricao"
+	FROM denuncia d
+	JOIN motivo m ON d.cd_denuncia = m.cd_denuncia
+	JOIN lista_motivo lm ON m.cd_motivo = lm.cd_motivo
+	WHERE d.cd_denuncia = pCodigo;
 END$$
 
 DROP PROCEDURE IF EXISTS BuscarDenunciasUsuario$$

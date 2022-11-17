@@ -11,7 +11,7 @@ namespace MaisCultura.Site
 {
 
 
-    public partial class PerfilOutroUsuario
+    public partial class perfil
     {
 
         /// <summary>
