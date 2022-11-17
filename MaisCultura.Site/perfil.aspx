@@ -25,7 +25,7 @@
                 <div class="menuUsuario">
                   <button class="dropbtn">João Carlos</button>
                     <div class="dropdown-content">
-                        <a href="eventos.aspx">Início</a> // Adicionar ablubluble
+                        <a href="eventos.aspx">Início</a>
                         <a href="meu-perfil.aspx">Perfil</a>
                         <a href="meus-eventos.aspx">Meus Eventos</a>
                         <a href="eventos.aspx.aspx">Sair</a>
