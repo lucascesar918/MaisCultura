@@ -28,7 +28,7 @@
 
             <article class="buttons">
                 <asp:Button ID="btnLog" runat="server" Text="Entrar" class="button button-log" />
-                <asp:Button ID="btnCad" runat="server" Text="Cadastrar" class="button button-log" />
+                <asp:Button ID="btnCad" runat="server" Text="Cadastrar" class="button button-cad" />
             </article>
 
             <article class="usuario">

@@ -33,13 +33,15 @@
 
         <div class="geral">
             <header class="header-primaria">
-                <figure class="figure-header">
-                    <img src="Images/logoNomeMenor.png" class="logo-header" />
-                </figure>
+                <a href="eventos.aspx">
+                    <figure class="figure-header">
+                        <img src="Images/logoNomeMenor.png" class="logo-header" />
+                    </figure>
+                </a>
 
                 <article class="buttons">
                     <asp:Button ID="btnLog" runat="server" Text="Entrar" class="button button-log" OnClick="btnLog_Click" />
-                    <asp:Button ID="btnCad" runat="server" Text="Cadastrar" class="button button-log" OnClick="btnCad_Click" />
+                    <asp:Button ID="btnCad" runat="server" Text="Cadastrar" class="button button-cad" OnClick="btnCad_Click" />
                 </article>
 
                 <article class="usuario">
@@ -47,13 +49,11 @@
                         <asp:Button CssClass="dropbtn" ID="dropbtnUsuario" runat="server" Text="Nome" />
                         <div class="dropdown-content">
                             <asp:Literal ID="litDropDownHome" runat="server"></asp:Literal>
-                            <%--Possível aplicar databinder--%>
                             <asp:Literal ID="litDropDownPerfil" runat="server"></asp:Literal>
                             <a href="eventos.aspx">Sair</a>
                         </div>
                     </div>
 
-                    <%--<img src="Images/perfil526ace.png" class="imgPerfil">--%>
                     <asp:Literal ID="litImgPerfil" runat="server"></asp:Literal>
 
                 </article>
