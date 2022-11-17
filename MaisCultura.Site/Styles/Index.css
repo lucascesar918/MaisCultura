@@ -172,12 +172,19 @@ html{
     align-items: center;
     justify-content: space-between;   
 }
+
+#btnCad{
+    border: none;
+    background-color: #526ace;
+    color: white;
+}
  
 .button {
     width: 100px;
     height: 80%;
     border: none;
-    font-size: 12px;
+    font-size: 15px;
+    font-weight: 600;
     padding: 5px;
     margin: 5px;
     border-radius: 2.5px;
@@ -435,7 +442,7 @@ html{
 
 .event-manager{
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
 }
 
 .eventos {
@@ -443,7 +450,8 @@ html{
     display: flex;
     justify-content: left;
     flex-wrap: wrap;
-    width: 91%;
+    width: 90%;
+    box-sizing: border-box;
 }
 
 /* Css do Card*/
@@ -456,7 +464,7 @@ html{
     border-radius: 20px;
     border: 1px solid black;
     padding: 10px;
-    margin: 0px 0px 25px 25px;
+    margin: 10px;
     transition: box-shadow;
     transition-duration: 0.3s;
     transition-timing-function: ease-in-out;
@@ -625,15 +633,7 @@ table {
     color: #526ace;
 }
 
-.cadastrar {
-    position: absolute;
-    top: 2.5%;
-    left: 0%;
-    border-bottom: solid #526ace;
-    border-radius: 0px;
-    width: 100%;
-    margin-bottom: 10%;
-}
+
 
 .logar {
     border-radius: 0px;
@@ -734,6 +734,15 @@ table {
     font-size: 2vh;
 }
 
+#txtData{
+    width: 100%;
+    box-sizing: border-box;
+    padding: 5px;
+    font-size: 14px;
+    border: none;
+    border-radius: 2.5px;
+}
+
 .input:hover {
     filter: opacity(90%);
 }
@@ -771,9 +780,10 @@ table {
 
 .login {
     background: #f1f1f1;
-    position: absolute;
-    top: 40%;
-    left: 38%;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     font-size: 13px;
     border: 1px solid #526ace;
     border-radius: 5px;
@@ -849,19 +859,21 @@ table {
 .cadastrar {
     background: #f1f1f1;
     width: 450px;
-    padding: 30px;
+    padding: 15px 30px 30px 30px;
     height: fit-content;
     display: flex;
     flex-direction: column;
-    position: absolute;
-    top: 25%;
-    left: 35%;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     border: 1px solid #526ace;
     border-radius: 5px;
 }
 
 .headerCad {
     width: 100%;
+    box-sizing: border-box;
     padding: 10px;
     display: flex;
     flex-direction: row;
@@ -870,7 +882,7 @@ table {
 }
 
     .headerCad h4 {
-        font-size: 16px;
+        font-size: 18px;
         font-weight: 800;
     }
 
@@ -884,9 +896,9 @@ table {
 }
 
 .txtCadNm {
-    width: 49%;
+    width: 47%;
     padding: 5px;
-    font-size: 12px;
+    font-size: 14px;
     border: none;
     color: black;
     border-radius: 2.5px;
@@ -899,7 +911,7 @@ table {
 .txtCad {
     width: 100%;
     padding: 5px;
-    font-size: 12px;
+    font-size: 14px;
     margin-bottom: 5px;
     border: none;
     color: black;
@@ -915,6 +927,7 @@ table {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-bottom: 10px;
 }
 
 .ddlsDtNasc {
@@ -943,7 +956,7 @@ table {
 #ddlSexo {
     width: 100%;
     padding: 5px;
-    font-size: 12px;
+    font-size: 14px;
     margin-bottom: 5px;
     border: none;
     color: black;
@@ -958,6 +971,10 @@ table {
 
 #lblSexo {
     font-size: 14px;
+    margin-bottom: 5px;
+}
+
+#ddlTipoUser{
     margin-bottom: 5px;
 }
 

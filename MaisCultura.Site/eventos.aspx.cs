@@ -51,7 +51,7 @@ namespace MaisCultura
 
                     </article>
 
-                    <a href='EventoEspecifico.aspx'>
+                    <a href='evento.aspx'>
                         <article class='card-tittle'>
                                 <h2>{evento.Titulo}</h2>
                         </article>
@@ -63,7 +63,7 @@ namespace MaisCultura
                     </article>
 
                     <article class='card-image'>
-                        <a href='EventoEspecifico.aspx'>
+                        <a href='evento.aspx'>
                             <figure>
                                 <img src='{ListaEvento.BuscarImagem(evento.Codigo)}' alt='Interclasse de cria' class='foto-evento'>
                             </figure>
