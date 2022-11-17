@@ -127,7 +127,8 @@ html{
     padding: 10px 0px 10px 0px;
     background-color: white;
     position: fixed;
-    margin-top: -60px;
+    top: 0;
+    z-index: 3;
 }
 
 .header-secundaria {
@@ -293,7 +294,6 @@ html{
     flex-direction: column;
     justify-content: left;
     padding: 20px;
-
 }
 
     .filtros::-webkit-scrollbar {
@@ -328,7 +328,7 @@ html{
     padding: 5px 5px 5px 5px;
     margin: 5px 5px 5px 0px;
     border: none;
-    border-radius: 2.5px;
+    border-radius: 12px;
 }
 
 .categoria:hover {
@@ -359,9 +359,10 @@ html{
     width: 100%;
     height: 30px;
     box-sizing: border-box;
-    border-radius: 5px;
+    border-radius: 15px;
     border: 1px solid #526ace;
     margin: 10px 10px 20px 0px;
+    padding: 10px;
 }
 
 .txtLocal::placeholder{
@@ -378,7 +379,7 @@ html{
     margin-bottom: 1vh;
     font-size: 12px;
     border: 1px solid #526ace;
-    border-radius: 5px;
+    border-radius: 15px;
     padding: 5px;
 }
 
@@ -397,8 +398,10 @@ html{
     box-sizing: border-box;
     border: none;
     border-bottom: 1px solid #526ace;
+    outline: none;
     font-size: 12px;
     padding: 5px;
+    cursor: pointer;
 }
 
     .dpdAval::selection {
@@ -593,10 +596,12 @@ html{
 }
 
 .time {
-    width: 100%;
+    width: 50%;
     box-sizing: border-box;
     display: flex;
     justify-content: right;
+    color: #000;
+    font-palette: dark;
 }
 
 .dateTime, .card-local {
@@ -1012,4 +1017,9 @@ table {
 
 .hidden{
     display: none !important;
+}
+
+
+html.sr .eventos {
+    visibility: hidden;
 }
