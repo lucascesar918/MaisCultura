@@ -14,17 +14,22 @@ namespace MaisCultura
             return str.Length > TamanhoMaximo ? str.Substring(0, TamanhoMaximo - 3) + "..." : str;
         }
 
+        ListaDenuncia ListaDenuncia = new ListaDenuncia();
+        ListaUsuario ListaUsuario = new ListaUsuario();
+        ListaEvento ListaEvento = new ListaEvento();
+
+        Usuario Login;
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            ListaDenuncia ListaDenuncia = new ListaDenuncia();
-            ListaUsuario ListaUsuario = new ListaUsuario();
-            ListaEvento ListaEvento = new ListaEvento();
-            Usuario Usuario = ListaUsuario.Buscar(Request.QueryString["u"]);
+
+            Login = ListaUsuario.Buscar(Request.QueryString["l"]);
+
             List<Denuncia> Denuncias = ListaDenuncia.Listar();
 
-            litEventos.Text = $"<a href=\"eventos.aspx?u={Usuario.Codigo}\">Eventos</a>";
-            dropbtnUsuario.Text = Usuario.Nome;
-            litPerfil.Text = $"<a href=\"perfil.aspx?u={Usuario.Codigo}\">Perfil</a>";
+            litEventos.Text = $"<a href=\"eventos.aspx?l={Login.Codigo}\">Eventos</a>";
+            dropbtnUsuario.Text = Login.Nome;
+            litPerfil.Text = $"<a href=\"perfil.aspx?u={Login.Codigo}&l={Login.Codigo}\">Perfil</a>";
 
             foreach (Denuncia denuncia in Denuncias)
                 litDenuncias.Text += $@"<section class='denuncia'>      
