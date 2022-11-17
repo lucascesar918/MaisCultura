@@ -68,8 +68,16 @@ namespace MaisCultura.Biblioteca
             return denuncias;
         }
 
-        //public Denuncia Buscar() { 
-        
-        //}
+        public List<Denuncia> Buscar(int codigo) {
+
+            List<Denuncia> denuncias = new List<Denuncia>();
+
+            MySqlDataReader data = Query("BuscarDenuncias", ("pCodigo", codigo));
+
+            while (data.Read())
+                denuncias.Add(DataReaderToDenuncia(data));
+
+            return denuncias;
+        }
     }
 }
