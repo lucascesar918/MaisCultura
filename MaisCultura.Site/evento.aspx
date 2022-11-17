@@ -28,6 +28,10 @@
         <div id="shade" class="shade"></div>
 
         <form id="form1" runat="server">
+            <asp:ScriptManager ID="ScriptManager1" runat="server">
+
+            </asp:ScriptManager>
+
            <header class="header-primaria">
             <figure class="figure-header">
                 <img src="Images/logoNomeMenor.png" class="logo-header"/>
@@ -72,11 +76,6 @@
                                     <asp:Button ID="btnSave" runat="server" Text="" cssClass="save naoSalvo" OnClick="btnSave_Click" AutoPostBack="False"/>
                                 </ContentTemplate>
                             </asp:UpdatePanel>
-                            <figure class="save">
-
-                                <img class="save" src="Images/save.png" />
-
-                            </figure>
                         </div>
                         <article class="tags">
                             <h2 class="categorias">

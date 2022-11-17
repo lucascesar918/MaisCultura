@@ -31,8 +31,7 @@ namespace MaisCultura
                 Usuario usuarioEvento = ListaUsuario.Buscar(evento.Responsavel);
                 List<Categoria> categorias = evento.Categorias;
                 List<DiaEvento> dias = evento.Dias;
-                litEventos.Text += $@"<a href='evento.aspx?e={evento.Codigo}'>
-                <section class='card'>
+                litEventos.Text += $@"<section class='card'>
                     <article class='card-header'>
                         <figure>
                             <img src='Images/perfil.png' alt='Imagem de Perfil' class='perfil'>
@@ -42,16 +41,10 @@ namespace MaisCultura
                             <h2>{usuarioEvento.Nome}</h2>
                             <h5>{usuarioEvento.Codigo}</h5>
                         </article>
-                        
-                        <asp:UpdatePanel ID='updBtnSave{evento.Codigo}' runat='server' UpdateMode='Conditional'>
-                                <ContentTemplate>
-                                    <asp:Button ID='btnSave{evento.Codigo}' runat='server' Text='' cssClass='save naoSalvo' OnClick='btnSave_Click' />
-                                </ ContentTemplate >
-                        </ asp:UpdatePanel >
 
                     </article>
 
-                    <a href='EventoEspecifico.aspx'>
+                    <a href='evento.aspx'>
                         <article class='card-tittle'>
                                 <h2>{evento.Titulo}</h2>
                         </article>
@@ -63,7 +56,7 @@ namespace MaisCultura
                     </article>
 
                     <article class='card-image'>
-                        <a href='EventoEspecifico.aspx'>
+                        <a href='evento.aspx'>
                             <figure>
                                 <img src='{ListaEvento.BuscarImagem(evento.Codigo)}' alt='Interclasse de cria' class='foto-evento'>
                             </figure>
