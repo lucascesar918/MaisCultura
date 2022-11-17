@@ -7,7 +7,7 @@
 // </gerado automaticamente>
 //------------------------------------------------------------------------------
 
-namespace MaisCultura
+namespace MaisCultura.Site
 {
 
 

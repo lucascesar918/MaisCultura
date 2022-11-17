@@ -37,7 +37,8 @@
                     <div class="dropdown-content">
                     <asp:Literal ID="litDropDownHome" runat="server"></asp:Literal>  <%--Possível aplicar databinder--%>
                     <asp:Literal ID="litDropDownPerfil" runat="server"></asp:Literal>
-                     <a href="eventos.aspx">Sair</a>
+                    <asp:Literal ID="litDropDownDenuncias" runat="server"></asp:Literal>
+                    <a href="eventos.aspx">Sair</a>
                     </div>
                 </div>
                
