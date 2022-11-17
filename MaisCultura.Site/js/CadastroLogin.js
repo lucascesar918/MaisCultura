@@ -1,17 +1,19 @@
-﻿
-$(document).ready(function (e) {
+﻿$(document).ready(function (e) {
 
     $("#btnCad").click(function (e) {
         e.preventDefault();
+        window.scrollTo(0, 0);
         $("#cad").toggle();
         $("#shade").toggle();
         $("html, body").css({ 'overflow': 'hidden' });
+
     });
 
     $("#btnLog").click(function (e) {
         e.preventDefault();
+        window.scrollTo(0, 0);
         $("#log").toggle();
-        $("#shade").toggle();
+        $("#shade2").toggle();
         $("html, body").css({ 'overflow': 'hidden' });
     });
 
@@ -25,14 +27,22 @@ $(document).ready(function (e) {
     $("#btnSairLogin").click(function (e) {
         e.preventDefault();
         $("#log").toggle();
-        $("#shade").toggle();
+        $("#shade2").toggle();
         $("html, body").css({ 'overflow': 'auto' });
     });
 
     $("#shade").click(function (e) {
         e.preventDefault();
-        $("#pop").toggle();
+        $("#cad").toggle();
         $("#shade").toggle();
         $("html, body").css({ 'overflow': 'auto' });
     });
+
+    $("#shade2").click(function (e) {
+        e.preventDefault();
+        $("#log").toggle();
+        $("#shade2").toggle();
+        $("html, body").css({ 'overflow': 'auto' });
+    });
+
 });

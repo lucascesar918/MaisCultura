@@ -11,15 +11,20 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
+    <script src="https://unpkg.com/scrollreveal@4"></script>
+
     <link rel="stylesheet" type="text/css" href="Styles/Index.css" />
 
     <title>+Cultura | Eventos</title>
 </head>
 <body>
 
-    <div id="shade" class="shade"></div>
+    
 
     <form id="form1" runat="server">
+
+        <div id="shade" class="shade"></div>
+        <div id="shade2" class="shade"></div>
 
         <header class="header-primaria">
             <figure class="figure-header">
@@ -28,7 +33,7 @@
 
             <article class="buttons">
                 <asp:Button ID="btnLog" runat="server" Text="Entrar" class="button button-log" />
-                <asp:Button ID="btnCad" runat="server" Text="Cadastrar" class="button button-log" />
+                <asp:Button ID="btnCad" runat="server" Text="Cadastrar" class="button button-cad" />
             </article>
 
             <article class="usuario">
@@ -40,6 +45,8 @@
                      <a href="eventos.aspx">Sair</a>
                     </div>
                 </div>
+
+                
                
                 <%--<img src="Images/perfil526ace.png" class="imgPerfil">--%>
                 <asp:Literal ID="litImgPerfil" runat="server"></asp:Literal>
@@ -49,7 +56,7 @@
 
         <header class="header header-secundaria">
             <article class="header-texto">
-                <p>
+                <p class="p">
                     O
                     <p2 class="highlight">
                         +Cultura
@@ -76,7 +83,7 @@
             <div class="filtros">
                 <h2 class="filtros-titulos">Categoria</h2>
                 <article ID="CatPintura" class="filtros-subtitulos categoria">Pintura</article>
-                <article ID="CatMusica" class="filtros-subtitulos categoria">Musica</article>
+                <article ID="CatMusica" class="filtros-subtitulos categoria">Música</article>
                 <article ID="CatEsporte" class="filtros-subtitulos categoria">Esporte</article>
                 <article ID="CatCinema" class="filtros-subtitulos categoria">Cinema</article>
                 <article ID="CatTeatro" class="filtros-subtitulos categoria">Teatro</article>
@@ -231,5 +238,19 @@
     <script type="text/javascript" src="js/eventos.js"></script>
     <script type="text/javascript" src="js/save.js"></script>
     <script type="text/javascript" src="js/CadastroLogin.js"></script>
+
+    <script>
+
+        ScrollReveal({
+            distance: '60px',
+            duration: 1000,
+            delay: 400
+        });
+
+        ScrollReveal().reveal('.card', { reset: true,delay: 200 ,interval: 50 });
+        ScrollReveal().reveal('.grafismo-header', { delay: 100, origin: 'right' })
+        ScrollReveal().reveal('.p', { delay: 100, origin: 'right' });
+</script>
+
 </body>
 </html>
