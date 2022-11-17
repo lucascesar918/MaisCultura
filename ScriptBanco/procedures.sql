@@ -315,12 +315,6 @@ BEGIN
 	GROUP BY de.dt_dia;
 END$$
 
-DROP PROCEDURE IF EXISTS BuscarInteressesEvento$$
-CREATE PROCEDURE BuscarInteressesEvento( pEvento INT )
-BEGIN
-	SELECT count(cd_usuario) "Interesses" FROM interesse WHERE cd_evento = pEvento;
-END$$
-
 DROP PROCEDURE IF EXISTS BuscarImagemEvento$$
 CREATE PROCEDURE BuscarImagemEvento( pEvento INT )
 BEGIN
