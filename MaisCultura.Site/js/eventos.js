@@ -1,4 +1,4 @@
-﻿console.log("TA FELIZ LUCAS?");
+﻿console.log("TA FELIZ LUCAS?"); //TÔ JOÃO PEDRO, EU TÔ; SÓ FALTOU USAR A PORRA DA API
 
 var categorias = document.querySelectorAll(".categoria");
 var localTags = document.getElementById("localTags");

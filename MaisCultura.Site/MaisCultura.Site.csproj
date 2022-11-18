@@ -109,6 +109,7 @@
   <ItemGroup>
     <Content Include="criar-evento.aspx" />
     <Content Include="denuncia.aspx" />
+    <Content Include="erro.html" />
     <Content Include="evento.aspx" />
     <Content Include="meu-evento.aspx" />
     <Content Include="eventos.aspx" />
