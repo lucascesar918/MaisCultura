@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>+Cultura | Erro</title>
+</head>
+<body>
+    <h2>Erro!</h2>
+    <h4 id="msgErro"></h4>
+    <button>Voltar</button>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+    <script>
+        const paramsURL = new URLSearchParams(window.location.search);
+
+        // Query strings
+            // "login" para o código de usuário que está logado
+            // "msg" para a mensagem de erro dinâmica
+
+        var login = paramsURL.get("l");
+        var msg = paramsURL.get("msg").length == 0 ? "Isso é uma página de erro, não era pra você estar aqui!" : paramsURL.get("msg"); // Lida com as ocasiões do usuário entrar sem motivo na página ou realmente por um erro
+
+        console.log("Tá procurando o que aqui? 🤨");
+        $(document).ready(function (e) {
+            $("#msgErro").text(msg);
+
+            $("button").click(function (e){
+                window.location.replace(l.length == 0 ? "eventos.aspx" : `eventos.aspx?l=${l}`); //Lida com as ocasiões do usuário vir para a página de erro logado ou não
+            });
+        })
+        
+    </script>
+</body>
+</html>

@@ -109,6 +109,7 @@
   <ItemGroup>
     <Content Include="criar-evento.aspx" />
     <Content Include="denuncia.aspx" />
+    <Content Include="erro.html" />
     <Content Include="evento.aspx" />
     <Content Include="meu-evento.aspx" />
     <Content Include="eventos.aspx" />
@@ -132,7 +133,6 @@
     <Content Include="MaisCultura.Site.csproj.user" />
     <Content Include="denuncias.aspx" />
     <Content Include="perfil.aspx" />
-    <Content Include="PerfilOutroUsuario.aspx" />
     <Content Include="Styles\CriarEvento.css" />
     <Content Include="Styles\denuncia.css" />
     <Content Include="Styles\EventoEspecifico.css" />
