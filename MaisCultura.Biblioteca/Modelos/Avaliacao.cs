@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Biblioteca
+namespace MaisCultura.Biblioteca
 {
     public class Avaliacao
     {
@@ -18,6 +18,8 @@ namespace Biblioteca
         public string CodigoUsuario { get; set; }
 
         public int CodigoEvento { get; set; }
+
+        public DateTime Data { get; set; }
 
         public string Descricao { get; set; }
 

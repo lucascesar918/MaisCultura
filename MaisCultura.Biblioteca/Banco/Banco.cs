@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using MySql.Data.MySqlClient;
 
-namespace Biblioteca
+namespace MaisCultura.Biblioteca
 {
     public class Banco
     {
@@ -14,19 +14,21 @@ namespace Biblioteca
         public Banco()
         {
             LinhaConexao = Conexao.linhaConexao;
+            _conexao = new MySqlConnection(LinhaConexao);
+
         }
 
         private void Conectar()
         {
-            _conexao = new MySqlConnection(LinhaConexao);
             try
             {
-                this._conexao.Open();
+                if(_conexao.State != System.Data.ConnectionState.Open)
+                    this._conexao.Open();
 
             }
-            catch
+            catch(Exception ex)
             {
-                throw new Exception("Erro ao tentar conectar ao servidor!");
+                throw new Exception("Erro ao tentar conectar ao servidor!", ex);
             }
 
         }

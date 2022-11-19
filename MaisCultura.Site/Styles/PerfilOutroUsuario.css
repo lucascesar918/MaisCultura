@@ -31,22 +31,24 @@ main {
     width: 70%;
     height: 100%;
     padding: 30px;
+    box-sizing: border-box;
 }
 
 .h2 {
-    font-size: 3.5vh;
+    font-size: 22.5px;
     margin: 10px;
-    /*padding: 10px;*/
-    text-decoration: underline;
 }
 
+
+
 .header {
+    height: 45px;
     width: 100%;
     display: flex;
-    /*justify-content: space-between;*/
-    align-content: center;
-    height: 9vh;
-    background: #fff;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 10px 0px 10px 0px;
 }
 
 .usuario {
@@ -56,9 +58,10 @@ main {
     right: 0;
 }
 
+
 .imgperfilUser {
-    width: 7.5vw;
-    height: 16vh;
+    width: 6.5vw;
+    height: 6.5vw;
 }
 
 .perfilUsuario {
@@ -80,17 +83,43 @@ main {
     align-items: center;
 }
 
+.txtDescricao {
+    background-color: #f1f1f1;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#lblNmUser {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+#lblArrobaUser {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+#lblDtAval {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+#lblMedia{
+    font-size: 16px;
+    font-weight: 900;
+}
+
 .nmCompleto {
-    font-size: 5vh;
+    font-size: 28px;
 }
 
 .arroba {
-    font-size: 2.7vh;
-    margin: 10px;
+    font-size: 15px;
+    margin: 10px 10px 10px 0px;
 }
 
 .tipoUsuario {
-    font-size: 2.2vh;
+    font-size: 12px;
     margin: 10px;
     background-color: #f1f1f1;
     border: none;
@@ -99,76 +128,84 @@ main {
     font-weight: 500;
 }
 
-/*A partir daqui Css do card apenas*/
-
+/* Css do Card*/
 .card {
-    width: 23.63vw;
+    width: 300px;
     height: fit-content;
-    background: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     border-radius: 20px;
-    padding: 1.5vh 1vw;
     border: 1px solid black;
-    margin: 10px;
+    padding: 10px;
     transition: box-shadow;
     transition-duration: 0.3s;
     transition-timing-function: ease-in-out;
+    background-color: #ffffff;
 }
 
-   /* .card:hover {
-        box-shadow: 0 0 11px rgba(33,33,33,.6);
-    }*/
+    .card:hover {
+        transition-duration: 0.3s;
+        transition-timing-function: ease-in-out;
+        box-shadow: rgba(100, 100, 111, 0.8) 0px 7px 20px 0px;
+    }
 
 .card-header {
+    width: 100%;
+    box-sizing: border-box;
     display: flex;
     justify-content: left;
+    align-items: center;
 }
 
 .perfil {
-    width: 4vw;
-    height: 4vw;
+    width: 3vw;
+    height: 3vw;
+    margin: 5px;
 }
 
 .card-header-nome {
-    padding-top: 1.5vh;
-    padding-left: 0.8vw;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
     .card-header-nome h2 {
-        font-size: 2.5rem;
+        font-size: 15px;
     }
 
     .card-header-nome h5 {
-        font-size: 2rem;
+        font-size: 12px;
         font-weight: 400;
     }
 
 .save {
     width: 25px;
     height: 25px;
-    margin-top: 1vh;
-    margin-right: 0.5vw;
 }
 
 .card-tittle {
-    margin-top: 1vh;
-    padding-left: 1vw;
-    padding-right: 1vw;
+    width: 100%;
+    padding: 10px;
 }
 
     .card-tittle h2 {
-        font-size: 4rem;
+        font-size: 15px;
     }
 
 .card-tags {
+    width: 100%;
+    box-sizing: border-box;
     display: flex;
     justify-content: space-around;
-    margin-top: 1.5vh;
+    align-items: center;
+    margin-top: 10px;
 }
 
     .card-tags .tag {
         background: #526ACE;
-        padding: 1vh;
+        padding: 5px;
         height: auto;
         margin-right: 0px;
         font-weight: 400;
@@ -176,39 +213,70 @@ main {
     }
 
 .card-image {
-    margin-top: 1.5vh;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
 .foto-evento {
-    width: 23.28vw;
-    height: 21.12vh;
+    width: 290px;
+    height: 150px;
+    border-radius: 5px;
 }
 
 .card-dateTime, .card-local {
+    width: 100%;
+    box-sizing: border-box;
     display: flex;
-    justify-content: left;
-    font-size: 2rem;
+    /* justify-content: space-between;*/
+    font-size: 12px;
     font-weight: 400;
+    padding-top: 2%;
 }
 
 .date {
     width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: left;
+}
+
+.time {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: right;
 }
 
 .dateTime, .card-local {
-    margin-top: 1.5vh;
-    padding-right: 0.5vw;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .calendar-icon, .time-icon, .local-icon {
     width: 16px;
     height: 16px;
-    margin-right: 0.5vw;
+    margin-right: 2px;
 }
 
 .tag {
-    font-size: 2.5vh;
-    border-radius: 50px;
+    background: #D64558;
+    width: fit-content;
+    /*padding: 0vh;
+    padding-left: 1.5vh;
+    padding-right: 0.5vh;*/
+    height: fit-content;
+    border-radius: 20px;
+    /* margin-right: 1vw;*/
+    font-size: 12px;
+    /*margin-top: 0.2vh;*/
+    color: white;
+    /*padding: 10px;*/
+    margin: 5px;
+    padding: 2.5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 }
 
 /*Fim do Css do Card*/
@@ -262,15 +330,15 @@ main {
 /*Fim do Menu Dropdown*/
 
 .logo-header {
-    width: 9vw;
-    height: 7.5vh;
-    margin-top: 1vh;
-    margin-left: 1vw;
+    width: 90px;
+    height: 35px;
+    padding: 10px;
 }
 
+
 .imgPerfil {
-    width: 2.8vw;
-    height: 6vh;
+    width: 2.4vw;
+    height: 2.4vw;
     margin: 10px;
 }
 
@@ -305,7 +373,7 @@ main {
 }
 
 .feedEventos {
-    /*padding: 10px;*/
+    padding: 10px;
     display: grid;
     grid-template-columns: repeat(auto-fill,minmax(360px, 1fr));
 }
@@ -326,13 +394,13 @@ main {
 
 .imgPerfilAvaliacao {
     width: 2.8vw;
-    height: 6vh;
+    height: 2.8vw;
     margin: 5px;
 }
 
 .imgEstrelaMedia {
-    width: 2.0vw;
-    height: 4.5vh;
+    width: 1.4vw;
+    height: 1.4vw;
     margin: 5px;
 }
 
@@ -366,7 +434,7 @@ main {
     justify-content: space-between;
     /*background-color: orangered;*/
     width: 100%;
-    font-size: 3vh;
+    font-size: 20px;
 }
 
 .infosNmAtDtAv {
@@ -374,22 +442,27 @@ main {
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
-    width: 60%;
+    width: 50%;
     /*background-color: hotpink;*/
 }
+
+
 
 
 .notaAvaliacao {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
     /*background-color: yellow;*/
-    width: 15%;
+    width: 8%;
+   /* background-color: purple;*/
 }
 
 .textoAvaliacao {
     width: 100%;
-    font-size: 2.6vh;
+    font-size: 16px;
+    padding: 15px;
 }
 
 .suaAvaliacao {
@@ -404,7 +477,7 @@ main {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    font-size: 2.4vh;
+    font-size: 15px;
 }
 
 #ddlEstrelas {
@@ -423,7 +496,7 @@ main {
     width: 100%;
     border: none;
     border-radius: 5px;
-    height: 20vh;
+    height: 150px;
 }
 
     #txtBoxAvaliacao::placeholder {
@@ -446,3 +519,10 @@ main {
     margin-top: 5px;
     cursor: pointer;
 }
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+

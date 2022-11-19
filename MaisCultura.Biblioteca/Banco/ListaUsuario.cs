@@ -3,22 +3,30 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using MySql.Data.MySqlClient;
-using Biblioteca;
+using MaisCultura.Biblioteca;
 
-namespace Biblioteca
+namespace MaisCultura.Biblioteca
 {
     public class ListaUsuario : Banco
     {
-        Usuario DataReaderToUsuario(MySqlDataReader data){
-            var cdUsuario = data["@"].ToString();
+        Usuario DataReaderToUsuario(MySqlDataReader data)
+        {
+            var cdUsuario = data["@"].ToString(); 
+
+            return new Usuario(data["@"].ToString(), data["Tipo"].ToString(), data["Sexo"].ToString(), data["Nome"].ToString(), data["Email"].ToString(), data["Senha"].ToString(), data["Documento"].ToString(), data["Nascimento"].ToString(), null);
+        }
+
+        private List<Categoria> BuscarPreferencias(string cdUsuario)
+        {
             List<Categoria> categorias = new List<Categoria>();
             MySqlDataReader dataPref = Query("ListarPreferenciasUsuario", ("pCodigo", cdUsuario));
 
             while (dataPref.Read())
                 categorias.Add(new Categoria(Int32.Parse(dataPref["CodigoCategoria"].ToString()), dataPref["Nome"].ToString()));
-
-            return new Usuario(data["@"].ToString(), data["Tipo"].ToString(), data["Sexo"].ToString(), data["Nome"].ToString(), data["Email"].ToString(), data["Senha"].ToString(), data["Documento"].ToString(), data["Nascimento"].ToString(), categorias);
+            Desconectar();
+            return categorias;
         }
+
         public List<Usuario> Listar()
         {
             List<Usuario> Usuarios = new List<Usuario>();
@@ -29,6 +37,9 @@ namespace Biblioteca
             }
 
             Desconectar();
+            foreach(Usuario usuario in Usuarios)
+                usuario.Preferencias = BuscarPreferencias(usuario.Codigo);
+
             return Usuarios;
         }
 
@@ -44,6 +55,9 @@ namespace Biblioteca
             }
 
             Desconectar();
+            if(usuario != null)
+                usuario.Preferencias = BuscarPreferencias(usuario.Codigo);
+
             return usuario;
         }
 
@@ -66,10 +80,31 @@ namespace Biblioteca
         {
             List<MySqlParameter> parametros = new List<MySqlParameter>();
 
+            int tipo;
+
+            switch (usuario.Tipo)
+            {
+                case "Usuário Comum":
+                    tipo = 2;
+                    break;
+
+                case "Criador de Eventos":
+                    tipo = 3;
+                    break;
+
+                case "Empresa":
+                    tipo = 4;
+                    break;
+
+                default:
+                    tipo = 1;
+                    break;
+            }
+
 
             NonQuery("CadastrarUsuario",
                 ("pCodigo", usuario.Codigo),
-                ("pTipo", usuario.Tipo),
+                ("pTipo", tipo),
                 ("pSigla", usuario.Sexo),
                 ("pNome", usuario.Nome),
                 ("pEmail", usuario.Email),
@@ -96,19 +131,14 @@ namespace Biblioteca
             return avaliacoes;
         }
 
-        public List<Denuncia> BuscarDenuncias(string codigo)
+        public int BuscarMediaCriador(string codigo)
         {
-            List<Denuncia> denuncias = new List<Denuncia>();
+            MySqlDataReader data = Query("BuscarMediaCriador", ("pCodigo", codigo));
 
-            MySqlDataReader data = Query("BuscarDenuncias");
+            data.Read();
 
-            while (data.Read()) {
-                denuncias.Add(new Denuncia(Int32.Parse(data["CodigoDenuncia"].ToString()), Int32.Parse(data["CodigoEvento"].ToString()), data["Descricao"].ToString(), data["@"].ToString(), DateTime.Parse(data["Data"].ToString())));                
-            }
 
-            Desconectar();
-
-            return denuncias;
+            return Int32.Parse(data["soma"].ToString());
         }
     }
 }

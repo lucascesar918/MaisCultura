@@ -4,16 +4,72 @@ using System.Linq;
 using System.Web;
 using MySql.Data.MySqlClient;
 
-namespace Biblioteca
+namespace MaisCultura.Biblioteca
 {
     public class ListaDenuncia : Banco
     {
-        //public List<AlfaMaisCultura.Denuncia> Listar() {
-        //    List<AlfaMaisCultura.Denuncia> denuncias = new List<AlfaMaisCultura.Denuncia>();
+        Denuncia DataReaderToDenuncia(MySqlDataReader data) {
+            int CodigoDenuncia = Int32.Parse(data["CodigoDenuncia"].ToString());
+            
+            int CodigoEvento = Int32.Parse(data["CodigoEvento"].ToString());
+            string CodigoUsuario = data["@"].ToString();
+            //DateTime Data = Convert.ToDateTime(data["Data"].ToString() + " " + data["Hora"].ToString());
+            //string Descricao = data["Descricao"].ToString();
+            string Descricao = "";
+            DateTime Data = DateTime.Now;
+            return new Denuncia(CodigoDenuncia , CodigoEvento, Descricao, CodigoUsuario, Data);
+        }
 
-        //    MySqlDataReader data = Query();
+        public List<Denuncia> Listar() {
+            List<Denuncia> Denuncias = new List<Denuncia>();
 
-        //    return denuncias;
+            MySqlDataReader data = Query("ListarDenuncias");
+
+            while (data.Read())
+                Denuncias.Add(DataReaderToDenuncia(data));
+
+            Desconectar();
+            return Denuncias;
+        }
+
+        public List<Denuncia> BuscarPorUsuario(string cdUsuario) { 
+            List<Denuncia> denuncias = new List<Denuncia>();
+
+            MySqlDataReader data = Query("BuscarDenunciasUsuario", ("pCodigo", cdUsuario));
+
+            while (data.Read())
+                denuncias.Add(DataReaderToDenuncia(data));
+
+            Desconectar();
+            return denuncias;
+        }
+
+        public List<Denuncia> BuscarPorEvento(int cdEvento) {
+            List<Denuncia> denuncias = new List<Denuncia>();
+
+            MySqlDataReader data = Query("BuscarDenunciasEvento", ("pEvento", cdEvento));
+
+            while (data.Read())
+                denuncias.Add(DataReaderToDenuncia(data));
+
+            Desconectar();
+            return denuncias;
+        }
+
+        public List<Denuncia> BuscarPorUsuarioEvento(string cdUsuario, int cdEvento) {
+            List<Denuncia> denuncias = new List<Denuncia>();
+
+            MySqlDataReader data = Query("BuscarDenunciasUsuarioEvento", ("pCodigo", cdUsuario), ("pEvento", cdEvento));
+
+            while (data.Read())
+                denuncias.Add(DataReaderToDenuncia(data));
+
+            Desconectar();
+            return denuncias;
+        }
+
+        //public Denuncia Buscar() { 
+        
         //}
     }
 }

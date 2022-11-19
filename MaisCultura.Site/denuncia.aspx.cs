@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Biblioteca;
+using MaisCultura.Biblioteca;
 
 namespace MaisCultura
 {
@@ -14,22 +14,22 @@ namespace MaisCultura
         {
             ListaEvento ListaEvento = new ListaEvento();
             ListaUsuario ListaUsuario = new ListaUsuario();
-            Usuario Usuario = ListaUsuario.Buscar(Request.QueryString["u"] == "" ? Request.QueryString["u"] : "adriano.fraga");
-            List<Denuncia> Denuncias = ListaUsuario.BuscarDenuncias(Usuario.Codigo);
-            Evento Evento = ListaEvento.Buscar(Denuncias[0].CodigoEvento);
+            ListaDenuncia ListaDenuncia = new ListaDenuncia();
 
+            string cdDenuncia = Request.QueryString["d"];
+            
+            Usuario Usuario = ListaUsuario.Buscar(Request.QueryString["u"]);
+            if (Usuario == null) Usuario = ListaUsuario.Buscar("allan.fagner");
+            List<Denuncia> Denuncias = ListaDenuncia.BuscarPorUsuario(Usuario.Codigo);
+            Evento Evento = ListaEvento.Buscar(Denuncias[0].CodigoEvento);
+            
+            litEventos.Text = $"<a href=\"eventos.aspx?u={Usuario.Codigo}\">Eventos</a>";
             lblUser.Text = Usuario.Codigo;
             lblNmEvento.Text = Evento.Titulo;
             lblMotivo.Text = Denuncias[0].Motivo.Nome;
+            litPerfil.Text = $"<a href=\"perfil.aspx?u={Usuario.Codigo}\">Perfil</a>";
 
-               ///////////////////////////////
-             //                             //
-            //  Pensar em como implementar  //
-            //  a classe ser aplicável      //
-            //  tanto na busca por eventos  //
-            //  quanto na por usuario.      //
-            //                              //
-            //////////////////////////////////
+            dropbtnUsuario.Text = Usuario.Nome;
         }
     }
 }

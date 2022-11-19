@@ -5,17 +5,19 @@ using System.Linq;
 using System.Net.Http.Headers;
 using System.Web;
 using MySql.Data.MySqlClient;
-using Biblioteca;
+using MaisCultura.Biblioteca;
 
-namespace Biblioteca
+namespace MaisCultura.Biblioteca
 {
     public class ListaEvento : Banco
     {
+        string AdicionarReticencia(string str, int TamanhoMaximo)
+        {
+            return str.Length > TamanhoMaximo ? str.Substring(0, TamanhoMaximo - 3) + "..." : str;
+        }
  
         Evento DataReaderToEvento(MySqlDataReader data, bool Reticencias) {
             var cdEvento = Int32.Parse(data["Codigo"].ToString());
-            List<Categoria> categorias = BuscarCategorias(cdEvento);
-            List<DiaEvento> dias = BuscarDias(cdEvento);
             string responsavel = data["@"].ToString();
             string local = data["Local"].ToString();
             string titulo = data["Titulo"].ToString();
@@ -24,7 +26,7 @@ namespace Biblioteca
                 titulo = AdicionarReticencia(titulo, 35);
                 local = AdicionarReticencia(local, 27);
             }
-            return new Evento( cdEvento,responsavel , titulo, local, descricao,  categorias, dias);
+            return new Evento( cdEvento,responsavel , titulo, local, descricao,  null, null);
         }
         public List<Evento> Listar()
         {
@@ -38,6 +40,11 @@ namespace Biblioteca
             }
 
             Desconectar();
+            foreach (Evento Evento in Eventos)
+            {
+                Evento.Categorias = BuscarCategorias(Evento.Codigo);
+                Evento.Dias = BuscarDias(Evento.Codigo);
+            }
             return Eventos;
         }
 
@@ -75,19 +82,13 @@ namespace Biblioteca
             Desconectar();
             return dias;
         }
-        string AdicionarReticencia(string Str, int TamanhoMaximo)
-        {
-            if(Str.Length > TamanhoMaximo)
-                return Str.Substring(0, TamanhoMaximo - 3) + "...";
-            return Str;
-        }
         public List<Evento> Feed(string codigo_usuario = null)
         {
             List<Evento> eventos = new List<Evento>();
 
             MySqlDataReader dadosEventos;
             if (codigo_usuario == null)
-                dadosEventos = Query("EventosFeedDeslogado");
+                dadosEventos = Query("ListarEventosFeedDeslogado");
             else 
                 dadosEventos = Query("EventosFeed", ("pUsuario", codigo_usuario));
            while (dadosEventos.Read())
@@ -96,6 +97,12 @@ namespace Biblioteca
            }
 
             Desconectar();
+
+            foreach (Evento Evento in eventos)
+            {
+                Evento.Categorias = BuscarCategorias(Evento.Codigo);
+                Evento.Dias = BuscarDias(Evento.Codigo);
+            }
             return eventos;
         }
 
@@ -113,7 +120,7 @@ namespace Biblioteca
             Evento evento = null;
 
 
-            MySqlDataReader data = Query("ListarEventos"); 
+            MySqlDataReader data = Query("BuscarEvento", ("pCodigo", codigo)); 
 
             while (data.Read())
             {
@@ -121,6 +128,10 @@ namespace Biblioteca
             }
 
             Desconectar();
+
+            evento.Categorias = BuscarCategorias(evento.Codigo);
+            evento.Dias = BuscarDias(evento.Codigo);
+
             return evento;
         }
 
@@ -142,7 +153,7 @@ namespace Biblioteca
             MySqlDataReader data = Query("ListarCategorias");
             while (data.Read())
                 categorias.Add(new Categoria(Int32.Parse(data["Codigo"].ToString()), data["Nome"].ToString()));
-
+            Desconectar();
             return categorias;
         }
 
@@ -154,7 +165,7 @@ namespace Biblioteca
 
             while (data.Read())
                 avaliacoes.Add(new Avaliacao(data["@"].ToString(), Int32.Parse(data["CodigoEvento"].ToString()), data["Descricao"].ToString(), Int32.Parse(data["Estrelas"].ToString())));
-
+            Desconectar();
             return avaliacoes;
         }
 
@@ -166,6 +177,7 @@ namespace Biblioteca
 
             while (data.Read())
                 imagem = data["Imagem"].ToString();
+            Desconectar();
 
             return imagem;
         }
@@ -181,6 +193,14 @@ namespace Biblioteca
         {
             var Media = (Decimal)Scalar("MediaAvaliacao", ("pEvento", codigo));
             return Decimal.ToInt32(Media);
+        }
+
+        public int BuscarInteresses(int codigo)
+        {
+            MySqlDataReader data = Query("BuscarInteressesEvento", ("pEvento", codigo));
+            data.Read();
+
+            return Int32.Parse(data["Soma"].ToString());
         }
     }
 }

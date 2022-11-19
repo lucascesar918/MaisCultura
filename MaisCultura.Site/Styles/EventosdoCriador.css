@@ -19,13 +19,23 @@ body {
     background-color: #f1f1f1;
 }
 
+.eventos {
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    box-sizing: border-box;
+    flex-wrap: wrap;
+}
+
 .header {
+    height: 45px;
     width: 100%;
     display: flex;
-    /*justify-content: space-between;*/
-    align-content: center;
-    height: 9vh;
-    background: #fff;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 10px 0px 10px 0px;
 }
 
 .usuario {
@@ -34,77 +44,84 @@ body {
     position: absolute;
     right: 0;
 }
-
-/*A partir daqui Css do card apenas*/
-
+/* Css do Card*/
 .card {
-    width: 23.63vw;
+    width: 300px;
     height: fit-content;
-    background: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     border-radius: 20px;
-    padding: 1.5vh 1vw;
     border: 1px solid black;
-    margin: 10px;
+    padding: 10px;
     transition: box-shadow;
     transition-duration: 0.3s;
     transition-timing-function: ease-in-out;
+    background-color: #ffffff;
 }
 
-    /*.card:hover {
-        box-shadow: 0 0 11px rgba(33,33,33,.6);
-    }*/
+    .card:hover {
+        transition-duration: 0.3s;
+        transition-timing-function: ease-in-out;
+        box-shadow: rgba(100, 100, 111, 0.8) 0px 7px 20px 0px;
+    }
 
 .card-header {
+    width: 100%;
+    box-sizing: border-box;
     display: flex;
     justify-content: left;
+    align-items: center;
 }
 
 .perfil {
-    width: 4vw;
-    height: 4vw;
+    width: 3vw;
+    height: 3vw;
+    margin: 5px;
 }
 
 .card-header-nome {
-    padding-top: 1.5vh;
-    padding-left: 0.8vw;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
     .card-header-nome h2 {
-        font-size: 2.5rem;
+        font-size: 15px;
     }
 
     .card-header-nome h5 {
-        font-size: 2rem;
+        font-size: 12px;
         font-weight: 400;
     }
 
 .save {
     width: 25px;
     height: 25px;
-    margin-top: 1vh;
-    margin-right: 0.5vw;
 }
 
 .card-tittle {
-    margin-top: 1vh;
-    padding-left: 1vw;
-    padding-right: 1vw;
+    width: 100%;
+    padding: 10px;
 }
 
     .card-tittle h2 {
-        font-size: 4rem;
+        font-size: 15px;
     }
 
 .card-tags {
+    width: 100%;
+    box-sizing: border-box;
     display: flex;
     justify-content: space-around;
-    margin-top: 1.5vh;
+    align-items: center;
+    margin-top: 10px;
 }
 
     .card-tags .tag {
         background: #526ACE;
-        padding: 1vh;
+        padding: 5px;
         height: auto;
         margin-right: 0px;
         font-weight: 400;
@@ -112,39 +129,70 @@ body {
     }
 
 .card-image {
-    margin-top: 1.5vh;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
 .foto-evento {
-    width: 23.28vw;
-    height: 21.12vh;
+    width: 290px;
+    height: 150px;
+    border-radius: 5px;
 }
 
 .card-dateTime, .card-local {
+    width: 100%;
+    box-sizing: border-box;
     display: flex;
-    justify-content: left;
-    font-size: 2rem;
+    /* justify-content: space-between;*/
+    font-size: 12px;
     font-weight: 400;
+    padding-top: 2%;
 }
 
 .date {
     width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: left;
+}
+
+.time {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: right;
 }
 
 .dateTime, .card-local {
-    margin-top: 1.5vh;
-    padding-right: 0.5vw;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .calendar-icon, .time-icon, .local-icon {
     width: 16px;
     height: 16px;
-    margin-right: 0.5vw;
+    margin-right: 2px;
 }
 
 .tag {
-    font-size: 2.5vh;
-    border-radius: 50px;
+    background: #D64558;
+    width: fit-content;
+    /*padding: 0vh;
+    padding-left: 1.5vh;
+    padding-right: 0.5vh;*/
+    height: fit-content;
+    border-radius: 20px;
+    /* margin-right: 1vw;*/
+    font-size: 12px;
+    /*margin-top: 0.2vh;*/
+    color: white;
+    /*padding: 10px;*/
+    margin: 5px;
+    padding: 2.5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 }
 
 /*Fim do Css do Card*/
@@ -198,15 +246,15 @@ body {
 /*Fim do Menu Dropdown*/
 
 .logo-header {
-    width: 9vw;
-    height: 7.5vh;
-    margin-top: 1vh;
-    margin-left: 1vw;
+    width: 90px;
+    height: 35px;
+    padding: 10px;
 }
 
+
 .imgPerfil {
-    width: 2.8vw;
-    height: 6vh;
+    width: 2.4vw;
+    height: 2.4vw;
     margin: 10px;
 }
 
@@ -215,7 +263,10 @@ body {
 .sectionBack {
     width: 100%;
     background-color: #222222;
-    height: fit-content;
+    height: 30px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 #btnVoltar {
@@ -224,6 +275,7 @@ body {
     border: none;
     background-color: transparent;
     font-weight: 900;
+    font-size: 12px;
 }
 
     #btnVoltar:hover {
@@ -233,14 +285,17 @@ body {
 /*Fim da Faixa Voltar*/
 
 .nav {
-    height: 6vh;
-    width: 97.5%;
-    margin-top: 2vh;
-    padding-top: 2vh;
-    padding-left: 1.5vw;
-    padding-right: 1vw;
+    height: 40px;
+    width: 100%;
+    /*margin-top: 2vh;
+    padding-top: 1vh;
+    padding-left: 1vw;
+    padding-right: 1vw;*/
     justify-content: left;
     background: #333333;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 .section-tags {
@@ -251,35 +306,34 @@ body {
 
 .tag {
     background: #D64558;
-    padding: 0.7vh;
+    width: fit-content;
+    /*padding: 0vh;
     padding-left: 1.5vh;
-    height: 4.8vh;
+    padding-right: 0.5vh;*/
+    height: fit-content;
     border-radius: 20px;
-    margin-right: 1vw;
-    font-size: 2.2rem;
-    margin-top: -0.9vh;
+    /* margin-right: 1vw;*/
+    font-size: 12px;
+    /*margin-top: 0.2vh;*/
     color: white;
-}
-
-.principal {
+    /*padding: 10px;*/
+    margin: 5px;
+    padding: 2.5px;
     display: flex;
-    justify-content: left;
-    background: #f1f1f1;
-    height: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .filtros {
     height: auto;
+    width: 15%;
     background: #fff;
-    /*box-shadow: 15px 0px 10px -15px #11111161;*/
-    padding: 2vh 1vw 3vh 1.5vw;
-    overflow-y: hidden;
-    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    padding: 20px;
 }
-
-    /*.filtros:hover {
-        overflow-y: scroll;
-    }*/
 
     .filtros::-webkit-scrollbar {
         width: 0.3vw;
@@ -296,30 +350,34 @@ body {
     }
 
 .filtros-titulos {
-    font-size: 3rem;
-    margin-bottom: 1.5vh;
+    font-size: 15px;
+    margin-bottom: 5px;
 }
 
 .filtros-subtitulos {
-    font-weight: 400;
+    font-weight: 500;
     background: none;
-    width: auto;
-    display: grid;
-    padding: 1vh;
-}
-
-.categoria{
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+    height: fit-content;
+    width: fit-content;
+    font-size: 12px;
+    padding: 5px 5px 5px 5px;
+    margin: 5px 5px 5px 0px;
     border: none;
+    border-radius: 2.5px;
 }
 
 .categoria:hover {
     background: #D64558;
     color: white;
+    cursor: pointer;
 }
 
 .verMais {
     color: #526ACE;
-    border: none;
 }
 
     .verMais:hover {
@@ -337,16 +395,35 @@ body {
 }
 
 .txtLocal {
-    margin-bottom: 3vh;
+    width: 100%;
+    height: 30px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid #526ace;
+    margin: 10px 10px 20px 0px;
 }
 
+    .txtLocal::placeholder {
+        padding: 5px;
+        color: black;
+        font-weight: 400;
+        font-size: 12px;
+    }
+
 .dt {
-    width: 95%;
+    width: 100%;
+    height: 30px;
+    box-sizing: border-box;
     margin-bottom: 1vh;
+    font-size: 12px;
+    border: 1px solid #526ace;
+    border-radius: 5px;
+    padding: 5px;
 }
 
 .data {
     font-size: 2rem;
+    height: 3vh;
 }
 
 .aval {
@@ -354,20 +431,56 @@ body {
 }
 
 .dpdAval {
-    width: 95%;
+    width: 100%;
+    height: 30px;
+    box-sizing: border-box;
     border: none;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid #526ace;
+    font-size: 12px;
+    padding: 5px;
 }
 
     .dpdAval::selection {
         background: #D64558;
     }
 
+.date {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: left;
+}
+
+.time {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: right;
+}
+
+.dateTime, .card-local {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.calendar-icon, .time-icon, .local-icon {
+    width: 16px;
+    height: 16px;
+    margin-right: 2px;
+}
+
+.principal {
+    display: flex;
+    justify-content: left;
+    background: #f1f1f1;
+    height: 100%;
+}
+
 .corpo {
     width: 100%;
 }
 
-.txtIcon {
+/*.txtIcon {
     margin: 1.5vh 1vw;
     width: 95.5%;
     border: 1px solid black;
@@ -375,7 +488,7 @@ body {
     display: flex;
     justify-content: left;
     
-}
+}*/
 
 .icon {
     width: 26px;
@@ -417,4 +530,91 @@ body {
     border: none;
     border-radius: 5px;
     font-weight: 800;
+}
+
+.txtLocal {
+    width: 100%;
+    height: 30px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid #526ace;
+    margin: 10px 10px 20px 0px;
+}
+
+    .txtLocal::placeholder {
+        padding: 5px;
+        color: black;
+        font-weight: 400;
+        font-size: 12px;
+    }
+
+.dt {
+    width: 100%;
+    height: 30px;
+    box-sizing: border-box;
+    margin-bottom: 1vh;
+    font-size: 12px;
+    border: 1px solid #526ace;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.data {
+    font-size: 2rem;
+    height: 3vh;
+}
+
+.aval {
+    margin-top: 2vh;
+}
+
+.dpdAval {
+    width: 100%;
+    height: 30px;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 1px solid #526ace;
+    font-size: 12px;
+    padding: 5px;
+}
+
+    .dpdAval::selection {
+        background: #D64558;
+    }
+
+.txtIcon {
+    box-sizing: border-box;
+    width: 100%;
+    border: 1px solid black;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    background: #f1f1f1;
+}
+
+.inputPesquisa {
+    box-sizing: border-box;
+    background: #fff;
+    width: 100%;
+    padding: 10px;
+}
+
+.icon {
+    width: 26px;
+    height: 26px;
+   /* display: flex;
+    align-self: flex-end;*/
+}
+
+.txtPesquisa {
+    box-sizing: border-box;
+    border-radius: 0px;
+    border: none;
+    background-color: transparent;
+    width: 95%;
+}
+
+a{
+    text-decoration: none;
+    color: black;
 }

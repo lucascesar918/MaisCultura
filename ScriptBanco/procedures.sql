@@ -139,7 +139,13 @@ END$$
 DROP PROCEDURE IF EXISTS BuscarEvento$$
 CREATE PROCEDURE BuscarEvento(pCodigo INT)
 BEGIN
-	SELECT * FROM evento
+	SELECT
+		cd_evento "Codigo",
+		cd_responsavel "@",
+		nm_titulo "Titulo",
+		ds_local "Local",
+		ds_evento "Descricao"
+	FROM evento
 	WHERE 
 		cd_evento = pCodigo;
 END$$
@@ -330,7 +336,7 @@ BEGIN
 	SELECT 
 		u.nm_usuario "Nome",
 		a.cd_usuario "@",
-		a.ds_avaliacao "Descrição",
+		a.ds_avaliacao "Descricao",
 		a.qt_estrela "Estrelas"
 	FROM avaliacao a
 	JOIN usuario u ON (u.cd_usuario = a.cd_usuario)
@@ -523,7 +529,7 @@ BEGIN
 	SELECT
 		cd_denuncia "CodigoDenuncia",
 		cd_evento "CodigoEvento",
-		cd_usuario "CodigoUsuario",
+		cd_usuario "@",
 		dt_denuncia "Data",
 		hr_denuncia "Hora"
 	FROM denuncia;
@@ -602,6 +608,12 @@ BEGIN
 	DELETE FROM denuncia WHERE cd_evento = pCodigo;
 	DELETE FROM equipe_evento WHERE cd_evento = pCodigo;
 	DELETE FROM evento WHERE cd_evento = pCodigo;
+END$$
+
+DROP PROCEDURE IF EXISTS BuscarInteressesEvento$$
+CREATE PROCEDURE BuscarInteressesEvento(pEvento INT)
+BEGIN
+	SELECT COUNT(cd_evento) "Soma" FROM interesse WHERE cd_evento = pEvento;
 END$$
 
 DELIMITER ;
