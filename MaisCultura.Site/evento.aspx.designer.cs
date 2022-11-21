@@ -132,6 +132,24 @@ namespace MaisCultura.Site
         protected global::System.Web.UI.WebControls.Literal litCategorias;
 
         /// <summary>
+        /// Controle litTarget.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal litTarget;
+
+        /// <summary>
+        /// Controle litCarrousel.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal litCarrousel;
+
+        /// <summary>
         /// Controle lblLocalEvento.
         /// </summary>
         /// <remarks>

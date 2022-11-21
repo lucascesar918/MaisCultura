@@ -83,6 +83,25 @@ namespace MaisCultura.Site
                 litHrInicio.Text = Evento.Dias[0].Inicio.ToShortTimeString();
                 litHrFim.Text = Evento.Dias[0].Fim.ToShortTimeString();
 
+                List<String> imagens = new List<String>();
+                imagens = ListaEvento.BuscarImagem(Evento.Codigo);
+
+                foreach (string imagem in imagens)
+                    litCarrousel.Text = $@"<div class='carousel - item active'>
+                              <img class='d-block w-100' src='{imagem}' alt='Slide'>
+                        </div>";
+
+                for (int i = 0; i < imagens.Count; i++)
+                {
+                    if (i == 0){
+                        litTarget.Text = $"<li data-target='#carouselExampleIndicators' data-slide-to='0' class='active'></li>";
+                    }
+                    else
+                    {
+                        litTarget.Text = $"<li data-target='#carouselExampleIndicators' data-slide-to='{i}'></li>";
+                    }
+                }
+
                 foreach (Categoria categoria in Evento.Categorias)
                     litCategorias.Text += $"<span class='ag'>{categoria.Nome}</span>";
                 
