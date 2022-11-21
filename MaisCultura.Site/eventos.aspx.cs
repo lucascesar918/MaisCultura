@@ -58,6 +58,14 @@ namespace MaisCultura
                 Usuario usuarioEvento = ListaUsuario.Buscar(evento.Responsavel);
                 List<Categoria> categorias = evento.Categorias;
                 List<DiaEvento> dias = evento.Dias;
+
+                var TagA = $"<a href='evento.aspx?e={evento.Codigo}'>";
+
+                if(Request.QueryString["l"] != null)
+                {
+                    TagA = $"<a href='evento.aspx?l={Login.Codigo}&e={evento.Codigo}'>";
+                }
+
                 litEventos.Text += $@"<section class='card'>
                     <article class='card-header'>
                         <figure>
@@ -71,7 +79,7 @@ namespace MaisCultura
 
                     </article>
 
-                    <a href='evento.aspx'>
+                    {TagA}
                         <article class='card-tittle'>
                                 <h2>{evento.Titulo}</h2>
                         </article>
@@ -83,7 +91,7 @@ namespace MaisCultura
                     </article>
 
                     <article class='card-image'>
-                        <a href='evento.aspx'>
+                        {TagA}
                             <figure>
                                 <img src='{ListaEvento.BuscarImagem(evento.Codigo)}' alt='Interclasse de cria' class='foto-evento'>
                             </figure>

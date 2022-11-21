@@ -171,12 +171,12 @@ namespace MaisCultura.Biblioteca
 
         public string BuscarImagem(int codigo)
         {
-            string imagem = "";
+            List<string> imagens = new List<string>();
 
             MySqlDataReader data = Query("BuscarImagemEvento", ("pEvento", codigo));
 
             while (data.Read())
-                imagem = data["Imagem"].ToString();
+                imagens.Add(data["Imagem"].ToString());
             Desconectar();
 
             return imagem;
