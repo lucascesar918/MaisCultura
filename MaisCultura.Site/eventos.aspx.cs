@@ -93,7 +93,7 @@ namespace MaisCultura
                     <article class='card-image'>
                         {TagA}
                             <figure>
-                                <img src='{ListaEvento.BuscarImagem(evento.Codigo)}' alt='Interclasse de cria' class='foto-evento'>
+                                <img src='{ListaEvento.BuscarImagem(evento.Codigo)[0]}' alt='Interclasse de cria' class='foto-evento'>
                             </figure>
                         </a>
                     </article>
