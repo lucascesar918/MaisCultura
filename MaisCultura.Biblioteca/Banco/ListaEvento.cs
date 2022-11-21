@@ -169,7 +169,7 @@ namespace MaisCultura.Biblioteca
             return avaliacoes;
         }
 
-        public string BuscarImagem(int codigo)
+        public List<string> BuscarImagem(int codigo)
         {
             List<string> imagens = new List<string>();
 
@@ -179,7 +179,7 @@ namespace MaisCultura.Biblioteca
                 imagens.Add(data["Imagem"].ToString());
             Desconectar();
 
-            return imagem;
+            return imagens;
         }
 
         public List<Denuncia> BuscarDenuncias(int codigo) {
