@@ -169,17 +169,17 @@ namespace MaisCultura.Biblioteca
             return avaliacoes;
         }
 
-        public string BuscarImagem(int codigo)
+        public List<string> BuscarImagem(int codigo)
         {
-            string imagem = "";
+            List<string> imagens = new List<string>();
 
             MySqlDataReader data = Query("BuscarImagemEvento", ("pEvento", codigo));
 
             while (data.Read())
-                imagem = data["Imagem"].ToString();
+                imagens.Add(data["Imagem"].ToString());
             Desconectar();
 
-            return imagem;
+            return imagens;
         }
 
         public List<Denuncia> BuscarDenuncias(int codigo) {
