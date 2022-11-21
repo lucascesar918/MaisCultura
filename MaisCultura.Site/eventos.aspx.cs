@@ -85,7 +85,7 @@ namespace MaisCultura
                     <article class='card-image'>
                         <a href='evento.aspx'>
                             <figure>
-                                <img src='{ListaEvento.BuscarImagem(evento.Codigo)}' alt='Interclasse de cria' class='foto-evento'>
+                                <img src='{ListaEvento.BuscarImagem(evento.Codigo)[0]}' alt='Interclasse de cria' class='foto-evento'>
                             </figure>
                         </a>
                     </article>
