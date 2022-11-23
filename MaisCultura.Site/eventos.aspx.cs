@@ -42,13 +42,9 @@ namespace MaisCultura
 
         private void ListarEventos(string usuario) {
 
-
-
             List<Evento> Eventos;
-            if (ListaUsuario.Buscar(usuario) != null)
-                Eventos = ListaEvento.Feed(usuario);
-            else
-                Eventos = ListaEvento.Feed();
+
+            Eventos = ListaEvento.Feed(usuario);
 
             Eventos = Eventos.FindAll((e) => filtro.Verificar(e));
            
@@ -144,9 +140,9 @@ namespace MaisCultura
             filtro.Local = txtLocal.Text;
             filtro.Categorias = new List<string>();
             filtro.Categorias.Add((string)ViewState["Cateoria"]);
-            string usuario = Request.QueryString["u"];
 
-            ListarEventos(usuario);
+            ListarEventos(Login == null ? null : Login.Codigo);
+
             LoadComplete += Page_Load;
         }
 

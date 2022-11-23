@@ -90,11 +90,10 @@ namespace MaisCultura.Biblioteca
             if (codigo_usuario == null)
                 dadosEventos = Query("ListarEventosFeedDeslogado");
             else 
-                dadosEventos = Query("EventosFeed", ("pUsuario", codigo_usuario));
+                dadosEventos = Query("ListarEventosFeed", ("pUsuario", codigo_usuario));
+
            while (dadosEventos.Read())
-           { 
                 eventos.Add(DataReaderToEvento(dadosEventos, true));
-           }
 
             Desconectar();
 
