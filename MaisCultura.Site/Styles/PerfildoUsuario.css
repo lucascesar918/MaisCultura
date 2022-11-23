@@ -33,6 +33,7 @@ main {
 }
 
 html {
+    height: 100%;
     font-size: 1vh;
     overflow-y: scroll;
 }
