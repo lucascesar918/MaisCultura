@@ -182,16 +182,11 @@ namespace MaisCultura.Biblioteca
             return imagens;
         }
 
-        public List<Denuncia> BuscarDenuncias(int codigo) {
-            List<Denuncia> Denuncias = new List<Denuncia>(); 
-            
-
-            return Denuncias;
-        }
-
         public int? MediaEstrelas(int codigo)
         {
             var Media = (Decimal)Scalar("MediaAvaliacao", ("pEvento", codigo));
+
+            Desconectar();
             return Decimal.ToInt32(Media);
         }
 
@@ -205,6 +200,10 @@ namespace MaisCultura.Biblioteca
             Desconectar();
 
             return interesses;
+        }
+
+        public void Deletar(int codigo) {
+            NonQuery("DeletarEvento", ("pCodigo", codigo));
         }
     }
 }

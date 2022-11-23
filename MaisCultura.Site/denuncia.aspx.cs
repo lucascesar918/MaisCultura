@@ -40,7 +40,12 @@ namespace MaisCultura
 
         protected void btnExcluir_Click(object sender, EventArgs e)
         {
+            ListaEvento.Deletar(Evento.Codigo);
+        }
 
+        protected void btnRetirar_Click(object sender, EventArgs e)
+        {
+            ListaDenuncia.Deletar(Denuncia.CodigoDenuncia);
         }
     }
 }

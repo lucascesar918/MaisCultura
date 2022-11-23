@@ -81,7 +81,7 @@
                         </div>
                     </div>
                     <section class="btns">
-                        <asp:Button ID="btnRetirar" runat="server" Text="Retirar Denúncia" CssClass="btn" />
+                        <asp:Button ID="btnRetirar" runat="server" Text="Retirar Denúncia" CssClass="btn" OnClick="btnRetirar_Click" />
                         <asp:Button ID="btnExcluir" runat="server" Text="Excluir Evento" CssClass="btn" OnClick="btnExcluir_Click" />
                     </section>
                 </section>
