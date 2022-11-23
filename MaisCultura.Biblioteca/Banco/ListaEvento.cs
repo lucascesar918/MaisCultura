@@ -177,8 +177,8 @@ namespace MaisCultura.Biblioteca
 
             while (data.Read())
                 imagens.Add(data["Imagem"].ToString());
-            Desconectar();
 
+            Desconectar();
             return imagens;
         }
 

@@ -17,7 +17,8 @@ namespace MaisCultura.Biblioteca
             //string Descricao = data["Descricao"].ToString();
             string Descricao = "";
             DateTime Data = DateTime.Now;
-            return new Denuncia(CodigoDenuncia , CodigoEvento, Descricao, CodigoUsuario, Data);
+            Motivo Motivo = new Motivo(Int32.Parse(data["CodigoMotivo"].ToString()), data["Descricao"].ToString());
+            return new Denuncia(CodigoDenuncia , CodigoEvento, Descricao, CodigoUsuario, Data, Motivo);
         }
 
         public List<Denuncia> Listar() {
