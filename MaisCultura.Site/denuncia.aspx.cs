@@ -18,17 +18,32 @@ namespace MaisCultura
         Denuncia Denuncia;
         Evento Evento;
 
-        protected void Page_Load(object sender, EventArgs e)
+        void HandleLogin()
         {
+            if (Request.QueryString["l"] != null)
+            {
+                Login = ListaUsuario.Buscar(Request.QueryString["l"]);
 
-            Login = ListaUsuario.Buscar(Request.QueryString["l"]);
+                if (Login.Tipo != "Administrador")                                                              //Logado
+                    Response.Redirect($"erro.html?msg=O que você está fazendo aqui? 😯 Você não tem permissão para acessar essa página!&l={Login.Codigo}");
+
+                dropbtnUsuario.Text = Login.Nome;
+                litEventos.Text = $"<a href=\"eventos.aspx?l={Login.Codigo}\">Eventos</a>";
+                dropbtnUsuario.Text = Login.Nome;
+                litPerfil.Text = $"<a href=\"perfil.aspx?u={Login.Codigo}&l={Login.Codigo}\">Perfil</a>";
+            }
+            else
+                Response.Redirect("erro.html?msg=O que você está fazendo aqui? 😯 Você não tem permissão para acessar essa página!");
+            
+
+        }
+
+        protected void Page_Load(object sender, EventArgs e) //https://localhost:44335/denuncia.aspx?l=lucas.serio&d=2
+        {
+            HandleLogin();
 
             Denuncia = ListaDenuncia.Buscar(Int32.Parse(Request.QueryString["d"]));
             Evento = ListaEvento.Buscar(Denuncia.CodigoEvento);
-            
-            litEventos.Text = $"<a href=\"eventos.aspx?l={Login.Codigo}\">Eventos</a>";
-            dropbtnUsuario.Text = Login.Nome;
-            litPerfil.Text = $"<a href=\"perfil.aspx?u={Login.Codigo}&l={Login.Codigo}\">Perfil</a>";
 
             lblUser.Text = Denuncia.CodigoUsuario;
             lblNmEvento.Text = Evento.Titulo;

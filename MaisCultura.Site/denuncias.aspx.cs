@@ -50,7 +50,9 @@ namespace MaisCultura
             HandleLogin();
 
             foreach (Denuncia denuncia in Denuncias)
-                litDenuncias.Text += $@"<section class='denuncia'>      
+                litDenuncias.Text += $@"
+                <a href='denuncia.aspx?l={Login.Codigo}&d={denuncia.CodigoDenuncia}'>
+                <section class='denuncia'>      
                     <div class='divInfo'>
                         <h4 class='title'> DENÚNCIA FEITA POR</h4>
                         <p>⠀{denuncia.CodigoUsuario}</p>
@@ -76,7 +78,8 @@ namespace MaisCultura
                         <p>⠀{denuncia.Data.ToShortTimeString()}</p>
                     </div>
                 </div>
-            </section>";
+            </section>
+            </a>";
         }
     }
 }

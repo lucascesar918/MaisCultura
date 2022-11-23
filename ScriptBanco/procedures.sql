@@ -521,12 +521,17 @@ DROP PROCEDURE IF EXISTS ListarDenuncias$$
 CREATE PROCEDURE ListarDenuncias()
 BEGIN
 	SELECT
-		cd_denuncia "CodigoDenuncia",
-		cd_evento "CodigoEvento",
-		cd_usuario "@",
-		dt_denuncia "Data",
-		hr_denuncia "Hora"
-	FROM denuncia;
+		d.cd_denuncia "CodigoDenuncia",
+		d.cd_evento "CodigoEvento",
+		d.cd_usuario "@",
+		DATE_FORMAT(d.dt_denuncia, "%d/%m/%Y") "Data",
+		d.hr_denuncia "Hora",
+		lm.nm_motivo "Motivo",
+		m.cd_motivo "CodigoMotivo",
+		m.ds_denuncia "Descricao"
+	FROM denuncia d
+	JOIN motivo m ON d.cd_denuncia = m.cd_denuncia
+	JOIN lista_motivo lm ON m.cd_motivo = lm.cd_motivo;
 END$$
 
 DROP PROCEDURE IF EXISTS BuscarDenuncia$$
