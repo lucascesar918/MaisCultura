@@ -15,24 +15,32 @@ namespace MaisCultura
         ListaDenuncia ListaDenuncia = new ListaDenuncia();
 
         Usuario Login;
+        Denuncia Denuncia;
+        Evento Evento;
 
         protected void Page_Load(object sender, EventArgs e)
         {
 
             Login = ListaUsuario.Buscar(Request.QueryString["l"]);
 
-            List<Denuncia> Denuncias = ListaDenuncia.Buscar(Int32.Parse(Request.QueryString["d"]));
-            Evento Evento = ListaEvento.Buscar(Denuncias[0].CodigoEvento);
+            Denuncia = ListaDenuncia.Buscar(Int32.Parse(Request.QueryString["d"]));
+            Evento = ListaEvento.Buscar(Denuncia.CodigoEvento);
             
             litEventos.Text = $"<a href=\"eventos.aspx?l={Login.Codigo}\">Eventos</a>";
             dropbtnUsuario.Text = Login.Nome;
             litPerfil.Text = $"<a href=\"perfil.aspx?u={Login.Codigo}&l={Login.Codigo}\">Perfil</a>";
 
-            lblUser.Text = Login.Codigo;
+            lblUser.Text = Denuncia.CodigoUsuario;
             lblNmEvento.Text = Evento.Titulo;
-            lblMotivo.Text = Denuncias[0].Motivo.Nome;
+            lblMotivo.Text = Denuncia.Motivo.Nome;
+            litTextoDenuncia.Text = Denuncia.Descricao;
+            lblData.Text = Denuncia.Data.ToShortDateString();
+            lblHora.Text = Denuncia.Data.ToShortTimeString();
+        }
 
-            //terminar essa aqui
+        protected void btnExcluir_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -21,28 +21,28 @@
         e.preventDefault();
         $("#cad").toggle();
         $("#shade").toggle();
-        $("html, body").css({ 'overflow': 'auto' });
+        $("html").css({ 'overflow': 'auto' });
     });
 
     $("#btnSairLogin").click(function (e) {
         e.preventDefault();
         $("#log").toggle();
         $("#shade2").toggle();
-        $("html, body").css({ 'overflow': 'auto' });
+        $("html").css({ 'overflow': 'auto' });
     });
 
     $("#shade").click(function (e) {
         e.preventDefault();
         $("#cad").toggle();
         $("#shade").toggle();
-        $("html, body").css({ 'overflow': 'auto' });
+        $("html").css({ 'overflow': 'auto' });
     });
 
     $("#shade2").click(function (e) {
         e.preventDefault();
         $("#log").toggle();
         $("#shade2").toggle();
-        $("html, body").css({ 'overflow': 'auto' });
+        $("html").css({ 'overflow': 'auto' });
     });
 
 });

@@ -18,6 +18,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
 
     <link href="Styles/EventoEspecifico.css" rel="stylesheet" type="text/css" />
 
@@ -88,39 +90,7 @@
                     </article>
                 </section>
 
-                <section id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                    <ol class="carousel-indicators">
-                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                    </ol>
-
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <img class="d-block w-100" src="Images/interclasse.jpg" alt="Primeiro Slide">
-                        </div>
-
-                        <div class="carousel-item">
-                            <img class="d-block w-100" src="Images/interclasse.jpg" alt="Segundo Slide">
-                        </div>
-
-                        <div class="carousel-item">
-                            <img class="d-block w-100" src="Images/interclasse.jpg" alt="Terceiro Slide">
-                        </div>
-                    </div>
-
-                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button"
-                        data-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Anterior</span>
-                    </a>
-
-                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button"
-                        data-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Próximo</span>
-                    </a>
-                </section>
+                <asp:Literal ID="litCarrousel" runat="server"></asp:Literal>
 
                 <section class="sec-local">
                     <h2>LOCAL</h2>

@@ -529,8 +529,8 @@ BEGIN
 	FROM denuncia;
 END$$
 
-DROP PROCEDURE IF EXISTS BuscarDenuncias$$
-CREATE PROCEDURE BuscarDenuncias(pCodigo INT)
+DROP PROCEDURE IF EXISTS BuscarDenuncia$$
+CREATE PROCEDURE BuscarDenuncia(pCodigo INT)
 BEGIN
 	SELECT
 		d.cd_denuncia "CodigoDenuncia",
@@ -538,11 +538,14 @@ BEGIN
 		d.cd_usuario "@",
 		DATE_FORMAT(d.dt_denuncia, "%d/%m/%Y") "Data",
 		d.hr_denuncia "Hora",
-		lm.nm_motivo "Descricao"
+		lm.nm_motivo "Motivo",
+		m.cd_motivo "CodigoMotivo",
+		m.ds_denuncia "Descricao"
 	FROM denuncia d
 	JOIN motivo m ON d.cd_denuncia = m.cd_denuncia
 	JOIN lista_motivo lm ON m.cd_motivo = lm.cd_motivo
-	WHERE d.cd_denuncia = pCodigo;
+	WHERE m.cd_denuncia = pCodigo
+	GROUP BY d.cd_denuncia;
 END$$
 
 DROP PROCEDURE IF EXISTS BuscarDenunciasUsuario$$
