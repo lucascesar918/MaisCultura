@@ -200,7 +200,11 @@ namespace MaisCultura.Biblioteca
             MySqlDataReader data = Query("BuscarInteressesEvento", ("pEvento", codigo));
             data.Read();
 
-            return Int32.Parse(data["Soma"].ToString());
+            int interesses = Int32.Parse(data["Soma"].ToString());
+
+            Desconectar();
+
+            return interesses;
         }
     }
 }
