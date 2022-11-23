@@ -67,8 +67,6 @@
                                     <h3 class="title">EMAIL</h3>
                                     <asp:Label CssClass="item" ID="lblEmail" runat="server" Text="email@email.com">
                                     </asp:Label>
-                                    <asp:Label CssClass="item" ID="lblEmailDois" runat="server" Text="ebaaaaaa"></asp:Label>
-
                                 </div>
                                 <div class="divInfo">
                                     <h3 class="title">NASCIMENTO</h3>
