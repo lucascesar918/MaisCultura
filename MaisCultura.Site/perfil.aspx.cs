@@ -32,7 +32,39 @@ namespace MaisCultura.Site
             }
         }
 
-        Filtro filtro;
+        void HandleUser()
+        {
+            if (Request.QueryString["u"] != null)
+            {
+                Login = ListaUsuario.Buscar(Request.QueryString["u"]);
+                lblNmCompleto.Text = Login.Nome;
+                lblArroba.Text = Login.Codigo;
+                lblTUser.Text = Login.Tipo;
+
+                if (Login.Tipo == "Criador de Eventos")
+                {
+                    CreateEvents();
+                }
+            }
+            else
+            {
+                Response.Redirect("erro.html");
+            }
+        }
+
+        void CreateEvents()
+        {
+            List<Evento> eventos = new List<Evento>();
+            litEventosCria.Text += $@"
+                <section class='eventosCriador' id='eventosCria'>
+                    <h2 class='h2'> Eventos do Criador </h2>
+
+                    <section class='feedEventos'>
+                        
+                    </section>
+                </section>";
+        }
+
         ListaUsuario ListaUsuario = new ListaUsuario();
         ListaEvento ListaEvento = new ListaEvento();
 
@@ -40,6 +72,7 @@ namespace MaisCultura.Site
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            HandleUser();
             HandleLogin();
         }
     }

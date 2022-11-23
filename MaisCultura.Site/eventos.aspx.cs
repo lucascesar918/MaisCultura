@@ -40,9 +40,6 @@ namespace MaisCultura
         Usuario Login;
 
         private void ListarEventos(string usuario) {
-
-
-
             List<Evento> Eventos;
             if (ListaUsuario.Buscar(usuario) != null)
                 Eventos = ListaEvento.Feed(usuario);
