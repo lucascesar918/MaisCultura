@@ -121,6 +121,7 @@ namespace MaisCultura
                 </section>";
             }
         }
+
         DateTime? StrinToDate(string strDate)
         {
             if (string.IsNullOrEmpty(strDate))
@@ -129,6 +130,7 @@ namespace MaisCultura
             DateTime.TryParse(strDate, out dt);
             return dt;
         }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             HandleLogin();

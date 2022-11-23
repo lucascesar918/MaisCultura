@@ -18,9 +18,6 @@
     <title>+Cultura | Eventos</title>
 </head>
 <body>
-
-    
-
     <form id="form1" runat="server">
 
         <div id="shade" class="shade"></div>
@@ -40,7 +37,7 @@
                 <div class="menuUsuario">
                     <asp:Button CssClass="dropbtn" ID="dropbtnUsuario" runat="server" Text="Nome" />
                     <div class="dropdown-content">
-                    <asp:Literal ID="litDropDownHome" runat="server"></asp:Literal>  <%--Possível aplicar databinder--%>
+                    <asp:Literal ID="litDropDownHome" runat="server"></asp:Literal>
                     <asp:Literal ID="litDropDownPerfil" runat="server"></asp:Literal>
                     <asp:Literal ID="litDropDownDenuncias" runat="server"></asp:Literal>
                     <a href="eventos.aspx">Sair</a>
