@@ -142,5 +142,15 @@ namespace MaisCultura.Biblioteca
             Desconectar();
             return media;
         } 
+
+        public void Deletar(string codigo)
+        {
+            NonQuery("DeletarUsuario", ("pCodigo", codigo));
+        }
+
+        public void AlterarSenha(string codigo, string senha)
+        {
+            NonQuery("AlterarSenha", ("pUsuario", codigo), ("pSenha", senha));
+        }
     }
 }

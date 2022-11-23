@@ -61,8 +61,19 @@ namespace MaisCultura.Site
         protected void btnSenha_Click(object sender, EventArgs e)
         { //Falta mostrar para o usuário se foi possível ou não alterar a senha
 
-            if (txtSenhaAntiga.Text != txtSenhaNova.Text) return;
+            if (txtSenhaAntiga.Text == txtSenhaNova.Text) return;
 
+            ListaUsuario.AlterarSenha(Login.Codigo ,txtSenhaNova.Text);
+        }
+
+        protected void btnExcluirConta_Click(object sender, EventArgs e)
+        {
+        }
+
+        protected void btnExcluir_Click(object sender, EventArgs e)
+        {
+            ListaUsuario.Deletar(Login.Codigo);
+            Response.Redirect("eventos.aspx");
         }
     }
 }

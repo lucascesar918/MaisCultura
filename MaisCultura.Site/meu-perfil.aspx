@@ -168,7 +168,7 @@
                             </nav>
                             <button id="btnEditarPreferencias" onclick="abrirEditPref()"> Editar preferências </button>
                         </div>
-                        <button id="btnExcluirConta"> Excluir conta </button>
+                        <asp:Button ID="btnExcluirConta" runat="server" Text="Excluir Conta" OnClick="btnExcluirConta_Click" />
                     </section>
 
                 </main>
@@ -178,7 +178,7 @@
 
                 <h3 class="h3"> Você tem certeza que deseja excluir sua conta? </h3>
                 <div class="boxBtn">
-                    <asp:Button ID="btnExcluir" runat="server" Text="Excluir Conta" CssClass="btnBox" />
+                    <asp:Button ID="btnExcluir" runat="server" Text="Excluir Conta" CssClass="btnBox" OnClick="btnExcluir_Click" />
                     <asp:Button ID="cancelarExcluir" runat="server" Text="Cancelar" CssClass="btnBox" />
                 </div>
 
