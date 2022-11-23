@@ -612,7 +612,7 @@ END$$
 DROP PROCEDURE IF EXISTS DeletarEvento$$
 CREATE PROCEDURE DeletarEvento(pCodigo INT)
 BEGIN
-	DELETE FROM imagem_evento WHERE cd_evente = pCodigo;
+	DELETE FROM imagem_evento WHERE cd_evento = pCodigo;
 	DELETE FROM avaliacao WHERE cd_evento = pCodigo;
 	DELETE FROM dia_evento WHERE cd_evento = pCodigo;
 	DELETE FROM interesse WHERE cd_evento = pCodigo;
