@@ -86,20 +86,56 @@ namespace MaisCultura.Site
                 List<String> imagens = new List<String>();
                 imagens = ListaEvento.BuscarImagem(Evento.Codigo);
 
-                foreach (string imagem in imagens)
-                    litCarrousel.Text = $@"<div class='carousel - item active'>
-                              <img class='d-block w-100' src='{imagem}' alt='Slide'>
-                        </div>";
+                string CarrouselTarget = "";
+                string CarrouselImages = "";
 
                 for (int i = 0; i < imagens.Count; i++)
                 {
                     if (i == 0){
-                        litTarget.Text = $"<li data-target='#carouselExampleIndicators' data-slide-to='0' class='active'></li>";
+                        CarrouselImages += $@"
+                        <div class='carousel-item active'>
+                              <img class='d-block w-100' src='{imagens[0]}' alt='Slide'>
+                        </div>";
+                        CarrouselTarget = $"<li data-target='#carouselExampleIndicators' data-slide-to='0' class='active'></li>";
                     }
                     else
                     {
-                        litTarget.Text = $"<li data-target='#carouselExampleIndicators' data-slide-to='{i}'></li>";
+                        CarrouselImages += $@"
+                        <div class='carousel-item'>
+                              <img class='d-block w-100' src='{imagens[i]}' alt='Slide'>
+                        </div>";
+                        CarrouselTarget += $"<li data-target='#carouselExampleIndicators' data-slide-to='{i}'></li>";
                     }
+                }
+
+                if (imagens.Count == 1)
+                {
+                    litCarrousel.Text = $@"
+                    <div id='carouselExampleSlidesOnly' class='carousel slide' data-ride='carousel'>
+                        <div class='carousel-inner'>
+                            {CarrouselImages}
+                        </div>
+                    </div>";
+                }
+                else
+                {
+                    litCarrousel.Text = $@"
+                    <div id='carouselExampleIndicators' class='carousel slide' data-ride='carousel'>
+                        <ol class='carousel-indicators'>
+                            {CarrouselTarget}
+                        </ol>
+                        <div class='carousel-inner'>
+                            {CarrouselImages}
+                        </div>
+                        <a class='carousel-control-prev' href='#carouselExampleIndicators' role='button' data-slide='prev'>
+                            <span class='carousel-control-prev-icon' aria-hidden='true'></span>
+                            <span class='sr-only'>Previous</span>
+                        </a>
+                        <a class='carousel-control-next' href='#carouselExampleIndicators' role='button' data-slide='next'>
+                            <span class='carousel-control-next-icon' aria-hidden='true'></span>
+                            <span class='sr-only'>Next</span>
+                        </a>
+                    </div>";
                 }
 
                 foreach (Categoria categoria in Evento.Categorias)
