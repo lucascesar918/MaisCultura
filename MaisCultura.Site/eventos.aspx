@@ -46,10 +46,6 @@
                     <a href="eventos.aspx">Sair</a>
                     </div>
                 </div>
-
-                
-               
-                <%--<img src="Images/perfil526ace.png" class="imgPerfil">--%>
                 <asp:Literal ID="litImgPerfil" runat="server"></asp:Literal>
                 
             </article>

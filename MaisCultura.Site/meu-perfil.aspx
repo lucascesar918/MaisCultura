@@ -21,20 +21,24 @@
                     <img src="Images/logoNomeMenor.png" class="logo-header" />
                 </figure>
 
-                <article class="usuario">
-                    <div class="menuUsuario">
-                        <asp:Button CssClass="dropbtn" ID="dropbtnUsuario" runat="server" Text="Nome" />
-                        <div class="dropdown-content">
-                            <a href="Inicio.aspx">Início</a>
-                            <a href="perfil.aspx">Perfil</a>
-                            <a href="EventosdoCriador.aspx">Meus Eventos</a>
-                            <a href="Inicio.aspx">Sair</a>
-                        </div>
+                <article class="buttons">
+                <asp:Button ID="btnLog" runat="server" Text="Entrar" class="button button-log" />
+                <asp:Button ID="btnCad" runat="server" Text="Cadastrar" class="button button-cad" />
+            </article>
+
+            <article class="usuario">
+                <div class="menuUsuario">
+                    <asp:Button CssClass="dropbtn" ID="dropbtnUsuario" runat="server" Text="Nome" />
+                    <div class="dropdown-content">
+                    <asp:Literal ID="litDropDownHome" runat="server"></asp:Literal>  <%--Possível aplicar databinder--%>
+                    <asp:Literal ID="litDropDownPerfil" runat="server"></asp:Literal>
+                    <asp:Literal ID="litDropDownDenuncias" runat="server"></asp:Literal>
+                    <a href="eventos.aspx">Sair</a>
                     </div>
-
-                    <img src="Images/perfil526ace.png" class="imgPerfil">
-
-                </article>
+                </div>
+                <asp:Literal ID="litImgPerfil" runat="server"></asp:Literal>
+                
+            </article>
             </header>
             <section class="sectionBack">
                 <asp:Button ID="btnVoltar" runat="server" Text="Voltar"
@@ -67,7 +71,6 @@
                                     <h3 class="title">EMAIL</h3>
                                     <asp:Label CssClass="item" ID="lblEmail" runat="server" Text="email@email.com">
                                     </asp:Label>
-                                    <asp:Label CssClass="item" ID="lblEmailDois" runat="server" Text="ebaaaaaa"></asp:Label>
 
                                 </div>
                                 <div class="divInfo">

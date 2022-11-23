@@ -10,26 +10,51 @@ namespace MaisCultura.Site
 {
     public partial class meu_perfil : System.Web.UI.Page
     {
+        ListaUsuario ListaUsuario = new ListaUsuario();
+        ListaEvento ListaEvento = new ListaEvento();
+
+        Usuario Login;
+
+
+        void HandleLogin()
+        {
+            if (Request.QueryString["l"] != null)
+            {
+                Login = ListaUsuario.Buscar(Request.QueryString["l"]);
+                dropbtnUsuario.Text = Login.Nome;
+                litDropDownHome.Text = $"<a href='eventos.aspx?l={Login.Codigo}'>Início</a>";
+                litDropDownPerfil.Text = $"<a href='meu-perfil.aspx?l={Login.Codigo}&u={Login.Codigo}'>Perfil</a>";
+                if (Login.Tipo == "Administrador")                                                              //Logado
+                    litDropDownDenuncias.Text = $"<a href='denuncias.aspx?l={Login.Codigo}'>Denúncias</a>";
+                dropbtnUsuario.Visible = true;
+                btnLog.Visible = false;
+                btnCad.Visible = false;
+                litImgPerfil.Text = $@"<img src='Images/perfil526ace.png' class='imgPerfil'>";
+            }
+            else
+            {
+                dropbtnUsuario.Visible = false;
+                btnLog.Visible = true;                                                                          //Deslogado
+                btnCad.Visible = true;
+            }
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            ListaUsuario ListaUsuario = new ListaUsuario();
-
-            string usuarioCd = Request.QueryString["u"];
-            Usuario usuario = ListaUsuario.Buscar(usuarioCd);
-            if (usuario == null) usuario = ListaUsuario.Buscar("adriano.fraga");
+            HandleLogin();
 
             //litEventos.Text = $"<a href=\"eventos.aspx?u={usuario.Codigo}\">Eventos</a>";
-            dropbtnUsuario.Text = usuario.Nome;
-            lblNomeUsuario.Text = usuario.Nome;
-            lblArroba.Text = $"@{usuario.Codigo}";
-            lblEmail.Text = usuario.Email;
-            lblNascimento.Text = usuario.Nascimento.Substring(0, 10);
-            lblSexo.Text = usuario.Sexo == "M" ? "Masculino" : (usuario.Sexo == "F" ? "Feminino" : "Não Informado");
-            lblTipo.Text = usuario.Tipo;
+            dropbtnUsuario.Text = Login.Nome;
+            lblNomeUsuario.Text = Login.Nome;
+            lblArroba.Text = $"@{Login.Codigo}";
+            lblEmail.Text = Login.Email;
+            lblNascimento.Text = Login.Nascimento.Substring(0, 10);
+            lblSexo.Text = Login.Sexo == "M" ? "Masculino" : (Login.Sexo == "F" ? "Feminino" : "Não Informado");
+            lblTipo.Text = Login.Tipo;
 
             litPrefs.Text = "";
 
-            foreach (Categoria preferencia in usuario.Preferencias)
+            foreach (Categoria preferencia in Login.Preferencias)
                 litPrefs.Text += $"<li>{preferencia.Nome}</li>";
         }
 
@@ -37,11 +62,6 @@ namespace MaisCultura.Site
         { //Falta mostrar para o usuário se foi possível ou não alterar a senha
 
             if (txtSenhaAntiga.Text != txtSenhaNova.Text) return;
-
-            ListaUsuario ListaUsuario = new ListaUsuario();
-            string usuario;
-            if (Request.QueryString["u"] != null) usuario = Request.QueryString["u"];
-            else usuario = "adriano.fraga";
 
         }
     }

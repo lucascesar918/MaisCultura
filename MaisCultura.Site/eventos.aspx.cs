@@ -30,7 +30,6 @@ namespace MaisCultura
                 btnLog.Visible = true;                                                                          //Deslogado
                 btnCad.Visible = true;
             }
-
         }
 
 
