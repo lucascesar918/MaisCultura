@@ -78,6 +78,7 @@ body{
 .menuUsuario {
     position: relative;
     display: inline-block;
+    font-weight: 700;
 }
 
 .dropbtn {
@@ -87,7 +88,9 @@ body{
     border: none;
     cursor: pointer;
     background-color: transparent;
+    font-weight: 700;
 }
+
 
 .dropdown-content {
     display: none;
