@@ -80,5 +80,10 @@ namespace MaisCultura.Biblioteca
             Desconectar();
             return denuncias;
         }
+
+        public void Deletar(int codigo)
+        {
+            NonQuery("DeletarDenuncia", ("pCodigo", codigo));
+        }
     }
 }
