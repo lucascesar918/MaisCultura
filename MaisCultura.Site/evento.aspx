@@ -72,7 +72,7 @@
             <div class="corpo">
                 <section class="header-corpo">
                     <div class="tituloSave">
-                        <asp:Label ID="lblTituloEvento" runat="server" Text="Interclasse Ablas FIlho x Etecaf"
+                        <asp:Label ID="lblTituloEvento" runat="server" Text=""
                             CssClass="titulo"></asp:Label>
 
                         <asp:UpdatePanel ID="updBtnSave" runat="server" UpdateMode="Conditional">
@@ -140,10 +140,12 @@ Acontecerão aulas de Karatê e Judô em dias intercalados. Nos dias 2 e 4 haver
                         <p>Responsável</p>
                     </div>
                     <figure>
-                        <img class="perfilResp" src="Images/perfil526ace.png" />
+                        <asp:Literal ID="litPerfilImage" runat="server" />
+                            <img class="perfilResp" src="Images/perfil526ace.png" />
+                        </a>
                     </figure>
                     <div class="nmMedia">
-                        <a href="PerfilOutroUsuario.aspx">
+                        <asp:Literal ID="litPerfilNome" runat="server" />
                             <asp:Label ID="titleResponsavel" runat="server" Text="Fulano de Tal"
                                 CssClass="titleResponsavel"></asp:Label>
                         </a>

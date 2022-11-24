@@ -73,10 +73,13 @@ body{
 
 .sectionBack {
     width: 100%;
-    background: #fff;
+    background-color: #222222;
+    height: 30px;
     display: flex;
-    justify-content: space-between;
+    flex-direction: row;
+    position: fixed;
     align-items: center;
+    margin-top: 45px;
 }
 
 .head {

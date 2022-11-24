@@ -84,10 +84,23 @@ namespace MaisCultura.Site
                 litHrFim.Text = Evento.Dias[0].Fim.ToShortTimeString();
 
                 List<String> imagens = new List<String>();
+
                 imagens = ListaEvento.BuscarImagem(Evento.Codigo);
+
+                Usuario usuarioEvento = ListaUsuario.Buscar(Evento.Responsavel);
 
                 string CarrouselTarget = "";
                 string CarrouselImages = "";
+
+                var TagAPerfil = $"<a href='perfil.aspx?u={usuarioEvento.Codigo}'>";
+
+                if (Request.QueryString["l"] != null)
+                {
+                    TagAPerfil = $"<a href='perfil.aspx?l={Login.Codigo}&u={usuarioEvento.Codigo}'>";
+                }
+
+                litPerfilImage.Text = TagAPerfil;
+                litPerfilNome.Text = TagAPerfil;
 
                 for (int i = 0; i < imagens.Count; i++)
                 {

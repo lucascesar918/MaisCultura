@@ -43,10 +43,15 @@ namespace MaisCultura.Site
                 lblTUser.Text = Login.Tipo;
                 litTittle.Text = Login.Nome;
 
-                if (Login.Tipo == "Criador de Eventos")
+                if (Login.Tipo == "Criador de Eventos" || Login.Tipo == "Empresa")
                 {
                     CreateEvents(Request.QueryString["u"]);
                 }
+                else
+                {
+                    Response.Redirect("erro.html");
+                }
+
             }
             else
             {
