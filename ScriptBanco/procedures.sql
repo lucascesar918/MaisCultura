@@ -153,8 +153,14 @@ END$$
 DROP PROCEDURE IF EXISTS BuscarEventoUsuario$$
 CREATE PROCEDURE BuscarEventoUsuario(pCodigo VARCHAR(20))
 BEGIN
-	SELECT * FROM evento
-	WHERE 
+	SELECT
+		cd_evento "Codigo",
+		cd_responsavel "@",
+		nm_titulo "Titulo",
+		ds_local "Local",
+		ds_evento "Descricao"
+	FROM evento
+	WHERE  
 		cd_responsavel = pCodigo;
 END$$
 

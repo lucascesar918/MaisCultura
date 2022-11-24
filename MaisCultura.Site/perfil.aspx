@@ -12,7 +12,7 @@
 
     <link rel="stylesheet" type="text/css" href="Styles/PerfilOutroUsuario.css" />
 
-    <title> +Cultura | Perfil de Outro Usuário </title>
+    <title> +Cultura | <asp:Literal ID="litTittle" runat="server"></asp:Literal> </title>
 </head>
 <body>
     <form id="form1" runat="server">
