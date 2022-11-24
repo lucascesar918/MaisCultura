@@ -540,6 +540,24 @@ BEGIN
 	JOIN lista_motivo lm ON m.cd_motivo = lm.cd_motivo;
 END$$
 
+DROP PROCEDURE IF EXISTS BuscarDenuncia$$
+CREATE PROCEDURE BuscarDenuncia(pCodigo INT)
+BEGIN
+	SELECT
+		d.cd_denuncia "CodigoDenuncia",
+		d.cd_evento "CodigoEvento",
+		d.cd_usuario "@",
+		DATE_FORMAT(d.dt_denuncia, "%d/%m/%Y") "Data",
+		d.hr_denuncia "Hora",
+		lm.nm_motivo "Motivo",
+		m.ds_denuncia "Descricao",
+		lm.cd_motivo "CodigoMotivo"
+	FROM denuncia d
+	JOIN motivo m ON d.cd_denuncia = m.cd_denuncia
+	JOIN lista_motivo lm ON m.cd_motivo = lm.cd_motivo
+	WHERE d.cd_denuncia = pCodigo;
+END$$
+
 DROP PROCEDURE IF EXISTS BuscarDenunciasUsuario$$
 CREATE PROCEDURE BuscarDenunciasUsuario(pCodigo VARCHAR(20))
 BEGIN
