@@ -87,8 +87,8 @@
 
                 <br />
 
-                <h2 class="filtros-titulos">Local</h2>
-                <asp:TextBox ID="txtLocal" runat="server" CssClass="txtLocal" placeholder="Insira aqui a cidade..."></asp:TextBox>
+                <%--<h2 class="filtros-titulos">Local</h2>
+                <asp:TextBox ID="txtLocal" runat="server" CssClass="txtLocal" placeholder="Insira aqui a cidade..."></asp:TextBox>--%>
                 
                 <h2 class="filtros-titulos">Datas e horários</h2>
                 <h2 class="filtros-subtitulos data">Início</h2>

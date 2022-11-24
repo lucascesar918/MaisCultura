@@ -10,7 +10,13 @@ namespace MaisCultura.Site
 {
     public partial class EventoEspecifico : System.Web.UI.Page
     {
-   
+        ListaEvento ListaEvento = new ListaEvento();
+        ListaUsuario ListaUsuario = new ListaUsuario();
+        ListaDenuncia ListaDenuncia = new ListaDenuncia();
+        ListaAvaliacao ListaAvaliacao = new ListaAvaliacao();
+
+        Usuario Login;
+        Evento Evento;
 
         protected void btnInteresse_Click(object sender, EventArgs e)
         {
@@ -18,11 +24,13 @@ namespace MaisCultura.Site
             {
                 btnInteresse.CssClass = "Int";
                 btnInteresse.Text = "Interesse Demonstrado";
+                ListaEvento.Salvar(Login.Codigo, Evento.Codigo);
             }
             else
             {
                 btnInteresse.CssClass = "naoInt";
                 btnInteresse.Text = "Demonstrar Interesse";
+                ListaEvento.CancelarSalvo(Login.Codigo, Evento.Codigo);
             }
         }
 
@@ -37,13 +45,8 @@ namespace MaisCultura.Site
                 btnSave.CssClass = "save naoSalvo";
             }
         }
-        ListaEvento ListaEvento = new ListaEvento();
-        ListaUsuario ListaUsuario = new ListaUsuario();
-        ListaDenuncia ListaDenuncia = new ListaDenuncia();
-        ListaAvaliacao ListaAvaliacao = new ListaAvaliacao();
 
-        Usuario Login;
-        Evento Evento;
+
         
         protected void Page_Load(object sender, EventArgs e)
         {

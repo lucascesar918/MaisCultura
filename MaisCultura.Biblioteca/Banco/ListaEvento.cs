@@ -204,5 +204,15 @@ namespace MaisCultura.Biblioteca
         public void Deletar(int codigo) {
             NonQuery("DeletarEvento", ("pCodigo", codigo));
         }
+
+        public void Salvar(string codigoUsuario, int codigoEvento)
+        {
+            NonQuery("AdicionarInteresse", ("pUsuario", codigoUsuario), ("pEvento", codigoEvento));
+        }
+
+        public void CancelarSalvo(string codigoUsuario, int codigoEvento)
+        {
+            NonQuery("RemoverInteresse", ("pUsuario", codigoUsuario), ("pEvento", codigoEvento));
+        }
     }
 }

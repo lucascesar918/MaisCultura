@@ -138,7 +138,7 @@ namespace MaisCultura
             filtro = new Filtro();
             filtro.Inicio = StrinToDate(dtStart.Text);
             filtro.Fim = StrinToDate(dtEnd.Text);
-            filtro.Local = txtLocal.Text;
+            //filtro.Local = txtLocal.Text;
             filtro.Categorias = new List<string>();
             filtro.Categorias.Add((string)ViewState["Cateoria"]);
 

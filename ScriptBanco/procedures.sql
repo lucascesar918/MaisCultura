@@ -675,4 +675,31 @@ BEGIN
 	SELECT COUNT(cd_evento) "Soma" FROM interesse WHERE cd_evento = pEvento;
 END$$
 
+DROP PROCEDURE IF EXISTS DeletarAvaliacao$$
+CREATE PROCEDURE DeletarAvaliacao(
+	pUsuario VARCHAR(20),
+	pEvento INT
+)
+BEGIN
+	DELETE FROM denuncia WHERE cd_evento = pEvento AND cd_usuario = pUsuario;
+END$$
+
+DROP PROCEDURE IF EXISTS AdicionarInteresse$$
+CREATE PROCEDURE AdicionarInteresse(
+	pUsuario VARCHAR(20),
+	pEvento INT
+)
+BEGIN
+	INSERT INTO interesse VALUES (pEvento, pUsuario);
+END$$
+
+DROP PROCEDURE IF EXISTS RemoverInteresse$$
+CREATE PROCEDURE RemoverInteresse(
+	pUsuario VARCHAR(20),
+	pEvento INT
+)
+BEGIN
+	DELETE FROM interesse WHERE cd_evento = pEvento AND cd_usuario = pUsuario;
+END$$
+
 DELIMITER ;
