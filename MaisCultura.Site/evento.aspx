@@ -112,23 +112,27 @@ Acontecerão aulas de Karatê e Judô em dias intercalados. Nos dias 2 e 4 haver
                     <h2 class="h2">Avaliações do Evento </h2>
                     <section class="avaliacoes">
                         <asp:Literal ID="litAvaliacoes" runat="server"></asp:Literal>
-                        <section class="suaAvaliacao">
-                            <div class="suaNota">
-                                <h4>Deixe uma nota sobre esse criador... </h4>
-                                <asp:DropDownList ID="ddlEstrelas" runat="server">
-                                    <asp:ListItem Text="Uma estrela" Value="1"></asp:ListItem>
-                                    <asp:ListItem Text="Duas estrelas" Value="2"></asp:ListItem>
-                                    <asp:ListItem Text="Três estrelas" Value="3"></asp:ListItem>
-                                    <asp:ListItem Text="Quatro estrelas" Value="4"></asp:ListItem>
-                                    <asp:ListItem Text="Cinco estrelas" Value="5"></asp:ListItem>
-                                </asp:DropDownList>
-                            </div>
-                            <div class="seuTexto">
-                                <asp:TextBox ID="txtBoxAvaliacao" runat="server" mode="multiline"
-                                    placeholder="Deixe aqui sua avaliação sobre esse criador..."></asp:TextBox>
-                            </div>
-                            <asp:Button ID="btnAvaliar" runat="server" Text="Enviar Avaliação" />
-                        </section>
+
+                        <asp:Panel ID="pnlAval" runat="server">
+                            <section class="suaAvaliacao">
+                                <div class="suaNota">
+                                    <h4>Deixe uma nota sobre esse criador... </h4>
+                                    <asp:DropDownList ID="ddlEstrelas" runat="server">
+                                        <asp:ListItem Text="Uma estrela" Value="1"></asp:ListItem>
+                                        <asp:ListItem Text="Duas estrelas" Value="2"></asp:ListItem>
+                                        <asp:ListItem Text="Três estrelas" Value="3"></asp:ListItem>
+                                        <asp:ListItem Text="Quatro estrelas" Value="4"></asp:ListItem>
+                                        <asp:ListItem Text="Cinco estrelas" Value="5"></asp:ListItem>
+                                    </asp:DropDownList>
+                                </div>
+                                <div class="seuTexto">
+                                    <asp:TextBox ID="txtBoxAvaliacao" runat="server" mode="multiline"
+                                        placeholder="Deixe aqui sua avaliação sobre esse criador..."></asp:TextBox>
+                                </div>
+                                <asp:Button ID="btnAvaliar" runat="server" Text="Enviar Avaliação" />
+                            </section>
+                        </asp:Panel>
+
                     </section>
                 </section>
 

@@ -218,6 +218,7 @@ body{
     display: flex;
     justify-content: left;
     margin-top: 95px;
+    margin-bottom: 35px;
 }
 
 .corpo {

@@ -54,6 +54,7 @@ namespace MaisCultura.Site
                 litDropDownHome.Text = $"<a href='eventos.aspx?l={Login.Codigo}'>Início</a>";
                 litDropDownPerfil.Text = $"<a href='perfil.aspx?l={Login.Codigo}'>Perfil</a>";
                 dropbtnUsuario.Visible = true;
+                pnlAval.Visible= true;
                 btnLog.Visible = false;
                 btnCad.Visible = false;
                 litImgPerfil.Text = $@"<img src='Images/perfil526ace.png' class='imgPerfil'>";
@@ -61,6 +62,7 @@ namespace MaisCultura.Site
             else
             {
                 dropbtnUsuario.Visible = false;                             //Deslogado
+                pnlAval.Visible = false;
                 btnLog.Visible = true;
                 btnCad.Visible = true;
             }

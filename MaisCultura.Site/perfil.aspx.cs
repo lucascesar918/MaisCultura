@@ -21,6 +21,7 @@ namespace MaisCultura.Site
                 if (Login.Tipo == "Administrador")                                                              //Logado
                     litDropDownDenuncias.Text = $"<a href='denuncias.aspx?l={Login.Codigo}'>Denúncias</a>";
                 dropbtnUsuario.Visible = true;
+                pnlAval.Visible = true;
                 btnLog.Visible = false;
                 btnCad.Visible = false;
                 litImgPerfil.Text = $@"<img src='Images/perfil526ace.png' class='imgPerfil'>";
@@ -28,6 +29,7 @@ namespace MaisCultura.Site
             else
             {
                 dropbtnUsuario.Visible = false;
+                pnlAval.Visible = false;
                 btnLog.Visible = true;                                                                          //Deslogado
                 btnCad.Visible = true;
             }
@@ -38,20 +40,14 @@ namespace MaisCultura.Site
             if (Request.QueryString["u"] != null)
             {
                 Login = ListaUsuario.Buscar(Request.QueryString["u"]);
+
+                if (Login.Tipo != "Criador de Eventos" && Login.Tipo != "Empresa")
+                    Response.Redirect("erro.html");
+
                 lblNmCompleto.Text = Login.Nome;
                 lblArroba.Text = Login.Codigo;
                 lblTUser.Text = Login.Tipo;
                 litTittle.Text = Login.Nome;
-
-                if (Login.Tipo == "Criador de Eventos" || Login.Tipo == "Empresa")
-                {
-                    CreateEvents(Request.QueryString["u"]);
-                }
-                else
-                {
-                    Response.Redirect("erro.html");
-                }
-
             }
             else
             {
@@ -139,6 +135,29 @@ namespace MaisCultura.Site
 
                     </article>
                 </section>";
+
+                foreach (Avaliacao avaliacao in ListaAvaliacao.BuscarPorEvento(evento.Codigo))
+                {
+                    litAvaliacoes.Text += $@"<div class='umaAvaliacao'>
+                                <div class='infosAvaliador'>
+                                    <section class='infosNmAtDtAv'>
+                                        <figure>
+                                            <img src='Images/perfil526ace.png' class='imgPerfilAvaliacao' />
+                                        </figure>
+                                        <span>{avaliacao.CodigoUsuario}</span>
+                                    </section>
+                                    <div class='notaAvaliacao'>
+                                        <span>{avaliacao.Estrelas}</span>
+                                        <figure>
+                                            <img src='Images/star.png' class='imgEstrelaMedia' />
+                                        </figure>
+                                    </div>
+                                </div>
+                                <div class='textoAvaliacao'>
+                                    <span>{avaliacao.Descricao}</span>
+                                </div>
+                            </div>";
+                }
             }
 
             litEventosCria.Text += $@"
@@ -153,6 +172,7 @@ namespace MaisCultura.Site
 
         ListaUsuario ListaUsuario = new ListaUsuario();
         ListaEvento ListaEvento = new ListaEvento();
+        ListaAvaliacao ListaAvaliacao = new ListaAvaliacao();
 
         Usuario Login;
 
@@ -160,6 +180,7 @@ namespace MaisCultura.Site
         {
             HandleUser();
             HandleLogin();
+            CreateEvents(Request.QueryString["u"]);
         }
     }
 }
