@@ -24,8 +24,8 @@
                 <div class="menuUsuario">
                     <asp:Button CssClass="dropbtn" ID="dropbtnUsuario" runat="server" Text="Bárbara Pera" />
                     <div class="dropdown-content">
-                        <a href="eventos.aspx">Eventos</a>
-                        <%--<a href="perfil.aspx">Perfil</a>--%>
+                        <a href="eventos.aspx">Início</a>
+                        <a href="meus-eventos.aspx">Meus Eventos</a>
                         <a href="eventos.aspx">Sair</a>
                     </div>
                 </div>
