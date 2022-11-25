@@ -81,52 +81,31 @@
                     </div>
 
                     <section class="avaliacoes">
-                        <div class="umaAvaliacao">
-                            <div class="infosAvaliador">
-                                <section class="infosNmAtDtAv">
-                                    <figure>
-                                        <img src="Images/perfil526ace.png" class="imgPerfilAvaliacao"/>
-                                    </figure>
+                        
+                        <asp:Literal ID="litAvaliacoes" runat="server"></asp:Literal>
+                        
+                        <asp:Panel ID="pnlAval" runat="server">
+                            <section class="suaAvaliacao">
+                                <div class="suaNota">
+                                    <h4> Deixe uma nota sobre esse criador... </h4>
 
-                                    <asp:Label ID="lblNmUser" runat="server" Text="Arthur Gomes"></asp:Label>
-                                    <asp:Label ID="lblArrobaUser" runat="server" Text="@artoss"></asp:Label>
-                                    <asp:Label ID="lblDtAval" runat="server" Text="11 de janeiro"></asp:Label>
-                                </section>
-
-                                <div class="notaAvaliacao">
-                                    <asp:Label ID="lblNotaAvaliacao" runat="server" Text="5"></asp:Label>
-                                    
-                                    <figure>
-                                        <img src="Images/star.png" class="imgEstrelaMedia"/>
-                                    </figure>
+                                    <asp:DropDownList ID="ddlEstrelas" runat="server">
+                                        <asp:ListItem Text="Uma estrela" Value="1"></asp:ListItem>
+                                        <asp:ListItem Text="Duas estrelas" Value="2"></asp:ListItem>
+                                        <asp:ListItem Text="Três estrelas" Value="3"></asp:ListItem>
+                                        <asp:ListItem Text="Quatro estrelas" Value="4"></asp:ListItem>
+                                        <asp:ListItem Text="Cinco estrelas" Value="5"></asp:ListItem>
+                                    </asp:DropDownList>
                                 </div>
 
-                            </div>
-                            
-                            <div class="textoAvaliacao">
-                                <asp:Literal ID="litDesc" runat="server">A aula foi incrível e o professor é obviamente um homem muito sábio e inteligente. Aprendi muito e vou levar esses conhecimentos para a vida.</asp:Literal>
-                            </div>
-                        </div>
+                                <div class="seuTexto">
+                                    <asp:TextBox ID="txtBoxAvaliacao" runat="server" mode="multiline" placeholder="Deixe aqui sua avaliação sobre esse criador..."></asp:TextBox>
+                                </div>
+
+                                <asp:Button ID="btnAvaliar" runat="server" Text="Enviar Avaliação" />
+                            </section>
+                        </asp:Panel>
                         
-                        <section class="suaAvaliacao">
-                            <div class="suaNota">
-                                <h4> Deixe uma nota sobre esse criador... </h4>
-
-                                <asp:DropDownList ID="ddlEstrelas" runat="server">
-                                    <asp:ListItem Text="Uma estrela" Value="1"></asp:ListItem>
-                                    <asp:ListItem Text="Duas estrelas" Value="2"></asp:ListItem>
-                                    <asp:ListItem Text="Três estrelas" Value="3"></asp:ListItem>
-                                    <asp:ListItem Text="Quatro estrelas" Value="4"></asp:ListItem>
-                                    <asp:ListItem Text="Cinco estrelas" Value="5"></asp:ListItem>
-                                </asp:DropDownList>
-                            </div>
-
-                            <div class="seuTexto">
-                                <asp:TextBox ID="txtBoxAvaliacao" runat="server" mode="multiline" placeholder="Deixe aqui sua avaliação sobre esse criador..."></asp:TextBox>
-                            </div>
-
-                            <asp:Button ID="btnAvaliar" runat="server" Text="Enviar Avaliação" />
-                        </section>
                     </section>
                 </section> 
             </main>

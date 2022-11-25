@@ -57,6 +57,7 @@ namespace MaisCultura.Site
                 litDropDownHome.Text = $"<a href='eventos.aspx?l={Login.Codigo}'>Início</a>";
                 litDropDownPerfil.Text = $"<a href='perfil.aspx?l={Login.Codigo}'>Perfil</a>";
                 dropbtnUsuario.Visible = true;
+                pnlAval.Visible= true;
                 btnLog.Visible = false;
                 btnCad.Visible = false;
                 litImgPerfil.Text = $@"<img src='Images/perfil526ace.png' class='imgPerfil'>";
@@ -64,6 +65,7 @@ namespace MaisCultura.Site
             else
             {
                 dropbtnUsuario.Visible = false;                             //Deslogado
+                pnlAval.Visible = false;
                 btnLog.Visible = true;
                 btnCad.Visible = true;
             }
@@ -87,10 +89,23 @@ namespace MaisCultura.Site
                 litHrFim.Text = Evento.Dias[0].Fim.ToShortTimeString();
 
                 List<String> imagens = new List<String>();
+
                 imagens = ListaEvento.BuscarImagem(Evento.Codigo);
+
+                Usuario usuarioEvento = ListaUsuario.Buscar(Evento.Responsavel);
 
                 string CarrouselTarget = "";
                 string CarrouselImages = "";
+
+                var TagAPerfil = $"<a href='perfil.aspx?u={usuarioEvento.Codigo}'>";
+
+                if (Request.QueryString["l"] != null)
+                {
+                    TagAPerfil = $"<a href='perfil.aspx?l={Login.Codigo}&u={usuarioEvento.Codigo}'>";
+                }
+
+                litPerfilImage.Text = TagAPerfil;
+                litPerfilNome.Text = TagAPerfil;
 
                 for (int i = 0; i < imagens.Count; i++)
                 {

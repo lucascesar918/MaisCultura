@@ -54,27 +54,33 @@ namespace MaisCultura
                 List<Categoria> categorias = evento.Categorias;
                 List<DiaEvento> dias = evento.Dias;
 
-                var TagA = $"<a href='evento.aspx?e={evento.Codigo}'>";
+                var TagAEvento = $"<a href='evento.aspx?e={evento.Codigo}'>";
+                var TagAPerfil = $"<a href='perfil.aspx?u={usuarioEvento.Codigo}'>";
 
-                if(Request.QueryString["l"] != null)
+                if (Request.QueryString["l"] != null)
                 {
-                    TagA = $"<a href='evento.aspx?l={Login.Codigo}&e={evento.Codigo}'>";
+                    TagAEvento = $"<a href='evento.aspx?l={Login.Codigo}&e={evento.Codigo}'>";
+                    TagAPerfil = $"<a href='perfil.aspx?l={Login.Codigo}&u={usuarioEvento.Codigo}'>";
                 }
 
                 litEventos.Text += $@"<section class='card'>
                     <article class='card-header'>
                         <figure>
-                            <img src='Images/perfil.png' alt='Imagem de Perfil' class='perfil'>
+                            {TagAPerfil}
+                                <img src='Images/perfil.png' alt='Imagem de Perfil' class='perfil'>
+                            </a>
                         </figure>
 
                         <article class='card-header-nome'>
-                            <h2>{usuarioEvento.Nome}</h2>
-                            <h5>{usuarioEvento.Codigo}</h5>
+                            {TagAPerfil}
+                                <h2>{usuarioEvento.Nome}</h2>
+                                <h5>{usuarioEvento.Codigo}</h5>
+                            </a>
                         </article>
 
                     </article>
 
-                    {TagA}
+                    {TagAEvento}
                         <article class='card-tittle'>
                                 <h2>{evento.Titulo}</h2>
                         </article>
@@ -86,7 +92,7 @@ namespace MaisCultura
                     </article>
 
                     <article class='card-image'>
-                        {TagA}
+                        {TagAEvento}
                             <figure>
                                 <img src='{ListaEvento.BuscarImagem(evento.Codigo)[0]}' alt='Interclasse de cria' class='foto-evento'>
                             </figure>

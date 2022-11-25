@@ -150,49 +150,22 @@ namespace MaisCultura.Site
         protected global::System.Web.UI.WebControls.Label lblMedia;
 
         /// <summary>
-        /// Controle lblNmUser.
+        /// Controle litAvaliacoes.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblNmUser;
+        protected global::System.Web.UI.WebControls.Literal litAvaliacoes;
 
         /// <summary>
-        /// Controle lblArrobaUser.
+        /// Controle pnlAval.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblArrobaUser;
-
-        /// <summary>
-        /// Controle lblDtAval.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDtAval;
-
-        /// <summary>
-        /// Controle lblNotaAvaliacao.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblNotaAvaliacao;
-
-        /// <summary>
-        /// Controle litDesc.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal litDesc;
+        protected global::System.Web.UI.WebControls.Panel pnlAval;
 
         /// <summary>
         /// Controle ddlEstrelas.
