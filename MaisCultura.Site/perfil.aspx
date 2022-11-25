@@ -12,7 +12,7 @@
 
     <link rel="stylesheet" type="text/css" href="Styles/PerfilOutroUsuario.css" />
 
-    <title> +Cultura | Perfil de Outro Usuário </title>
+    <title> +Cultura | <asp:Literal ID="litTittle" runat="server"></asp:Literal> </title>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -54,77 +54,18 @@
                     </figure>
 
                     <article class="nmUser">
-                        <asp:Label ID="nmCompleto" runat="server" Text="Bárbara Pera" CssClass="nmCompleto"></asp:Label>
+                        <asp:Label ID="lblNmCompleto" runat="server" CssClass="nmCompleto"></asp:Label>
 
                         <div class="userTUsuario">
-                            <asp:Label ID="lblArroba" runat="server" Text="@barbara" CssClass="arroba"></asp:Label>
-                            <div class="tipoUsuario"> <asp:Label ID="lblTUser" runat="server" Text="Criador de Eventos"></asp:Label> </div>
+                            <asp:Label ID="lblArroba" runat="server" CssClass="arroba"></asp:Label>
+                            <div class="tipoUsuario"> 
+                                <asp:Label ID="lblTUser" runat="server"></asp:Label> 
+                            </div>
                         </div>
                     </article>
                 </section>
 
-                <section class="eventosCriador">
-                    <h2 class="h2"> Eventos do Criador </h2>
-
-                    <section class="feedEventos">
-                        <a href="evento.aspx">
-                            <section class="card">
-                                <article class="card-header">
-                                    <figure>
-                                        <img src="Images/perfil526ace.png" alt="imagem de perfil" class="perfil"/>
-                                    </figure>
-
-                                    <article class="card-header-nome">
-                                        <h2>Bárbara Pera</h2>
-                                        <h5>@barbara</h5>
-                                    </article>
-
-                                    <figure>
-                                        <img src="Images/save.png" alt="Salvar" class="save"/>
-                                    </figure>
-                                </article>
-
-                                <article class="card-tittle">
-                                    <h2>Interclasse EE Ablas Filho vs Etecaf</h2>
-                                </article>
-                                            
-                                <article class="card-tags">
-                                    <h2 class="tag">Esporte</h2>
-                                    <h2 class="tag">Futebol</h2>
-                                </article>
-
-                                <article class="card-image">
-                                    <figure>
-                                        <img src="Images/interclasse.jpg" alt="Interclasse de cria" class="foto-evento"/>
-                                    </figure>
-                                </article>
-
-                                <article class="card-dateTime dateTime">
-                                    <article class="card-dateTime date">
-                                        <figure>
-                                            <img src="Images/calendar.png" alt="Calendar icon" class="calendar-icon"/>
-                                        </figure>
-                                        <h3>02/10 a 10/10</h3>
-                                    </article>
-
-                                    <article class="card-dateTime time">
-                                        <figure>
-                                            <img src="Images/time.png" alt="Time icon" class="time-icon"/>
-                                        </figure>
-                                        <h3>15:10</h3>
-                                    </article>
-                                </article>
-
-                                <article class="card-local">
-                                    <figure>
-                                        <img src="Images/local.png" alt="Local icon" class="local-icon"/>
-                                    </figure>
-                                    <h3>Santos, SP</h3>
-                                </article>
-                            </section>
-                        </a>
-                    </section>
-                </section>
+                <asp:Literal ID="litEventosCria" runat="server"></asp:Literal>
 
                 <section class="avaliacaodoCriador">
                     <h2 class="h2"> Avaliações do Criador </h2>

@@ -134,6 +134,29 @@ namespace MaisCultura.Biblioteca
             return evento;
         }
 
+        public List<Evento> BuscarPorUsuario(string codigo)
+        {
+            List<Evento> eventos = new List<Evento>();
+
+
+            MySqlDataReader data = Query("BuscarEventoUsuario", ("pCodigo", codigo));
+
+            while (data.Read())
+            {
+                Evento evento = DataReaderToEvento(data, false);
+                eventos.Add(evento);
+            }
+
+            Desconectar();
+            foreach (Evento evento in eventos)
+            {
+                evento.Categorias = BuscarCategorias(evento.Codigo);
+                evento.Dias = BuscarDias(evento.Codigo);
+            }
+
+            return eventos;
+        }
+
         public void Criar(Evento evento)
         { 
             NonQuery("CadastrarEvento",

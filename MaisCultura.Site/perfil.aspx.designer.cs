@@ -15,6 +15,15 @@ namespace MaisCultura.Site
     {
 
         /// <summary>
+        /// Controle litTittle.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal litTittle;
+
+        /// <summary>
         /// Controle form1.
         /// </summary>
         /// <remarks>
@@ -96,13 +105,13 @@ namespace MaisCultura.Site
         protected global::System.Web.UI.WebControls.Button btnVoltar;
 
         /// <summary>
-        /// Controle nmCompleto.
+        /// Controle lblNmCompleto.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label nmCompleto;
+        protected global::System.Web.UI.WebControls.Label lblNmCompleto;
 
         /// <summary>
         /// Controle lblArroba.
@@ -121,6 +130,15 @@ namespace MaisCultura.Site
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblTUser;
+
+        /// <summary>
+        /// Controle litEventosCria.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal litEventosCria;
 
         /// <summary>
         /// Controle lblMedia.
