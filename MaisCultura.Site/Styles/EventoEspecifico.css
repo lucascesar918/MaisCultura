@@ -288,7 +288,8 @@ body{
 
 #lblDescEvento{
     
-    font-size: 12px;
+    font-size: 15px;
+    font-weight: 500;
 }
 
 .txtDescricao{
@@ -665,7 +666,7 @@ body{
     flex-direction: column;
     justify-content: center;
     margin-top: 10px;
-    padding: 10px;
+    /*padding: 10px;*/
 }
 
 #btnInteresse {
@@ -714,6 +715,7 @@ body{
 .nmrInteresse{
     margin-bottom: 0px !important;
     font-size: 15px;
+    padding: 10px;
 }
 
 .dtHr {
