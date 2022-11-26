@@ -9,6 +9,30 @@ namespace MaisCultura
 {
     public partial class Index : System.Web.UI.Page
     {
+        void HandleLogin()
+        {
+            if (Request.QueryString["l"] != null)
+            {
+                Login = ListaUsuario.Buscar(Request.QueryString["l"]);
+                dropbtnUsuario.Text = Login.Nome;
+                litDropDownHome.Text = $"<a href='eventos.aspx?l={Login.Codigo}'>Início</a>";
+                litDropDownPerfil.Text = $"<a href='meu-perfil.aspx?l={Login.Codigo}&u={Login.Codigo}'>Perfil</a>";
+                if (Login.Tipo == "Administrador")                                                              //Logado
+                    litDropDownDenuncias.Text = $"<a href='denuncias.aspx?l={Login.Codigo}'>Denúncias</a>";
+                dropbtnUsuario.Visible = true;
+                btnLog.Visible = false;
+                btnCad.Visible = false;
+                litImgPerfil.Text = $@"<img src='Images/perfil526ace.png' class='imgPerfil'>";
+            }
+            else
+            {
+                dropbtnUsuario.Visible = false;
+                btnLog.Visible = true;                                                                          //Deslogado
+                btnCad.Visible = true;
+            }
+        }
+
+
         Filtro filtro;
         ListaUsuario ListaUsuario = new ListaUsuario();
         ListaEvento ListaEvento = new ListaEvento();
@@ -18,10 +42,8 @@ namespace MaisCultura
         private void ListarEventos(string usuario) {
 
             List<Evento> Eventos;
-            if (ListaUsuario.Buscar(usuario) != null)
-                Eventos = ListaEvento.Feed(usuario);
-            else
-                Eventos = ListaEvento.Feed();
+
+            Eventos = ListaEvento.Feed(usuario);
 
             Eventos = Eventos.FindAll((e) => filtro.Verificar(e));
            
@@ -31,27 +53,34 @@ namespace MaisCultura
                 Usuario usuarioEvento = ListaUsuario.Buscar(evento.Responsavel);
                 List<Categoria> categorias = evento.Categorias;
                 List<DiaEvento> dias = evento.Dias;
-                litEventos.Text += $@"<a href='evento.aspx?e={evento.Codigo}'>
-                <section class='card'>
+
+                var TagAEvento = $"<a href='evento.aspx?e={evento.Codigo}'>";
+                var TagAPerfil = $"<a href='perfil.aspx?u={usuarioEvento.Codigo}'>";
+
+                if (Request.QueryString["l"] != null)
+                {
+                    TagAEvento = $"<a href='evento.aspx?l={Login.Codigo}&e={evento.Codigo}'>";
+                    TagAPerfil = $"<a href='perfil.aspx?l={Login.Codigo}&u={usuarioEvento.Codigo}'>";
+                }
+
+                litEventos.Text += $@"<section class='card'>
                     <article class='card-header'>
                         <figure>
-                            <img src='Images/perfil.png' alt='Imagem de Perfil' class='perfil'>
+                            {TagAPerfil}
+                                <img src='Images/perfil.png' alt='Imagem de Perfil' class='perfil'>
+                            </a>
                         </figure>
 
                         <article class='card-header-nome'>
-                            <h2>{usuarioEvento.Nome}</h2>
-                            <h5>{usuarioEvento.Codigo}</h5>
+                            {TagAPerfil}
+                                <h2>{usuarioEvento.Nome}</h2>
+                                <h5>{usuarioEvento.Codigo}</h5>
+                            </a>
                         </article>
-                        
-                        <asp:UpdatePanel ID='updBtnSave{evento.Codigo}' runat='server' UpdateMode='Conditional'>
-                                <ContentTemplate>
-                                    <asp:Button ID='btnSave{evento.Codigo}' runat='server' Text='' cssClass='save naoSalvo' OnClick='btnSave_Click' />
-                                </ ContentTemplate >
-                        </ asp:UpdatePanel >
 
                     </article>
 
-                    <a href='EventoEspecifico.aspx'>
+                    {TagAEvento}
                         <article class='card-tittle'>
                                 <h2>{evento.Titulo}</h2>
                         </article>
@@ -63,9 +92,9 @@ namespace MaisCultura
                     </article>
 
                     <article class='card-image'>
-                        <a href='EventoEspecifico.aspx'>
+                        {TagAEvento}
                             <figure>
-                                <img src='{ListaEvento.BuscarImagem(evento.Codigo)}' alt='Interclasse de cria' class='foto-evento'>
+                                <img src='{ListaEvento.BuscarImagem(evento.Codigo)[0]}' alt='Interclasse de cria' class='foto-evento'>
                             </figure>
                         </a>
                     </article>
@@ -98,6 +127,7 @@ namespace MaisCultura
                 </section>";
             }
         }
+
         DateTime? StrinToDate(string strDate)
         {
             if (string.IsNullOrEmpty(strDate))
@@ -106,34 +136,20 @@ namespace MaisCultura
             DateTime.TryParse(strDate, out dt);
             return dt;
         }
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Request.QueryString["l"] != null)
-            {
-                Login = ListaUsuario.Buscar(Request.QueryString["l"]);      //Logado
-                dropbtnUsuario.Text = Login.Nome;
-                litDropDownHome.Text = $"<a href='eventos.aspx?l={Login.Codigo}'>Início</a>";
-                litDropDownPerfil.Text = $"<a href='perfil.aspx?l={Login.Codigo}'>Perfil</a>";
-                dropbtnUsuario.Visible = true;
-                btnLog.Visible = false;
-                btnCad.Visible = false;
-                litImgPerfil.Text = $@"<img src='Images/perfil526ace.png' class='imgPerfil'>";
-            } else
-            {
-                dropbtnUsuario.Visible = false;                             //Deslogado
-                btnLog.Visible = true;
-                btnCad.Visible = true;
-            }
+            HandleLogin();
 
             filtro = new Filtro();
             filtro.Inicio = StrinToDate(dtStart.Text);
             filtro.Fim = StrinToDate(dtEnd.Text);
-            filtro.Local = txtLocal.Text;
+            //filtro.Local = txtLocal.Text;
             filtro.Categorias = new List<string>();
             filtro.Categorias.Add((string)ViewState["Cateoria"]);
-            string usuario = Request.QueryString["u"];
 
-            ListarEventos(usuario);
+            ListarEventos(Login == null ? null : Login.Codigo);
+
             LoadComplete += Page_Load;
         }
 

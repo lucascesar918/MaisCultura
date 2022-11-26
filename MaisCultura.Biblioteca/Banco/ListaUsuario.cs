@@ -131,14 +131,26 @@ namespace MaisCultura.Biblioteca
             return avaliacoes;
         }
 
-        public int BuscarMediaCriador(string codigo)
+        public float BuscarMediaCriador(string codigo)
         {
             MySqlDataReader data = Query("BuscarMediaCriador", ("pCodigo", codigo));
+            float media = 0;
 
-            data.Read();
+            while (data.Read())
+                media = float.Parse(data["soma"].ToString());
 
+            Desconectar();
+            return media;
+        } 
 
-            return Int32.Parse(data["soma"].ToString());
+        public void Deletar(string codigo)
+        {
+            NonQuery("DeletarUsuario", ("pCodigo", codigo));
+        }
+
+        public void AlterarSenha(string codigo, string senha)
+        {
+            NonQuery("AlterarSenha", ("pUsuario", codigo), ("pSenha", senha));
         }
     }
 }

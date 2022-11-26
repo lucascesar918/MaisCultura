@@ -44,6 +44,13 @@ body{
     background-color: #f1f1f1;
 }
 
+.geral {
+    position: fixed;
+    width: 100%;
+    margin-top: -95px;
+    z-index: 15;
+}
+
 .header {
     width: 100%;
     display: flex;
@@ -52,21 +59,27 @@ body{
 }
 
 .header-primaria {
-    height: 65px;
+    height: 45px;
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px 0px 10px 0px;
     background-color: white;
+    position: fixed;
+    top: 0;
+    z-index: 1;
 }
 
 .sectionBack {
     width: 100%;
-    background: #fff;
+    background-color: #222222;
+    height: 30px;
     display: flex;
-    justify-content: space-between;
+    flex-direction: row;
+    position: fixed;
     align-items: center;
+    margin-top: 45px;
 }
 
 .head {
@@ -205,6 +218,7 @@ body{
     display: flex;
     justify-content: left;
     margin-top: 95px;
+    margin-bottom: 35px;
 }
 
 .corpo {
@@ -274,7 +288,8 @@ body{
 
 #lblDescEvento{
     
-    font-size: 12px;
+    font-size: 15px;
+    font-weight: 500;
 }
 
 .txtDescricao{
@@ -298,6 +313,10 @@ body{
 .carousel {
     width: 100%;
     height: 400px;
+}
+
+.carousel-item {
+    height: 100%;
 }
 
 .carousel-inner {
@@ -647,7 +666,7 @@ body{
     flex-direction: column;
     justify-content: center;
     margin-top: 10px;
-    padding: 10px;
+    /*padding: 10px;*/
 }
 
 #btnInteresse {
@@ -696,6 +715,7 @@ body{
 .nmrInteresse{
     margin-bottom: 0px !important;
     font-size: 15px;
+    padding: 10px;
 }
 
 .dtHr {

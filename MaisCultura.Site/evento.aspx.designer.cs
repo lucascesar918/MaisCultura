@@ -24,6 +24,15 @@ namespace MaisCultura.Site
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
+        /// Controle ScriptManager1.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.ScriptManager ScriptManager1;
+
+        /// <summary>
         /// Controle btnLog.
         /// </summary>
         /// <remarks>
@@ -123,6 +132,15 @@ namespace MaisCultura.Site
         protected global::System.Web.UI.WebControls.Literal litCategorias;
 
         /// <summary>
+        /// Controle litCarrousel.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal litCarrousel;
+
+        /// <summary>
         /// Controle lblLocalEvento.
         /// </summary>
         /// <remarks>
@@ -150,6 +168,15 @@ namespace MaisCultura.Site
         protected global::System.Web.UI.WebControls.Literal litAvaliacoes;
 
         /// <summary>
+        /// Controle pnlAval.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlAval;
+
+        /// <summary>
         /// Controle ddlEstrelas.
         /// </summary>
         /// <remarks>
@@ -175,6 +202,24 @@ namespace MaisCultura.Site
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnAvaliar;
+
+        /// <summary>
+        /// Controle litPerfilImage.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal litPerfilImage;
+
+        /// <summary>
+        /// Controle litPerfilNome.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal litPerfilNome;
 
         /// <summary>
         /// Controle titleResponsavel.

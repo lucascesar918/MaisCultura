@@ -77,40 +77,12 @@
                     <div class="descricaoDenuncia">
                         <h4 class="title titleDenuncia"> DESCRIÇÃO DA DENÚNCIA </h4>
                         <div class="textoDenuncia">
-                            <asp:Literal ID="litTextoDenuncia" runat="server">Prometeram que os participantes do evento
-                                ganhariam uma camisa grátis e 50% de desconto nos casacos, porém, na hora das compras,
-                                todos os vendedores estavam passando nos cartões os valores completos, sem desconto, e
-                                ninguém estava notando! Prometeram que os participantes do evento ganhariam uma camisa
-                                grátis e 50% de desconto nos casacos, porém, na hora das compras, todos os vendedores
-                                estavam passando nos cartões os valores completos, sem desconto, e ninguém estava
-                                notando! Prometeram que os participantes do evento ganhariam uma camisa grátis e 50% de
-                                desconto nos casacos, porém, na hora das compras, todos os vendedores estavam passando
-                                nos cartões os valores completos, sem desconto, e ninguém estava notando! Prometeram que
-                                os participantes do evento ganhariam uma camisa grátis e 50% de desconto nos casacos,
-                                porém, na hora das compras, todos os vendedores estavam passando nos cartões os valores
-                                completos, sem desconto, e ninguém estava notando! Prometeram que os participantes do
-                                evento ganhariam uma camisa grátis e 50% de desconto nos casacos, porém, na hora das
-                                compras, todos os vendedores estavam passando nos cartões os valores completos, sem
-                                desconto, e ninguém estava notando! Prometeram que os participantes do evento ganhariam
-                                uma camisa grátis e 50% de desconto nos casacos, porém, na hora das compras, todos os
-                                vendedores estavam passando nos cartões os valores completos, sem desconto, e ninguém
-                                estava notando! Prometeram que os participantes do evento ganhariam uma camisa grátis e
-                                50% de desconto nos casacos, porém, na hora das compras, todos os vendedores estavam
-                                passando nos cartões os valores completos, sem desconto, e ninguém estava notando!
-                                Prometeram que os participantes do evento ganhariam uma camisa grátis e 50% de desconto
-                                nos casacos, porém, na hora das compras, todos os vendedores estavam passando nos
-                                cartões os valores completos, sem desconto, e ninguém estava notando! Prometeram que os
-                                participantes do evento ganhariam uma camisa grátis e 50% de desconto nos casacos,
-                                porém, na hora das compras, todos os vendedores estavam passando nos cartões os valores
-                                completos, sem desconto, e ninguém estava notando! Prometeram que os participantes do
-                                evento ganhariam uma camisa grátis e 50% de desconto nos casacos, porém, na hora das
-                                compras, todos os vendedores estavam passando nos cartões os valores completos, sem
-                                desconto, e ninguém estava notando!</asp:Literal>
+                            <asp:Literal ID="litTextoDenuncia" runat="server"></asp:Literal>
                         </div>
                     </div>
                     <section class="btns">
-                        <asp:Button ID="btnRetirar" runat="server" Text="Retirar Denúncia" CssClass="btn" />
-                        <asp:Button ID="btnExcluir" runat="server" Text="Excluir Evento" CssClass="btn" />
+                        <asp:Button ID="btnRetirar" runat="server" Text="Retirar Denúncia" CssClass="btn" OnClick="btnRetirar_Click" />
+                        <asp:Button ID="btnExcluir" runat="server" Text="Excluir Evento" CssClass="btn" OnClick="btnExcluir_Click" />
                     </section>
                 </section>
             </main>

@@ -69,8 +69,10 @@ namespace MaisCultura.Biblioteca
             return Avaliacoes;
         }
 
-        //public Denuncia Buscar() { 
+        public void Avaliar(string codigoUsuario, int codigoEvento, string descricao, int estrelas) {
+            NonQuery("CadastrarAvaliacao", ("pUsuario", codigoUsuario), ("pEvento", codigoEvento), ("pDescricao", descricao), ("pEstrelas", estrelas));
+        }
 
-        //}
+        
     }
 }

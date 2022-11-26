@@ -109,6 +109,7 @@
   <ItemGroup>
     <Content Include="criar-evento.aspx" />
     <Content Include="denuncia.aspx" />
+    <Content Include="erro.html" />
     <Content Include="evento.aspx" />
     <Content Include="meu-evento.aspx" />
     <Content Include="eventos.aspx" />
@@ -128,11 +129,11 @@
     <Content Include="js\eventos.js" />
     <Content Include="js\perfil.js" />
     <Content Include="js\save.js" />
+    <Content Include="meu-perfil.aspx" />
     <Content Include="meus-eventos.aspx" />
     <Content Include="MaisCultura.Site.csproj.user" />
     <Content Include="denuncias.aspx" />
-    <Content Include="meu-perfil.aspx" />
-    <Content Include="PerfilOutroUsuario.aspx" />
+    <Content Include="perfil.aspx" />
     <Content Include="Styles\CriarEvento.css" />
     <Content Include="Styles\denuncia.css" />
     <Content Include="Styles\EventoEspecifico.css" />
@@ -180,6 +181,13 @@
     <Compile Include="eventos.aspx.designer.cs">
       <DependentUpon>eventos.aspx</DependentUpon>
     </Compile>
+    <Compile Include="meu-perfil.aspx.cs">
+      <DependentUpon>meu-perfil.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="meu-perfil.aspx.designer.cs">
+      <DependentUpon>meu-perfil.aspx</DependentUpon>
+    </Compile>
     <Compile Include="meus-eventos.aspx.cs">
       <DependentUpon>meus-eventos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -194,12 +202,12 @@
     <Compile Include="denuncias.aspx.designer.cs">
       <DependentUpon>denuncias.aspx</DependentUpon>
     </Compile>
-    <Compile Include="meu-perfil.aspx.cs">
-      <DependentUpon>meu-perfil.aspx</DependentUpon>
+    <Compile Include="perfil.aspx.cs">
+      <DependentUpon>perfil.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="meu-perfil.aspx.designer.cs">
-      <DependentUpon>meu-perfil.aspx</DependentUpon>
+    <Compile Include="perfil.aspx.designer.cs">
+      <DependentUpon>perfil.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

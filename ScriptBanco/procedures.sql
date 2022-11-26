@@ -153,8 +153,14 @@ END$$
 DROP PROCEDURE IF EXISTS BuscarEventoUsuario$$
 CREATE PROCEDURE BuscarEventoUsuario(pCodigo VARCHAR(20))
 BEGIN
-	SELECT * FROM evento
-	WHERE 
+	SELECT
+		cd_evento "Codigo",
+		cd_responsavel "@",
+		nm_titulo "Titulo",
+		ds_local "Local",
+		ds_evento "Descricao"
+	FROM evento
+	WHERE  
 		cd_responsavel = pCodigo;
 END$$
 
@@ -527,12 +533,35 @@ DROP PROCEDURE IF EXISTS ListarDenuncias$$
 CREATE PROCEDURE ListarDenuncias()
 BEGIN
 	SELECT
-		cd_denuncia "CodigoDenuncia",
-		cd_evento "CodigoEvento",
-		cd_usuario "@",
-		dt_denuncia "Data",
-		hr_denuncia "Hora"
-	FROM denuncia;
+		d.cd_denuncia "CodigoDenuncia",
+		d.cd_evento "CodigoEvento",
+		d.cd_usuario "@",
+		DATE_FORMAT(d.dt_denuncia, "%d/%m/%Y") "Data",
+		d.hr_denuncia "Hora",
+		lm.nm_motivo "Motivo",
+		m.cd_motivo "CodigoMotivo",
+		m.ds_denuncia "Descricao"
+	FROM denuncia d
+	JOIN motivo m ON d.cd_denuncia = m.cd_denuncia
+	JOIN lista_motivo lm ON m.cd_motivo = lm.cd_motivo;
+END$$
+
+DROP PROCEDURE IF EXISTS BuscarDenuncia$$
+CREATE PROCEDURE BuscarDenuncia(pCodigo INT)
+BEGIN
+	SELECT
+		d.cd_denuncia "CodigoDenuncia",
+		d.cd_evento "CodigoEvento",
+		d.cd_usuario "@",
+		DATE_FORMAT(d.dt_denuncia, "%d/%m/%Y") "Data",
+		d.hr_denuncia "Hora",
+		lm.nm_motivo "Motivo",
+		m.ds_denuncia "Descricao",
+		lm.cd_motivo "CodigoMotivo"
+	FROM denuncia d
+	JOIN motivo m ON d.cd_denuncia = m.cd_denuncia
+	JOIN lista_motivo lm ON m.cd_motivo = lm.cd_motivo
+	WHERE d.cd_denuncia = pCodigo;
 END$$
 
 DROP PROCEDURE IF EXISTS BuscarDenunciasUsuario$$
@@ -587,7 +616,9 @@ DROP PROCEDURE IF EXISTS DeletarUsuario$$
 CREATE PROCEDURE DeletarUsuario(pCodigo VARCHAR(20))
 BEGIN
 	DELETE FROM equipe_evento WHERE cd_usuario = pCodigo;
-	DELETE FROM denuncia WHERE cd_usuario = pCodigo;
+	
+	CALL DeletarDenunciaUsuario(pCodigo);
+
 	DELETE FROM preferencia WHERE cd_usuario = pCodigo;
 	DELETE FROM salvar WHERE cd_usuario = pCodigo;
 	DELETE FROM interesse WHERE cd_usuario = pCodigo;
@@ -599,21 +630,82 @@ END$$
 DROP PROCEDURE IF EXISTS DeletarEvento$$
 CREATE PROCEDURE DeletarEvento(pCodigo INT)
 BEGIN
-	DELETE FROM imagem_evento WHERE cd_evente = pCodigo;
+	DELETE FROM imagem_evento WHERE cd_evento = pCodigo;
 	DELETE FROM avaliacao WHERE cd_evento = pCodigo;
 	DELETE FROM dia_evento WHERE cd_evento = pCodigo;
 	DELETE FROM interesse WHERE cd_evento = pCodigo;
 	DELETE FROM salvar WHERE cd_evento = pCodigo;
 	DELETE FROM categoria_evento WHERE cd_evento = pCodigo;
-	DELETE FROM denuncia WHERE cd_evento = pCodigo;
+
+	CALL DeletarDenunciaEvento(pCodigo);
+
 	DELETE FROM equipe_evento WHERE cd_evento = pCodigo;
 	DELETE FROM evento WHERE cd_evento = pCodigo;
+END$$
+
+DROP PROCEDURE IF EXISTS DeletarDenuncia$$
+CREATE PROCEDURE DeletarDenuncia(pCodigo INT)
+BEGIN
+	DELETE FROM motivo where cd_denuncia = pCodigo;
+	DELETE FROM denuncia where cd_denuncia = pCodigo;
+END$$
+
+DROP PROCEDURE IF EXISTS DeletarDenunciaEvento$$
+CREATE PROCEDURE DeletarDenunciaEvento(pCodigo INT)
+BEGIN
+	DECLARE codigo INT DEFAULT 0;
+
+	SELECT d.cd_denuncia INTO codigo
+	FROM evento e 
+	JOIN denuncia d ON (e.cd_evento = d.cd_evento) 
+	WHERE e.cd_evento = pCodigo;
+
+	CALL DeletarDenuncia(codigo);
+END$$
+
+DROP PROCEDURE IF EXISTS DeletarDenunciaUsuario$$
+CREATE PROCEDURE DeletarDenunciaUsuario(pCodigo VARCHAR(20))
+BEGIN
+	DECLARE codigo INT DEFAULT 0;
+
+	SELECT cd_denuncia INTO codigo
+	FROM denuncia
+	WHERE cd_usuario = pCodigo;
+
+	CALL DeletarDenuncia(codigo);
 END$$
 
 DROP PROCEDURE IF EXISTS BuscarInteressesEvento$$
 CREATE PROCEDURE BuscarInteressesEvento(pEvento INT)
 BEGIN
 	SELECT COUNT(cd_evento) "Soma" FROM interesse WHERE cd_evento = pEvento;
+END$$
+
+DROP PROCEDURE IF EXISTS DeletarAvaliacao$$
+CREATE PROCEDURE DeletarAvaliacao(
+	pUsuario VARCHAR(20),
+	pEvento INT
+)
+BEGIN
+	DELETE FROM denuncia WHERE cd_evento = pEvento AND cd_usuario = pUsuario;
+END$$
+
+DROP PROCEDURE IF EXISTS AdicionarInteresse$$
+CREATE PROCEDURE AdicionarInteresse(
+	pUsuario VARCHAR(20),
+	pEvento INT
+)
+BEGIN
+	INSERT INTO interesse VALUES (pEvento, pUsuario);
+END$$
+
+DROP PROCEDURE IF EXISTS RemoverInteresse$$
+CREATE PROCEDURE RemoverInteresse(
+	pUsuario VARCHAR(20),
+	pEvento INT
+)
+BEGIN
+	DELETE FROM interesse WHERE cd_evento = pEvento AND cd_usuario = pUsuario;
 END$$
 
 DELIMITER ;

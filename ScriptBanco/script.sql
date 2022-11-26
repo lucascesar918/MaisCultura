@@ -167,7 +167,7 @@ CREATE TABLE denuncia(
 	FOREIGN KEY (cd_usuario)
 		REFERENCES usuario(cd_usuario),
 	
-	PRIMARY KEY (cd_denuncia)
+	CONSTRAINT PRIMARY KEY (cd_denuncia)
 );
 
 CREATE TABLE motivo(
