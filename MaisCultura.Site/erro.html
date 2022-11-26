@@ -23,12 +23,16 @@
         var login = paramsURL.get("l");
         var msg = paramsURL.get("msg").length == 0 ? "Isso é uma página de erro, não era pra você estar aqui!" : paramsURL.get("msg"); // Lida com as ocasiões do usuário entrar sem motivo na página ou realmente por um erro
 
+
+        console.log(`paramsURL = ${paramsURL}`);
+        console.log(`login = ${login}    //  msg = ${msg}`);
+
         console.log("Tá procurando o que aqui? 🤨");
         $(document).ready(function (e) {
             $("#msgErro").text(msg);
 
             $("button").click(function (e){
-                window.location.replace(l.length == 0 ? "eventos.aspx" : `eventos.aspx?l=${l}`); //Lida com as ocasiões do usuário vir para a página de erro logado ou não
+                window.location.replace(login == null ? "eventos.aspx" : `eventos.aspx?l=${login}`); //Lida com as ocasiões do usuário vir para a página de erro logado ou não
             });
         })
         
