@@ -31,6 +31,13 @@
         $("html").css({ 'overflow': 'auto' });
     });
 
+    $("#btnDenuncia").click(function (e) {
+        e.preventDefault();
+        $("#denuncia").toggle();
+        $("#shade3").toggle();
+        $("html").css({ 'overflow': 'auto' });
+    });
+
     $("#shade").click(function (e) {
         e.preventDefault();
         $("#cad").toggle();
@@ -42,6 +49,13 @@
         e.preventDefault();
         $("#log").toggle();
         $("#shade2").toggle();
+        $("html").css({ 'overflow': 'auto' });
+    });
+
+    $("#shade3").click(function (e) {
+        e.preventDefault();
+        $("#denuncia").toggle();
+        $("#shade3").toggle();
         $("html").css({ 'overflow': 'auto' });
     });
 

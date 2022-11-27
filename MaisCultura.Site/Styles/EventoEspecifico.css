@@ -126,7 +126,7 @@ figure{
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
-    margin: 5px;
+    
     border-radius: 5px;
 }
 
@@ -432,6 +432,11 @@ figure{
     margin: 5px;
 }
 
+.estrelaAval{
+    width: 1.2vw;
+    height: 1.2vw;
+}
+
 .nmrMedia {
     display: flex;
     flex-direction: row;
@@ -524,7 +529,16 @@ figure{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
     font-size: 15px;
+}
+
+.estrelas{
+    width: 20%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 }
 
 #ddlEstrelas {
@@ -1088,6 +1102,17 @@ td {
 }
 
 .shade2 {
+    position: absolute;
+    top: 0%;
+    right: 0%;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.50);
+    z-index: 3;
+    display: none;
+}
+
+.shade3 {
     position: absolute;
     top: 0%;
     right: 0%;

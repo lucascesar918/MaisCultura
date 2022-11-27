@@ -28,47 +28,48 @@
 
 <body>
     <div id="shade" class="shade"></div>
-     <div id="shade2" class="shade2"></div>
+    <div id="shade2" class="shade2"></div>
+    <div id="shade3" class="shade3"></div>
 
     <form id="form1" runat="server">
         <asp:ScriptManager ID="ScriptManager1" runat="server">
         </asp:ScriptManager>
 
-       <%-- <div class="geral">--%>
-            <header class="header-primaria">
-               
-                    <figure class="figure-header">
-                       <%-- <a href="eventos.aspx">--%>
-                        <img src="Images/logoNomeMenor.png" class="logo-header" />
-                            <%--</a>--%>
-                    </figure>
-                
+        <%-- <div class="geral">--%>
+        <header class="header-primaria">
 
-                <article class="buttons">
-                    <asp:Button ID="btnLog" runat="server" Text="Entrar" class="button button-log" OnClick="btnLog_Click" />
-                    <asp:Button ID="btnCad" runat="server" Text="Cadastrar" class="button button-cad" OnClick="btnCad_Click" />
-                </article>
+            <figure class="figure-header">
+                <%-- <a href="eventos.aspx">--%>
+                <img src="Images/logoNomeMenor.png" class="logo-header" />
+                <%--</a>--%>
+            </figure>
 
-                <article class="usuario">
-                    <div class="menuUsuario">
-                        <asp:Button CssClass="dropbtn" ID="dropbtnUsuario" runat="server" Text="Nome" />
-                        <div class="dropdown-content">
-                            <asp:Literal ID="litDropDownHome" runat="server"></asp:Literal>
-                            <asp:Literal ID="litDropDownPerfil" runat="server"></asp:Literal>
-                            <a href="eventos.aspx">Sair</a>
-                        </div>
+
+            <article class="buttons">
+                <asp:Button ID="btnLog" runat="server" Text="Entrar" class="button button-log" OnClick="btnLog_Click" />
+                <asp:Button ID="btnCad" runat="server" Text="Cadastrar" class="button button-cad" OnClick="btnCad_Click" />
+            </article>
+
+            <article class="usuario">
+                <div class="menuUsuario">
+                    <asp:Button CssClass="dropbtn" ID="dropbtnUsuario" runat="server" Text="Nome" />
+                    <div class="dropdown-content">
+                        <asp:Literal ID="litDropDownHome" runat="server"></asp:Literal>
+                        <asp:Literal ID="litDropDownPerfil" runat="server"></asp:Literal>
+                        <a href="eventos.aspx">Sair</a>
                     </div>
+                </div>
 
-                    <asp:Literal ID="litImgPerfil" runat="server"></asp:Literal>
+                <asp:Literal ID="litImgPerfil" runat="server"></asp:Literal>
 
-                </article>
-            </header>
+            </article>
+        </header>
 
-            <section class="sectionBack">
-                <asp:Button ID="btnVoltar" runat="server" Text="Voltar"
-                    OnClientClick="JavaScript:window.history.back(1); return false;" />
-            </section>
-       <%-- </div>--%>
+        <section class="sectionBack">
+            <asp:Button ID="btnVoltar" runat="server" Text="Voltar"
+                OnClientClick="JavaScript:window.history.back(1); return false;" />
+        </section>
+        <%-- </div>--%>
 
         <main class="principal">
 
@@ -120,13 +121,20 @@ Acontecerão aulas de Karatê e Judô em dias intercalados. Nos dias 2 e 4 haver
                             <section class="suaAvaliacao">
                                 <div class="suaNota">
                                     <h4>Deixe uma nota sobre esse criador... </h4>
-                                    <asp:DropDownList ID="ddlEstrelas" runat="server">
+                                    <div class="estrelas">
+                                        <asp:ImageButton ID="umaEstrela" runat="server" CssClass="estrelaAval" ImageUrl="~/Images/star.png" />
+                                        <asp:ImageButton ID="duasEstrelas" runat="server" CssClass="estrelaAval" ImageUrl="~/Images/star.png" />
+                                        <asp:ImageButton ID="tresEstrelas" runat="server" CssClass="estrelaAval" ImageUrl="~/Images/star.png" />
+                                        <asp:ImageButton ID="quatroEstrelas" runat="server" CssClass="estrelaAval" ImageUrl="~/Images/star.png" />
+                                        <asp:ImageButton ID="cincoEstrelas" runat="server" CssClass="estrelaAval" ImageUrl="~/Images/star.png" />
+                                    </div>
+                                    <%-- <asp:DropDownList ID="ddlEstrelas" runat="server">
                                         <asp:ListItem Text="Uma estrela" Value="1"></asp:ListItem>
                                         <asp:ListItem Text="Duas estrelas" Value="2"></asp:ListItem>
                                         <asp:ListItem Text="Três estrelas" Value="3"></asp:ListItem>
                                         <asp:ListItem Text="Quatro estrelas" Value="4"></asp:ListItem>
                                         <asp:ListItem Text="Cinco estrelas" Value="5"></asp:ListItem>
-                                    </asp:DropDownList>
+                                    </asp:DropDownList>--%>
                                 </div>
                                 <div class="seuTexto">
                                     <asp:TextBox ID="txtBoxAvaliacao" runat="server" mode="multiline"
@@ -148,13 +156,13 @@ Acontecerão aulas de Karatê e Judô em dias intercalados. Nos dias 2 e 4 haver
                     </div>
                     <figure>
                         <asp:Literal ID="litPerfilImage" runat="server" />
-                            <img class="perfilResp" src="Images/perfil526ace.png" />
+                        <img class="perfilResp" src="Images/perfil526ace.png" />
                         </a>
                     </figure>
                     <div class="nmMedia">
                         <asp:Literal ID="litPerfilNome" runat="server" />
-                            <asp:Label ID="titleResponsavel" runat="server" Text="Fulano de Tal"
-                                CssClass="titleResponsavel"></asp:Label>
+                        <asp:Label ID="titleResponsavel" runat="server" Text="Fulano de Tal"
+                            CssClass="titleResponsavel"></asp:Label>
                         </a>
                         <div class="notas">
                             <asp:Label ID="lblNotaResp" runat="server" Text="4,8" CssClass="notaResp"></asp:Label>

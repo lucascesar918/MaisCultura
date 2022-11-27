@@ -31,6 +31,24 @@
     }
 }
 
+@media screen and (max-width: 1366px) {
+    
+    .icon {
+        margin-right: 10px !important;
+    }
+}
+
+
+@media screen and (min-width: 1920px) {
+    .eventos {
+        width: 80% !important;
+        margin-left: 26px !important;
+    }
+
+    .icon{
+        margin-left: 14px !important;
+    }
+}
 
 a {
     text-decoration: none;
@@ -98,7 +116,6 @@ body{
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
-    margin: 5px;
     border-radius: 5px;
 }
 
@@ -318,7 +335,7 @@ body{
     }
 
 .filtros-titulos {
-    font-size: 2vh;
+    font-size: 16;
     margin-bottom: 5px;
 }
 
@@ -331,7 +348,7 @@ body{
     align-items: center;
     height: fit-content;
     width: fit-content;
-    font-size: 1.6vh;
+    font-size:14px;
     padding: 5px 5px 5px 5px;
     margin: 5px 5px 5px 0px;
     border: none;
@@ -444,6 +461,7 @@ body{
 .icon {
     width: 26px;
     height: 26px;
+    margin-top:5px;
 }
 
 .txtPesquisa {
@@ -460,16 +478,18 @@ body{
 
 .eventos {
     padding: 15px;
-    display: flex;
+    display: flex; 
+    width: 90%;
     justify-content: left;
     flex-wrap: wrap;
-    width: 90%;
-    box-sizing: border-box;
+    margin-left: 40px;
 }
+
+
 
 /* Css do Card*/
 .card {
-    width: 300px;
+    width: 290px;
     height: fit-content;
     display: flex;
     flex-direction: column;
@@ -477,7 +497,7 @@ body{
     border-radius: 20px;
     border: 1px solid black;
     padding: 10px;
-    margin: 10px;
+    margin: 5px;
     transition: box-shadow;
     transition-duration: 0.3s;
     transition-timing-function: ease-in-out;
@@ -489,11 +509,17 @@ body{
         transition-timing-function: ease-in-out;
         box-shadow: #526ace 0px 0px 0px 2px inset,
             rgb(255, 255, 255) 10px 10px 0px -3px,
-            #526ace 10px 10px,
+            #4dade2 10px 10px,
             rgb(255, 255, 255) 20px 20px 0px -3px,
-            #526ace 20px 20px,
-            rgb(255, 255, 255) 30px 30px 0px -3px,
-            #526ace 30px 30px;
+            #fcb646 20px 20px;
+
+
+           /* rgb(255, 255, 255) 10px 10px 0px -3px,
+            #7bdf97 10px 10px,
+            rgb(255, 255, 255) 20px 20px 0px -3px,
+            #d64558 20px 20px;*/
+            /*rgb(255, 255, 255) 30px 30px 0px -3px,
+            #d64558 30px 30px;*/
             /*rgb(255, 255, 255) 40px 40px 0px -3px,*/
             /*rgb(255, 85, 85)*/ /*#526ace 40px  40px;*/
         transform: scaleX(2), scaleY(2);
@@ -612,6 +638,10 @@ body{
     box-sizing: border-box;
     display: flex;
     justify-content: left;
+}
+
+.date h3{
+    font-size: 13px;
 }
 
 .time {

@@ -7,6 +7,6 @@ namespace MaisCultura.Biblioteca
 {
     internal class Conexao
     {
-        public static string linhaConexao = "SERVER=localhost;UID=root;PASSWORD=root;DATABASE=maiscultura";
+        public static string linhaConexao = "SERVER=localhost;UID=root;PASSWORD=root35352;DATABASE=maiscultura";
     }
 }

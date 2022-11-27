@@ -91,7 +91,7 @@
 
                                 <asp:Button ID="btnSalvos" runat="server" Text="Salvos" CssClass="titleSalvos" />
                             </div>
-                            <a href="EventoEspecifico.aspx">
+                            <a href="evento.aspx">
                                 <section class="card">
                                     <article class="card-header">
                                         <figure>

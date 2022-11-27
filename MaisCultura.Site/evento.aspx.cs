@@ -10,7 +10,6 @@ namespace MaisCultura.Site
 {
     public partial class EventoEspecifico : System.Web.UI.Page
     {
-   
 
         protected void btnInteresse_Click(object sender, EventArgs e)
         {
@@ -47,6 +46,9 @@ namespace MaisCultura.Site
         
         protected void Page_Load(object sender, EventArgs e)
         {
+            txtBoxAvaliacao.TextMode = TextBoxMode.MultiLine;
+            txtBoxDescProb.TextMode = TextBoxMode.MultiLine;
+
             if (Request.QueryString["l"] != null)
             {
                 Login = ListaUsuario.Buscar(Request.QueryString["l"]);      //Logado
