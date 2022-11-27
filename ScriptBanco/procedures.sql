@@ -23,7 +23,7 @@ DROP PROCEDURE IF EXISTS ListarEventos$$
 CREATE PROCEDURE ListarEventos()
 BEGIN
 	SELECT
-		e.cd_evento "CodigoEvento",
+		e.cd_evento "Codigo",
 		e.cd_responsavel "@",
 		e.nm_titulo "Titulo",
 		e.ds_local "Local",
@@ -33,9 +33,10 @@ BEGIN
 		JOIN imagem_evento ie
 			ON ie.cd_evento = e.cd_evento
 		JOIN imagem i
-			ON i.cd_imagem = ie.cd_imagem;
+			ON i.cd_imagem = ie.cd_imagem
+	GROUP BY e.cd_evento;
 END$$
-
+call BuscarEvento(2);
 
 DROP PROCEDURE IF EXISTS ListarCategorias$$
 CREATE PROCEDURE ListarCategorias()
