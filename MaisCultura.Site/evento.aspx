@@ -28,18 +28,21 @@
 
 <body>
     <div id="shade" class="shade"></div>
+     <div id="shade2" class="shade2"></div>
 
     <form id="form1" runat="server">
         <asp:ScriptManager ID="ScriptManager1" runat="server">
         </asp:ScriptManager>
 
-        <div class="geral">
+       <%-- <div class="geral">--%>
             <header class="header-primaria">
-                <a href="eventos.aspx">
+               
                     <figure class="figure-header">
+                       <%-- <a href="eventos.aspx">--%>
                         <img src="Images/logoNomeMenor.png" class="logo-header" />
+                            <%--</a>--%>
                     </figure>
-                </a>
+                
 
                 <article class="buttons">
                     <asp:Button ID="btnLog" runat="server" Text="Entrar" class="button button-log" OnClick="btnLog_Click" />
@@ -65,7 +68,7 @@
                 <asp:Button ID="btnVoltar" runat="server" Text="Voltar"
                     OnClientClick="JavaScript:window.history.back(1); return false;" />
             </section>
-        </div>
+       <%-- </div>--%>
 
         <main class="principal">
 
@@ -200,14 +203,14 @@ Acontecerão aulas de Karatê e Judô em dias intercalados. Nos dias 2 e 4 haver
                     </table>
 
                 </section>
-                <asp:Button ID="btnDenuncia" runat="server" Text="Tenho um problema" />
+                <asp:Button ID="btnDenuncia" runat="server" Text="Denunciar evento" />
 
             </div>
         </main>
 
         <div class="login pop" id="log">
             <section class="headerLogin">
-                <h4 class="titleLogin">Entrar</h4>
+                <h4 class="titleLogin">Entre em sua conta!</h4>
             </section>
             <asp:TextBox ID="txtBoxUser" runat="server" placeholder="Seu nome de usuário" CssClass="txtLog">
             </asp:TextBox>
@@ -218,7 +221,7 @@ Acontecerão aulas de Karatê e Judô em dias intercalados. Nos dias 2 e 4 haver
         <div class="cadastrar pop" id="cad">
 
             <section class="headerCad">
-                <h4 class="titleCad">Cadastrar</h4>
+                <h4 class="titleCad">Faça seu cadastro!</h4>
             </section>
 
             <div class="nms">
