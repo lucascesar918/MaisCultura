@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -34,9 +36,14 @@ namespace MaisCultura
 
 
         Filtro filtro;
+        List<Categoria> CategoriasSelecionadas
+        {
+            get => ViewState["CategoriasSelecionadas"] as List<Categoria>;
+            set => ViewState["CategoriasSelecionadas"] = value;
+        } 
+
         ListaUsuario ListaUsuario = new ListaUsuario();
         ListaEvento ListaEvento = new ListaEvento();
-
         Usuario Login;
 
         private void ListarEventos(string usuario) {
@@ -136,11 +143,21 @@ namespace MaisCultura
             DateTime.TryParse(strDate, out dt);
             return dt;
         }
-
         protected void Page_Load(object sender, EventArgs e)
         {
-            HandleLogin();
+            if (!IsPostBack)
+            {
 
+                var Categorias = ListaEvento.ListarCategorias();
+                filtrosCategorias.DataSource = Categorias;
+                filtrosCategorias.DataBind();
+                if (CategoriasSelecionadas == null)
+                    CategoriasSelecionadas = new List<Categoria>();
+
+            }
+            viewCategoriasSelecionadas.DataSource = CategoriasSelecionadas;
+            viewCategoriasSelecionadas.DataBind();
+            HandleLogin();
             filtro = new Filtro();
             filtro.Inicio = StrinToDate(dtStart.Text);
             filtro.Fim = StrinToDate(dtEnd.Text);
@@ -150,19 +167,35 @@ namespace MaisCultura
             else
                 filtro.QtEstrelas = null;
             filtro.Titulo = txtPesquisa.Text;
-            filtro.Categorias = new List<string>();
+            filtro.Categorias = CategoriasSelecionadas;
 
-            ListarEventos(Login == null ? null : Login.Codigo);
+            ListarEventos(Login?.Codigo);
 
             LoadComplete += Page_Load;
+            
         }
-
+        
         protected void ClickCategoria(object sender, EventArgs e)
         {
             var Botao = (Button)sender;
-            ViewState["Cateoria"] = Botao.Text;
+            if (!int.TryParse(Botao.CommandArgument, out var codigoCategoria))
+                return;
+            if(CategoriasSelecionadas.Count < 3 && !CategoriasSelecionadas.Any(c=> c.Codigo == codigoCategoria))
+                CategoriasSelecionadas.Add(new Categoria(codigoCategoria, Botao.Text));
+          
+
         }
 
+        protected void ClickExcluirCategoria(object sender, EventArgs e)
+        {
+            var Botao = (Button)sender;
+            if (!int.TryParse(Botao.CommandArgument, out var codigoCategoria))
+                return;
+            CategoriasSelecionadas.RemoveAll((c) => c.Codigo == codigoCategoria);
+
+
+        }
+ 
         protected void btnLogar_Click(object sender, EventArgs e)
         {
             Login = ListaUsuario.BuscarLogin(txtBoxUser.Text, txtBoxSenha.Text);
@@ -190,8 +223,16 @@ namespace MaisCultura
             dtEnd.Text = "";
             txtPesquisa.Text = "";
             dpdAval.SelectedIndex = 0;
+            CategoriasSelecionadas.Clear();
 
-
+        }
+        protected string GetNomeCategoria(object categoria)
+        {
+            return (categoria as Categoria)?.Nome ?? "Bom dia";
+        }
+        protected int GetCodigoCategoria(object categoria)
+        {
+            return (categoria as Categoria)?.Codigo ?? 0;
         }
     }
 }

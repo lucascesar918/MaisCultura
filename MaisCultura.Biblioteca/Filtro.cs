@@ -8,7 +8,7 @@ namespace MaisCultura.Biblioteca
     public class Filtro 
     {
         public string Titulo { get; set; }
-        public List<string> Categorias { get; set; }
+        public IList<Categoria> Categorias { get; set; }
         public string Local { get; set; }
         public DateTime? Inicio { get; set; }
         public DateTime? Fim { get; set; }
@@ -57,9 +57,7 @@ namespace MaisCultura.Biblioteca
         {
             if (Categorias == null || Categorias.Count() == 0)
                 return true;
-            return Categorias.Any(filtroCat =>
-            string.IsNullOrEmpty(filtroCat) ||
-            evento.Categorias.Any((categoria) => filtroCat == categoria.Nome));
+            return Categorias.Any(filtroCat => evento.Categorias.Any((categoria) => filtroCat.Codigo == categoria.Codigo));
         }
         bool VerificarEstrelas(Evento evento)
         {

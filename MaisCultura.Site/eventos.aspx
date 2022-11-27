@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="eventos.aspx.cs" Inherits="MaisCultura.Index" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="eventos.aspx.cs" Inherits="MaisCultura.Index"  enableEventValidation="false" %>
 
 <!DOCTYPE html>
 
@@ -64,8 +64,16 @@
             </figure>
         </header>
 
-        <div class="header nav">
+        <div class="header nav"> 
             <section id="localTags" class="section-tags">
+                <asp:Repeater id="viewCategoriasSelecionadas" runat="server" >
+                  <ItemTemplate>
+                      <article class="tag tag-header <%# GetNomeCategoria(Container.DataItem) %>">
+                            <%# GetNomeCategoria(Container.DataItem) %>
+                           <asp:Button class="button button-exclude" runat="server" OnClick="ClickExcluirCategoria" CommandArgument="<%# GetCodigoCategoria(Container.DataItem) %>" Text="X" ></asp:Button> 
+                      </article>
+                  </ItemTemplate>     
+                </asp:Repeater>
             </section>
 
             <section class="section-limpar">
@@ -76,13 +84,13 @@
         <main class="principal">
             <div class="filtros">
                 <h2 class="filtros-titulos">Categoria</h2>
-                <article ID="CatPintura" class="filtros-subtitulos categoria">Pintura</article>
-                <article ID="CatMusica" class="filtros-subtitulos categoria">Música</article>
-                <article ID="CatEsporte" class="filtros-subtitulos categoria">Esporte</article>
-                <article ID="CatCinema" class="filtros-subtitulos categoria">Cinema</article>
-                <article ID="CatTeatro" class="filtros-subtitulos categoria">Teatro</article>
-                <article ID="CatJogos" class="filtros-subtitulos categoria">Jogos</article>
-                <article ID="CatRPG" class="filtros-subtitulos categoria">RPG</article>
+ 
+                <asp:Repeater id="filtrosCategorias" runat="server">
+                  <ItemTemplate>
+                       <asp:Button class="filtros-subtitulos categoria" runat="server" OnClick="ClickCategoria" CommandArgument="<%# GetCodigoCategoria(Container.DataItem) %>" Text="<%#  GetNomeCategoria(Container.DataItem) %>"></asp:Button> 
+                  </ItemTemplate>     
+                </asp:Repeater>
+
                 <asp:Button ID="btnVerMais" runat="server" Text="Ver mais categorias" class="filtros-subtitulos verMais"/>
 
                 <br />

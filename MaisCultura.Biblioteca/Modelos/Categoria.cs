@@ -5,6 +5,7 @@ using System.Web;
 
 namespace MaisCultura.Biblioteca
 {
+    [Serializable]
     public class Categoria
     {
         public Categoria(int codigo, string nome)
