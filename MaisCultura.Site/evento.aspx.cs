@@ -35,6 +35,8 @@ namespace MaisCultura.Site
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            litCategorias.Text = "";
+
             if (Request.QueryString["l"] != null)
             {
                 Login = ListaUsuario.Buscar(Request.QueryString["l"]);      //Logado
@@ -47,8 +49,7 @@ namespace MaisCultura.Site
                 btnCad.Visible = false;
                 litImgPerfil.Text = $@"<img src='Images/perfil526ace.png' class='imgPerfil'>";
                 bool save = ListaEvento.VerificarSalvo(Login.Codigo, int.Parse(Request.QueryString["e"]));
-                var situacao = save ? "salvo" : "naoSalvo";
-                btnSave.CssClass = $"save {situacao}";
+                cbxSave.Checked = save;
             }
             else
             {
