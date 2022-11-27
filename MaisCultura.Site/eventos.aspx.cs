@@ -144,9 +144,13 @@ namespace MaisCultura
             filtro = new Filtro();
             filtro.Inicio = StrinToDate(dtStart.Text);
             filtro.Fim = StrinToDate(dtEnd.Text);
-            //filtro.Local = txtLocal.Text;
+            //filtro.Nome = StrinToDate(txtBoxNome);
+            if (int.TryParse(dpdAval.SelectedValue, out var qtEstrela))
+                filtro.QtEstrelas = qtEstrela;
+            else
+                filtro.QtEstrelas = null;
+            filtro.Titulo = txtPesquisa.Text;
             filtro.Categorias = new List<string>();
-            filtro.Categorias.Add((string)ViewState["Cateoria"]);
 
             ListarEventos(Login == null ? null : Login.Codigo);
 
@@ -179,6 +183,15 @@ namespace MaisCultura
             Usuario Cadastrado = new Usuario(txtBoxNmUsuario.Text, ddlTipoUser.Text, ddlSexo.Text, txtBoxNome.Text + txtBoxSobrenome.Text, txtBoxEmail.Text, txtBoxSenhaCad.Text, " ", txtData.Text, null);
 
             ListaUsuario.CriarUsuario(Cadastrado);
+        }
+        protected void btnLimpar_Click(object sender, EventArgs e)
+        {
+            dtStart.Text = "";
+            dtEnd.Text = "";
+            txtPesquisa.Text = "";
+            dpdAval.SelectedIndex = 0;
+
+
         }
     }
 }
