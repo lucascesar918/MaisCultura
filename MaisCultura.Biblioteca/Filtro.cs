@@ -7,6 +7,7 @@ namespace MaisCultura.Biblioteca
 {
     public class Filtro 
     {
+        public string Titulo { get; set; }
         public List<string> Categorias { get; set; }
         public string Local { get; set; }
         public DateTime? Inicio { get; set; }
@@ -17,11 +18,19 @@ namespace MaisCultura.Biblioteca
         public bool Verificar(Evento evento)
         {
             return VerificarLocal(evento)
+                && VerificarNome(evento)
                 && VerificarInicio(evento)
                 && VerificarFim(evento)
                 && VerificarCategorias(evento)
                 && VerificarEstrelas(evento);
 
+        }
+
+        private bool VerificarNome(Evento evento)
+        {
+            if (Titulo == null)
+                return true;
+            return evento.Titulo.ToLower().Contains(Titulo.ToLower());
         }
 
         bool VerificarLocal(Evento evento)
@@ -46,7 +55,7 @@ namespace MaisCultura.Biblioteca
         }
         bool VerificarCategorias(Evento evento)
         {
-            if (Categorias?.DefaultIfEmpty() == null)
+            if (Categorias == null || Categorias.Count() == 0)
                 return true;
             return Categorias.Any(filtroCat =>
             string.IsNullOrEmpty(filtroCat) ||

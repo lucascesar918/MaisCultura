@@ -87,6 +87,15 @@ namespace MaisCultura
         protected global::System.Web.UI.WebControls.Literal litImgPerfil;
 
         /// <summary>
+        /// Controle btnLimpar.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnLimpar;
+
+        /// <summary>
         /// Controle btnVerMais.
         /// </summary>
         /// <remarks>
