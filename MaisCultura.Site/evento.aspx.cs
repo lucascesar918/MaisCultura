@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using MaisCultura.Biblioteca;
+using System.Web.Services;
 
 namespace MaisCultura.Site
 {
@@ -18,36 +19,20 @@ namespace MaisCultura.Site
         Usuario Login;
         Evento Evento;
 
-        protected void btnInteresse_Click(object sender, EventArgs e)
+        [WebMethod]
+        public static void salvarEvento(string codigoUsuario, int codigoEvento)
         {
-            if (btnInteresse.CssClass.Contains("naoInt"))   
-            {
-                btnInteresse.CssClass = "Int";
-                btnInteresse.Text = "Interesse Demonstrado";
-                ListaEvento.Salvar(Login.Codigo, Evento.Codigo);
-            }
-            else
-            {
-                btnInteresse.CssClass = "naoInt";
-                btnInteresse.Text = "Demonstrar Interesse";
-                ListaEvento.CancelarSalvo(Login.Codigo, Evento.Codigo);
-            }
+            ListaEvento ListaEvento = new ListaEvento();
+            ListaEvento.Salvar(codigoUsuario, codigoEvento);
         }
 
-        protected void btnSave_Click(object sender, EventArgs e)
+        [WebMethod]
+        public static void removerSalvo(string codigoUsuario, int codigoEvento)
         {
-            if (btnSave.CssClass.Contains("naoSalvo"))
-            {
-                btnSave.CssClass = "save salvo";
-            }
-            else
-            {
-                btnSave.CssClass = "save naoSalvo";
-            }
+            ListaEvento ListaEvento = new ListaEvento();
+            ListaEvento.CancelarSalvo(codigoUsuario, codigoEvento);
         }
 
-
-        
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Request.QueryString["l"] != null)
@@ -61,6 +46,9 @@ namespace MaisCultura.Site
                 btnLog.Visible = false;
                 btnCad.Visible = false;
                 litImgPerfil.Text = $@"<img src='Images/perfil526ace.png' class='imgPerfil'>";
+                bool save = ListaEvento.VerificarSalvo(Login.Codigo, int.Parse(Request.QueryString["e"]));
+                var situacao = save ? "salvo" : "naoSalvo";
+                btnSave.CssClass = $"save {situacao}";
             }
             else
             {

@@ -228,14 +228,35 @@ namespace MaisCultura.Biblioteca
             NonQuery("DeletarEvento", ("pCodigo", codigo));
         }
 
-        public void Salvar(string codigoUsuario, int codigoEvento)
+        public void Interessar(string codigoUsuario, int codigoEvento)
         {
             NonQuery("AdicionarInteresse", ("pUsuario", codigoUsuario), ("pEvento", codigoEvento));
         }
 
-        public void CancelarSalvo(string codigoUsuario, int codigoEvento)
+        public void CancelarInteresse(string codigoUsuario, int codigoEvento)
         {
             NonQuery("RemoverInteresse", ("pUsuario", codigoUsuario), ("pEvento", codigoEvento));
+        }
+
+        public void Salvar(string codigoUsuario, int codigoEvento)
+        {
+            NonQuery("AdicionarSalvo", ("pUsuario", codigoUsuario), ("pEvento", codigoEvento));
+        }
+
+        public void CancelarSalvo(string codigoUsuario, int codigoEvento)
+        {
+            NonQuery("RemoverSalvo", ("pUsuario", codigoUsuario), ("pEvento", codigoEvento));
+        }
+
+        public bool VerificarSalvo(string codigoUsuario, int codigoEvento)
+        {
+            MySqlDataReader data = Query("BuscarSalvoUsuarioEvento", ("pUsuario", codigoUsuario), ("pEvento", codigoEvento));
+
+            bool resposta = data.HasRows;
+
+            Desconectar();
+
+            return resposta;
         }
     }
 }

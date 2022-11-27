@@ -251,12 +251,6 @@ BEGIN
 	ORDER BY de.dt_dia;
 END$$
 
-DROP PROCEDURE IF EXISTS CadastrarEventoSalvo$$
-CREATE PROCEDURE CadastrarEventoSalvo ( pUsuario VARCHAR(20), pEvento INT)
-BEGIN
-	INSERT INTO salvar VALUES ( pEvento, pUsuario);
-END$$
-
 DROP PROCEDURE IF EXISTS filtrarEventos$$
 CREATE PROCEDURE filtrarEventos ( 
 	pCategoria INT, 
@@ -706,6 +700,24 @@ CREATE PROCEDURE RemoverInteresse(
 )
 BEGIN
 	DELETE FROM interesse WHERE cd_evento = pEvento AND cd_usuario = pUsuario;
+END$$
+
+DROP PROCEDURE IF EXISTS AdicionarSalvo$$
+CREATE PROCEDURE AdicionarSalvo ( pUsuario VARCHAR(20), pEvento INT)
+BEGIN
+	INSERT INTO salvar VALUES ( pEvento, pUsuario);
+END$$
+
+DROP PROCEDURE IF EXISTS RemoverSalvo$$
+CREATE PROCEDURE RemoverSalvo ( pUsuario VARCHAR(20), pEvento INT)
+BEGIN
+	DELETE FROM salvar WHERE cd_evento = pEvento AND cd_usuario = pUsuario;
+END$$
+
+DROP PROCEDURE IF EXISTS BuscarSalvoUsuarioEvento$$
+CREATE PROCEDURE BuscarSalvoUsuarioEvento ( pUsuario VARCHAR(20), pEvento INT)
+BEGIN
+	SELECT * FROM salvar WHERE cd_evento = pEvento AND cd_usuario = pUsuario;
 END$$
 
 DELIMITER ;

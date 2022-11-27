@@ -30,7 +30,7 @@
     <div id="shade" class="shade"></div>
 
     <form id="form1" runat="server">
-        <asp:ScriptManager ID="ScriptManager1" runat="server">
+        <asp:ScriptManager ID="ScriptManager1" EnablePageMethods="true" EnablePartialRendering="true" runat="server">
         </asp:ScriptManager>
 
         <div class="geral">
@@ -75,11 +75,8 @@
                         <asp:Label ID="lblTituloEvento" runat="server" Text=""
                             CssClass="titulo"></asp:Label>
 
-                        <asp:UpdatePanel ID="updBtnSave" runat="server" UpdateMode="Conditional">
-                            <ContentTemplate>
-                                <asp:Button ID="btnSave" runat="server" Text="" CssClass="save naoSalvo" OnClick="btnSave_Click" AutoPostBack="False" />
-                            </ContentTemplate>
-                        </asp:UpdatePanel>
+                        <asp:Button ID="btnSave" runat="server" Text="" CssClass="save naoSalvo" AutoPostBack="False" />
+                        
                     </div>
                     <article class="tags">
                         <h2 class="categorias">CATEGORIAS
@@ -171,7 +168,7 @@ Acontecerão aulas de Karatê e Judô em dias intercalados. Nos dias 2 e 4 haver
 
                     <asp:UpdatePanel ID="updBtnInteresse" runat="server" UpdateMode="Conditional">
                         <ContentTemplate>
-                            <asp:Button ID="btnInteresse" runat="server" Text="Demonstrar Interesse" OnClick="btnInteresse_Click" CssClass="naoInt" AutoPostBack="False" />
+                            <asp:Button ID="btnInteresse" runat="server" Text="Demonstrar Interesse" CssClass="naoInt" AutoPostBack="False" />
                         </ContentTemplate>
                     </asp:UpdatePanel>
                 </section>

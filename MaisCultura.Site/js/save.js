@@ -1,16 +1,23 @@
-﻿var saves = document.querySelectorAll(".save");
+﻿var save = document.getElementById("#btnSave");
+save.addEventListener("click", verificarLogin());
 
-for (var i = 0; i < saves.length; i++) {
-    let save = saves[i];
-    save.addEventListener("click", () => { mudarSave(save) });
-}
+function verificarLogin(e) {
+    e.preventDefault();
+    const urlParams = new URLSearchParams(location.search);
+    var usuario = urlParams.get('l');
 
-function mudarSave(save) {
+    if (usuario == null)
+        return $("#btnLog").click();
+
+    var evento = urlParams.get('e');
+
     if (save.classList.contains('naoSalvo')) {
+        PageMethods.salvarEvento(usuario, evento);
         save.classList.remove('naoSalvo');
         save.classList.add('salvo');
     }
     else {
+        PageMethods.removerSalvo(usuario, evento);
         save.classList.remove('salvo');
         save.classList.add('naoSalvo');
     }
