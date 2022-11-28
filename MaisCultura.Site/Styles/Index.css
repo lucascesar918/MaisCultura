@@ -351,6 +351,7 @@ body{
     .verMais:hover {
         background: none;
         font-weight: bold;
+        cursor: pointer;
     }
 
 .txt {

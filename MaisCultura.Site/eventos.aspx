@@ -1,5 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="eventos.aspx.cs" Inherits="MaisCultura.Index" %>
 
+<%@ Register Namespace="AjaxControlToolkit" Assembly="AjaxControlToolkit" TagPrefix="ajax" %>
+
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -19,6 +21,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
+        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
 
         <div id="shade" class="shade"></div>
         <div id="shade2" class="shade"></div>
@@ -76,14 +79,17 @@
         <main class="principal">
             <div class="filtros">
                 <h2 class="filtros-titulos">Categoria</h2>
-                <article ID="CatPintura" class="filtros-subtitulos categoria">Pintura</article>
-                <article ID="CatMusica" class="filtros-subtitulos categoria">Música</article>
-                <article ID="CatEsporte" class="filtros-subtitulos categoria">Esporte</article>
-                <article ID="CatCinema" class="filtros-subtitulos categoria">Cinema</article>
-                <article ID="CatTeatro" class="filtros-subtitulos categoria">Teatro</article>
-                <article ID="CatJogos" class="filtros-subtitulos categoria">Jogos</article>
-                <article ID="CatRPG" class="filtros-subtitulos categoria">RPG</article>
-                <asp:Button ID="btnVerMais" runat="server" Text="Ver mais categorias" class="filtros-subtitulos verMais"/>
+
+                <asp:UpdatePanel ID="updCategorias" runat="server">
+                    <ContentTemplate>
+                        <asp:Literal ID="litCatFiltro" runat="server"></asp:Literal>
+                        <asp:Button ID="btnVerMais" runat="server" Text="Ver mais categorias" cssClass="filtros-subtitulos verMais" OnClick="btnVerMais_Click"/>
+                    </ContentTemplate>
+
+                    <Triggers>
+                        <asp:AsyncPostBackTrigger ControlID="btnVerMais" EventName="Click"/>
+                    </Triggers>
+                </asp:UpdatePanel>
 
                 <br />
 

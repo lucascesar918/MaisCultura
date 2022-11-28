@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -9,6 +10,20 @@ namespace MaisCultura
 {
     public partial class Index : System.Web.UI.Page
     {
+        int contadorCategorias = 8;
+
+        void listarCategorias()
+        {
+            litCatFiltro.Text = "";
+
+            List<Categoria> categorias= new List<Categoria>();
+            categorias = ListaEvento.ListarCategorias();
+
+            for (int i = 0; i < contadorCategorias; i++)
+                litCatFiltro.Text += $@"<article ID='Cat{categorias[i].Nome}' class='filtros-subtitulos categoria'>{categorias[i].Nome}</article>";
+
+        }
+
         void HandleLogin()
         {
             if (Request.QueryString["l"] != null)
@@ -140,6 +155,7 @@ namespace MaisCultura
         protected void Page_Load(object sender, EventArgs e)
         {
             HandleLogin();
+            listarCategorias();
 
             filtro = new Filtro();
             filtro.Inicio = StrinToDate(dtStart.Text);
@@ -179,6 +195,23 @@ namespace MaisCultura
             Usuario Cadastrado = new Usuario(txtBoxNmUsuario.Text, ddlTipoUser.Text, ddlSexo.Text, txtBoxNome.Text + txtBoxSobrenome.Text, txtBoxEmail.Text, txtBoxSenhaCad.Text, " ", txtData.Text, null);
 
             ListaUsuario.CriarUsuario(Cadastrado);
+        }
+
+        protected void btnVerMais_Click(object sender, EventArgs e)
+        {
+            if (btnVerMais.Text == "Ver mais categorias")
+            {
+                contadorCategorias = 16;
+                listarCategorias();
+                btnVerMais.Text = "Ver menos categorias";
+            }
+            else
+            {
+                contadorCategorias = 8;
+                listarCategorias();
+                btnVerMais.Text = "Ver mais categorias";
+            }
+
         }
     }
 }
