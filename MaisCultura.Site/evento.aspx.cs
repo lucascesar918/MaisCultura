@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using MaisCultura.Biblioteca;
 using System.Web.Services;
+using System.Web.UI.HtmlControls;
 
 namespace MaisCultura.Site
 {
@@ -20,6 +21,13 @@ namespace MaisCultura.Site
         Evento Evento;
 
         [WebMethod]
+        public static void checkando()
+        {
+            EventoEspecifico teste = new EventoEspecifico();
+            teste.checkFunciona();
+        }
+
+        [WebMethod]
         public static void salvarEvento(string codigoUsuario, int codigoEvento)
         {
             ListaEvento ListaEvento = new ListaEvento();
@@ -31,6 +39,11 @@ namespace MaisCultura.Site
         {
             ListaEvento ListaEvento = new ListaEvento();
             ListaEvento.CancelarSalvo(codigoUsuario, codigoEvento);
+        }
+
+        void checkFunciona()
+        {
+            cbxSave.Checked = false;
         }
 
         protected void Page_Load(object sender, EventArgs e)
