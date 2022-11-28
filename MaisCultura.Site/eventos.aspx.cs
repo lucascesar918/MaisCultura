@@ -88,9 +88,9 @@ namespace MaisCultura
 
                     <article class='card-tags'>";
                 foreach (Categoria categoria in categorias)
-                    litEventos.Text += $@"<h2 class='tag'>{categoria.Nome}</h2>
-                    </article>
+                    litEventos.Text += $@"<h2 class='tag'>{categoria.Nome}</h2>";
 
+                litEventos.Text += $@"</article>
                     <article class='card-image'>
                         {TagAEvento}
                             <figure>
