@@ -50,8 +50,10 @@ namespace MaisCultura
 
             List<Evento> Eventos;
 
-            Eventos = ListaEvento.Feed(usuario);
-
+            if (filtro.EstaAtivo())
+                Eventos = ListaEvento.Feed();
+            else
+                Eventos = ListaEvento.Feed(usuario);
             Eventos = Eventos.FindAll((e) => filtro.Verificar(e));
            
             litEventos.Text = "";
