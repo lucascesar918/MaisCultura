@@ -57,10 +57,10 @@ body {
 .dropdown-content {
     display: none;
     position: absolute;
-    min-width: fit-content;
+    min-width: 100%;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
-    margin: 5px;
+   
     border-radius: 5px;
 }
 
@@ -126,12 +126,17 @@ body {
 
 .all{
     width: 100%;
-    height: 100%;
     padding: 10px;
     box-sizing: border-box;
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
+   display: flex; 
+   flex-direction: column;
+   flex-wrap: wrap;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+    box-sizing: border-box;
 }
 
 
@@ -139,18 +144,41 @@ body {
     background-color: #ffffff;
     font-size: 14px;
     padding: 10px;
-   width: 30%;
-   height: fit-content;
-   border: none;
-   border-radius: 5px;
-    /*margin: 10px;*/
+    padding-right: 20px;
+    height: fit-content;
+    border: none;
+    border-radius: 5px;
+    margin: 20px;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-in-out;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
+
+    .denuncia:hover {
+        transition-duration: 0.3s;
+        transition-timing-function: ease-in-out;
+        box-shadow: #526ace 0px 0px 0px 2px inset, rgb(255, 255, 255) 10px 10px 0px -3px, #4dade2 10px 10px, rgb(255, 255, 255) 20px 20px 0px -3px, #fcb646 20px 20px;
+        /* rgb(255, 255, 255) 10px 10px 0px -3px,
+            #7bdf97 10px 10px,
+            rgb(255, 255, 255) 20px 20px 0px -3px,
+            #d64558 20px 20px;*/
+        /*rgb(255, 255, 255) 30px 30px 0px -3px,
+            #d64558 30px 30px;*/
+        /*rgb(255, 255, 255) 40px 40px 0px -3px,*/
+        /*rgb(255, 85, 85)*/ /*#526ace 40px  40px;*/
+        transform: scaleX(2), scaleY(2);
+    }
 
 .divInfo{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     margin: 10px;
+    width: 100%;
+    box-sizing:border-box;
 }
 
 .title{

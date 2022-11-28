@@ -50,6 +50,9 @@ namespace MaisCultura.Site
         
         protected void Page_Load(object sender, EventArgs e)
         {
+            txtBoxAvaliacao.TextMode = TextBoxMode.MultiLine;
+            txtBoxDescProb.TextMode = TextBoxMode.MultiLine;
+
             if (Request.QueryString["l"] != null)
             {
                 Login = ListaUsuario.Buscar(Request.QueryString["l"]);      //Logado

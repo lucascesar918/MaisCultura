@@ -65,7 +65,7 @@ namespace MaisCultura
 
                 <div class='divInfo'>
                     <h4 class='title'> MOTIVO</h4>
-                    <p>⠀{denuncia.Descricao}</p>
+                    <p>⠀{AdicionarReticencias(ListaEvento.Buscar(denuncia.CodigoEvento).Descricao, 80)}</p>
                 </div>
                
                 <div class='divInfo'>

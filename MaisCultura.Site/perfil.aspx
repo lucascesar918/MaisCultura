@@ -5,7 +5,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
@@ -19,7 +18,9 @@
 
         <header class="header-primaria">
             <figure class="figure-header">
+                <a href="eventos.aspx">
                 <img src="Images/logoNomeMenor.png" class="logo-header"/>
+                    </a>
             </figure>
 
             <article class="buttons">
@@ -89,13 +90,21 @@
                                 <div class="suaNota">
                                     <h4> Deixe uma nota sobre esse criador... </h4>
 
-                                    <asp:DropDownList ID="ddlEstrelas" runat="server">
+                                    <div class="estrelas">
+                                        <asp:ImageButton ID="umaEstrela" runat="server" CssClass="estrelaAval" ImageUrl="~/Images/star.png" />
+                                        <asp:ImageButton ID="duasEstrelas" runat="server" CssClass="estrelaAval" ImageUrl="~/Images/star.png" />
+                                        <asp:ImageButton ID="tresEstrelas" runat="server" CssClass="estrelaAval" ImageUrl="~/Images/star.png" />
+                                        <asp:ImageButton ID="quatroEstrelas" runat="server" CssClass="estrelaAval" ImageUrl="~/Images/star.png" />
+                                        <asp:ImageButton ID="cincoEstrelas" runat="server" CssClass="estrelaAval" ImageUrl="~/Images/star.png" />
+                                    </div>
+
+                                    <%--<asp:DropDownList ID="ddlEstrelas" runat="server">
                                         <asp:ListItem Text="Uma estrela" Value="1"></asp:ListItem>
                                         <asp:ListItem Text="Duas estrelas" Value="2"></asp:ListItem>
                                         <asp:ListItem Text="Três estrelas" Value="3"></asp:ListItem>
                                         <asp:ListItem Text="Quatro estrelas" Value="4"></asp:ListItem>
                                         <asp:ListItem Text="Cinco estrelas" Value="5"></asp:ListItem>
-                                    </asp:DropDownList>
+                                    </asp:DropDownList>--%>
                                 </div>
 
                                 <div class="seuTexto">
