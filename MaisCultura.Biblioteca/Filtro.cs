@@ -13,7 +13,14 @@ namespace MaisCultura.Biblioteca
         public DateTime? Inicio { get; set; }
         public DateTime? Fim { get; set; }
         public int? QtEstrelas { get; set; }
-
+        public bool EstaAtivo()
+        {
+            return !(string.IsNullOrWhiteSpace(Titulo)
+                && string.IsNullOrWhiteSpace(Local)
+                && Categorias.Count == 0
+                && Inicio == null
+                && Fim == null);
+        }
 
         public bool Verificar(Evento evento)
         {
