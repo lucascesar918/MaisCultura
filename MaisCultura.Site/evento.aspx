@@ -35,13 +35,13 @@
         <asp:ScriptManager ID="ScriptManager1" runat="server">
         </asp:ScriptManager>
 
-        <%-- <div class="geral">--%>
+       
         <header class="header-primaria">
 
             <figure class="figure-header">
-                <%-- <a href="eventos.aspx">--%>
+                 <a href="eventos.aspx">
                 <img src="Images/logoNomeMenor.png" class="logo-header" />
-                <%--</a>--%>
+                </a>
             </figure>
 
 
@@ -69,7 +69,7 @@
             <asp:Button ID="btnVoltar" runat="server" Text="Voltar"
                 OnClientClick="JavaScript:window.history.back(1); return false;" />
         </section>
-        <%-- </div>--%>
+       
 
         <main class="principal">
 

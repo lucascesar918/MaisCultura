@@ -24,7 +24,7 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-top: 110px;
+   /* margin-top: 110px;*/
 }
 
 main {
@@ -67,6 +67,7 @@ main {
     border: none;
     cursor: pointer;
     background-color: transparent;
+    font-weight: 600;
 }
 
 .dropdown-content {
@@ -75,7 +76,7 @@ main {
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
-    
+    font-weight: 600;
     border-radius: 5px;
 }
 
@@ -115,16 +116,42 @@ main {
     z-index: 1;
 }
 
+.estrelas {
+    width: 20%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.estrelaAval {
+    width: 1.2vw;
+    height: 1.2vw;
+    padding: 5px;
+    border: 1px solid #f1f1f1;
+    transition: background-color, border-radius;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-in-out;
+}
+
+.estrelaAval:hover{
+    transition: background-color, border-radius;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-in-out;
+    cursor: pointer;
+    border-radius: 10px;
+    background-color: #ffffff;
+}
+
 /* Inicio da Faixa Voltar*/
 
 .sectionBack {
     width: 100%;
-    position: fixed;
     background: #222222;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: -45px;
+    margin-top: 65px;
 }
 
 .logo-header {
@@ -210,6 +237,10 @@ main {
     margin: 10px;
 }
 
+.userAval{
+    margin-left: 10px;
+}
+
 .userTUsuario {
     display: flex;
     flex-direction: row;
@@ -237,6 +268,11 @@ main {
     font-weight: 700;
 }
 
+#lblTUser{
+    font-weight: 600;
+    font-size: 14px;
+}
+
 #lblMedia{
     font-size: 16px;
     font-weight: 900;
@@ -244,11 +280,13 @@ main {
 
 .nmCompleto {
     font-size: 28px;
+    font-weight: 600;
 }
 
 .arroba {
-    font-size: 15px;
+    font-size: 16px;
     margin: 10px 10px 10px 0px;
+    font-weight: 600;
 }
 
 .tipoUsuario {
@@ -280,7 +318,16 @@ main {
     .card:hover {
         transition-duration: 0.3s;
         transition-timing-function: ease-in-out;
-        box-shadow: rgba(100, 100, 111, 0.8) 0px 7px 20px 0px;
+        box-shadow: #526ace 0px 0px 0px 2px inset, rgb(255, 255, 255) 10px 10px 0px -3px, #4dade2 10px 10px, rgb(255, 255, 255) 20px 20px 0px -3px, #fcb646 20px 20px;
+        /* rgb(255, 255, 255) 10px 10px 0px -3px,
+            #7bdf97 10px 10px,
+            rgb(255, 255, 255) 20px 20px 0px -3px,
+            #d64558 20px 20px;*/
+        /*rgb(255, 255, 255) 30px 30px 0px -3px,
+            #d64558 30px 30px;*/
+        /*rgb(255, 255, 255) 40px 40px 0px -3px,*/
+        /*rgb(255, 85, 85)*/ /*#526ace 40px  40px;*/
+        transform: scaleX(2), scaleY(2);
     }
 
 .card-header {
@@ -416,9 +463,11 @@ main {
 }
 
 .feedEventos {
-    padding: 10px;
-    display: grid;
-    grid-template-columns: repeat(auto-fill,minmax(360px, 1fr));
+    padding: 30px 0px 30px 0px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    
 }
 /*Fim da Section e Divisória dos Eventos do Criador*/
 
@@ -484,9 +533,13 @@ main {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-around;
-    width: 50%;
+    justify-content: left;
+    width: 35%;
     /*background-color: hotpink;*/
+}
+
+infosNmAtDtAv span{
+    margin-left: 10px;
 }
 
 

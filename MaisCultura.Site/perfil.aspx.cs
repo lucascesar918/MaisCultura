@@ -144,7 +144,7 @@ namespace MaisCultura.Site
                                         <figure>
                                             <img src='Images/perfil526ace.png' class='imgPerfilAvaliacao' />
                                         </figure>
-                                        <span>{avaliacao.CodigoUsuario}</span>
+                                        <span class='userAval'>{avaliacao.CodigoUsuario}</span>
                                     </section>
                                     <div class='notaAvaliacao'>
                                         <span>{avaliacao.Estrelas}</span>
@@ -181,6 +181,8 @@ namespace MaisCultura.Site
             HandleUser();
             HandleLogin();
             CreateEvents(Request.QueryString["u"]);
+
+            txtBoxAvaliacao.TextMode = TextBoxMode.MultiLine;
         }
     }
 }
