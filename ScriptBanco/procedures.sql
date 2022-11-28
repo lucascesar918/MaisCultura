@@ -164,6 +164,23 @@ BEGIN
 		cd_responsavel = pCodigo;
 END$$
 
+DROP PROCEDURE IF EXISTS BuscarEventoCategoria$$
+CREATE PROCEDURE BuscarEventoCategoria(pCat VARCHAR(20))
+BEGIN
+	SELECT
+		e.cd_evento "Codigo",
+		e.cd_responsavel "@",
+		e.nm_titulo "Titulo",
+		e.ds_local "Local",
+		e.ds_evento "Descricao"
+	FROM 
+		evento e
+		JOIN evento_categoria ec ON (ec.cd_evento = e.cd_evento)
+		JOIN categoria c ON (ec.cd_categoria = c.cd_categoria)
+	WHERE  
+		c.nm_categoria = pCat;
+END$$
+
 DROP PROCEDURE IF EXISTS CadastrarUsuario$$
 CREATE PROCEDURE CadastrarUsuario(
 	pCodigo varchar(20), 

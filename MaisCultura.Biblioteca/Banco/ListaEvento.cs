@@ -105,7 +105,25 @@ namespace MaisCultura.Biblioteca
             return eventos;
         }
 
-         
+        public List<Evento> Filtro(string categoria)
+        {
+            List<Evento> eventos = new List<Evento>();
+
+            MySqlDataReader dadosEventos = Query("BuscarEventoCategoria", ("pCat", categoria));
+
+            while (dadosEventos.Read())
+                eventos.Add(DataReaderToEvento(dadosEventos, true));
+
+            Desconectar();
+
+            foreach (Evento Evento in eventos)
+            {
+                Evento.Categorias = BuscarCategorias(Evento.Codigo);
+                Evento.Dias = BuscarDias(Evento.Codigo);
+            }
+            return eventos;
+        }
+
         public void AdicionarCategorias(int evento, List<Categoria> categorias)
         {
 

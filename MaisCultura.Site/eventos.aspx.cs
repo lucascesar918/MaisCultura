@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
+using System.Threading;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -20,7 +21,7 @@ namespace MaisCultura
             categorias = ListaEvento.ListarCategorias();
 
             for (int i = 0; i < contadorCategorias; i++)
-                litCatFiltro.Text += $@"<article ID='Cat{categorias[i].Nome}' class='filtros-subtitulos categoria'>{categorias[i].Nome}</article>";
+                litCatFiltro.Text += $@"<article ID='Cat{categorias[i].Nome}' class='filtros-subtitulos categoria' OnClick='ClickCategoria'>{categorias[i].Nome}</article>";
 
         }
 
@@ -63,6 +64,22 @@ namespace MaisCultura
             Eventos = Eventos.FindAll((e) => filtro.Verificar(e));
            
             litEventos.Text = "";
+
+            mostrarEventos(Eventos);
+        }
+
+        private void FiltrarEventos(string cat)
+        {
+
+            List<Evento> Eventos;
+
+            Eventos = ListaEvento.Filtro(cat);
+
+            mostrarEventos(Eventos);
+        }
+
+        void mostrarEventos(List<Evento> Eventos)
+        {
             foreach (Evento evento in Eventos)
             {
                 Usuario usuarioEvento = ListaUsuario.Buscar(evento.Responsavel);
@@ -134,8 +151,7 @@ namespace MaisCultura
                         <figure>
                             <img src='Images/local.png' alt='Ícone Local' class='local-icon'>
                         </figure>
-                        <h3>{
-                            evento.Local // Trocar pelo formato "Cidade, Estado" depois
+                        <h3>{evento.Local // Trocar pelo formato "Cidade, Estado" depois
                         }</h3>
 
                     </article>
@@ -173,6 +189,9 @@ namespace MaisCultura
         {
             var Botao = (Button)sender;
             ViewState["Cateoria"] = Botao.Text;
+            string cat = Botao.Text;
+            litEventos.Text = "";
+            FiltrarEventos(cat);
         }
 
         protected void btnLogar_Click(object sender, EventArgs e)

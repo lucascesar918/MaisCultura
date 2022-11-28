@@ -87,9 +87,6 @@ function filtrar() {
         for (var k = 0; k < H2Tags.length; k++) {
             let teste = H2Tags[k].textContent;
 
-            console.log(text);
-            console.log(teste);
-
             if (text == teste) {
                 let pai = H2Tags[k].parentNode.parentNode;
                 pai.querySelector(".card-header").style.display = 'flex';
