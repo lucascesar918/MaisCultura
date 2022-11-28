@@ -105,7 +105,25 @@ namespace MaisCultura.Biblioteca
             return eventos;
         }
 
-         
+        public List<Evento> Filtro(string categoria)
+        {
+            List<Evento> eventos = new List<Evento>();
+
+            MySqlDataReader dadosEventos = Query("BuscarEventoCategoria", ("pCat", categoria));
+
+            while (dadosEventos.Read())
+                eventos.Add(DataReaderToEvento(dadosEventos, true));
+
+            Desconectar();
+
+            foreach (Evento Evento in eventos)
+            {
+                Evento.Categorias = BuscarCategorias(Evento.Codigo);
+                Evento.Dias = BuscarDias(Evento.Codigo);
+            }
+            return eventos;
+        }
+
         public void AdicionarCategorias(int evento, List<Categoria> categorias)
         {
 
@@ -228,14 +246,35 @@ namespace MaisCultura.Biblioteca
             NonQuery("DeletarEvento", ("pCodigo", codigo));
         }
 
-        public void Salvar(string codigoUsuario, int codigoEvento)
+        public void Interessar(string codigoUsuario, int codigoEvento)
         {
             NonQuery("AdicionarInteresse", ("pUsuario", codigoUsuario), ("pEvento", codigoEvento));
         }
 
-        public void CancelarSalvo(string codigoUsuario, int codigoEvento)
+        public void CancelarInteresse(string codigoUsuario, int codigoEvento)
         {
             NonQuery("RemoverInteresse", ("pUsuario", codigoUsuario), ("pEvento", codigoEvento));
+        }
+
+        public void Salvar(string codigoUsuario, int codigoEvento)
+        {
+            NonQuery("AdicionarSalvo", ("pUsuario", codigoUsuario), ("pEvento", codigoEvento));
+        }
+
+        public void CancelarSalvo(string codigoUsuario, int codigoEvento)
+        {
+            NonQuery("RemoverSalvo", ("pUsuario", codigoUsuario), ("pEvento", codigoEvento));
+        }
+
+        public bool VerificarSalvo(string codigoUsuario, int codigoEvento)
+        {
+            MySqlDataReader data = Query("BuscarSalvoUsuarioEvento", ("pUsuario", codigoUsuario), ("pEvento", codigoEvento));
+
+            bool resposta = data.HasRows;
+
+            Desconectar();
+
+            return resposta;
         }
     }
 }

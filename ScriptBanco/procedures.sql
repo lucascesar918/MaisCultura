@@ -75,7 +75,7 @@ BEGIN
 		p.cd_usuario "@",
 		c.nm_categoria "Nome"
 	FROM preferencia p
-	JOIN categoria_evento ce
+	JOIN evento_categoria ce
 		ON p.cd_categoria = ce.cd_categoria
 	JOIN categoria c
 		ON p.cd_categoria = c.cd_categoria
@@ -89,7 +89,7 @@ BEGIN
 	SELECT ce.cd_evento "CodigoEvento",
     ce.cd_categoria "CodigoCategoria",
     c.nm_categoria "Nome"
-    FROM categoria_evento ce
+    FROM evento_categoria ce
     JOIN categoria c
     ON c.cd_categoria = ce.cd_categoria
     WHERE ce.cd_evento = pEvento;
@@ -164,6 +164,23 @@ BEGIN
 		cd_responsavel = pCodigo;
 END$$
 
+DROP PROCEDURE IF EXISTS BuscarEventoCategoria$$
+CREATE PROCEDURE BuscarEventoCategoria(pCat VARCHAR(20))
+BEGIN
+	SELECT
+		e.cd_evento "Codigo",
+		e.cd_responsavel "@",
+		e.nm_titulo "Titulo",
+		e.ds_local "Local",
+		e.ds_evento "Descricao"
+	FROM 
+		evento e
+		JOIN evento_categoria ec ON (ec.cd_evento = e.cd_evento)
+		JOIN categoria c ON (ec.cd_categoria = c.cd_categoria)
+	WHERE  
+		c.nm_categoria = pCat;
+END$$
+
 DROP PROCEDURE IF EXISTS CadastrarUsuario$$
 CREATE PROCEDURE CadastrarUsuario(
 	pCodigo varchar(20), 
@@ -211,13 +228,13 @@ BEGIN
 		i.nm_imagem "Imagem"
 	FROM evento e 
 	JOIN usuario u ON (u.cd_usuario = e.cd_responsavel)
-	JOIN categoria_evento ce ON (ce.cd_evento = e.cd_evento)
+	JOIN evento_categoria ce ON (ce.cd_evento = e.cd_evento)
 	JOIN categoria c ON (c.cd_categoria = ce.cd_categoria)
 	JOIN dia_evento de ON (e.cd_evento = de.cd_evento)
 	JOIN imagem_evento ie ON (ie.cd_evento = e.cd_evento)
 	JOIN imagem i ON (i.cd_imagem = ie.cd_imagem)
 	WHERE e.cd_evento IN (
-		SELECT cd_evento FROM categoria_evento WHERE cd_categoria IN (
+		SELECT cd_evento FROM evento_categoria WHERE cd_categoria IN (
 			SELECT cd_categoria FROM preferencia WHERE cd_usuario = pUsuario
 		)
 	)
@@ -242,19 +259,13 @@ BEGIN
 		i.nm_imagem "Imagem"
 	FROM evento e 
 	JOIN usuario u ON (u.cd_usuario = e.cd_responsavel)
-	JOIN categoria_evento ce ON (ce.cd_evento = e.cd_evento)
+	JOIN evento_categoria ce ON (ce.cd_evento = e.cd_evento)
 	JOIN categoria c ON (c.cd_categoria = ce.cd_categoria)
 	JOIN dia_evento de ON (e.cd_evento = de.cd_evento)
 	JOIN imagem_evento ie ON (ie.cd_evento = e.cd_evento)
 	JOIN imagem i ON (i.cd_imagem = ie.cd_imagem)
 	GROUP BY e.cd_evento
 	ORDER BY de.dt_dia;
-END$$
-
-DROP PROCEDURE IF EXISTS CadastrarEventoSalvo$$
-CREATE PROCEDURE CadastrarEventoSalvo ( pUsuario VARCHAR(20), pEvento INT)
-BEGIN
-	INSERT INTO salvar VALUES ( pEvento, pUsuario);
 END$$
 
 DROP PROCEDURE IF EXISTS filtrarEventos$$
@@ -278,7 +289,7 @@ BEGIN
 		i.nm_imagem "Imagem"
 	FROM evento e 
 	JOIN usuario u ON (u.cd_usuario = e.cd_responsavel)
-	JOIN categoria_evento ce ON (ce.cd_evento = e.cd_evento)
+	JOIN evento_categoria ce ON (ce.cd_evento = e.cd_evento)
 	JOIN categoria c ON (c.cd_categoria = ce.cd_categoria)
 	JOIN dia_evento de ON (e.cd_evento = de.cd_evento)
 	JOIN imagem_evento ie ON (ie.cd_evento = e.cd_evento)
@@ -286,7 +297,7 @@ BEGIN
 	WHERE e.cd_evento IN (
 		(SELECT e.cd_evento 
 		FROM evento e
-		JOIN categoria_evento ce ON (ce.cd_evento = e.cd_evento)
+		JOIN evento_categoria ce ON (ce.cd_evento = e.cd_evento)
 		JOIN dia_evento de ON (de.cd_evento = e.cd_evento)
 		JOIN avaliacao a ON (a.cd_evento = e.cd_evento)
 		WHERE 
@@ -314,7 +325,7 @@ BEGIN
 		e.ds_local "Local",
 		e.ds_evento "Descrição"
 	FROM evento e
-	JOIN categoria_evento ce ON (ce.cd_evento = e.cd_evento)
+	JOIN evento_categoria ce ON (ce.cd_evento = e.cd_evento)
 	JOIN categoria c ON (c.cd_categoria = ce.cd_categoria)
 	JOIN dia_evento de ON (de.cd_evento = e.cd_evento)
 	WHERE e.cd_evento = pEvento
@@ -389,7 +400,7 @@ BEGIN
 		i.nm_imagem "Imagem"
 	FROM evento e 
 	JOIN usuario u ON (u.cd_usuario = e.cd_responsavel)
-	JOIN categoria_evento ce ON (ce.cd_evento = e.cd_evento)
+	JOIN evento_categoria ce ON (ce.cd_evento = e.cd_evento)
 	JOIN categoria c ON (c.cd_categoria = ce.cd_categoria)
 	JOIN dia_evento de ON (e.cd_evento = de.cd_evento)
 	JOIN imagem_evento ie ON (ie.cd_evento = e.cd_evento)
@@ -438,7 +449,7 @@ END$$
 DROP PROCEDURE IF EXISTS AlterarCategoriaEvento$$
 CREATE PROCEDURE AlterarCategoriaEvento(pCodigo INT, pCategoria INT)
 BEGIN
-	UPDATE categoria_evento
+	UPDATE evento_categoria
 		SET 
 			cd_categoria = pCategoria
 	WHERE cd_evento = pCodigo;
@@ -458,7 +469,7 @@ END$$
 DROP PROCEDURE IF EXISTS CadastrarCategoriaEvento$$
 CREATE PROCEDURE CadastrarCategoriaEvento(pEvento INT, pCategoria INT)
 BEGIN
-	INSERT INTO categoria_evento VALUES
+	INSERT INTO evento_categoria VALUES
     (pCategoria, pEvento);
 END$$
 
@@ -635,7 +646,7 @@ BEGIN
 	DELETE FROM dia_evento WHERE cd_evento = pCodigo;
 	DELETE FROM interesse WHERE cd_evento = pCodigo;
 	DELETE FROM salvar WHERE cd_evento = pCodigo;
-	DELETE FROM categoria_evento WHERE cd_evento = pCodigo;
+	DELETE FROM evento_categoria WHERE cd_evento = pCodigo;
 
 	CALL DeletarDenunciaEvento(pCodigo);
 
@@ -706,6 +717,24 @@ CREATE PROCEDURE RemoverInteresse(
 )
 BEGIN
 	DELETE FROM interesse WHERE cd_evento = pEvento AND cd_usuario = pUsuario;
+END$$
+
+DROP PROCEDURE IF EXISTS AdicionarSalvo$$
+CREATE PROCEDURE AdicionarSalvo ( pUsuario VARCHAR(20), pEvento INT)
+BEGIN
+	INSERT INTO salvar VALUES ( pEvento, pUsuario);
+END$$
+
+DROP PROCEDURE IF EXISTS RemoverSalvo$$
+CREATE PROCEDURE RemoverSalvo ( pUsuario VARCHAR(20), pEvento INT)
+BEGIN
+	DELETE FROM salvar WHERE cd_evento = pEvento AND cd_usuario = pUsuario;
+END$$
+
+DROP PROCEDURE IF EXISTS BuscarSalvoUsuarioEvento$$
+CREATE PROCEDURE BuscarSalvoUsuarioEvento ( pUsuario VARCHAR(20), pEvento INT)
+BEGIN
+	SELECT * FROM salvar WHERE cd_evento = pEvento AND cd_usuario = pUsuario;
 END$$
 
 DELIMITER ;

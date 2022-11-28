@@ -378,7 +378,11 @@ body{
     border-radius: 5px;
 }
 
-.save {
+.chk input {
+    display: none;
+}
+
+.chk span {
     width: 40px;
     height: 40px;
     cursor: pointer;
@@ -387,22 +391,16 @@ body{
     border: none;
     -webkit-tap-highlight-color: transparent;
     background-color: transparent;
-}
-
-.salvo, naoSalvo {
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-.salvo {
-    animation: save 0.5s ease-in forwards;
-    background-image: url(../Images/save2.png);
-}
-
-.naoSalvo {
     animation: unsave 0.5s ease-in reverse forwards;
     background-image: url(../Images/save.png);
+}
+
+.chk input:checked + span {
+    animation: save 0.5s ease-in forwards;
+    background-image: url(../Images/save2.png);
 }
 
 #updBtnSave {

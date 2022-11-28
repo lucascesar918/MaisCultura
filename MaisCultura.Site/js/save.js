@@ -1,17 +1,22 @@
-﻿var saves = document.querySelectorAll(".save");
+﻿$("#cbxSave").change(function () {
+    console.log("entrou");
 
-for (var i = 0; i < saves.length; i++) {
-    let save = saves[i];
-    save.addEventListener("click", () => { mudarSave(save) });
-}
+    const urlParams = new URLSearchParams(location.search);
+    var usuario = urlParams.get('l');
 
-function mudarSave(save) {
-    if (save.classList.contains('naoSalvo')) {
-        save.classList.remove('naoSalvo');
-        save.classList.add('salvo');
+    if (usuario == null) {
+        $("#cbxSave").checked = false;
+        console.log("teste");
+        //return $("#btnLog").click();
+    }
+
+    var evento = urlParams.get('e');
+
+    if ($("#cbxSave").prop("checked") == true) {
+        PageMethods.salvarEvento(usuario, evento);
     }
     else {
-        save.classList.remove('salvo');
-        save.classList.add('naoSalvo');
+        PageMethods.removerSalvo(usuario, evento);
     }
-}
+});
+

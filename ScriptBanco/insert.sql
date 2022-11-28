@@ -15,14 +15,19 @@ INSERT INTO categoria VALUES
 (1, "Música"),
 (2, "Pintura"),
 (3, "Literatura"),
-(4, "Artesanato"),
-(5, "Dança"),
-(6, "Teatro"),
-(7, "Cinema"),
-(8, "Artes Plásticas"),
-(9, "Culinária"),
-(10, "Esporte"),
-(11, "Outros");
+(4, "Teatro"),
+(5, "Artes Plásticas"),
+(6, "Esporte"),
+(7, "Show"),
+(8, "Exposição"),
+(9, "Sarau"),
+(10, "Campeonato"),
+(11, "Escolar"),
+(12, "Artes Visuais"),
+(13, "Manifestação"),
+(14, "Workshop"),
+(15, "Entretenimento"),
+(16, "Arte Cênica");
 
 INSERT INTO lista_motivo VALUES
 (1, "Má organização"),
@@ -178,17 +183,30 @@ INSERT INTO salvar VALUES
 (10, "clara.barriento"),
 (10, "japafkt");
 
-INSERT INTO categoria_evento VALUES
-(10, 1),
-(11, 2),
-(11, 3),
-(10 ,4),
-(6, 5),
+INSERT INTO evento_categoria VALUES
 (1, 6),
-(3, 7),
-(9, 8),
-(1, 9),
-(2, 10);
+(1, 10),
+(1, 11),
+(2, 11),
+(2, 12),
+(3, 13),
+(4, 14),
+(4, 15),
+(5, 3),
+(5, 4),
+(5, 16),
+(6, 1),
+(6, 8),
+(7, 3),
+(7, 8),
+(7, 9),
+(8, 15),
+(9, 1),
+(9, 7),
+(9, 12),
+(10, 2),
+(10, 5),
+(10, 8);
 
 INSERT INTO preferencia VALUES
 (1, "camix.santana"),
