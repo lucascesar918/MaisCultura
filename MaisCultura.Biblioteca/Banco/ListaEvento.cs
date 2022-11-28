@@ -135,6 +135,29 @@ namespace MaisCultura.Biblioteca
             return evento;
         }
 
+        public List<Evento> BuscarPorUsuario(string codigo)
+        {
+            List<Evento> eventos = new List<Evento>();
+
+
+            MySqlDataReader data = Query("BuscarEventoUsuario", ("pCodigo", codigo));
+
+            while (data.Read())
+            {
+                Evento evento = DataReaderToEvento(data, false);
+                eventos.Add(evento);
+            }
+
+            Desconectar();
+            foreach (Evento evento in eventos)
+            {
+                evento.Categorias = BuscarCategorias(evento.Codigo);
+                evento.Dias = BuscarDias(evento.Codigo);
+            }
+
+            return eventos;
+        }
+
         public void Criar(Evento evento)
         { 
             NonQuery("CadastrarEvento",
@@ -169,29 +192,24 @@ namespace MaisCultura.Biblioteca
             return avaliacoes;
         }
 
-        public string BuscarImagem(int codigo)
+        public List<string> BuscarImagem(int codigo)
         {
-            string imagem = "";
+            List<string> imagens = new List<string>();
 
             MySqlDataReader data = Query("BuscarImagemEvento", ("pEvento", codigo));
 
             while (data.Read())
-                imagem = data["Imagem"].ToString();
+                imagens.Add(data["Imagem"].ToString());
+
             Desconectar();
-
-            return imagem;
-        }
-
-        public List<Denuncia> BuscarDenuncias(int codigo) {
-            List<Denuncia> Denuncias = new List<Denuncia>(); 
-            
-
-            return Denuncias;
+            return imagens;
         }
 
         public int? MediaEstrelas(int codigo)
         {
             var Media = (Decimal)Scalar("MediaAvaliacao", ("pEvento", codigo));
+
+            Desconectar();
             return Decimal.ToInt32(Media);
         }
 
@@ -200,7 +218,15 @@ namespace MaisCultura.Biblioteca
             MySqlDataReader data = Query("BuscarInteressesEvento", ("pEvento", codigo));
             data.Read();
 
-            return Int32.Parse(data["Soma"].ToString());
+            int interesses = Int32.Parse(data["Soma"].ToString());
+
+            Desconectar();
+
+            return interesses;
+        }
+
+        public void Deletar(int codigo) {
+            NonQuery("DeletarEvento", ("pCodigo", codigo));
         }
     }
 }

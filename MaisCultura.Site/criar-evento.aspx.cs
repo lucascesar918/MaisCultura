@@ -11,7 +11,7 @@ namespace MaisCultura.Site
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            txtBoxAvaliacao.TextMode = TextBoxMode.MultiLine;
         }
     }
 }

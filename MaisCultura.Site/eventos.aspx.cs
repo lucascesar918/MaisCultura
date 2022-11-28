@@ -16,7 +16,7 @@ namespace MaisCultura
                 Login = ListaUsuario.Buscar(Request.QueryString["l"]);
                 dropbtnUsuario.Text = Login.Nome;
                 litDropDownHome.Text = $"<a href='eventos.aspx?l={Login.Codigo}'>Início</a>";
-                litDropDownPerfil.Text = $"<a href='perfil.aspx?l={Login.Codigo}&u={Login.Codigo}'>Perfil</a>";
+                litDropDownPerfil.Text = $"<a href='meu-perfil.aspx?l={Login.Codigo}&u={Login.Codigo}'>Perfil</a>";
                 if (Login.Tipo == "Administrador")                                                              //Logado
                     litDropDownDenuncias.Text = $"<a href='denuncias.aspx?l={Login.Codigo}'>Denúncias</a>";
                 dropbtnUsuario.Visible = true;
@@ -30,7 +30,6 @@ namespace MaisCultura
                 btnLog.Visible = true;                                                                          //Deslogado
                 btnCad.Visible = true;
             }
-
         }
 
 
@@ -41,9 +40,6 @@ namespace MaisCultura
         Usuario Login;
 
         private void ListarEventos(string usuario) {
-
-
-
             List<Evento> Eventos;
             if (ListaUsuario.Buscar(usuario) != null)
                 Eventos = ListaEvento.Feed(usuario);
@@ -58,20 +54,34 @@ namespace MaisCultura
                 Usuario usuarioEvento = ListaUsuario.Buscar(evento.Responsavel);
                 List<Categoria> categorias = evento.Categorias;
                 List<DiaEvento> dias = evento.Dias;
+
+                var TagAEvento = $"<a href='evento.aspx?e={evento.Codigo}'>";
+                var TagAPerfil = $"<a href='perfil.aspx?u={usuarioEvento.Codigo}'>";
+
+                if (Request.QueryString["l"] != null)
+                {
+                    TagAEvento = $"<a href='evento.aspx?l={Login.Codigo}&e={evento.Codigo}'>";
+                    TagAPerfil = $"<a href='perfil.aspx?l={Login.Codigo}&u={usuarioEvento.Codigo}'>";
+                }
+
                 litEventos.Text += $@"<section class='card'>
                     <article class='card-header'>
                         <figure>
-                            <img src='Images/perfil.png' alt='Imagem de Perfil' class='perfil'>
+                            {TagAPerfil}
+                                <img src='Images/perfil.png' alt='Imagem de Perfil' class='perfil'>
+                            </a>
                         </figure>
 
                         <article class='card-header-nome'>
-                            <h2>{usuarioEvento.Nome}</h2>
-                            <h5>{usuarioEvento.Codigo}</h5>
+                            {TagAPerfil}
+                                <h2>{usuarioEvento.Nome}</h2>
+                                <h5>{usuarioEvento.Codigo}</h5>
+                            </a>
                         </article>
 
                     </article>
 
-                    <a href='evento.aspx'>
+                    {TagAEvento}
                         <article class='card-tittle'>
                                 <h2>{evento.Titulo}</h2>
                         </article>
@@ -83,9 +93,9 @@ namespace MaisCultura
                     </article>
 
                     <article class='card-image'>
-                        <a href='evento.aspx'>
+                        {TagAEvento}
                             <figure>
-                                <img src='{ListaEvento.BuscarImagem(evento.Codigo)}' alt='Interclasse de cria' class='foto-evento'>
+                                <img src='{ListaEvento.BuscarImagem(evento.Codigo)[0]}' alt='Interclasse de cria' class='foto-evento'>
                             </figure>
                         </a>
                     </article>
@@ -118,6 +128,7 @@ namespace MaisCultura
                 </section>";
             }
         }
+
         DateTime? StrinToDate(string strDate)
         {
             if (string.IsNullOrEmpty(strDate))
@@ -126,6 +137,7 @@ namespace MaisCultura
             DateTime.TryParse(strDate, out dt);
             return dt;
         }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             HandleLogin();

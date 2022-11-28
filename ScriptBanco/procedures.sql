@@ -153,8 +153,14 @@ END$$
 DROP PROCEDURE IF EXISTS BuscarEventoUsuario$$
 CREATE PROCEDURE BuscarEventoUsuario(pCodigo VARCHAR(20))
 BEGIN
-	SELECT * FROM evento
-	WHERE 
+	SELECT
+		cd_evento "Codigo",
+		cd_responsavel "@",
+		nm_titulo "Titulo",
+		ds_local "Local",
+		ds_evento "Descricao"
+	FROM evento
+	WHERE  
 		cd_responsavel = pCodigo;
 END$$
 
@@ -313,6 +319,12 @@ BEGIN
 	JOIN dia_evento de ON (de.cd_evento = e.cd_evento)
 	WHERE e.cd_evento = pEvento
 	GROUP BY de.dt_dia;
+END$$
+
+DROP PROCEDURE IF EXISTS BuscarInteressesEvento$$
+CREATE PROCEDURE BuscarInteressesEvento( pEvento INT )
+BEGIN
+	SELECT count(cd_usuario) "Interesses" FROM interesse WHERE cd_evento = pEvento;
 END$$
 
 DROP PROCEDURE IF EXISTS BuscarImagemEvento$$
@@ -521,28 +533,17 @@ DROP PROCEDURE IF EXISTS ListarDenuncias$$
 CREATE PROCEDURE ListarDenuncias()
 BEGIN
 	SELECT
-		cd_denuncia "CodigoDenuncia",
-		cd_evento "CodigoEvento",
-		cd_usuario "@",
-		dt_denuncia "Data",
-		hr_denuncia "Hora"
-	FROM denuncia;
-END$$
-
-DROP PROCEDURE IF EXISTS BuscarDenuncias$$
-CREATE PROCEDURE BuscarDenuncias(pCodigo INT)
-BEGIN
-	SELECT
 		d.cd_denuncia "CodigoDenuncia",
 		d.cd_evento "CodigoEvento",
 		d.cd_usuario "@",
 		DATE_FORMAT(d.dt_denuncia, "%d/%m/%Y") "Data",
 		d.hr_denuncia "Hora",
-		lm.nm_motivo "Descricao"
+		lm.nm_motivo "Motivo",
+		m.cd_motivo "CodigoMotivo",
+		m.ds_denuncia "Descricao"
 	FROM denuncia d
 	JOIN motivo m ON d.cd_denuncia = m.cd_denuncia
-	JOIN lista_motivo lm ON m.cd_motivo = lm.cd_motivo
-	WHERE d.cd_denuncia = pCodigo;
+	JOIN lista_motivo lm ON m.cd_motivo = lm.cd_motivo;
 END$$
 
 DROP PROCEDURE IF EXISTS BuscarDenunciasUsuario$$
@@ -597,7 +598,9 @@ DROP PROCEDURE IF EXISTS DeletarUsuario$$
 CREATE PROCEDURE DeletarUsuario(pCodigo VARCHAR(20))
 BEGIN
 	DELETE FROM equipe_evento WHERE cd_usuario = pCodigo;
-	DELETE FROM denuncia WHERE cd_usuario = pCodigo;
+	
+	CALL DeletarDenunciaUsuario(pCodigo);
+
 	DELETE FROM preferencia WHERE cd_usuario = pCodigo;
 	DELETE FROM salvar WHERE cd_usuario = pCodigo;
 	DELETE FROM interesse WHERE cd_usuario = pCodigo;
@@ -609,15 +612,49 @@ END$$
 DROP PROCEDURE IF EXISTS DeletarEvento$$
 CREATE PROCEDURE DeletarEvento(pCodigo INT)
 BEGIN
-	DELETE FROM imagem_evento WHERE cd_evente = pCodigo;
+	DELETE FROM imagem_evento WHERE cd_evento = pCodigo;
 	DELETE FROM avaliacao WHERE cd_evento = pCodigo;
 	DELETE FROM dia_evento WHERE cd_evento = pCodigo;
 	DELETE FROM interesse WHERE cd_evento = pCodigo;
 	DELETE FROM salvar WHERE cd_evento = pCodigo;
 	DELETE FROM categoria_evento WHERE cd_evento = pCodigo;
-	DELETE FROM denuncia WHERE cd_evento = pCodigo;
+
+	CALL DeletarDenunciaEvento(pCodigo);
+
 	DELETE FROM equipe_evento WHERE cd_evento = pCodigo;
 	DELETE FROM evento WHERE cd_evento = pCodigo;
+END$$
+
+DROP PROCEDURE IF EXISTS DeletarDenuncia$$
+CREATE PROCEDURE DeletarDenuncia(pCodigo INT)
+BEGIN
+	DELETE FROM motivo where cd_denuncia = pCodigo;
+	DELETE FROM denuncia where cd_denuncia = pCodigo;
+END$$
+
+DROP PROCEDURE IF EXISTS DeletarDenunciaEvento$$
+CREATE PROCEDURE DeletarDenunciaEvento(pCodigo INT)
+BEGIN
+	DECLARE codigo INT DEFAULT 0;
+
+	SELECT d.cd_denuncia INTO codigo
+	FROM evento e 
+	JOIN denuncia d ON (e.cd_evento = d.cd_evento) 
+	WHERE e.cd_evento = pCodigo;
+
+	CALL DeletarDenuncia(codigo);
+END$$
+
+DROP PROCEDURE IF EXISTS DeletarDenunciaUsuario$$
+CREATE PROCEDURE DeletarDenunciaUsuario(pCodigo VARCHAR(20))
+BEGIN
+	DECLARE codigo INT DEFAULT 0;
+
+	SELECT cd_denuncia INTO codigo
+	FROM denuncia
+	WHERE cd_usuario = pCodigo;
+
+	CALL DeletarDenuncia(codigo);
 END$$
 
 DROP PROCEDURE IF EXISTS BuscarInteressesEvento$$

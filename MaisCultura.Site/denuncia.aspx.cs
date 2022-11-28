@@ -15,24 +15,52 @@ namespace MaisCultura
         ListaDenuncia ListaDenuncia = new ListaDenuncia();
 
         Usuario Login;
+        Denuncia Denuncia;
+        Evento Evento;
 
-        protected void Page_Load(object sender, EventArgs e)
+        void HandleLogin()
         {
+            if (Request.QueryString["l"] != null)
+            {
+                Login = ListaUsuario.Buscar(Request.QueryString["l"]);
 
-            Login = ListaUsuario.Buscar(Request.QueryString["l"]);
+                if (Login.Tipo != "Administrador")                                                              //Logado
+                    Response.Redirect($"erro.html?msg=O que você está fazendo aqui? 😯 Você não tem permissão para acessar essa página!&l={Login.Codigo}");
 
-            List<Denuncia> Denuncias = ListaDenuncia.Buscar(Int32.Parse(Request.QueryString["d"]));
-            Evento Evento = ListaEvento.Buscar(Denuncias[0].CodigoEvento);
+                dropbtnUsuario.Text = Login.Nome;
+                litEventos.Text = $"<a href=\"eventos.aspx?l={Login.Codigo}\">Eventos</a>";
+                dropbtnUsuario.Text = Login.Nome;
+                litPerfil.Text = $"<a href=\"perfil.aspx?u={Login.Codigo}&l={Login.Codigo}\">Perfil</a>";
+            }
+            else
+                Response.Redirect("erro.html?msg=O que você está fazendo aqui? 😯 Você não tem permissão para acessar essa página!");
             
-            litEventos.Text = $"<a href=\"eventos.aspx?l={Login.Codigo}\">Eventos</a>";
-            dropbtnUsuario.Text = Login.Nome;
-            litPerfil.Text = $"<a href=\"perfil.aspx?u={Login.Codigo}&l={Login.Codigo}\">Perfil</a>";
 
-            lblUser.Text = Login.Codigo;
+        }
+
+        protected void Page_Load(object sender, EventArgs e) //https://localhost:44335/denuncia.aspx?l=lucas.serio&d=2
+        {
+            HandleLogin();
+
+            Denuncia = ListaDenuncia.Buscar(Int32.Parse(Request.QueryString["d"]));
+            Evento = ListaEvento.Buscar(Denuncia.CodigoEvento);
+
+            lblUser.Text = Denuncia.CodigoUsuario;
             lblNmEvento.Text = Evento.Titulo;
-            lblMotivo.Text = Denuncias[0].Motivo.Nome;
+            lblMotivo.Text = Denuncia.Motivo.Nome;
+            litTextoDenuncia.Text = Denuncia.Descricao;
+            lblData.Text = Denuncia.Data.ToShortDateString();
+            lblHora.Text = Denuncia.Data.ToShortTimeString();
+        }
 
-            //terminar essa aqui
+        protected void btnExcluir_Click(object sender, EventArgs e)
+        {
+            ListaEvento.Deletar(Evento.Codigo);
+        }
+
+        protected void btnRetirar_Click(object sender, EventArgs e)
+        {
+            ListaDenuncia.Deletar(Denuncia.CodigoDenuncia);
         }
     }
 }

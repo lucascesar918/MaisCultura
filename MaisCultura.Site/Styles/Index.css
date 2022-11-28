@@ -31,6 +31,24 @@
     }
 }
 
+@media screen and (max-width: 1366px) {
+    
+    .icon {
+        margin-right: 10px !important;
+    }
+}
+
+
+@media screen and (min-width: 1920px) {
+    .eventos {
+        width: 80% !important;
+        margin-left: 26px !important;
+    }
+
+    .icon{
+        margin-left: 14px !important;
+    }
+}
 
 a {
     text-decoration: none;
@@ -56,6 +74,10 @@ html{
         border: 1px solid #11111147;
     }
 
+body{
+    overflow:hidden;
+}
+
 .header {
     width: 100%;
     display: flex;
@@ -74,6 +96,7 @@ html{
 .menuUsuario {
     position: relative;
     display: inline-block;
+    font-weight: 700;
 }
 
 .dropbtn {
@@ -83,7 +106,9 @@ html{
     border: none;
     cursor: pointer;
     background-color: transparent;
+    font-weight: 700;
 }
+
 
 .dropdown-content {
     display: none;
@@ -91,7 +116,6 @@ html{
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
-    margin: 5px;
     border-radius: 5px;
 }
 
@@ -128,7 +152,7 @@ html{
     background-color: white;
     position: fixed;
     top: 0;
-    z-index: 3;
+    z-index: 1;
 }
 
 .header-secundaria {
@@ -311,7 +335,7 @@ html{
     }
 
 .filtros-titulos {
-    font-size: 15px;
+    font-size: 16;
     margin-bottom: 5px;
 }
 
@@ -324,7 +348,7 @@ html{
     align-items: center;
     height: fit-content;
     width: fit-content;
-    font-size: 12px;
+    font-size:14px;
     padding: 5px 5px 5px 5px;
     margin: 5px 5px 5px 0px;
     border: none;
@@ -362,7 +386,8 @@ html{
     border-radius: 15px;
     border: 1px solid #526ace;
     margin: 10px 10px 20px 0px;
-    padding: 10px;
+    padding: 15px;
+    font-weight: bold;
 }
 
 .txtLocal::placeholder{
@@ -380,7 +405,9 @@ html{
     font-size: 12px;
     border: 1px solid #526ace;
     border-radius: 15px;
-    padding: 5px;
+    padding: 15px;
+    font-weight: bold;
+    font-weight: bold;
 }
 
 .data {
@@ -434,6 +461,7 @@ html{
 .icon {
     width: 26px;
     height: 26px;
+    margin-top:5px;
 }
 
 .txtPesquisa {
@@ -450,16 +478,18 @@ html{
 
 .eventos {
     padding: 15px;
-    display: flex;
+    display: flex; 
+    width: 90%;
     justify-content: left;
     flex-wrap: wrap;
-    width: 90%;
-    box-sizing: border-box;
+    margin-left: 40px;
 }
+
+
 
 /* Css do Card*/
 .card {
-    width: 300px;
+    width: 290px;
     height: fit-content;
     display: flex;
     flex-direction: column;
@@ -467,7 +497,7 @@ html{
     border-radius: 20px;
     border: 1px solid black;
     padding: 10px;
-    margin: 10px;
+    margin: 5px;
     transition: box-shadow;
     transition-duration: 0.3s;
     transition-timing-function: ease-in-out;
@@ -477,7 +507,22 @@ html{
     .card:hover {
         transition-duration: 0.3s;
         transition-timing-function: ease-in-out;
-        box-shadow: rgba(100, 100, 111, 0.8) 0px 7px 20px 0px;
+        box-shadow: #526ace 0px 0px 0px 2px inset,
+            rgb(255, 255, 255) 10px 10px 0px -3px,
+            #4dade2 10px 10px,
+            rgb(255, 255, 255) 20px 20px 0px -3px,
+            #fcb646 20px 20px;
+
+
+           /* rgb(255, 255, 255) 10px 10px 0px -3px,
+            #7bdf97 10px 10px,
+            rgb(255, 255, 255) 20px 20px 0px -3px,
+            #d64558 20px 20px;*/
+            /*rgb(255, 255, 255) 30px 30px 0px -3px,
+            #d64558 30px 30px;*/
+            /*rgb(255, 255, 255) 40px 40px 0px -3px,*/
+            /*rgb(255, 85, 85)*/ /*#526ace 40px  40px;*/
+        transform: scaleX(2), scaleY(2);
     }
 
 .card-header {
@@ -595,6 +640,10 @@ html{
     justify-content: left;
 }
 
+.date h3{
+    font-size: 13px;
+}
+
 .time {
     width: 50%;
     box-sizing: border-box;
@@ -616,107 +665,6 @@ html{
 }
 /*Fim do Css do Card*/
 
-table {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    align-content: center;
-    justify-content: center;
-    justify-content: center;
-    text-align: center;
-    border: solid #526ace;
-    border-radius: 5px;
-    background-color: #FFFAF6;
-    width: 30%;
-    height: 65%;
-    position: absolute;
-    top: 18%;
-    left: 35%;
-}
-
-.entrar {
-    color: #526ace;
-}
-
-
-
-.logar {
-    border-radius: 0px;
-    width: 100%;
-    margin-bottom: 10%;
-}
-
-.tablelogar {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    align-content: center;
-    justify-content: center;
-    justify-content: center;
-    text-align: center;
-    border: 2px solid #526ace;
-    border-radius: 5px;
-    background-color: #FFFAF6;
-    width: 32%;
-    height: fit-content;
-    position: absolute;
-    top: 32%;
-    left: 35%;
-}
-
-.h2 {
-    margin: auto;
-    padding: 20px;
-    font-size: 20px;
-}
-
-.input {
-    background-color: #f1f1f1;
-    color: black;
-    padding: 10px;
-    margin: 1px;
-    height: 25px;
-    width: 100%;
-    border: none;
-    font-size: 12px;
-    border-radius: 5px;
-}
-
-.nome {
-    background-color: #babaca;
-    color: black;
-    padding: 10px;
-    height: 2.5vh;
-    width: 23vh;
-    border: none;
-    margin-top: 40px;
-    font-size: 2vh;
-}
-
-.sNome {
-    background-color: #babaca;
-    color: black;
-    padding: 10px;
-    height: 2.5vh;
-    width: 23vh;
-    border: none;
-    margin-top: 40px;
-    font-size: 2vh;
-}
-
-
-.Ddata {
-    background-color: #babaca;
-    color: black;
-    padding: 10px;
-    height: 4.5vh;
-    width: 16.5vh;
-    border: none;
-    cursor: pointer;
-    margin: 1px;
-    font-size: 2vh;
-}
-
 .btnCadastrar {
     background-color: #526ace;
     color: white;
@@ -730,22 +678,17 @@ table {
     font-size: 15px;
 }
 
-.txtData {
-    text-align: start;
-    margin: auto;
-    padding: 5px;
-    margin-left: 10px;
-    cursor: pointer;
-    font-size: 2vh;
-}
 
-#txtData{
+#txtData {
     width: 100%;
     box-sizing: border-box;
     padding: 5px;
     font-size: 14px;
     border: none;
     border-radius: 2.5px;
+    background-color: #babaca;
+    padding: 10px;
+    font-weight: bold;
 }
 
 .input:hover {
@@ -864,7 +807,7 @@ table {
     }
 
 .cadastrar {
-    background: #f1f1f1;
+    background: #FFFAF6;
     width: 450px;
     padding: 15px 40px 40px 40px;
     height: fit-content;
@@ -874,22 +817,24 @@ table {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    border: 1px solid #526ace;
-    border-radius: 5px;
+    border: 2px solid #526ace;
+    border-radius: 15px;
 }
 
 .headerCad {
     width: 100%;
     box-sizing: border-box;
-    padding: 10px;
+    padding: 8px;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    margin-bottom: 17px;
+    border-bottom: solid 2px #526ace;
 }
 
     .headerCad h4 {
-        font-size: 18px;
+        font-size: 2vh;
         font-weight: 800;
     }
 
@@ -903,12 +848,16 @@ table {
 }
 
 .txtCadNm {
-    width: 47%;
-    padding: 5px;
-    font-size: 14px;
+    background-color: #babaca;
+    width: 46%;
+    padding: 10px;
+    font-size: 1.7vh;
+    font-weight: bold;
     border: none;
     color: black;
-    border-radius: 2.5px;
+    outline: none;
+    border-radius: 5px;
+    margin-left: 1px;
 }
 
     .txtCadNm::placeholder {
@@ -916,13 +865,18 @@ table {
     }
 
 .txtCad {
+    background-color: #babaca;
     width: 100%;
-    padding: 5px;
-    font-size: 14px;
+    padding: 10px;
+    font-size: 1.7vh;
+    font-weight: bold;
+
     margin-bottom: 5px;
+
     border: none;
+    outline: none;
     color: black;
-    border-radius: 2.5px;
+    border-radius: 5px;
     box-sizing: border-box;
 }
 
@@ -931,9 +885,10 @@ table {
     }
 
 .dtNasc {
+    font-weight: bold;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: start;
     margin-bottom: 10px;
 }
 
@@ -949,6 +904,7 @@ table {
     width: 32%;
     padding: 5px;
     font-size: 12px;
+    font-weight: bold;
     margin-bottom: 5px;
     border: none;
     color: black;
@@ -956,28 +912,32 @@ table {
 }
 
 #lblNasc {
-    font-size: 14px;
+    font-size: 2vh;
     margin-bottom: 5px;
 }
 
 #ddlSexo {
+    background-color: #babaca;
     width: 100%;
-    padding: 5px;
-    font-size: 14px;
+    padding: 10px;
+    font-size: 1.7vh;
+    font-weight: bold;
     margin-bottom: 5px;
     border: none;
     color: black;
-    border-radius: 2.5px;
+    border-radius: 5px;
 }
 
 .sexo {
+    font-size: 20px;
+    font-weight: bold;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: start;
 }
 
 #lblSexo {
-    font-size: 14px;
+    font-size: 2vh;
     margin-bottom: 5px;
 }
 
@@ -987,11 +947,12 @@ table {
 
 #btnCadastrar {
     width: 100%;
-    padding: 5px;
+    padding: 10px;
     color: white;
     background-color: #526ace;
     border: none;
-    font-size: 13.5px;
+    font-size: 1.7vh;
+    font-weight: bold;
     border-radius: 2.5px;
 }
 
@@ -1010,15 +971,14 @@ table {
     right: 0%;
     width: 100%;
     height: 100%;
-    background-color: rgba(0,0,0,0.50);
-    z-index: 0;
+    background-color: rgba(0,0,0, 0.7);
+    z-index: 2;
     display: none;
 }
 
 .hidden{
     display: none !important;
 }
-
 
 html.sr .eventos {
     visibility: hidden;

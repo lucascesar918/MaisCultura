@@ -18,9 +18,6 @@
     <title>+Cultura | Eventos</title>
 </head>
 <body>
-
-    
-
     <form id="form1" runat="server">
 
         <div id="shade" class="shade"></div>
@@ -28,7 +25,9 @@
 
         <header class="header-primaria">
             <figure class="figure-header">
+                <a href="eventos.aspx">
                 <img src="Images/logoNomeMenor.png" class="logo-header"/>
+                    </a>
             </figure>
 
             <article class="buttons">
@@ -40,16 +39,12 @@
                 <div class="menuUsuario">
                     <asp:Button CssClass="dropbtn" ID="dropbtnUsuario" runat="server" Text="Nome" />
                     <div class="dropdown-content">
-                    <asp:Literal ID="litDropDownHome" runat="server"></asp:Literal>  <%--Possível aplicar databinder--%>
+                    <asp:Literal ID="litDropDownHome" runat="server"></asp:Literal>
                     <asp:Literal ID="litDropDownPerfil" runat="server"></asp:Literal>
                     <asp:Literal ID="litDropDownDenuncias" runat="server"></asp:Literal>
                     <a href="eventos.aspx">Sair</a>
                     </div>
                 </div>
-
-                
-               
-                <%--<img src="Images/perfil526ace.png" class="imgPerfil">--%>
                 <asp:Literal ID="litImgPerfil" runat="server"></asp:Literal>
                 
             </article>
@@ -126,7 +121,9 @@
                 
                 <div class="event-manager">
                     <div class="eventos">
+                        
                         <asp:Literal ID="litEventos" runat="server"></asp:Literal>
+                            
                     </div>
                 </div>
             </div>

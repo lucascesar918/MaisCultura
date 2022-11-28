@@ -18,6 +18,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
 
     <link href="Styles/EventoEspecifico.css" rel="stylesheet" type="text/css" />
 
@@ -26,51 +28,55 @@
 
 <body>
     <div id="shade" class="shade"></div>
+    <div id="shade2" class="shade2"></div>
+    <div id="shade3" class="shade3"></div>
 
     <form id="form1" runat="server">
         <asp:ScriptManager ID="ScriptManager1" runat="server">
         </asp:ScriptManager>
 
-        <div class="geral">
-            <header class="header-primaria">
-                <a href="eventos.aspx">
-                    <figure class="figure-header">
-                        <img src="Images/logoNomeMenor.png" class="logo-header" />
-                    </figure>
+       
+        <header class="header-primaria">
+
+            <figure class="figure-header">
+                 <a href="eventos.aspx">
+                <img src="Images/logoNomeMenor.png" class="logo-header" />
                 </a>
+            </figure>
 
-                <article class="buttons">
-                    <asp:Button ID="btnLog" runat="server" Text="Entrar" class="button button-log" OnClick="btnLog_Click" />
-                    <asp:Button ID="btnCad" runat="server" Text="Cadastrar" class="button button-cad" OnClick="btnCad_Click" />
-                </article>
 
-                <article class="usuario">
-                    <div class="menuUsuario">
-                        <asp:Button CssClass="dropbtn" ID="dropbtnUsuario" runat="server" Text="Nome" />
-                        <div class="dropdown-content">
-                            <asp:Literal ID="litDropDownHome" runat="server"></asp:Literal>
-                            <asp:Literal ID="litDropDownPerfil" runat="server"></asp:Literal>
-                            <a href="eventos.aspx">Sair</a>
-                        </div>
+            <article class="buttons">
+                <asp:Button ID="btnLog" runat="server" Text="Entrar" class="button button-log" OnClick="btnLog_Click" />
+                <asp:Button ID="btnCad" runat="server" Text="Cadastrar" class="button button-cad" OnClick="btnCad_Click" />
+            </article>
+
+            <article class="usuario">
+                <div class="menuUsuario">
+                    <asp:Button CssClass="dropbtn" ID="dropbtnUsuario" runat="server" Text="Nome" />
+                    <div class="dropdown-content">
+                        <asp:Literal ID="litDropDownHome" runat="server"></asp:Literal>
+                        <asp:Literal ID="litDropDownPerfil" runat="server"></asp:Literal>
+                        <a href="eventos.aspx">Sair</a>
                     </div>
+                </div>
 
-                    <asp:Literal ID="litImgPerfil" runat="server"></asp:Literal>
+                <asp:Literal ID="litImgPerfil" runat="server"></asp:Literal>
 
-                </article>
-            </header>
+            </article>
+        </header>
 
-            <section class="sectionBack">
-                <asp:Button ID="btnVoltar" runat="server" Text="Voltar"
-                    OnClientClick="JavaScript:window.history.back(1); return false;" />
-            </section>
-        </div>
+        <section class="sectionBack">
+            <asp:Button ID="btnVoltar" runat="server" Text="Voltar"
+                OnClientClick="JavaScript:window.history.back(1); return false;" />
+        </section>
+       
 
         <main class="principal">
 
             <div class="corpo">
                 <section class="header-corpo">
                     <div class="tituloSave">
-                        <asp:Label ID="lblTituloEvento" runat="server" Text="Interclasse Ablas FIlho x Etecaf"
+                        <asp:Label ID="lblTituloEvento" runat="server" Text=""
                             CssClass="titulo"></asp:Label>
 
                         <asp:UpdatePanel ID="updBtnSave" runat="server" UpdateMode="Conditional">
@@ -88,39 +94,7 @@
                     </article>
                 </section>
 
-                <section id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                    <ol class="carousel-indicators">
-                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                    </ol>
-
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <img class="d-block w-100" src="Images/interclasse.jpg" alt="Primeiro Slide">
-                        </div>
-
-                        <div class="carousel-item">
-                            <img class="d-block w-100" src="Images/interclasse.jpg" alt="Segundo Slide">
-                        </div>
-
-                        <div class="carousel-item">
-                            <img class="d-block w-100" src="Images/interclasse.jpg" alt="Terceiro Slide">
-                        </div>
-                    </div>
-
-                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button"
-                        data-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Anterior</span>
-                    </a>
-
-                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button"
-                        data-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Próximo</span>
-                    </a>
-                </section>
+                <asp:Literal ID="litCarrousel" runat="server"></asp:Literal>
 
                 <section class="sec-local">
                     <h2>LOCAL</h2>
@@ -142,23 +116,34 @@ Acontecerão aulas de Karatê e Judô em dias intercalados. Nos dias 2 e 4 haver
                     <h2 class="h2">Avaliações do Evento </h2>
                     <section class="avaliacoes">
                         <asp:Literal ID="litAvaliacoes" runat="server"></asp:Literal>
-                        <section class="suaAvaliacao">
-                            <div class="suaNota">
-                                <h4>Deixe uma nota sobre esse criador... </h4>
-                                <asp:DropDownList ID="ddlEstrelas" runat="server">
-                                    <asp:ListItem Text="Uma estrela" Value="1"></asp:ListItem>
-                                    <asp:ListItem Text="Duas estrelas" Value="2"></asp:ListItem>
-                                    <asp:ListItem Text="Três estrelas" Value="3"></asp:ListItem>
-                                    <asp:ListItem Text="Quatro estrelas" Value="4"></asp:ListItem>
-                                    <asp:ListItem Text="Cinco estrelas" Value="5"></asp:ListItem>
-                                </asp:DropDownList>
-                            </div>
-                            <div class="seuTexto">
-                                <asp:TextBox ID="txtBoxAvaliacao" runat="server" mode="multiline"
-                                    placeholder="Deixe aqui sua avaliação sobre esse criador..."></asp:TextBox>
-                            </div>
-                            <asp:Button ID="btnAvaliar" runat="server" Text="Enviar Avaliação" />
-                        </section>
+
+                        <asp:Panel ID="pnlAval" runat="server">
+                            <section class="suaAvaliacao">
+                                <div class="suaNota">
+                                    <h4>Deixe uma nota sobre esse criador... </h4>
+                                    <div class="estrelas">
+                                        <asp:ImageButton ID="umaEstrela" runat="server" CssClass="estrelaAval" ImageUrl="~/Images/star.png" />
+                                        <asp:ImageButton ID="duasEstrelas" runat="server" CssClass="estrelaAval" ImageUrl="~/Images/star.png" />
+                                        <asp:ImageButton ID="tresEstrelas" runat="server" CssClass="estrelaAval" ImageUrl="~/Images/star.png" />
+                                        <asp:ImageButton ID="quatroEstrelas" runat="server" CssClass="estrelaAval" ImageUrl="~/Images/star.png" />
+                                        <asp:ImageButton ID="cincoEstrelas" runat="server" CssClass="estrelaAval" ImageUrl="~/Images/star.png" />
+                                    </div>
+                                    <%-- <asp:DropDownList ID="ddlEstrelas" runat="server">
+                                        <asp:ListItem Text="Uma estrela" Value="1"></asp:ListItem>
+                                        <asp:ListItem Text="Duas estrelas" Value="2"></asp:ListItem>
+                                        <asp:ListItem Text="Três estrelas" Value="3"></asp:ListItem>
+                                        <asp:ListItem Text="Quatro estrelas" Value="4"></asp:ListItem>
+                                        <asp:ListItem Text="Cinco estrelas" Value="5"></asp:ListItem>
+                                    </asp:DropDownList>--%>
+                                </div>
+                                <div class="seuTexto">
+                                    <asp:TextBox ID="txtBoxAvaliacao" runat="server" mode="multiline"
+                                        placeholder="Deixe aqui sua avaliação sobre esse criador..."></asp:TextBox>
+                                </div>
+                                <asp:Button ID="btnAvaliar" runat="server" Text="Enviar Avaliação" />
+                            </section>
+                        </asp:Panel>
+
                     </section>
                 </section>
 
@@ -170,12 +155,14 @@ Acontecerão aulas de Karatê e Judô em dias intercalados. Nos dias 2 e 4 haver
                         <p>Responsável</p>
                     </div>
                     <figure>
+                        <asp:Literal ID="litPerfilImage" runat="server" />
                         <img class="perfilResp" src="Images/perfil526ace.png" />
+                        </a>
                     </figure>
                     <div class="nmMedia">
-                        <a href="PerfilOutroUsuario.aspx">
-                            <asp:Label ID="titleResponsavel" runat="server" Text="Fulano de Tal"
-                                CssClass="titleResponsavel"></asp:Label>
+                        <asp:Literal ID="litPerfilNome" runat="server" />
+                        <asp:Label ID="titleResponsavel" runat="server" Text="Fulano de Tal"
+                            CssClass="titleResponsavel"></asp:Label>
                         </a>
                         <div class="notas">
                             <asp:Label ID="lblNotaResp" runat="server" Text="4,8" CssClass="notaResp"></asp:Label>
@@ -224,14 +211,14 @@ Acontecerão aulas de Karatê e Judô em dias intercalados. Nos dias 2 e 4 haver
                     </table>
 
                 </section>
-                <asp:Button ID="btnDenuncia" runat="server" Text="Tenho um problema" />
+                <asp:Button ID="btnDenuncia" runat="server" Text="Denunciar evento" />
 
             </div>
         </main>
 
         <div class="login pop" id="log">
             <section class="headerLogin">
-                <h4 class="titleLogin">Entrar</h4>
+                <h4 class="titleLogin">Entre em sua conta!</h4>
             </section>
             <asp:TextBox ID="txtBoxUser" runat="server" placeholder="Seu nome de usuário" CssClass="txtLog">
             </asp:TextBox>
@@ -242,7 +229,7 @@ Acontecerão aulas de Karatê e Judô em dias intercalados. Nos dias 2 e 4 haver
         <div class="cadastrar pop" id="cad">
 
             <section class="headerCad">
-                <h4 class="titleCad">Cadastrar</h4>
+                <h4 class="titleCad">Faça seu cadastro!</h4>
             </section>
 
             <div class="nms">

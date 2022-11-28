@@ -19,13 +19,12 @@ form {
     height: 100%;
     display: flex;
     flex-direction: row;
-    align-items: center;
     justify-content: center;
 }
 
 main {
     width: 70%;
-    height: fit-content;
+    height: 100%;
     background-color: #ffffff;
     display: flex;
     flex-direction: row;
@@ -33,6 +32,7 @@ main {
 }
 
 html {
+    height: 100%;
     font-size: 1vh;
     overflow-y: scroll;
 }
@@ -74,7 +74,7 @@ html {
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
-    margin: 5px;
+    
     border-radius: 5px;
 }
 
@@ -238,6 +238,7 @@ ul {
 .infosUsuario {
     padding: 10px;
     border-bottom: 1px solid black;
+    margin: 15px 15px 0px 15px;
 }
 
 .informacoes {
@@ -327,7 +328,16 @@ a {
     .card:hover {
         transition-duration: 0.3s;
         transition-timing-function: ease-in-out;
-        box-shadow: rgba(100, 100, 111, 0.8) 0px 7px 20px 0px;
+        box-shadow: #526ace 0px 0px 0px 2px inset, rgb(255, 255, 255) 10px 10px 0px -3px, #4dade2 10px 10px, rgb(255, 255, 255) 20px 20px 0px -3px, #fcb646 20px 20px;
+        /* rgb(255, 255, 255) 10px 10px 0px -3px,
+            #7bdf97 10px 10px,
+            rgb(255, 255, 255) 20px 20px 0px -3px,
+            #d64558 20px 20px;*/
+        /*rgb(255, 255, 255) 30px 30px 0px -3px,
+            #d64558 30px 30px;*/
+        /*rgb(255, 255, 255) 40px 40px 0px -3px,*/
+        /*rgb(255, 85, 85)*/ /*#526ace 40px  40px;*/
+        transform: scaleX(2), scaleY(2);
     }
 
 .card-header {
@@ -463,11 +473,12 @@ a {
 
 .interessesEsalvos {
     width: 100%;
-    padding: 10px;
-    margin: 10px;
+    padding: 10px 0px 10px 0px;
+    margin: 10px 0px 10px 10px;
     display: flex;
     justify-content: space-around;
     flex-direction: column;
+    box-sizing: border-box;
 }
 
 .hidden {
@@ -594,6 +605,6 @@ a {
     border-radius: 5px;
 }
 .title{
-    font-size: 2.5vh;
+    font-size: 18px;
     width: 25%;
 }

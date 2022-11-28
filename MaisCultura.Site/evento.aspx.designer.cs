@@ -132,6 +132,15 @@ namespace MaisCultura.Site
         protected global::System.Web.UI.WebControls.Literal litCategorias;
 
         /// <summary>
+        /// Controle litCarrousel.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal litCarrousel;
+
+        /// <summary>
         /// Controle lblLocalEvento.
         /// </summary>
         /// <remarks>
@@ -159,13 +168,58 @@ namespace MaisCultura.Site
         protected global::System.Web.UI.WebControls.Literal litAvaliacoes;
 
         /// <summary>
-        /// Controle ddlEstrelas.
+        /// Controle pnlAval.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlEstrelas;
+        protected global::System.Web.UI.WebControls.Panel pnlAval;
+
+        /// <summary>
+        /// Controle umaEstrela.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton umaEstrela;
+
+        /// <summary>
+        /// Controle duasEstrelas.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton duasEstrelas;
+
+        /// <summary>
+        /// Controle tresEstrelas.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton tresEstrelas;
+
+        /// <summary>
+        /// Controle quatroEstrelas.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton quatroEstrelas;
+
+        /// <summary>
+        /// Controle cincoEstrelas.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton cincoEstrelas;
 
         /// <summary>
         /// Controle txtBoxAvaliacao.
@@ -184,6 +238,24 @@ namespace MaisCultura.Site
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnAvaliar;
+
+        /// <summary>
+        /// Controle litPerfilImage.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal litPerfilImage;
+
+        /// <summary>
+        /// Controle litPerfilNome.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal litPerfilNome;
 
         /// <summary>
         /// Controle titleResponsavel.

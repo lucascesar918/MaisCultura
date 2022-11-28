@@ -196,7 +196,6 @@ INSERT INTO preferencia VALUES
 (1, "allan.fagner"),
 (1, "barbarafavilla"),
 (1, "adriano.fraga"),
-(1, "japafkt"),
 (3, "camix.santana"),
 (3, "clara.barriento"),
 (3, "allan.fagner"),
@@ -207,15 +206,13 @@ INSERT INTO preferencia VALUES
 (7, "allan.fagner"),
 (7, "barbarafavilla"),
 (7, "adriano.fraga"),
-(7, "japafkt"),
-(9, "japafkt"),
 (9, "camix.santana"),
 (10, "camix.santana"),
+(10, "japafkt"),
 (10, "clara.barriento"),
 (10, "allan.fagner"),
 (10, "barbarafavilla"),
-(10, "adriano.fraga"),
-(10, "japafkt");
+(10, "adriano.fraga");
 
 INSERT INTO denuncia VALUES
 (1, 3, "camix.santana", "2022/12/09", "08:34:00"),
