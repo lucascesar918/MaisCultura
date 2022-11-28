@@ -1,6 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="eventos.aspx.cs" Inherits="MaisCultura.Index" %>
-
-<%@ Register Namespace="AjaxControlToolkit" Assembly="AjaxControlToolkit" TagPrefix="ajax" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="eventos.aspx.cs" Inherits="MaisCultura.Index"  enableEventValidation="false" %>
 
 <!DOCTYPE html>
 
@@ -21,7 +19,6 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
 
         <div id="shade" class="shade"></div>
         <div id="shade2" class="shade"></div>
@@ -67,29 +64,34 @@
             </figure>
         </header>
 
-        <div class="header nav">
+        <div class="header nav"> 
             <section id="localTags" class="section-tags">
+                <asp:Repeater id="viewCategoriasSelecionadas" runat="server" >
+                  <ItemTemplate>
+                      <article class="tag tag-header <%# GetNomeCategoria(Container.DataItem) %>">
+                            <%# GetNomeCategoria(Container.DataItem) %>
+                           <asp:Button class="button button-exclude" runat="server" OnClick="ClickExcluirCategoria" CommandArgument="<%# GetCodigoCategoria(Container.DataItem) %>" Text="X" ></asp:Button> 
+                      </article>
+                  </ItemTemplate>     
+                </asp:Repeater>
             </section>
 
             <section class="section-limpar">
-                <article ID="btnLimpar" class="button-clear">Limpar Filtros</article>
+                <asp:Button ID="btnLimpar" class="button-clear" runat="server" OnClick="btnLimpar_Click" Text="Limpar Filtros"></asp:Button>
             </section>
         </div>
 
         <main class="principal">
             <div class="filtros">
                 <h2 class="filtros-titulos">Categoria</h2>
+ 
+                <asp:Repeater id="filtrosCategorias" runat="server">
+                  <ItemTemplate>
+                       <asp:Button class="filtros-subtitulos categoria" runat="server" OnClick="ClickCategoria" CommandArgument="<%# GetCodigoCategoria(Container.DataItem) %>" Text="<%#  GetNomeCategoria(Container.DataItem) %>"></asp:Button> 
+                  </ItemTemplate>     
+                </asp:Repeater>
 
-                <asp:UpdatePanel ID="updCategorias" runat="server">
-                    <ContentTemplate>
-                        <asp:Literal ID="litCatFiltro" runat="server"></asp:Literal>
-                        <asp:Button ID="btnVerMais" runat="server" Text="Ver mais categorias" cssClass="filtros-subtitulos verMais" OnClick="btnVerMais_Click"/>
-                    </ContentTemplate>
-
-                    <Triggers>
-                        <asp:AsyncPostBackTrigger ControlID="btnVerMais" EventName="Click"/>
-                    </Triggers>
-                </asp:UpdatePanel>
+                <asp:Button ID="btnVerMais" runat="server" Text="Ver mais categorias" class="filtros-subtitulos verMais"/>
 
                 <br />
 
@@ -98,18 +100,18 @@
                 
                 <h2 class="filtros-titulos">Datas e horários</h2>
                 <h2 class="filtros-subtitulos data">Início</h2>
-                <asp:TextBox type="datetime-local" ID="dtStart" name="dtStart" class="dt dtStart" runat="server"></asp:TextBox>
+                <asp:TextBox type="datetime-local" ID="dtStart" name="dtStart" class="dt dtStart" runat="server" AutoPostBack="true"></asp:TextBox>
                 <h2 class="filtros-subtitulos data">Fim</h2>
-                <asp:TextBox type="datetime-local" ID="dtEnd" name="dtEnd" class="dt dtEnd" runat="server"></asp:TextBox>
+                <asp:TextBox type="datetime-local" ID="dtEnd" name="dtEnd" class="dt dtEnd" runat="server" AutoPostBack="true"></asp:TextBox>
 
                 <h2 class="filtros-titulos aval">Avaliação</h2>
-                <asp:DropDownList ID="dpdAval" runat="server" CssClass="dpdAval">
-                    <asp:ListItem selected>Todos</asp:ListItem>
-                    <asp:ListItem>Uma estrela</asp:ListItem>
-                    <asp:ListItem>Duas estrelas</asp:ListItem>
-                    <asp:ListItem>Três estrelas</asp:ListItem>
-                    <asp:ListItem>Quatro estrelas</asp:ListItem>
-                    <asp:ListItem>Cinco estrelas</asp:ListItem>
+                <asp:DropDownList ID="dpdAval" runat="server" CssClass="dpdAval" AutoPostBack="true">
+                    <asp:ListItem Value="null" selected>Todos</asp:ListItem>
+                    <asp:ListItem Value="1">Uma estrela</asp:ListItem>
+                    <asp:ListItem Value="2">Duas estrelas</asp:ListItem>
+                    <asp:ListItem Value="3">Três estrelas</asp:ListItem>
+                    <asp:ListItem Value="4">Quatro estrelas</asp:ListItem>
+                    <asp:ListItem Value="5">Cinco estrelas</asp:ListItem>
                 </asp:DropDownList>
             </div>
 
@@ -117,7 +119,7 @@
                 <section class="inputPesquisa">
                     <section class="txtIcon">
                         <asp:TextBox ID="txtPesquisa" runat="server" CssClass="txt txtPesquisa" placeHolder="O que você quer ver hoje?"></asp:TextBox>
-                        <img src="Images/pesquisa.png" alt="Ícone pesquisa" class="icon" />
+                        <asp:ImageButton  ImageUrl="Images/pesquisa.png" AlternateText="Ícone pesquisa" runat="server" class="icon"  />
                     </section>
                 </section>
 

@@ -1,7 +1,7 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.InteropServices;
-using System.Threading;
+using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -11,20 +11,6 @@ namespace MaisCultura
 {
     public partial class Index : System.Web.UI.Page
     {
-        int contadorCategorias = 8;
-
-        void listarCategorias()
-        {
-            litCatFiltro.Text = "";
-
-            List<Categoria> categorias= new List<Categoria>();
-            categorias = ListaEvento.ListarCategorias();
-
-            for (int i = 0; i < contadorCategorias; i++)
-                litCatFiltro.Text += $@"<article ID='Cat{categorias[i].Nome}' class='filtros-subtitulos categoria' OnClick='ClickCategoria'>{categorias[i].Nome}</article>";
-
-        }
-
         void HandleLogin()
         {
             if (Request.QueryString["l"] != null)
@@ -50,9 +36,14 @@ namespace MaisCultura
 
 
         Filtro filtro;
+        List<Categoria> CategoriasSelecionadas
+        {
+            get => ViewState["CategoriasSelecionadas"] as List<Categoria>;
+            set => ViewState["CategoriasSelecionadas"] = value;
+        } 
+
         ListaUsuario ListaUsuario = new ListaUsuario();
         ListaEvento ListaEvento = new ListaEvento();
-
         Usuario Login;
 
         private void ListarEventos(string usuario) {
@@ -64,22 +55,6 @@ namespace MaisCultura
             Eventos = Eventos.FindAll((e) => filtro.Verificar(e));
            
             litEventos.Text = "";
-
-            mostrarEventos(Eventos);
-        }
-
-        private void FiltrarEventos(string cat)
-        {
-
-            List<Evento> Eventos;
-
-            Eventos = ListaEvento.Filtro(cat);
-
-            mostrarEventos(Eventos);
-        }
-
-        void mostrarEventos(List<Evento> Eventos)
-        {
             foreach (Evento evento in Eventos)
             {
                 Usuario usuarioEvento = ListaUsuario.Buscar(evento.Responsavel);
@@ -120,9 +95,9 @@ namespace MaisCultura
 
                     <article class='card-tags'>";
                 foreach (Categoria categoria in categorias)
-                    litEventos.Text += $@"<h2 class='tag'>{categoria.Nome}</h2>";
+                    litEventos.Text += $@"<h2 class='tag'>{categoria.Nome}</h2>
+                    </article>
 
-                litEventos.Text += $@"</article>
                     <article class='card-image'>
                         {TagAEvento}
                             <figure>
@@ -151,7 +126,8 @@ namespace MaisCultura
                         <figure>
                             <img src='Images/local.png' alt='Ícone Local' class='local-icon'>
                         </figure>
-                        <h3>{evento.Local // Trocar pelo formato "Cidade, Estado" depois
+                        <h3>{
+                            evento.Local // Trocar pelo formato "Cidade, Estado" depois
                         }</h3>
 
                     </article>
@@ -167,33 +143,59 @@ namespace MaisCultura
             DateTime.TryParse(strDate, out dt);
             return dt;
         }
-
         protected void Page_Load(object sender, EventArgs e)
         {
-            HandleLogin();
-            listarCategorias();
+            if (!IsPostBack)
+            {
 
+                var Categorias = ListaEvento.ListarCategorias();
+                filtrosCategorias.DataSource = Categorias;
+                filtrosCategorias.DataBind();
+                if (CategoriasSelecionadas == null)
+                    CategoriasSelecionadas = new List<Categoria>();
+
+            }
+            viewCategoriasSelecionadas.DataSource = CategoriasSelecionadas;
+            viewCategoriasSelecionadas.DataBind();
+            HandleLogin();
             filtro = new Filtro();
             filtro.Inicio = StrinToDate(dtStart.Text);
             filtro.Fim = StrinToDate(dtEnd.Text);
-            //filtro.Local = txtLocal.Text;
-            filtro.Categorias = new List<string>();
-            filtro.Categorias.Add((string)ViewState["Cateoria"]);
+            //filtro.Nome = StrinToDate(txtBoxNome);
+            if (int.TryParse(dpdAval.SelectedValue, out var qtEstrela))
+                filtro.QtEstrelas = qtEstrela;
+            else
+                filtro.QtEstrelas = null;
+            filtro.Titulo = txtPesquisa.Text;
+            filtro.Categorias = CategoriasSelecionadas;
 
-            ListarEventos(Login == null ? null : Login.Codigo);
+            ListarEventos(Login?.Codigo);
 
             LoadComplete += Page_Load;
+            
         }
-
+        
         protected void ClickCategoria(object sender, EventArgs e)
         {
             var Botao = (Button)sender;
-            ViewState["Cateoria"] = Botao.Text;
-            string cat = Botao.Text;
-            litEventos.Text = "";
-            FiltrarEventos(cat);
+            if (!int.TryParse(Botao.CommandArgument, out var codigoCategoria))
+                return;
+            if(CategoriasSelecionadas.Count < 3 && !CategoriasSelecionadas.Any(c=> c.Codigo == codigoCategoria))
+                CategoriasSelecionadas.Add(new Categoria(codigoCategoria, Botao.Text));
+          
+
         }
 
+        protected void ClickExcluirCategoria(object sender, EventArgs e)
+        {
+            var Botao = (Button)sender;
+            if (!int.TryParse(Botao.CommandArgument, out var codigoCategoria))
+                return;
+            CategoriasSelecionadas.RemoveAll((c) => c.Codigo == codigoCategoria);
+
+
+        }
+ 
         protected void btnLogar_Click(object sender, EventArgs e)
         {
             Login = ListaUsuario.BuscarLogin(txtBoxUser.Text, txtBoxSenha.Text);
@@ -215,22 +217,22 @@ namespace MaisCultura
 
             ListaUsuario.CriarUsuario(Cadastrado);
         }
-
-        protected void btnVerMais_Click(object sender, EventArgs e)
+        protected void btnLimpar_Click(object sender, EventArgs e)
         {
-            if (btnVerMais.Text == "Ver mais categorias")
-            {
-                contadorCategorias = 16;
-                listarCategorias();
-                btnVerMais.Text = "Ver menos categorias";
-            }
-            else
-            {
-                contadorCategorias = 8;
-                listarCategorias();
-                btnVerMais.Text = "Ver mais categorias";
-            }
+            dtStart.Text = "";
+            dtEnd.Text = "";
+            txtPesquisa.Text = "";
+            dpdAval.SelectedIndex = 0;
+            CategoriasSelecionadas.Clear();
 
+        }
+        protected string GetNomeCategoria(object categoria)
+        {
+            return (categoria as Categoria)?.Nome ?? "Bom dia";
+        }
+        protected int GetCodigoCategoria(object categoria)
+        {
+            return (categoria as Categoria)?.Codigo ?? 0;
         }
     }
 }
