@@ -137,7 +137,7 @@ namespace MaisCultura
             (Diff, Feed) = ListaEvento.GetDiffFeed(Login?.Codigo);
 
             Feed = Feed.FindAll((e) => Filtro.Verificar(e));
-            Diff = Feed.FindAll((e) => Filtro.Verificar(e));
+            Diff = Diff.FindAll((e) => Filtro.Verificar(e));
            
             litEventos.Text = "";
             PrintarEventos(Feed, false);
@@ -154,16 +154,14 @@ namespace MaisCultura
         }
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
-            {
-
+            if (!IsPostBack){
                 var Categorias = ListaEvento.ListarCategorias();
                 filtrosCategorias.DataSource = Categorias;
                 filtrosCategorias.DataBind();
                 if (CategoriasSelecionadas == null)
                     CategoriasSelecionadas = new List<Categoria>();
-
             }
+
             viewCategoriasSelecionadas.DataSource = CategoriasSelecionadas;
             viewCategoriasSelecionadas.DataBind();
             HandleLogin();
@@ -174,8 +172,8 @@ namespace MaisCultura
             if (int.TryParse(dpdAval.SelectedValue, out var qtEstrela))
                 Filtro.QtEstrelas = qtEstrela;
             else
-                filtro.QtEstrelas = null;
-            filtro.Titulo = txtPesquisa.Text;
+                Filtro.QtEstrelas = null;
+            Filtro.Titulo = txtPesquisa.Text;
             Filtro.Categorias = CategoriasSelecionadas;
 
             ListarEventos(Login?.Codigo);
