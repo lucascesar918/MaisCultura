@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using System.Text;
 using MaisCultura.Biblioteca;
 using MySql.Data.MySqlClient;
@@ -73,6 +74,34 @@ namespace MaisCultura.Biblioteca
             NonQuery("CadastrarAvaliacao", ("pUsuario", codigoUsuario), ("pEvento", codigoEvento), ("pDescricao", descricao), ("pEstrelas", estrelas));
         }
 
-        
+        public bool VerificarAvaliacaoPorUsuarioEvento(string cdUsuario, int cdEvento)
+        {
+            MySqlDataReader data = Query("BuscarAvaliacaoEventoUsuario", ("pUsuario", cdUsuario), ("pEvento", cdEvento));
+
+            bool verify = data != null;
+
+            Desconectar();
+
+            return verify;
+        }
+
+        public Avaliacao BuscarAvaliacaoPorUsuarioEvento(string cdUsuario, int cdEvento)
+        {
+            MySqlDataReader data = Query("BuscarAvaliacaoEventoUsuario", ("pUsuario", cdUsuario), ("pEvento", cdEvento));
+
+            List<Avaliacao> aval = new List<Avaliacao>();
+
+            while (data.Read())
+                aval.Add(DataReaderToAvaliacao(data));
+
+            Desconectar();
+
+            return aval[0];
+        }
+
+        public void AlterarAvaliacao(string codigoUsuario, int codigoEvento, string descricao, int estrelas) {
+            NonQuery("AlterarAvaliacao", ("pUsuario", codigoUsuario), ("pEvento", codigoEvento), ("pDescricao", descricao), ("pEstrelas", estrelas));
+        }
+
     }
 }

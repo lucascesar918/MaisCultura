@@ -374,6 +374,29 @@ BEGIN
 	WHERE a.cd_usuario = pUsuario;
 END$$
 
+DROP PROCEDURE IF EXISTS BuscarAvaliacaoEventoUsuario$$
+CREATE PROCEDURE BuscarAvaliacaoEventoUsuario( pEvento INT, pUsuario VARCHAR(20) )
+BEGIN
+	SELECT 
+		u.nm_usuario "Nome",
+		a.cd_usuario "@",
+		a.ds_avaliacao "Descricao",
+		a.qt_estrela "Estrelas"
+	FROM avaliacao a
+	JOIN usuario u ON (u.cd_usuario = a.cd_usuario)
+	WHERE a.cd_evento = pEvento and a.cd_usuario = pUsuario;
+END$$
+
+DROP PROCEDURE IF EXISTS AlterarAvaliacao$$
+CREATE PROCEDURE AlterarAvaliacao( pEvento INT, pUsuario VARCHAR(20), pDescricao TEXT, pEstrelas INT)
+BEGIN
+	UPDATE avaliacao
+	SET 
+		ds_avaliacao = pDescricao,
+		qt_estrela = pEstrelas
+	WHERE cd_evento = pEvento and cd_usuario = pUsuario;
+END$$
+
 DROP PROCEDURE IF EXISTS CadastrarAvaliacao$$
 CREATE PROCEDURE CadastrarAvaliacao( 
 	pUsuario VARCHAR(20), 

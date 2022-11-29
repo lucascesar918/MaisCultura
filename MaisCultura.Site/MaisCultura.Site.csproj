@@ -111,6 +111,8 @@
     <Content Include="denuncia.aspx" />
     <Content Include="erro.html" />
     <Content Include="evento.aspx" />
+    <Content Include="Images\star2.png" />
+    <Content Include="Images\star.png" />
     <Content Include="meu-evento.aspx" />
     <Content Include="eventos.aspx" />
     <Content Include="Images\Background_Grafismo_Hexagono.png" />
@@ -123,7 +125,6 @@
     <Content Include="Images\pesquisa.png" />
     <Content Include="Images\save.png" />
     <Content Include="Images\save2.png" />
-    <Content Include="Images\star.png" />
     <Content Include="Images\time.png" />
     <Content Include="js\CadastroLogin.js" />
     <Content Include="js\eventos.js" />

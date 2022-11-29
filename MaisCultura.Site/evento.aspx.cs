@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using MaisCultura.Biblioteca;
 using System.Web.Services;
 using System.Web.UI.HtmlControls;
+using System.Web.Services.Description;
 
 namespace MaisCultura.Site
 {
@@ -69,6 +70,9 @@ namespace MaisCultura.Site
                     litDpdMeusEventos.Text = $"<a href='meus-eventos.aspx?l={Login.Codigo}'>Meus Eventos</a>";
 
                 litSair.Text = $"<a href='evento.aspx?e={Request.QueryString["e"]}'>Sair</a>";
+
+                if (!IsPostBack)
+                    verificarAvaliacaoFeita();
             }
             else
             {
@@ -167,9 +171,17 @@ namespace MaisCultura.Site
 
                 foreach (Categoria categoria in Evento.Categorias)
                     litCategorias.Text += $"<span class='ag'>{categoria.Nome}</span>";
-                
-                foreach (Avaliacao avaliacao in ListaAvaliacao.BuscarPorEvento(Evento.Codigo))
-                    litAvaliacoes.Text += $@"<div class='umaAvaliacao'>
+
+                MostrarAvaliacoes();
+            }
+        }
+
+        void MostrarAvaliacoes()
+        {
+            litAvaliacoes.Text = "";
+
+            foreach (Avaliacao avaliacao in ListaAvaliacao.BuscarPorEvento(Evento.Codigo))
+                litAvaliacoes.Text += $@"<div class='umaAvaliacao'>
                                 <div class='infosAvaliador'>
                                     <section class='infosNmAtDtAv'>
                                         <figure>
@@ -188,6 +200,58 @@ namespace MaisCultura.Site
                                     <span>{avaliacao.Descricao}</span>
                                 </div>
                             </div>";
+        }
+
+        void verificarAvaliacaoFeita()
+        {
+            if (ListaAvaliacao.VerificarAvaliacaoPorUsuarioEvento(Login.Codigo, int.Parse(Request.QueryString["e"])))
+            {
+                Avaliacao aval = ListaAvaliacao.BuscarAvaliacaoPorUsuarioEvento(Login.Codigo, int.Parse(Request.QueryString["e"]));
+                ColocarEstrelas(aval.Estrelas);
+                txtBoxAvaliacao.Text = aval.Descricao;
+                btnAvaliar.Text = "Alterar Avaliação";
+            }
+        }
+
+        void ColocarEstrelas(int numero)
+        {
+            switch (numero)
+            {
+                case 1:
+                    umaEstrela.ImageUrl = "~/Images/star.png";
+                    duasEstrelas.ImageUrl = "~/Images/star2.png";
+                    tresEstrelas.ImageUrl = "~/Images/star2.png";
+                    quatroEstrelas.ImageUrl = "~/Images/star2.png";
+                    cincoEstrelas.ImageUrl = "~/Images/star2.png";
+                    break;
+                case 2:
+                    umaEstrela.ImageUrl = "~/Images/star.png";
+                    duasEstrelas.ImageUrl = "~/Images/star.png";
+                    tresEstrelas.ImageUrl = "~/Images/star2.png";
+                    quatroEstrelas.ImageUrl = "~/Images/star2.png";
+                    cincoEstrelas.ImageUrl = "~/Images/star2.png";
+                    break;
+                case 3:
+                    umaEstrela.ImageUrl = "~/Images/star.png";
+                    duasEstrelas.ImageUrl = "~/Images/star.png";
+                    tresEstrelas.ImageUrl = "~/Images/star.png";
+                    quatroEstrelas.ImageUrl = "~/Images/star2.png";
+                    cincoEstrelas.ImageUrl = "~/Images/star2.png";
+                    break;
+                case 4:
+                    umaEstrela.ImageUrl = "~/Images/star.png";
+                    duasEstrelas.ImageUrl = "~/Images/star.png";
+                    tresEstrelas.ImageUrl = "~/Images/star.png";
+                    quatroEstrelas.ImageUrl = "~/Images/star.png";
+                    cincoEstrelas.ImageUrl = "~/Images/star2.png";
+                    break;
+                case 5:
+                    umaEstrela.ImageUrl = "~/Images/star.png";
+                    duasEstrelas.ImageUrl = "~/Images/star.png";
+                    tresEstrelas.ImageUrl = "~/Images/star.png";
+                    quatroEstrelas.ImageUrl = "~/Images/star.png";
+                    cincoEstrelas.ImageUrl = "~/Images/star.png";
+                    break;
             }
         }
 
@@ -219,6 +283,58 @@ namespace MaisCultura.Site
 
             if (Login != null)
                 Response.Redirect($"evento.aspx?l={Login.Codigo}&e={Evento.Codigo}");
+        }
+
+        protected void umaEstrela_Click(object sender, ImageClickEventArgs e)
+        {
+            ColocarEstrelas(1);
+        }
+
+        protected void duasEstrelas_Click(object sender, ImageClickEventArgs e)
+        {
+            ColocarEstrelas(2);
+        }
+
+        protected void tresEstrelas_Click(object sender, ImageClickEventArgs e)
+        {
+            ColocarEstrelas(3);
+        }
+
+        protected void quatroEstrelas_Click(object sender, ImageClickEventArgs e)
+        {
+            ColocarEstrelas(4);
+        }
+
+        protected void cincoEstrelas_Click(object sender, ImageClickEventArgs e)
+        {
+            ColocarEstrelas(5);
+        }
+
+        protected void btnAvaliar_Click(object sender, EventArgs e)
+        {
+            int estrelas = 0;
+
+            if (duasEstrelas.ImageUrl == "~/Images/star.png")
+                if (tresEstrelas.ImageUrl == "~/Images/star.png")
+                    if (quatroEstrelas.ImageUrl == "~/Images/star.png")
+                        if (cincoEstrelas.ImageUrl == "~/Images/star.png")
+                            estrelas = 5;
+                        else
+                            estrelas = 4;
+                    else
+                        estrelas = 3;
+                else
+                    estrelas = 2;
+            else
+                estrelas = 1;
+
+            if (ListaAvaliacao.VerificarAvaliacaoPorUsuarioEvento(Login.Codigo, Evento.Codigo))
+                ListaAvaliacao.AlterarAvaliacao(Login.Codigo, Evento.Codigo, txtBoxAvaliacao.Text, estrelas);
+            else
+                ListaAvaliacao.Avaliar(Login.Codigo, Evento.Codigo, txtBoxAvaliacao.Text, estrelas);
+
+            verificarAvaliacaoFeita();
+            MostrarAvaliacoes();
         }
     }
 }

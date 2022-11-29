@@ -117,34 +117,48 @@ Acontecerão aulas de Karatê e Judô em dias intercalados. Nos dias 2 e 4 haver
                 <section class="avaliacaodoCriador">
                     <h2 class="h2">Avaliações do Evento </h2>
                     <section class="avaliacoes">
-                        <asp:Literal ID="litAvaliacoes" runat="server"></asp:Literal>
+                        <asp:UpdatePanel ID="updPnlAvaliacoes" runat="server">
+                            <ContentTemplate>
+                                <asp:Literal ID="litAvaliacoes" runat="server"></asp:Literal>
 
-                        <asp:Panel ID="pnlAval" runat="server">
-                            <section class="suaAvaliacao">
-                                <div class="suaNota">
-                                    <h4>Deixe uma nota sobre esse criador... </h4>
-                                    <div class="estrelas">
-                                        <asp:ImageButton ID="umaEstrela" runat="server" CssClass="estrelaAval" ImageUrl="~/Images/star.png" />
-                                        <asp:ImageButton ID="duasEstrelas" runat="server" CssClass="estrelaAval" ImageUrl="~/Images/star.png" />
-                                        <asp:ImageButton ID="tresEstrelas" runat="server" CssClass="estrelaAval" ImageUrl="~/Images/star.png" />
-                                        <asp:ImageButton ID="quatroEstrelas" runat="server" CssClass="estrelaAval" ImageUrl="~/Images/star.png" />
-                                        <asp:ImageButton ID="cincoEstrelas" runat="server" CssClass="estrelaAval" ImageUrl="~/Images/star.png" />
-                                    </div>
-                                    <%-- <asp:DropDownList ID="ddlEstrelas" runat="server">
-                                        <asp:ListItem Text="Uma estrela" Value="1"></asp:ListItem>
-                                        <asp:ListItem Text="Duas estrelas" Value="2"></asp:ListItem>
-                                        <asp:ListItem Text="Três estrelas" Value="3"></asp:ListItem>
-                                        <asp:ListItem Text="Quatro estrelas" Value="4"></asp:ListItem>
-                                        <asp:ListItem Text="Cinco estrelas" Value="5"></asp:ListItem>
-                                    </asp:DropDownList>--%>
-                                </div>
-                                <div class="seuTexto">
-                                    <asp:TextBox ID="txtBoxAvaliacao" runat="server" mode="multiline"
-                                        placeholder="Deixe aqui sua avaliação sobre esse criador..."></asp:TextBox>
-                                </div>
-                                <asp:Button ID="btnAvaliar" runat="server" Text="Enviar Avaliação" />
-                            </section>
-                        </asp:Panel>
+                                <asp:Panel ID="pnlAval" runat="server">
+
+                                    <section class="suaAvaliacao">
+                                        <div class="suaNota">
+                                            <h4>Deixe uma nota sobre esse criador... </h4>
+
+                                            <asp:UpdatePanel ID="updPnlEstrelas" runat="server">
+                                                <ContentTemplate>
+                                                    <div class="estrelas">
+                                                        <asp:ImageButton ID="umaEstrela" runat="server" CssClass="estrelaAval" ImageUrl="~/Images/star.png" OnClick="umaEstrela_Click" />
+                                                        <asp:ImageButton ID="duasEstrelas" runat="server" CssClass="estrelaAval" ImageUrl="~/Images/star2.png" OnClick="duasEstrelas_Click" />
+                                                        <asp:ImageButton ID="tresEstrelas" runat="server" CssClass="estrelaAval" ImageUrl="~/Images/star2.png" OnClick="tresEstrelas_Click" />
+                                                        <asp:ImageButton ID="quatroEstrelas" runat="server" CssClass="estrelaAval" ImageUrl="~/Images/star2.png" OnClick="quatroEstrelas_Click" />
+                                                        <asp:ImageButton ID="cincoEstrelas" runat="server" CssClass="estrelaAval" ImageUrl="~/Images/star2.png" OnClick="cincoEstrelas_Click" />
+                                                    </div>
+                                                </ContentTemplate>
+                                                <Triggers>
+                                                    <asp:AsyncPostBackTrigger ControlID="umaEstrela" />
+                                                    <asp:AsyncPostBackTrigger ControlID="duasEstrelas" />
+                                                    <asp:AsyncPostBackTrigger ControlID="tresEstrelas" />
+                                                    <asp:AsyncPostBackTrigger ControlID="quatroEstrelas" />
+                                                    <asp:AsyncPostBackTrigger ControlID="cincoEstrelas" />
+                                                </Triggers>
+                                            </asp:UpdatePanel>
+
+                                        </div>
+
+                                        <div class="seuTexto">
+                                            <asp:TextBox ID="txtBoxAvaliacao" runat="server" mode="multiline"
+                                                placeholder="Deixe aqui sua avaliação sobre esse criador..."></asp:TextBox>
+                                        </div>
+                                        <asp:Button ID="btnAvaliar" runat="server" Text="Enviar Avaliação" OnClick="btnAvaliar_Click"/>
+                                    </section>
+                                </asp:Panel>
+
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
+
 
                     </section>
                 </section>

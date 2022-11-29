@@ -443,8 +443,9 @@ figure{
 }
 
 .estrelaAval{
-    width: 1.2vw;
-    height: 1.2vw;
+    width: 25px;
+    height: 25px;
+    margin: 0px 5px;
 }
 
 .nmrMedia {
@@ -567,6 +568,7 @@ figure{
     border: none;
     border-radius: 5px;
     height: 150px;
+    padding: 10px 15px;
 }
 
     #txtBoxAvaliacao::placeholder {

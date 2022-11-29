@@ -177,6 +177,15 @@ namespace MaisCultura.Site
         protected global::System.Web.UI.WebControls.Label lblDescEvento;
 
         /// <summary>
+        /// Controle updPnlAvaliacoes.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel updPnlAvaliacoes;
+
+        /// <summary>
         /// Controle litAvaliacoes.
         /// </summary>
         /// <remarks>
@@ -193,6 +202,15 @@ namespace MaisCultura.Site
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel pnlAval;
+
+        /// <summary>
+        /// Controle updPnlEstrelas.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel updPnlEstrelas;
 
         /// <summary>
         /// Controle umaEstrela.
