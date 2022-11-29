@@ -433,7 +433,7 @@ figure{
 .imgPerfilAvaliacao {
     width: 2.8vw;
     height: 2.8vw;
-    margin: 5px;
+    margin-right: 15px;
 }
 
 .imgEstrelaMedia {
@@ -481,8 +481,7 @@ figure{
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
-    width: 35%;
+    justify-content: left;
 }
 
 .infosNmAtDtAv span{

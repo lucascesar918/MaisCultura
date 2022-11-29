@@ -78,7 +78,7 @@ namespace MaisCultura.Biblioteca
         {
             MySqlDataReader data = Query("BuscarAvaliacaoEventoUsuario", ("pUsuario", cdUsuario), ("pEvento", cdEvento));
 
-            bool verify = data != null;
+            bool verify = data.Read();
 
             Desconectar();
 
