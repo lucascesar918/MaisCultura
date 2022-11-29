@@ -57,7 +57,8 @@
                     <div class="dropdown-content">
                         <asp:Literal ID="litDropDownHome" runat="server"></asp:Literal>
                         <asp:Literal ID="litDropDownPerfil" runat="server"></asp:Literal>
-                        <a href="eventos.aspx">Sair</a>
+                        <asp:Literal ID="litDpdMeusEventos" runat="server"></asp:Literal>
+                        <asp:Literal ID="litSair" runat="server"></asp:Literal>
                     </div>
                 </div>
 
@@ -223,8 +224,8 @@ Acontecerão aulas de Karatê e Judô em dias intercalados. Nos dias 2 e 4 haver
             </section>
             <asp:TextBox ID="txtBoxUser" runat="server" placeholder="Seu nome de usuário" CssClass="txtLog">
             </asp:TextBox>
-            <asp:TextBox ID="txtBoxSenha" runat="server" placeholder="Sua senha" CssClass="txtLog"></asp:TextBox>
-            <asp:Button ID="btnLogar" runat="server" Text="Entrar" />
+            <asp:TextBox ID="txtBoxSenha" runat="server" placeholder="Sua senha" CssClass="txtLog" type="password"></asp:TextBox>
+            <asp:Button ID="btnLogar" runat="server" Text="Entrar" OnClick="btnLogar_Click"/>
             <asp:Button ID="btnSairLogin" runat="server" Text="Fechar" />
         </div>
         <div class="cadastrar pop" id="cad">

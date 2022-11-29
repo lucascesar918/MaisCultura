@@ -668,6 +668,11 @@ figure{
     justify-content: space-between;
 }
 
+    .nmMedia a:hover {
+        cursor: pointer;
+        text-decoration: none;
+    }
+
 .notas{
     display: flex;
     flex-direction: row;
@@ -683,7 +688,7 @@ figure{
     font-size: 16px;
 }
 
-.notaResp{
+.notaResp {
     margin-bottom: 0px !important;
     font-size: 15px;
 }

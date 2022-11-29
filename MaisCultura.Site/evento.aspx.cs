@@ -44,6 +44,7 @@ namespace MaisCultura.Site
         {
             txtBoxAvaliacao.TextMode = TextBoxMode.MultiLine;
             txtBoxDescProb.TextMode = TextBoxMode.MultiLine;
+            btnLogar.Enabled = true;
 
             litCategorias.Text = "";
 
@@ -63,6 +64,11 @@ namespace MaisCultura.Site
                 </a>";
                 bool save = ListaEvento.VerificarSalvo(Login.Codigo, int.Parse(Request.QueryString["e"]));
                 cbxSave.Checked = save;
+
+                if (Login.Tipo == "Criador de Eventos")
+                    litDpdMeusEventos.Text = $"<a href='meus-eventos.aspx?l={Login.Codigo}'>Meus Eventos</a>";
+
+                litSair.Text = $"<a href='evento.aspx?e={Request.QueryString["e"]}'>Sair</a>";
             }
             else
             {
@@ -205,6 +211,14 @@ namespace MaisCultura.Site
             Usuario Cadastrado = new Usuario(txtBoxNmUsuario.Text, ddlTipoUser.Text, ddlSexo.Text, txtBoxNome.Text + txtBoxSobrenome.Text, txtBoxEmail.Text, txtBoxSenhaCad.Text, " ", txtData.Text, null);
 
             ListaUsuario.CriarUsuario(Cadastrado);
+        }
+
+        protected void btnLogar_Click(object sender, EventArgs e)
+        {
+            Login = ListaUsuario.BuscarLogin(txtBoxUser.Text, txtBoxSenha.Text);
+
+            if (Login != null)
+                Response.Redirect($"evento.aspx?l={Login.Codigo}&e={Evento.Codigo}");
         }
     }
 }
