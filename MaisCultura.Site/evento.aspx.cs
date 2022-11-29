@@ -48,6 +48,9 @@ namespace MaisCultura.Site
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            txtBoxAvaliacao.TextMode = TextBoxMode.MultiLine;
+            txtBoxDescProb.TextMode = TextBoxMode.MultiLine;
+
             litCategorias.Text = "";
 
             if (Request.QueryString["l"] != null)

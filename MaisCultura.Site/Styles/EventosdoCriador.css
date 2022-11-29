@@ -19,6 +19,12 @@ body {
     background-color: #f1f1f1;
 }
 
+@media screen and (min-width: 1920px){
+    .icon{
+        margin-left: 40px !important;
+    }
+}
+
 .eventos {
     padding: 15px;
     display: flex;
@@ -63,7 +69,20 @@ body {
     .card:hover {
         transition-duration: 0.3s;
         transition-timing-function: ease-in-out;
-        box-shadow: rgba(100, 100, 111, 0.8) 0px 3.5px 10px 0px;
+        box-shadow: #526ace 0px 0px 0px 2px inset, 
+            rgb(255, 255, 255) 10px 10px 0px -3px, 
+            #4dade2 10px 10px, 
+            rgb(255, 255, 255) 20px 20px 0px -3px, 
+            #fcb646 20px 20px;
+        /* rgb(255, 255, 255) 10px 10px 0px -3px,
+            #7bdf97 10px 10px,
+            rgb(255, 255, 255) 20px 20px 0px -3px,
+            #d64558 20px 20px;*/
+        /*rgb(255, 255, 255) 30px 30px 0px -3px,
+            #d64558 30px 30px;*/
+        /*rgb(255, 255, 255) 40px 40px 0px -3px,*/
+        /*rgb(255, 85, 85)*/ /*#526ace 40px  40px;*/
+        transform: scaleX(2), scaleY(2);
     }
 
 .card-header {
@@ -220,7 +239,7 @@ body {
     min-width: fit-content;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
-    margin: 5px;
+   
     border-radius: 5px;
 }
 
@@ -326,7 +345,7 @@ body {
 }
 
 .filtros {
-    height: auto;
+    height: fit-content;
     width: 15%;
     background: #fff;
     display: flex;
@@ -410,16 +429,6 @@ body {
         font-size: 12px;
     }
 
-.dt {
-    width: 100%;
-    height: 30px;
-    box-sizing: border-box;
-    margin-bottom: 1vh;
-    font-size: 12px;
-    border: 1px solid #526ace;
-    border-radius: 5px;
-    padding: 5px;
-}
 
 .data {
     font-size: 2rem;
@@ -595,7 +604,7 @@ body {
     border-radius: 20px;
     display: flex;
     align-items: center;
-    background: #f1f1f1;
+    background: #ffffff;
 }
 
 .inputPesquisa {
@@ -608,6 +617,7 @@ body {
 .icon {
     width: 26px;
     height: 26px;
+    margin-left: 15px;
    /* display: flex;
     align-self: flex-end;*/
 }
