@@ -17,7 +17,9 @@
     <form id="form1" runat="server">
         <header class="header header-primaria">
             <figure class="figure-header">
+                <a href="eventos.aspx">
                 <img src="Images/logoNomeMenor.png" class="logo-header" />
+                    </a>
             </figure>
 
             <article class="usuario">
@@ -25,6 +27,7 @@
                     <asp:Button CssClass="dropbtn" ID="dropbtnUsuario" runat="server" Text="Bárbara Pera" />
                     <div class="dropdown-content">
                         <a href="eventos.aspx">Início</a>
+                        <a href="perfil.aspx">Perfil</a>
                         <a href="meus-eventos.aspx">Meus Eventos</a>
                         <a href="eventos.aspx">Sair</a>
                     </div>
@@ -41,7 +44,7 @@
         <section class="meusEventos">
             <div class="btns">
                 <h2>Meus Eventos</h2>
-                <asp:Button ID="btnCriarEvento" runat="server" Text="+ Criar Evento" />
+                <asp:Button ID="btnCriarEvento" runat="server" Text="+ Criar Evento" OnClick="btnCriarEvento_Click" />
             </div>
         </section>
 

@@ -18,7 +18,9 @@
         <form id="form1" runat="server">
             <header class="header header-primaria">
                 <figure class="figure-header">
+                    <a href="eventos.aspx">
                     <img src="Images/logoNomeMenor.png" class="logo-header" />
+                        </a>
                 </figure>
 
                 <article class="buttons">
@@ -96,7 +98,7 @@
 
                                 <asp:Button ID="btnSalvos" runat="server" Text="Salvos" CssClass="titleSalvos" />
                             </div>
-                            <a href="EventoEspecifico.aspx">
+                            <a href="evento.aspx">
                                 <section class="card">
                                     <article class="card-header">
                                         <figure>

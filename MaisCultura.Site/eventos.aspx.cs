@@ -11,6 +11,12 @@ namespace MaisCultura
 {
     public partial class Index : System.Web.UI.Page
     {
+        Filtro Filtro;
+        ListaUsuario ListaUsuario = new ListaUsuario();
+        ListaEvento ListaEvento = new ListaEvento();
+
+        Usuario Login;
+
         void HandleLogin()
         {
             if (Request.QueryString["l"] != null)
@@ -33,46 +39,30 @@ namespace MaisCultura
                 btnCad.Visible = true;
             }
         }
-
-
-        Filtro filtro;
         List<Categoria> CategoriasSelecionadas
         {
             get => ViewState["CategoriasSelecionadas"] as List<Categoria>;
             set => ViewState["CategoriasSelecionadas"] = value;
         } 
 
-        ListaUsuario ListaUsuario = new ListaUsuario();
-        ListaEvento ListaEvento = new ListaEvento();
-        Usuario Login;
-
-        private void ListarEventos(string usuario) {
-
-            List<Evento> Eventos;
-
-            if (filtro.EstaAtivo())
-                Eventos = ListaEvento.Feed();
-            else
-                Eventos = ListaEvento.Feed(usuario);
-            Eventos = Eventos.FindAll((e) => filtro.Verificar(e));
-           
-            litEventos.Text = "";
+        private void PrintarEventos(List<Evento> Eventos, bool hidden) {
             foreach (Evento evento in Eventos)
             {
                 Usuario usuarioEvento = ListaUsuario.Buscar(evento.Responsavel);
                 List<Categoria> categorias = evento.Categorias;
                 List<DiaEvento> dias = evento.Dias;
 
-                var TagAEvento = $"<a href='evento.aspx?e={evento.Codigo}'>";
-                var TagAPerfil = $"<a href='perfil.aspx?u={usuarioEvento.Codigo}'>";
+                string TagAEvento = $"<a href='evento.aspx?e={evento.Codigo}'>";
+                string TagAPerfil = $"<a href='perfil.aspx?u={usuarioEvento.Codigo}'>";
+                string ClassHidden = hidden ? "<section class='card hidden'>" : "<section class='card'>";
 
-                if (Request.QueryString["l"] != null)
+                if (Login != null)
                 {
                     TagAEvento = $"<a href='evento.aspx?l={Login.Codigo}&e={evento.Codigo}'>";
                     TagAPerfil = $"<a href='perfil.aspx?l={Login.Codigo}&u={usuarioEvento.Codigo}'>";
                 }
 
-                litEventos.Text += $@"<section class='card'>
+                litEventos.Text += $@"{ClassHidden}
                     <article class='card-header'>
                         <figure>
                             {TagAPerfil}
@@ -129,12 +119,29 @@ namespace MaisCultura
                             <img src='Images/local.png' alt='Ícone Local' class='local-icon'>
                         </figure>
                         <h3>{
-                            evento.Local // Trocar pelo formato "Cidade, Estado" depois
+                            evento.Local
                         }</h3>
 
                     </article>
                 </section>";
             }
+        }
+
+        private void ListarEventos(string usuario) {
+           
+            litEventos.Text = "";
+
+            List<Evento> Diff; // Eventos que não são da preferência do usuário
+            List<Evento> Feed; // Eventos de preferência do usuário
+
+            (Diff, Feed) = ListaEvento.GetDiffFeed(Login?.Codigo);
+
+            Feed = Feed.FindAll((e) => Filtro.Verificar(e));
+            Diff = Feed.FindAll((e) => Filtro.Verificar(e));
+           
+            litEventos.Text = "";
+            PrintarEventos(Feed, false);
+            PrintarEventos(Diff, Feed.Count > 0);
         }
 
         DateTime? StrinToDate(string strDate)
@@ -160,16 +167,16 @@ namespace MaisCultura
             viewCategoriasSelecionadas.DataSource = CategoriasSelecionadas;
             viewCategoriasSelecionadas.DataBind();
             HandleLogin();
-            filtro = new Filtro();
-            filtro.Inicio = StrinToDate(dtStart.Text);
-            filtro.Fim = StrinToDate(dtEnd.Text);
-            //filtro.Nome = StrinToDate(txtBoxNome);
+            Filtro = new Filtro();
+            Filtro.Inicio = StrinToDate(dtStart.Text);
+            Filtro.Fim = StrinToDate(dtEnd.Text);
+            //Filtro.Nome = StrinToDate(txtBoxNome);
             if (int.TryParse(dpdAval.SelectedValue, out var qtEstrela))
-                filtro.QtEstrelas = qtEstrela;
+                Filtro.QtEstrelas = qtEstrela;
             else
                 filtro.QtEstrelas = null;
             filtro.Titulo = txtPesquisa.Text;
-            filtro.Categorias = CategoriasSelecionadas;
+            Filtro.Categorias = CategoriasSelecionadas;
 
             ListarEventos(Login?.Codigo);
 
