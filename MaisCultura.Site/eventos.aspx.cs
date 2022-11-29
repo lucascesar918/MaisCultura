@@ -34,6 +34,9 @@ namespace MaisCultura
                 litImgPerfil.Text = $@"<a href='meu-perfil.aspx?l={Login.Codigo}'>
                     <img src='Images/perfil526ace.png' class='imgPerfil'>
                 </a>";
+
+                if (Login.Tipo == "Criador de Eventos")
+                    litDpdMeusEventos.Text = $"<a href='meus-eventos.aspx?l={Login.Codigo}'>Meus Eventos</a>";
             }
             else
             {

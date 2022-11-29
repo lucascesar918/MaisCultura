@@ -43,6 +43,7 @@
                         <asp:Literal ID="litDropDownHome" runat="server"></asp:Literal>
                         <asp:Literal ID="litDropDownPerfil" runat="server"></asp:Literal>
                         <asp:Literal ID="litDropDownDenuncias" runat="server"></asp:Literal>
+                        <asp:Literal ID="litDpdMeusEventos" runat="server"></asp:Literal>
                         <a href="eventos.aspx">Sair</a>
                     </div>
                 </div>
