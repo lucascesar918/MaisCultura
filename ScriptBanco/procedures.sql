@@ -36,7 +36,6 @@ BEGIN
 			ON i.cd_imagem = ie.cd_imagem
 	GROUP BY e.cd_evento;
 END$$
-call BuscarEvento(2);
 
 DROP PROCEDURE IF EXISTS ListarCategorias$$
 CREATE PROCEDURE ListarCategorias()

@@ -111,7 +111,19 @@ figure{
     display: inline-block;
 }
 
-.dropbtn {
+    .menuUsuario:hover {
+        cursor: pointer;
+    }
+
+    .menuUsuario a {
+        color: black;
+    }
+
+    .menuUsuario a:hover {
+        text-decoration: none;
+    }
+
+#litUsuario {
     color: black;
     padding: 10px;
     font-size: 15px;

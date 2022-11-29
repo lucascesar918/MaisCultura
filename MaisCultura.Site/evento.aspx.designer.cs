@@ -33,6 +33,15 @@ namespace MaisCultura.Site
         protected global::System.Web.UI.ScriptManager ScriptManager1;
 
         /// <summary>
+        /// Controle litLogo.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal litLogo;
+
+        /// <summary>
         /// Controle btnLog.
         /// </summary>
         /// <remarks>
@@ -51,13 +60,13 @@ namespace MaisCultura.Site
         protected global::System.Web.UI.WebControls.Button btnCad;
 
         /// <summary>
-        /// Controle dropbtnUsuario.
+        /// Controle litUsuario.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button dropbtnUsuario;
+        protected global::System.Web.UI.WebControls.Literal litUsuario;
 
         /// <summary>
         /// Controle litDropDownHome.

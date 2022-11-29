@@ -23,8 +23,7 @@ namespace MaisCultura.Site
         [WebMethod]
         public static void checkando()
         {
-            EventoEspecifico teste = new EventoEspecifico();
-            teste.checkFunciona();
+            
         }
 
         [WebMethod]
@@ -41,11 +40,6 @@ namespace MaisCultura.Site
             ListaEvento.CancelarSalvo(codigoUsuario, codigoEvento);
         }
 
-        void checkFunciona()
-        {
-            cbxSave.Checked = false;
-        }
-
         protected void Page_Load(object sender, EventArgs e)
         {
             txtBoxAvaliacao.TextMode = TextBoxMode.MultiLine;
@@ -56,29 +50,33 @@ namespace MaisCultura.Site
             if (Request.QueryString["l"] != null)
             {
                 Login = ListaUsuario.Buscar(Request.QueryString["l"]);      //Logado
-                dropbtnUsuario.Text = Login.Nome;
+                litLogo.Text = $"<a href='eventos.aspx?l={Login.Codigo}'>";
+                litUsuario.Text = $"<a href='meu-perfil.aspx?l={Login.Codigo}'>{Login.Nome}</a>";
                 litDropDownHome.Text = $"<a href='eventos.aspx?l={Login.Codigo}'>Início</a>";
-                litDropDownPerfil.Text = $"<a href='perfil.aspx?l={Login.Codigo}'>Perfil</a>";
-                dropbtnUsuario.Visible = true;
+                litDropDownPerfil.Text = $"<a href='meu-perfil.aspx?l={Login.Codigo}'>Perfil</a>";
+                litUsuario.Visible = true;
                 pnlAval.Visible= true;
                 btnLog.Visible = false;
                 btnCad.Visible = false;
-                litImgPerfil.Text = $@"<img src='Images/perfil526ace.png' class='imgPerfil'>";
+                litImgPerfil.Text = $@"<a href='meu-perfil.aspx?l={Login.Codigo}'>
+                    <img src='Images/perfil526ace.png' class='imgPerfil'>
+                </a>";
                 bool save = ListaEvento.VerificarSalvo(Login.Codigo, int.Parse(Request.QueryString["e"]));
                 cbxSave.Checked = save;
             }
             else
             {
-                dropbtnUsuario.Visible = false;                             //Deslogado
+                litLogo.Text = $"<a href='eventos.aspx'>";
+                litUsuario.Visible = false;                             //Deslogado
                 pnlAval.Visible = false;
                 btnLog.Visible = true;
                 btnCad.Visible = true;
             }
 
             if (Request.QueryString["e"] != null)
-            {
                 Evento = ListaEvento.Buscar(Int32.Parse(Request.QueryString["e"]));
-            }
+            else
+                Response.Redirect($"erro.html?msg=Tá vendo coisa? Esse evento não existe!" + (Login == null ? "" : $"&l={Login.Codigo}"));
 
             if (Evento != null)
             {

@@ -39,8 +39,8 @@
         <header class="header-primaria">
 
             <figure class="figure-header">
-                 <a href="eventos.aspx">
-                <img src="Images/logoNomeMenor.png" class="logo-header" />
+                <asp:Literal ID="litLogo" runat="server"></asp:Literal>
+                    <img src="Images/logoNomeMenor.png" class="logo-header" />
                 </a>
             </figure>
 
@@ -52,7 +52,8 @@
 
             <article class="usuario">
                 <div class="menuUsuario">
-                    <asp:Button CssClass="dropbtn" ID="dropbtnUsuario" runat="server" Text="Nome" />
+                    <asp:Literal ID="litUsuario" runat="server"></asp:Literal>
+
                     <div class="dropdown-content">
                         <asp:Literal ID="litDropDownHome" runat="server"></asp:Literal>
                         <asp:Literal ID="litDropDownPerfil" runat="server"></asp:Literal>

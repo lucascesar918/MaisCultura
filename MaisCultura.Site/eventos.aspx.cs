@@ -22,19 +22,23 @@ namespace MaisCultura
             if (Request.QueryString["l"] != null)
             {
                 Login = ListaUsuario.Buscar(Request.QueryString["l"]);
-                dropbtnUsuario.Text = Login.Nome;
+                litLogo.Text = $"<a href='eventos.aspx?l={Login.Codigo}'>";
+                litUsuario.Text = $"<a href='meu-perfil.aspx?l={Login.Codigo}'>{Login.Nome}</a>";
                 litDropDownHome.Text = $"<a href='eventos.aspx?l={Login.Codigo}'>Início</a>";
                 litDropDownPerfil.Text = $"<a href='meu-perfil.aspx?l={Login.Codigo}&u={Login.Codigo}'>Perfil</a>";
                 if (Login.Tipo == "Administrador")                                                              //Logado
                     litDropDownDenuncias.Text = $"<a href='denuncias.aspx?l={Login.Codigo}'>Denúncias</a>";
-                dropbtnUsuario.Visible = true;
+                litUsuario.Visible = true;
                 btnLog.Visible = false;
                 btnCad.Visible = false;
-                litImgPerfil.Text = $@"<img src='Images/perfil526ace.png' class='imgPerfil'>";
+                litImgPerfil.Text = $@"<a href='meu-perfil.aspx?l={Login.Codigo}'>
+                    <img src='Images/perfil526ace.png' class='imgPerfil'>
+                </a>";
             }
             else
             {
-                dropbtnUsuario.Visible = false;
+                litLogo.Text = $"<a href='eventos.aspx'>";
+                litUsuario.Visible = false;
                 btnLog.Visible = true;                                                                          //Deslogado
                 btnCad.Visible = true;
             }

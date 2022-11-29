@@ -99,14 +99,26 @@ body{
     font-weight: 700;
 }
 
-.dropbtn {
+    .menuUsuario:hover {
+        cursor: pointer;
+    }
+
+    .menuUsuario a {
+        color: black;
+        font-size: 15px;
+    }
+
+        .menuUsuario a:hover {
+            text-decoration: none;
+        }
+
+#litUsuario {
     color: black;
     padding: 10px;
     font-size: 15px;
     border: none;
     cursor: pointer;
     background-color: transparent;
-    font-weight: 700;
 }
 
 
@@ -493,7 +505,7 @@ body{
 /* Css do Card*/
 .card {
     width: 290px;
-    height: fit-content;
+    height: 420px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -590,7 +602,7 @@ body{
 }
 
 .card-tittle {
-    width: 100%;
+    width: 96%;
     padding: 10px;
 }
 
