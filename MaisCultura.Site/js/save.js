@@ -5,6 +5,7 @@
 
     if (usuario == null) {
         PageMethods.checkando();
+        document.getElementById('cbxSave').checked = false;
         return $("#btnLog").click();
     }
 
