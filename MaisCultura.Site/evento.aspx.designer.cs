@@ -330,15 +330,6 @@ namespace MaisCultura.Site
         protected global::System.Web.UI.WebControls.Label lblArroba;
 
         /// <summary>
-        /// Controle lblNmrInteresse.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblNmrInteresse;
-
-        /// <summary>
         /// Controle updBtnInteresse.
         /// </summary>
         /// <remarks>
@@ -346,6 +337,15 @@ namespace MaisCultura.Site
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel updBtnInteresse;
+
+        /// <summary>
+        /// Controle litNmrInteresse.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal litNmrInteresse;
 
         /// <summary>
         /// Controle btnInteresse.

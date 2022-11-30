@@ -192,13 +192,13 @@ Acontecerão aulas de Karatê e Judô em dias intercalados. Nos dias 2 e 4 haver
                 </section>
 
                 <section class="interesses">
-                    <h4 class="nmrInteresse">
-                        <asp:Label ID="lblNmrInteresse" runat="server" Text="580"></asp:Label>
-                        pessoas já demonstraram interesse em participar
-                    </h4>
-
                     <asp:UpdatePanel ID="updBtnInteresse" runat="server" UpdateMode="Conditional">
                         <ContentTemplate>
+                            <h4 class="nmrInteresse">
+                                <asp:Literal ID="litNmrInteresse" runat="server" />
+                                pessoas já demonstraram interesse em participar
+                            </h4>
+
                             <asp:Button ID="btnInteresse" runat="server" Text="Demonstrar Interesse" CssClass="naoInt" OnClick="btnInteresse_Click" />
                         </ContentTemplate>
                     </asp:UpdatePanel>
@@ -322,9 +322,8 @@ Acontecerão aulas de Karatê e Judô em dias intercalados. Nos dias 2 e 4 haver
             <asp:Label ID="lblDesc" runat="server" Text="Descrição do problema"></asp:Label>
             <asp:TextBox ID="txtBoxDescProb" runat="server" mode="multiline"
                 placeholder="Escreva aqui a descrição do problema que você encontrou."></asp:TextBox>
-            <asp:Button ID="btnDenunciar" runat="server" Text="Enviar reclamação" />
+            <asp:Button ID="btnDenunciar" runat="server" Text="Enviar reclamação" OnClick="btnDenunciar_Click" />
             <asp:Button ID="btnSairDenuncia" runat="server" Text="Fechar" />
-
         </div>
 
         <div class="error pop" id="error">

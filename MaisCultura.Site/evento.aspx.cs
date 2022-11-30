@@ -106,7 +106,7 @@ namespace MaisCultura.Site
                 titleResponsavel.Text = ListaUsuario.Buscar(Evento.Responsavel).Nome;
                 lblArroba.Text = '@'+Evento.Responsavel;
                 lblNotaResp.Text = ListaUsuario.BuscarMediaCriador(Evento.Responsavel).ToString();
-                lblNmrInteresse.Text = ListaEvento.BuscarInteresses(Evento.Codigo).ToString();
+                litNmrInteresse.Text = ListaEvento.BuscarInteresses(Evento.Codigo).ToString();
                 litData.Text = Evento.Dias[0].Data.ToShortDateString();
                 litHrInicio.Text = Evento.Dias[0].Inicio.ToShortTimeString();
                 litHrFim.Text = Evento.Dias[0].Fim.ToShortTimeString();
@@ -400,6 +400,11 @@ namespace MaisCultura.Site
                 cbxSave.Checked = true;
                 ScriptManager.RegisterClientScriptBlock(Page, Page.GetType(), "AgoraVai", "<script type=\"text/javascript\"> document.getElementById('cbxSave').checked = true </script>", false);
             }
+        }
+
+        protected void btnDenunciar_Click(object sender, EventArgs e)
+        {
+            //ainda vai dar certo, confia Lucas
         }
     }
 }

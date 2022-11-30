@@ -20,6 +20,31 @@ namespace MaisCultura.Biblioteca
             return new Denuncia(CodigoDenuncia , CodigoEvento, Descricao, CodigoUsuario, Data, Motivo);
         }
 
+        public int MaxCodigo()
+        {
+            int codigo = 0;
+
+            MySqlDataReader data = Query("MaxCodigoDenuncia");
+
+            while (data.Read())
+                codigo = Int32.Parse(data["Max"].ToString());
+
+            Desconectar();
+
+            return ++codigo;
+        }
+
+        public void CriarDenuncia(Denuncia denuncia)
+        {
+            NonQuery("CadastrarDenuncia",
+                ("pCodigo", MaxCodigo()),
+                ("pEvento", denuncia.CodigoEvento),
+                ("pUsuario ", denuncia.CodigoUsuario),
+                ("pData ", denuncia.Data)
+                //("pHora", denuncia.)                   COMO EU PEGO A HORA DO DATETIME???
+            );
+        }
+
         public List<Denuncia> Listar() {
 
             List<Denuncia> Denuncias = new List<Denuncia>();

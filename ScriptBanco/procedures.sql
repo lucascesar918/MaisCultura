@@ -211,6 +211,12 @@ BEGIN
 	INSERT INTO evento VALUES (pCodigo, pResponsavel, pNome, pLocal, pDescricao);
 END$$
 
+DROP PROCEDURE IF EXISTS CadastrarDenuncia$$
+CREATE PROCEDURE CadastrarDenuncia(pCodigo INT, pEvento INT, )
+BEGIN
+	INSERT INTO denuncia VALUES (pCodigo, pResponsavel, pNome, pLocal, pDescricao);
+END$$
+
 DROP PROCEDURE IF EXISTS ListarEventosFeed$$
 CREATE PROCEDURE ListarEventosFeed( pUsuario VARCHAR(20) )
 BEGIN
@@ -433,6 +439,14 @@ BEGIN
 	SELECT
 		MAX(cd_evento) "Max" 
 	FROM evento;
+END$$
+
+DROP PROCEDURE IF EXISTS MaxCodigoDenuncia$$
+CREATE PROCEDURE MaxCodigoDenuncia()
+BEGIN
+	SELECT
+		MAX(cd_denuncia) "Max" 
+	FROM denuncia;
 END$$
 
 DROP PROCEDURE IF EXISTS CadastrarPreferencia$$
