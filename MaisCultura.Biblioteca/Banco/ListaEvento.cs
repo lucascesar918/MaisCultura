@@ -53,8 +53,11 @@ namespace MaisCultura.Biblioteca
             int codigo = 0;
 
             MySqlDataReader data = Query("MaxCodigoEvento");
+
             while (data.Read())
                 codigo = Int32.Parse(data["Max"].ToString());
+
+            Desconectar();
 
             return ++codigo;
         }

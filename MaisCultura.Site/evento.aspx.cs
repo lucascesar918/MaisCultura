@@ -22,16 +22,10 @@ namespace MaisCultura.Site
         Evento Evento;
 
         [WebMethod]
-        public static void checkando()
-        {
-            
-        }
-
-        [WebMethod]
         public static void salvarEvento(string codigoUsuario, int codigoEvento)
         {
             ListaEvento ListaEvento = new ListaEvento();
-            ListaEvento.Salvar(codigoUsuario, codigoEvento);
+            ListaEvento.Interessar(codigoUsuario, codigoEvento);
         }
 
         [WebMethod]
@@ -39,6 +33,20 @@ namespace MaisCultura.Site
         {
             ListaEvento ListaEvento = new ListaEvento();
             ListaEvento.CancelarSalvo(codigoUsuario, codigoEvento);
+        }
+
+        [WebMethod]
+        public static void DemonstrarInteresse(string codigoUsuario, int codigoEvento)
+        {
+            ListaEvento ListaEvento = new ListaEvento();
+            ListaEvento.Interessar(codigoUsuario, codigoEvento);
+        }
+
+        [WebMethod]
+        public static void RemoverInteresse(string codigoUsuario, int codigoEvento)
+        {
+            ListaEvento ListaEvento = new ListaEvento();
+            ListaEvento.CancelarInteresse(codigoUsuario, codigoEvento);
         }
 
         protected void Page_Load(object sender, EventArgs e)
