@@ -229,7 +229,7 @@ main {
 
 
 
-#btnAdicionarDtHr{
+#btnAdicionarDtHr, #btnRemoverDtHr{
     border: none;
     background-color: #526ace;
     color: white;
@@ -268,7 +268,7 @@ main {
     margin-bottom: 10px;
 }
 
-#btnAddCateg{
+#btnAddCateg, #btnRmCateg{
     width: 25px;
     height: 25px;
     font-size: 15px;

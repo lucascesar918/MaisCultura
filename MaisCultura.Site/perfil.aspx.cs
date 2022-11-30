@@ -115,14 +115,14 @@ namespace MaisCultura.Site
                             <figure>
                                 <img src='Images/calendar.png' alt='Ícone calendário' class='calendar-icon'>
                             </figure>
-                            <h3>{dias[0].Data.ToShortDateString()} a {dias[dias.Count - 1].Data.ToShortDateString()}</h3>
+                            <h3>{dias[0].Data} a {dias[dias.Count - 1].Data}</h3>
                         </article>
 
                         <article class='time'>
                             <figure>
                                 <img src='Images/time.png' alt='Ícone Tempo' class='time-icon'>
                             </figure>
-                            {dias[0].Inicio.ToShortTimeString()}
+                            {dias[0].Inicio}
                         </article>
                     </article>
 

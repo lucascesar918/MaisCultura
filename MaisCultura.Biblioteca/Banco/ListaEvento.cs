@@ -56,6 +56,7 @@ namespace MaisCultura.Biblioteca
             while (data.Read())
                 codigo = Int32.Parse(data["Max"].ToString());
 
+            Desconectar();
             return ++codigo;
         }
         

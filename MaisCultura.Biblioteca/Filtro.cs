@@ -52,13 +52,13 @@ namespace MaisCultura.Biblioteca
             if (Inicio == null)
                 return true;
             Debug.WriteLine(string.Join(";", evento.Dias.Select(d => d.Data)));
-            return evento.Dias.Any((dia) => Inicio <= dia.Data);
+            return evento.Dias.Any((dia) => Inicio <= DateTime.Parse(dia.Data));
         }
         bool VerificarFim(Evento evento)
         {
             if (Fim == null)
                 return true;
-            return evento.Dias.Any((dia) => dia.Data <= Fim);
+            return evento.Dias.Any((dia) => DateTime.Parse(dia.Data) <= Fim);
         }
         bool VerificarCategorias(Evento evento)
         {

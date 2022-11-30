@@ -25,17 +25,16 @@
 
             <article class="usuario">
                 <div class="menuUsuario">
-                    <asp:Button CssClass="dropbtn" ID="dropbtnUsuario" runat="server" Text="Bárbara Pera" />
-
+                    <asp:Button CssClass="dropbtn" ID="dropbtnUsuario" runat="server" Text="Nome" />
                     <div class="dropdown-content">
-                        <a href="Inicio.aspx">Início</a>
-                        <a href="perfil.aspx">Perfil</a>
-                        <a href="EventosdoCriador.aspx">Meus Eventos</a>
-                        <a href="Inicio.aspx">Sair</a>
+                    <asp:Literal ID="litDropDownHome" runat="server"></asp:Literal>
+                    <asp:Literal ID="litDropDownPerfil" runat="server"></asp:Literal>
+                    <asp:Literal ID="litDropDownDenuncias" runat="server"></asp:Literal>
+                    <a href="eventos.aspx">Sair</a>
                     </div>
                 </div>
-
-                <img src="Images/perfil526ace.png" class="imgPerfil">
+                <asp:Literal ID="litImgPerfil" runat="server"></asp:Literal>
+                
             </article>
         </header>
 
@@ -53,19 +52,12 @@
                 <section class="infos">
                     <div class="txts">
                         <div class="tituloEvento">
+                            <asp:Label ID="Label5" runat="server" Text="Título:" CssClass="label"></asp:Label>
                             <asp:TextBox ID="txtTituloEvento" runat="server"
                                 placeholder="Insira aqui o título do evento" CssClass="txtBox"></asp:TextBox>
                         </div>
 
                         <div class="local">
-                            <asp:TextBox ID="txtEndereco" runat="server"
-                                placeholder="Insira aqui o endereço do evento" CssClass="txtBox"></asp:TextBox>
-
-                            <asp:Label ID="Label3" runat="server" Text="Cidade:" CssClass="label"></asp:Label>
-
-                            <asp:TextBox ID="txtCidade" runat="server" CssClass="txtBox"
-                                placeholder="Insira aqui o nome da cidade"></asp:TextBox>
-
                             <asp:Label ID="Label4" runat="server" Text="UF:" CssClass="label"></asp:Label>
 
                             <asp:DropDownList ID="ddlUF" runat="server" CssClass="txtBox">
@@ -97,88 +89,57 @@
                                 <asp:ListItem id="ListItem37" runat="server" Text="SE"></asp:ListItem>
                                 <asp:ListItem id="ListItem38" runat="server" Text="TO"></asp:ListItem>
                             </asp:DropDownList>
+
+                            <asp:Label ID="Label3" runat="server" Text="Local:" CssClass="label"></asp:Label>
+
+                            <asp:TextBox ID="txtCidade" runat="server" CssClass="txtBox"
+                                placeholder="Insira aqui o nome da cidade"></asp:TextBox>
+
+                            <asp:TextBox ID="txtEndereco" runat="server"
+                                placeholder="Insira aqui o endereço do evento" CssClass="txtBox"></asp:TextBox>
+
+
                         </div>
                         <div class="divDts">
                             <div class="divDtHr">
-                                <asp:Label ID="Label1" runat="server" Text="Data e Hora de Início" CssClass="label">
-                                </asp:Label>
+                                <asp:Label ID="Label1" runat="server" Text="Data:" CssClass="label"></asp:Label>
+                                <asp:TextBox ID="txtDtInicio" type="date" runat="server" CssClass="txtBoxDtHr"></asp:TextBox>
 
-                                <input id="dtHrInicio" type="datetime-local" class="txtBoxDtHr" />
+                                <asp:Label ID="Label6" runat="server" Text="Início:" CssClass="label"></asp:Label>
+                                <asp:TextBox ID="txtHrInicio" type="time" runat="server" CssClass="txtBoxDtHr"></asp:TextBox>
 
-                                <asp:Label ID="Label2" runat="server" Text="Hora do Fim" CssClass="label">
-                                </asp:Label>
+                                <asp:Label ID="Label2" runat="server" Text="Fim:" CssClass="label"></asp:Label>
+                                <asp:TextBox ID="txtHrFim" type="time" runat="server" CssClass="txtBoxDtHr"></asp:TextBox>
 
-                                <input id="dtHrFim" type="datetime-local" class="txtBoxDtHr" />
+                                <asp:Button ID="btnAdicionarDtHr" runat="server" Text="+" OnClick="btnAdicionarDtHr_Click" />
+                                <asp:Button ID="btnRemoverDtHr" runat="server" Text="-" OnClick="btnRemoverDtHr_Click" />
 
-                                <asp:Button ID="btnAdicionarDtHr" runat="server" Text="+" />
                             </div>
 
-                            <table id="listBoxDtHr" class="listBox">
-                                <tr>
-                                    <th>Data</th>
-                                    <th>Hora de Início</th>
-                                    <th>Hora do Fim</th>
-                                </tr>
-
-                                <tr class="dadosTable">
-                                    <td>
-                                        <asp:Literal ID="litData" runat="server">00/00/0000</asp:Literal>
-                                    </td>
-
-                                    <td>
-                                        <asp:Literal ID="litHrInicio" runat="server">00:00</asp:Literal>
-                                    </td>
-
-                                    <td>
-                                        <asp:Literal ID="litHrFim" runat="server">00:00</asp:Literal>
-                                    </td>
-                                </tr>
-                            </table>
+                            <asp:ListBox ID="listBoxDtHr" runat="server" CssClass="listBox"></asp:ListBox>
                         </div>
 
                         <div class="outrosInfoEvento">
                             <asp:TextBox ID="txtLinkImg" runat="server" CssClass="txtBox"
                                 placeholder="Insira aqui o link da imagem do evento"></asp:TextBox>
 
-                            <asp:TextBox ID="txtBoxAvaliacao" runat="server" mode="multiline"
+                            <asp:TextBox ID="txtBoxDescricao" runat="server" mode="multiline"
                                 placeholder="Insira aqui a descrição do evento"></asp:TextBox>
 
-                            <asp:Button ID="btnAddEvento" runat="server" Text="Finalizar Criação" />
+                            <asp:Button ID="btnAddEvento" runat="server" Text="Finalizar Criação" OnClick="btnAddEvento_Click" />
                         </div>
                     </div>
 
                     <div class="addCategs">
                         <div class="categs">
-                            <asp:DropDownList ID="ddlCategs" runat="server">
-                                <asp:ListItem ID="ListItem1" runat="server" CssClass="itemLista"> Pintura
-                                </asp:ListItem>
-                                <asp:ListItem ID="ListItem2" runat="server" CssClass="itemLista"> Música
-                                </asp:ListItem>
-                                <asp:ListItem ID="ListItem3" runat="server" CssClass="itemLista"> Teatro
-                                </asp:ListItem>
-                                <asp:ListItem ID="ListItem4" runat="server" CssClass="itemLista"> Cinema
-                                </asp:ListItem>
-                                <asp:ListItem ID="ListItem5" runat="server" CssClass="itemLista"> RPG
-                                </asp:ListItem>
-                                <asp:ListItem ID="ListItem6" runat="server" CssClass="itemLista"> Esporte
-                                </asp:ListItem>
-                                <asp:ListItem ID="ListItem7" runat="server" CssClass="itemLista"> Saúde
-                                </asp:ListItem>
-                                <asp:ListItem ID="ListItem8" runat="server" CssClass="itemLista"> Jogos
-                                </asp:ListItem>
-                            </asp:DropDownList>
+                            <asp:DropDownList ID="ddlCategs" runat="server"></asp:DropDownList>
 
-                            <asp:Button ID="btnAddCateg" runat="server" Text="+" />
+                            <asp:Button ID="btnAddCateg" runat="server" Text="+" OnClick="btnAddCateg_Click" />
+                            <asp:Button ID="btnRmCateg" runat="server" Text="-" OnClick="btnRmCateg_Click"/>
                         </div>
 
-                        <asp:ListBox ID="listBoxCateg" runat="server" CssClass="listBox">
-                            <asp:ListItem ID="ListItem9" runat="server" CssClass="itemListBoxCateg"> Música
-                            </asp:ListItem>
-                            <asp:ListItem ID="ListItem10" runat="server" CssClass="itemListBoxCateg"> Jogos
-                            </asp:ListItem>
-                            <asp:ListItem ID="ListItem11" runat="server" CssClass="itemListBoxCateg"> Saúde
-                            </asp:ListItem>
-                        </asp:ListBox>
+                        <asp:ListBox ID="listBoxCateg" runat="server" CssClass="listBox" Rows="3"></asp:ListBox>
+                        <asp:Label ID="lblStatusListBox" runat="server"></asp:Label>
                     </div>
                 </section>
             </main>

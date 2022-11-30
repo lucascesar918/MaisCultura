@@ -11,8 +11,6 @@ namespace MaisCultura.Biblioteca
     {
         Usuario DataReaderToUsuario(MySqlDataReader data)
         {
-            var cdUsuario = data["@"].ToString(); 
-
             return new Usuario(data["@"].ToString(), data["Tipo"].ToString(), data["Sexo"].ToString(), data["Nome"].ToString(), data["Email"].ToString(), data["Senha"].ToString(), data["Documento"].ToString(), data["Nascimento"].ToString(), null);
         }
 
@@ -49,14 +47,10 @@ namespace MaisCultura.Biblioteca
             Usuario usuario = null;
             MySqlDataReader data = Query("BuscarUsuario", ("pCodigo", codigo));
 
-            while (data.Read())
-            {
-                usuario = DataReaderToUsuario(data);
-            }
-
+            while (data.Read()) usuario = DataReaderToUsuario(data);
             Desconectar();
-            if(usuario != null)
-                usuario.Preferencias = BuscarPreferencias(usuario.Codigo);
+
+            if(usuario != null) usuario.Preferencias = BuscarPreferencias(usuario.Codigo);
 
             return usuario;
         }

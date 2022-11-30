@@ -76,9 +76,9 @@ namespace MaisCultura.Site
                 lblArroba.Text = '@'+Evento.Responsavel;
                 lblNotaResp.Text = ListaUsuario.BuscarMediaCriador(Evento.Responsavel).ToString();
                 lblNmrInteresse.Text = ListaEvento.BuscarInteresses(Evento.Codigo).ToString();
-                litData.Text = Evento.Dias[0].Data.ToShortDateString();
-                litHrInicio.Text = Evento.Dias[0].Inicio.ToShortTimeString();
-                litHrFim.Text = Evento.Dias[0].Fim.ToShortTimeString();
+                litData.Text = Evento.Dias[0].Data;
+                litHrInicio.Text = Evento.Dias[0].Inicio;
+                litHrFim.Text = Evento.Dias[0].Fim;
 
                 List<String> imagens = new List<String>();
 
