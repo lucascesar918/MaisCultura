@@ -30,13 +30,12 @@ BEGIN
 		e.ds_evento "Descricao",
 		i.nm_imagem "Imagem"
 	FROM evento e
-		JOIN imagem_evento ie
+		LEFT JOIN imagem_evento ie
 			ON ie.cd_evento = e.cd_evento
-		JOIN imagem i
+		LEFT JOIN imagem i
 			ON i.cd_imagem = ie.cd_imagem
 	GROUP BY e.cd_evento;
-END$$
-call BuscarEvento(2);
+END$$ 
 
 DROP PROCEDURE IF EXISTS ListarCategorias$$
 CREATE PROCEDURE ListarCategorias()
@@ -228,12 +227,12 @@ BEGIN
 		MIN(de.hr_inicial) "Horario",
 		i.nm_imagem "Imagem"
 	FROM evento e 
-	JOIN usuario u ON (u.cd_usuario = e.cd_responsavel)
-	JOIN evento_categoria ce ON (ce.cd_evento = e.cd_evento)
-	JOIN categoria c ON (c.cd_categoria = ce.cd_categoria)
-	JOIN dia_evento de ON (e.cd_evento = de.cd_evento)
-	JOIN imagem_evento ie ON (ie.cd_evento = e.cd_evento)
-	JOIN imagem i ON (i.cd_imagem = ie.cd_imagem)
+	left JOIN usuario u ON (u.cd_usuario = e.cd_responsavel)
+	left JOIN evento_categoria ce ON (ce.cd_evento = e.cd_evento)
+	left JOIN categoria c ON (c.cd_categoria = ce.cd_categoria)
+	left JOIN dia_evento de ON (e.cd_evento = de.cd_evento)
+	left JOIN imagem_evento ie ON (ie.cd_evento = e.cd_evento)
+	left JOIN imagem i ON (i.cd_imagem = ie.cd_imagem)
 	WHERE e.cd_evento IN (
 		SELECT cd_evento FROM evento_categoria WHERE cd_categoria IN (
 			SELECT cd_categoria FROM preferencia WHERE cd_usuario = pUsuario
