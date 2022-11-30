@@ -409,10 +409,10 @@ figure{
     background-image: url(../Images/save.png);
 }
 
-.chk input:checked + span {
-    animation: save 0.5s ease-in forwards;
-    background-image: url(../Images/save2.png);
-}
+    .chk input:checked + span {
+        animation: save 0.5s ease-in forwards;
+        background-image: url(../Images/save2.png);
+    }
 
 #updBtnSave {
     height: 40px;

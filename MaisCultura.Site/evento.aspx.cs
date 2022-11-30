@@ -71,6 +71,8 @@ namespace MaisCultura.Site
 
                 litSair.Text = $"<a href='evento.aspx?e={Request.QueryString["e"]}'>Sair</a>";
 
+                verificarInteresse();
+
                 if (!IsPostBack)
                     verificarAvaliacaoFeita();
             }
@@ -170,7 +172,7 @@ namespace MaisCultura.Site
                 }
 
                 foreach (Categoria categoria in Evento.Categorias)
-                    litCategorias.Text += $"<span class='ag'>{categoria.Nome}</span>";
+                    litCategorias.Text += $"<span class='tag'>{categoria.Nome}</span>";
 
                 MostrarAvaliacoes();
             }
@@ -210,6 +212,15 @@ namespace MaisCultura.Site
                 ColocarEstrelas(aval.Estrelas);
                 txtBoxAvaliacao.Text = aval.Descricao;
                 btnAvaliar.Text = "Alterar Avaliação";
+            }
+        }
+
+        void verificarInteresse()
+        {
+            if (ListaEvento.InteresseUsuarioEvento(Request.QueryString["l"], int.Parse(Request.QueryString["e"])))
+            {
+                btnInteresse.CssClass = "Int";
+                btnInteresse.Text = "Interesse Demonstrado";
             }
         }
 
@@ -335,6 +346,52 @@ namespace MaisCultura.Site
 
             verificarAvaliacaoFeita();
             MostrarAvaliacoes();
+        }
+
+        protected void btnInteresse_Click(object sender, EventArgs e)
+        {
+            if (Request.QueryString["l"] == null)
+            {
+                ScriptManager.RegisterClientScriptBlock(Page, Page.GetType(), "funciona",
+                    @"<script type='text/javascript'> document.getElementById('btnLog').click(); </script>", true);
+                return;
+            }
+
+            if (btnInteresse.Text == "Demonstrar Interesse")
+            {
+                btnInteresse.CssClass = "Int";
+                btnInteresse.Text = "Interesse Demonstrado";
+                ListaEvento.Interessar(Request.QueryString["l"], int.Parse(Request.QueryString["e"]));
+            }
+            else
+            {
+                btnInteresse.CssClass = "naoInt";
+                btnInteresse.Text = "Demonstrar Interesse";
+                ListaEvento.CancelarInteresse(Request.QueryString["l"], int.Parse(Request.QueryString["e"]));
+            }
+        }
+
+        protected void cbxSave_CheckedChanged(object sender, EventArgs e)
+        {
+            if (Request.QueryString["l"] == null)
+            {
+                ScriptManager.RegisterClientScriptBlock(Page, Page.GetType(), "mensagem",
+                    @"$('#btnLog').click(function (e) {{
+                        e.preventDefault();
+                        window.scrollTo(0, 0);
+                        $('#log').toggle();
+                        $('#shade2').toggle();
+                        $('html, body').css({{ 'overflow': 'hidden' }});
+                    }});
+                    $('#btnLog').click();", true);
+                cbxSave.Checked = false;
+                ScriptManager.RegisterClientScriptBlock(Page, Page.GetType(), "FuncionaPorFavor", "<script type=\"text/javascript\"> document.getElementById('cbxSave').checked = false </script>", false);
+            }
+            else
+            {
+                cbxSave.Checked = true;
+                ScriptManager.RegisterClientScriptBlock(Page, Page.GetType(), "AgoraVai", "<script type=\"text/javascript\"> document.getElementById('cbxSave').checked = true </script>", false);
+            }
         }
     }
 }

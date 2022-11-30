@@ -256,6 +256,17 @@ namespace MaisCultura.Biblioteca
             NonQuery("RemoverInteresse", ("pUsuario", codigoUsuario), ("pEvento", codigoEvento));
         }
 
+        public bool InteresseUsuarioEvento(string codigoUsuario, int codigoEvento)
+        {
+            MySqlDataReader data = Query("BuscarInteresseUsuarioEvento", ("pUsuario", codigoUsuario), ("pEvento", codigoEvento));
+
+            bool resposta = data.HasRows;
+
+            Desconectar();
+
+            return resposta;
+        }
+
         public (List<Evento>, List<Evento>) GetDiffFeed(string codigo)
         {
             List<Evento> AllEventos = Listar();         //  Todos

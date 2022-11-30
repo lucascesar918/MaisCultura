@@ -138,7 +138,16 @@ namespace MaisCultura.Site
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox cbxSave;
+        protected global::System.Web.UI.WebControls.CheckBox cbxSave;
+
+        /// <summary>
+        /// Controle spnSave.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl spnSave;
 
         /// <summary>
         /// Controle litCategorias.
