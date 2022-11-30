@@ -10,6 +10,15 @@ namespace MaisCultura.Site
 {
     public partial class perfil : System.Web.UI.Page
     {
+        ListaUsuario ListaUsuario = new ListaUsuario();
+        ListaEvento ListaEvento = new ListaEvento();
+        ListaAvaliacao ListaAvaliacao = new ListaAvaliacao();
+
+        Usuario Login;
+        Usuario Usuario;
+
+        string cdAux;
+
         void HandleLogin()
         {
             if (Request.QueryString["l"] != null)
@@ -37,22 +46,15 @@ namespace MaisCultura.Site
 
         void HandleUser()
         {
-            if (Request.QueryString["u"] != null)
-            {
-                Login = ListaUsuario.Buscar(Request.QueryString["u"]);
+            Usuario = ListaUsuario.Buscar(Request.QueryString["u"]);
 
-                if (Login.Tipo != "Criador de Eventos" && Login.Tipo != "Empresa")
-                    Response.Redirect("erro.html");
+            if (Usuario == null)
+                Response.Redirect($"erro.html?msg=Tá vendo coisa? Esse usuário não existe!" + (Login == null ? "" : $"&l={Login.Codigo}"));
 
-                lblNmCompleto.Text = Login.Nome;
-                lblArroba.Text = Login.Codigo;
-                lblTUser.Text = Login.Tipo;
-                litTittle.Text = Login.Nome;
-            }
-            else
-            {
-                Response.Redirect("erro.html");
-            }
+            lblNmCompleto.Text = Usuario.Nome;
+            lblArroba.Text = Usuario.Codigo;
+            lblTUser.Text = Usuario.Tipo;
+            litTittle.Text = Usuario.Nome;
         }
 
         void CreateEvents(string codigo)
@@ -74,9 +76,7 @@ namespace MaisCultura.Site
                 var TagA = $"<a href='evento.aspx?e={evento.Codigo}'>";
 
                 if (Request.QueryString["l"] != null)
-                {
                     TagA = $"<a href='evento.aspx?l={Login.Codigo}&e={evento.Codigo}'>";
-                }
 
                 todosEventos += $@"<section class='card'>
                     <article class='card-header'>
@@ -115,14 +115,14 @@ namespace MaisCultura.Site
                             <figure>
                                 <img src='Images/calendar.png' alt='Ícone calendário' class='calendar-icon'>
                             </figure>
-                            <h3>{dias[0].Data.ToShortDateString()} a {dias[dias.Count - 1].Data.ToShortDateString()}</h3>
+                            <h3>{dias[0].Data} a {dias[dias.Count - 1].Data}</h3>
                         </article>
 
                         <article class='time'>
                             <figure>
                                 <img src='Images/time.png' alt='Ícone Tempo' class='time-icon'>
                             </figure>
-                            {dias[0].Inicio.ToShortTimeString()}
+                            {dias[0].Inicio}
                         </article>
                     </article>
 
@@ -144,7 +144,7 @@ namespace MaisCultura.Site
                                         <figure>
                                             <img src='Images/perfil526ace.png' class='imgPerfilAvaliacao' />
                                         </figure>
-                                        <span>{avaliacao.CodigoUsuario}</span>
+                                        <span class='userAval'>{avaliacao.CodigoUsuario}</span>
                                     </section>
                                     <div class='notaAvaliacao'>
                                         <span>{avaliacao.Estrelas}</span>
@@ -170,17 +170,13 @@ namespace MaisCultura.Site
                 </section>";
         }
 
-        ListaUsuario ListaUsuario = new ListaUsuario();
-        ListaEvento ListaEvento = new ListaEvento();
-        ListaAvaliacao ListaAvaliacao = new ListaAvaliacao();
-
-        Usuario Login;
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            HandleUser();
             HandleLogin();
-            CreateEvents(Request.QueryString["u"]);
+            HandleUser();
+            CreateEvents(Usuario.Codigo);
+            txtBoxAvaliacao.TextMode = TextBoxMode.MultiLine;
         }
     }
 }

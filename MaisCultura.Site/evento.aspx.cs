@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using MaisCultura.Biblioteca;
+using System.Web.Services;
 
 namespace MaisCultura.Site
 {
@@ -18,38 +19,27 @@ namespace MaisCultura.Site
         Usuario Login;
         Evento Evento;
 
-        protected void btnInteresse_Click(object sender, EventArgs e)
+        [WebMethod]
+        public static void salvarEvento(string codigoUsuario, int codigoEvento)
         {
-            if (btnInteresse.CssClass.Contains("naoInt"))   
-            {
-                btnInteresse.CssClass = "Int";
-                btnInteresse.Text = "Interesse Demonstrado";
-                ListaEvento.Salvar(Login.Codigo, Evento.Codigo);
-            }
-            else
-            {
-                btnInteresse.CssClass = "naoInt";
-                btnInteresse.Text = "Demonstrar Interesse";
-                ListaEvento.CancelarSalvo(Login.Codigo, Evento.Codigo);
-            }
+            ListaEvento ListaEvento = new ListaEvento();
+            ListaEvento.Salvar(codigoUsuario, codigoEvento);
         }
 
-        protected void btnSave_Click(object sender, EventArgs e)
+        [WebMethod]
+        public static void removerSalvo(string codigoUsuario, int codigoEvento)
         {
-            if (btnSave.CssClass.Contains("naoSalvo"))
-            {
-                btnSave.CssClass = "save salvo";
-            }
-            else
-            {
-                btnSave.CssClass = "save naoSalvo";
-            }
+            ListaEvento ListaEvento = new ListaEvento();
+            ListaEvento.CancelarSalvo(codigoUsuario, codigoEvento);
         }
 
-
-        
         protected void Page_Load(object sender, EventArgs e)
         {
+            txtBoxAvaliacao.TextMode = TextBoxMode.MultiLine;
+            txtBoxDescProb.TextMode = TextBoxMode.MultiLine;
+
+            litCategorias.Text = "";
+
             if (Request.QueryString["l"] != null)
             {
                 Login = ListaUsuario.Buscar(Request.QueryString["l"]);      //Logado
@@ -61,6 +51,8 @@ namespace MaisCultura.Site
                 btnLog.Visible = false;
                 btnCad.Visible = false;
                 litImgPerfil.Text = $@"<img src='Images/perfil526ace.png' class='imgPerfil'>";
+                bool save = ListaEvento.VerificarSalvo(Login.Codigo, int.Parse(Request.QueryString["e"]));
+                cbxSave.Checked = save;
             }
             else
             {
@@ -84,9 +76,9 @@ namespace MaisCultura.Site
                 lblArroba.Text = '@'+Evento.Responsavel;
                 lblNotaResp.Text = ListaUsuario.BuscarMediaCriador(Evento.Responsavel).ToString();
                 lblNmrInteresse.Text = ListaEvento.BuscarInteresses(Evento.Codigo).ToString();
-                litData.Text = Evento.Dias[0].Data.ToShortDateString();
-                litHrInicio.Text = Evento.Dias[0].Inicio.ToShortTimeString();
-                litHrFim.Text = Evento.Dias[0].Fim.ToShortTimeString();
+                litData.Text = Evento.Dias[0].Data;
+                litHrInicio.Text = Evento.Dias[0].Inicio;
+                litHrFim.Text = Evento.Dias[0].Fim;
 
                 List<String> imagens = new List<String>();
 

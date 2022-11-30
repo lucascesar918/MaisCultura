@@ -50,31 +50,31 @@ namespace MaisCultura.Biblioteca
 
         public DiaEvento(string data, string inicio, string fim)
         {
-            _data = SqlDateToDatetime(data);
-            _inicio = SqlTimeToDatetime(inicio);
-            _fim = SqlTimeToDatetime(fim);
+            Data = DateTime.Parse(data).ToShortDateString();
+            Inicio = DateTime.Parse(inicio).ToShortTimeString();
+            Fim = DateTime.Parse(fim).ToShortTimeString();
         }
 
 
-        private DateTime _data;
-        public DateTime Data
+        private string _data;
+        public string Data
         {
             get { return _data; }
-            set { _data = SqlDateToDatetime(value.ToString()); }
+            set { _data = value; }
         }
 
-        private DateTime _inicio;
-        public DateTime Inicio
+        private string _inicio;
+        public string Inicio
         {
             get { return _inicio; }
-            set { _inicio = SqlTimeToDatetime(value.ToString()); }
+            set { _inicio = value; }
         }
 
-        private DateTime _fim;
-        public DateTime Fim
+        private string _fim;
+        public string Fim
         {
             get { return _fim; }
-            set { _fim = SqlTimeToDatetime(value.ToString()); }
+            set { _fim = value; }
         }
 
     }

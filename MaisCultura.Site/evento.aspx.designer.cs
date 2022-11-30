@@ -105,22 +105,13 @@ namespace MaisCultura.Site
         protected global::System.Web.UI.WebControls.Label lblTituloEvento;
 
         /// <summary>
-        /// Controle updBtnSave.
+        /// Controle cbxSave.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel updBtnSave;
-
-        /// <summary>
-        /// Controle btnSave.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSave;
+        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox cbxSave;
 
         /// <summary>
         /// Controle litCategorias.
@@ -177,13 +168,49 @@ namespace MaisCultura.Site
         protected global::System.Web.UI.WebControls.Panel pnlAval;
 
         /// <summary>
-        /// Controle ddlEstrelas.
+        /// Controle umaEstrela.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlEstrelas;
+        protected global::System.Web.UI.WebControls.ImageButton umaEstrela;
+
+        /// <summary>
+        /// Controle duasEstrelas.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton duasEstrelas;
+
+        /// <summary>
+        /// Controle tresEstrelas.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton tresEstrelas;
+
+        /// <summary>
+        /// Controle quatroEstrelas.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton quatroEstrelas;
+
+        /// <summary>
+        /// Controle cincoEstrelas.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton cincoEstrelas;
 
         /// <summary>
         /// Controle txtBoxAvaliacao.

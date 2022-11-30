@@ -87,6 +87,33 @@ namespace MaisCultura
         protected global::System.Web.UI.WebControls.Literal litImgPerfil;
 
         /// <summary>
+        /// Controle viewCategoriasSelecionadas.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater viewCategoriasSelecionadas;
+
+        /// <summary>
+        /// Controle btnLimpar.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnLimpar;
+
+        /// <summary>
+        /// Controle filtrosCategorias.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater filtrosCategorias;
+
+        /// <summary>
         /// Controle btnVerMais.
         /// </summary>
         /// <remarks>

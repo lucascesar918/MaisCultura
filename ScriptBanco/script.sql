@@ -131,9 +131,9 @@ CREATE TABLE salvar(
 	PRIMARY KEY (cd_evento, cd_usuario)
 );
 
-CREATE TABLE categoria_evento(
-	cd_categoria INT,
+CREATE TABLE evento_categoria(
 	cd_evento INT,
+	cd_categoria INT,
 
 	FOREIGN KEY (cd_categoria)
 		REFERENCES categoria(cd_categoria),

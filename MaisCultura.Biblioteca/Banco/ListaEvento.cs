@@ -56,6 +56,7 @@ namespace MaisCultura.Biblioteca
             while (data.Read())
                 codigo = Int32.Parse(data["Max"].ToString());
 
+            Desconectar();
             return ++codigo;
         }
         
@@ -82,17 +83,35 @@ namespace MaisCultura.Biblioteca
             Desconectar();
             return dias;
         }
-        public List<Evento> Feed(string codigo_usuario = null)
+
+        public List<Evento> Feed(string codigo_usuario)
         {
             List<Evento> eventos = new List<Evento>();
 
             MySqlDataReader dadosEventos;
-            if (codigo_usuario == null)
-                dadosEventos = Query("ListarEventosFeedDeslogado");
-            else 
-                dadosEventos = Query("ListarEventosFeed", ("pUsuario", codigo_usuario));
+            dadosEventos = Query("ListarEventosFeed", ("pUsuario", codigo_usuario));
 
-           while (dadosEventos.Read())
+            while (dadosEventos.Read())
+                eventos.Add(DataReaderToEvento(dadosEventos, true));
+
+            Desconectar();
+
+            foreach (Evento Evento in eventos)
+            {
+                Evento.Categorias = BuscarCategorias(Evento.Codigo);
+                Evento.Dias = BuscarDias(Evento.Codigo);
+            }
+
+            return eventos;
+        }
+
+        public List<Evento> Filtro(string categoria)
+        {
+            List<Evento> eventos = new List<Evento>();
+
+            MySqlDataReader dadosEventos = Query("BuscarEventoCategoria", ("pCat", categoria));
+
+            while (dadosEventos.Read())
                 eventos.Add(DataReaderToEvento(dadosEventos, true));
 
             Desconectar();
@@ -105,7 +124,7 @@ namespace MaisCultura.Biblioteca
             return eventos;
         }
 
-         
+
         public void AdicionarCategorias(int evento, List<Categoria> categorias)
         {
 
@@ -228,14 +247,48 @@ namespace MaisCultura.Biblioteca
             NonQuery("DeletarEvento", ("pCodigo", codigo));
         }
 
-        public void Salvar(string codigoUsuario, int codigoEvento)
+        public void Interessar(string codigoUsuario, int codigoEvento)
         {
             NonQuery("AdicionarInteresse", ("pUsuario", codigoUsuario), ("pEvento", codigoEvento));
         }
 
-        public void CancelarSalvo(string codigoUsuario, int codigoEvento)
+        public void CancelarInteresse(string codigoUsuario, int codigoEvento)
         {
             NonQuery("RemoverInteresse", ("pUsuario", codigoUsuario), ("pEvento", codigoEvento));
+        }
+
+        public (List<Evento>, List<Evento>) GetDiffFeed(string codigo)
+        {
+            List<Evento> AllEventos = Listar();         //  Todos
+            List<Evento> Preferencia = Feed(codigo);    //  Feed
+            List<Evento> Diff = new List<Evento>();     //  Todos - Feed
+
+            foreach (Evento evento in AllEventos)
+                if (!Preferencia.Contains(evento))
+                    Diff.Add(evento);
+
+            return (Diff, Preferencia);
+        }
+
+        public void Salvar(string codigoUsuario, int codigoEvento)
+        {
+            NonQuery("AdicionarSalvo", ("pUsuario", codigoUsuario), ("pEvento", codigoEvento));
+        }
+
+        public void CancelarSalvo(string codigoUsuario, int codigoEvento)
+        {
+            NonQuery("RemoverSalvo", ("pUsuario", codigoUsuario), ("pEvento", codigoEvento));
+        }
+
+        public bool VerificarSalvo(string codigoUsuario, int codigoEvento)
+        {
+            MySqlDataReader data = Query("BuscarSalvoUsuarioEvento", ("pUsuario", codigoUsuario), ("pEvento", codigoEvento));
+
+            bool resposta = data.HasRows;
+
+            Desconectar();
+
+            return resposta;
         }
     }
 }
