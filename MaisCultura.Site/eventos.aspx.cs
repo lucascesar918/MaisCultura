@@ -24,7 +24,6 @@ namespace MaisCultura
                 Login = ListaUsuario.Buscar(Request.QueryString["l"]);
                 litLogo.Text = $"<a href='eventos.aspx?l={Login.Codigo}'>";
                 litUsuario.Text = $"<a href='meu-perfil.aspx?l={Login.Codigo}'>{Login.Nome}</a>";
-                litDropDownHome.Text = $"<a href='eventos.aspx?l={Login.Codigo}'>Início</a>";
                 litDropDownPerfil.Text = $"<a href='meu-perfil.aspx?l={Login.Codigo}&u={Login.Codigo}'>Perfil</a>";
                 if (Login.Tipo == "Administrador")                                                              //Logado
                     litDropDownDenuncias.Text = $"<a href='denuncias.aspx?l={Login.Codigo}'>Denúncias</a>";
@@ -65,8 +64,16 @@ namespace MaisCultura
 
                 if (Login != null)
                 {
-                    TagAEvento = $"<a href='evento.aspx?l={Login.Codigo}&e={evento.Codigo}'>";
-                    TagAPerfil = $"<a href='perfil.aspx?l={Login.Codigo}&u={usuarioEvento.Codigo}'>";
+                    if (Login.Nome == evento.Responsavel)
+                    {
+                        TagAEvento = $"<a href='meu-evento.aspx?l={Login.Codigo}&e={evento.Codigo}'>";
+                        TagAPerfil = $"<a href='meu-perfil.aspx?l={Login.Codigo}&u={usuarioEvento.Codigo}'>";
+                    }
+                    else
+                    {
+                        TagAEvento = $"<a href='evento.aspx?l={Login.Codigo}&e={evento.Codigo}'>";
+                        TagAPerfil = $"<a href='perfil.aspx?l={Login.Codigo}&u={usuarioEvento.Codigo}'>";
+                    }
                 }
 
                 litEventos.Text += $@"{ClassHidden}
@@ -197,7 +204,6 @@ namespace MaisCultura
                 return;
             if(CategoriasSelecionadas.Count < 3 && !CategoriasSelecionadas.Any(c=> c.Codigo == codigoCategoria))
                 CategoriasSelecionadas.Add(new Categoria(codigoCategoria, Botao.Text));
-          
 
         }
 

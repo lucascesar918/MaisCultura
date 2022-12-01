@@ -15,25 +15,25 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <header class="header header-primaria">
+         <header class="header header-primaria">
             <figure class="figure-header">
-                <a href="eventos.aspx">
-                <img src="Images/logoNomeMenor.png" class="logo-header" />
-                    </a>
+                <asp:Literal ID="litLogo" runat="server"></asp:Literal>
+                    <img src="Images/logoNomeMenor.png" class="logo-header"/>
+                </a>
             </figure>
 
             <article class="usuario">
                 <div class="menuUsuario">
-                    <asp:Button CssClass="dropbtn" ID="dropbtnUsuario" runat="server" Text="Bárbara Pera" />
+                    <asp:Literal ID="litUsuario" runat="server"></asp:Literal>
+                    
                     <div class="dropdown-content">
-                        <a href="eventos.aspx">Início</a>
-                        <a href="perfil.aspx">Perfil</a>
-                        <a href="meus-eventos.aspx">Meus Eventos</a>
+                        <asp:Literal ID="litDropDownHome" runat="server"></asp:Literal>
+                        <asp:Literal ID="litDropDownPerfil" runat="server"></asp:Literal>
                         <a href="eventos.aspx">Sair</a>
                     </div>
                 </div>
-
-                <img src="Images/perfil526ace.png" class="imgPerfil">
+                <asp:Literal ID="litImgPerfil" runat="server"></asp:Literal>
+                
             </article>
         </header>
 
@@ -49,101 +49,14 @@
         </section>
 
         <main class="principal">
-            <div class="filtros">
-                <h2 class="filtros-titulos">Categoria</h2>
-                <asp:Button ID="btnCatPintura" runat="server" Text="Pintura" class="button filtros-subtitulos categoria" />
-                <asp:Button ID="btnCatMusica" runat="server" Text="Música" class="button filtros-subtitulos categoria" />
-                <asp:Button ID="btnCatEsporte" runat="server" Text="Esporte" class="button filtros-subtitulos categoria" />
-                <asp:Button ID="btnCatCinema" runat="server" Text="Cinema" class="button filtros-subtitulos categoria" />
-                <asp:Button ID="btnCatTeatro" runat="server" Text="Teatro" class="button filtros-subtitulos categoria" />
-                <asp:Button ID="btnCatJogos" runat="server" Text="Jogos" class="button filtros-subtitulos categoria" />
-                <asp:Button ID="btnCatRPG" runat="server" Text="RPG" class="button filtros-subtitulos categoria" />
-                <asp:Button ID="btnVerMais" runat="server" Text="Ver mais categorias" class="button filtros-subtitulos verMais" />
-                <br />
-                <h2 class="filtros-titulos">Local</h2>
-                <asp:TextBox ID="txtLocal" runat="server" CssClass="txt txtLocal"></asp:TextBox>
-
-                <h2 class="filtros-titulos">Datas e horários</h2>
-                <h2 class="filtros-subtitulos data">Início</h2>
-                <input type="datetime-local" id="dtStart" name="dtStart" class="dt dtStart" runat="server" />
-                <h2 class="filtros-subtitulos data">Fim</h2>
-                <input type="datetime-local" id="dtEnd" name="dtEnd" class="dt dtEnd" runat="server" />
-
-                <h2 class="filtros-titulos aval">Avaliação</h2>
-                <asp:DropDownList ID="dpdAval" runat="server" CssClass="dpdAval">
-                    <asp:ListItem Selected>Todos</asp:ListItem>
-                    <asp:ListItem>Uma estrela</asp:ListItem>
-                    <asp:ListItem>Duas estrelas</asp:ListItem>
-                    <asp:ListItem>Três estrelas</asp:ListItem>
-                    <asp:ListItem>Quatro estrelas</asp:ListItem>
-                    <asp:ListItem>Cinco estrelas</asp:ListItem>
-                </asp:DropDownList>
-            </div>
 
             <div class="corpo">
-                <div class="boxPesquisa">
-                    <section class="txtIcon">
-                        <asp:TextBox ID="txtPesquisa" runat="server" CssClass="txt txtPesquisa" placeHolder="Pesquise por seus eventos..."></asp:TextBox>
-                        <img src="Images/pesquisa.png" alt="Ícone pesquisa" class="icon" />
-                    </section>
-                </div>
-                <hr />
-
-                <div class="eventos">
-                    <section class="card">
-                        <article class="card-header">
-                            <figure>
-                                <img src="Images/perfil526ace.png" alt="imagem de perfil" class="perfil" />
-                            </figure>
-
-                            <article class="card-header-nome">
-                                <h2>Bárbara Pera</h2>
-                                <h5>@barbara</h5>
-                            </article>
-
-                            <figure>
-                                <img src="Images/save.png" alt="Salvar" class="save" />
-                            </figure>
-                        </article>
-
-                        <article class="card-tittle">
-                            <h2>Interclasse EE Ablas Filho vs Etecaf</h2>
-                        </article>
-
-                        <article class="card-tags">
-                            <h2 class="tag">Esporte</h2>
-                            <h2 class="tag">Futebol</h2>
-                        </article>
-
-                        <article class="card-image">
-                            <figure>
-                                <img src="Images/interclasse.jpg" alt="Interclasse de cria" class="foto-evento" />
-                            </figure>
-                        </article>
-
-                        <article class="card-dateTime dateTime">
-                            <article class="card-dateTime date">
-                                <figure>
-                                    <img src="Images/calendar.png" alt="Calendar icon" class="calendar-icon" />
-                                </figure>
-                                <h3>02/10 a 10/10</h3>
-                            </article>
-
-                            <article class="card-dateTime time">
-                                <figure>
-                                    <img src="Images/time.png" alt="Time icon" class="time-icon" />
-                                </figure>
-                                <h3>15:10</h3>
-                            </article>
-                        </article>
-
-                        <article class="card-local">
-                            <figure>
-                                <img src="Images/local.png" alt="Local icon" class="local-icon" />
-                            </figure>
-                            <h3>Santos, SP</h3>
-                        </article>
-                    </section>
+                <div class="event-manager">
+                    <div class="eventos">
+                        
+                        <asp:Literal ID="litEventos" runat="server"></asp:Literal>
+                            
+                    </div>
                 </div>
             </div>
         </main>

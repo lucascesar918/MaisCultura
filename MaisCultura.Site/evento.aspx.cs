@@ -125,7 +125,10 @@ namespace MaisCultura.Site
 
                 if (Request.QueryString["l"] != null)
                 {
-                    TagAPerfil = $"<a href='perfil.aspx?l={Login.Codigo}&u={usuarioEvento.Codigo}'>";
+                    if (Login.Nome == Evento.Responsavel)
+                        TagAPerfil = $"<a href='meu-perfil.aspx?l={Login.Codigo}&u={usuarioEvento.Codigo}'>";
+                    else
+                        TagAPerfil = $"<a href='perfil.aspx?l={Login.Codigo}&u={usuarioEvento.Codigo}'>";
                 }
 
                 litPerfilImage.Text = TagAPerfil;
