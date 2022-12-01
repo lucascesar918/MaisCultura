@@ -45,18 +45,24 @@ namespace MaisCultura
                 btnCad.Visible = true;
             }
         }
+
         List<Categoria> CategoriasSelecionadas
         {
             get => ViewState["CategoriasSelecionadas"] as List<Categoria>;
             set => ViewState["CategoriasSelecionadas"] = value;
-        } 
+        }
 
-        private void PrintarEventos(List<Evento> Eventos, bool hidden) {
+        private void PrintarEventos(List<Evento> Eventos, bool hidden)
+        {
             foreach (Evento evento in Eventos)
             {
                 Usuario usuarioEvento = ListaUsuario.Buscar(evento.Responsavel);
                 List<Categoria> categorias = evento.Categorias;
-                List<DiaEvento> dias = evento.Dias;
+                List<DiaEvento> dias = ListaEvento.BuscarDias(evento.Codigo);
+                string imagem = ListaEvento.BuscarImagem(evento.Codigo)[0];
+                string dia_inicial = dias[0].Data;
+                string dia_final = dias[dias.Count - 1].Data;
+                string tempo = dias[0].Inicio;
 
                 string TagAEvento = $"<a href='evento.aspx?e={evento.Codigo}'>";
                 string TagAPerfil = $"<a href='perfil.aspx?u={usuarioEvento.Codigo}'>";
@@ -92,14 +98,23 @@ namespace MaisCultura
                     </a>
 
                     <article class='card-tags'>";
+
+
+
+
                 foreach (Categoria categoria in categorias)
-                    litEventos.Text += $@"<h2 class='tag'>{categoria.Nome}</h2>
-                    </article>
+                    litEventos.Text += $@"<h2 class='tag'>{categoria.Nome}</h2>";
+
+
+
+
+
+                litEventos.Text += $@"</article>
 
                     <article class='card-image'>
                         {TagAEvento}
                             <figure>
-                                <img src='{ListaEvento.BuscarImagem(evento.Codigo)[0]}' alt='Interclasse de cria' class='foto-evento'>
+                                <img src='{imagem}' alt='Interclasse de cria' class='foto-evento'>
                             </figure>
                         </a>
                     </article>
@@ -109,14 +124,14 @@ namespace MaisCultura
                             <figure>
                                 <img src='Images/calendar.png' alt='Ícone calendário' class='calendar-icon'>
                             </figure>
-                            <h3>{dias[0].Data} a {dias[dias.Count - 1].Data}</h3>
+                            <h3>{dia_inicial} a {dia_final}</h3>
                         </article>
 
                         <article class='time'>
                             <figure>
                                 <img src='Images/time.png' alt='Ícone Tempo' class='time-icon'>
                             </figure>
-                            {dias[0].Inicio}
+                            {tempo}
                         </article>
                     </article>
 
@@ -133,8 +148,9 @@ namespace MaisCultura
             }
         }
 
-        private void ListarEventos(string usuario) {
-           
+        private void ListarEventos(string usuario)
+        {
+
             litEventos.Text = "";
 
             List<Evento> Diff; // Eventos que não são da preferência do usuário
@@ -144,7 +160,7 @@ namespace MaisCultura
 
             Feed = Feed.FindAll((e) => Filtro.Verificar(e));
             Diff = Diff.FindAll((e) => Filtro.Verificar(e));
-           
+
             litEventos.Text = "";
             PrintarEventos(Feed, false);
             PrintarEventos(Diff, Feed.Count > 0);
@@ -160,7 +176,8 @@ namespace MaisCultura
         }
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack){
+            if (!IsPostBack)
+            {
                 var Categorias = ListaEvento.ListarCategorias();
                 filtrosCategorias.DataSource = Categorias;
                 filtrosCategorias.DataBind();
@@ -185,17 +202,17 @@ namespace MaisCultura
             ListarEventos(Login?.Codigo);
 
             LoadComplete += Page_Load;
-            
+
         }
-        
+
         protected void ClickCategoria(object sender, EventArgs e)
         {
             var Botao = (Button)sender;
             if (!int.TryParse(Botao.CommandArgument, out var codigoCategoria))
                 return;
-            if(CategoriasSelecionadas.Count < 3 && !CategoriasSelecionadas.Any(c=> c.Codigo == codigoCategoria))
+            if (CategoriasSelecionadas.Count < 3 && !CategoriasSelecionadas.Any(c => c.Codigo == codigoCategoria))
                 CategoriasSelecionadas.Add(new Categoria(codigoCategoria, Botao.Text));
-          
+
 
         }
 
@@ -208,7 +225,7 @@ namespace MaisCultura
 
 
         }
- 
+
         protected void btnLogar_Click(object sender, EventArgs e)
         {
             Login = ListaUsuario.BuscarLogin(txtBoxUser.Text, txtBoxSenha.Text);
@@ -219,9 +236,9 @@ namespace MaisCultura
 
         protected void btnCadastrar_Click(object sender, EventArgs e)
         {
-            Usuario Cadastro = new Usuario(txtBoxNmUsuario.Text, ddlTipoUser.Text, ddlSexo.Text, txtBoxNome.Text + txtBoxSobrenome.Text, txtBoxEmail.Text, txtBoxSenhaCad.Text, " ", txtData.Text, null);
+            Usuario Cadastrado = new Usuario(txtBoxNmUsuario.Text, ddlTipoUser.Text, ddlSexo.Text, txtBoxNome.Text + txtBoxSobrenome.Text, txtBoxEmail.Text, txtBoxSenhaCad.Text, " ", txtData.Text, null);
 
-            ListaUsuario.CriarUsuario(Cadastro);
+            ListaUsuario.CriarUsuario(Cadastrado);
         }
 
         protected void btnCadastrar_Click1(object sender, EventArgs e)

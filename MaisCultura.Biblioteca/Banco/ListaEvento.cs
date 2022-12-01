@@ -16,6 +16,17 @@ namespace MaisCultura.Biblioteca
             return str.Length > TamanhoMaximo ? str.Substring(0, TamanhoMaximo - 3) + "..." : str;
         }
  
+        string DateToSqlDate(string data)
+        {
+            string dia = data.Substring(0, 2);
+            string mes = data.Substring(3, 2);
+            string ano = data.Substring(6, 4);
+
+            string dataConv = $"{ano}-{mes}-{dia}"; ;
+
+            return dataConv;
+        }
+
         Evento DataReaderToEvento(MySqlDataReader data, bool Reticencias) {
             var cdEvento = Int32.Parse(data["Codigo"].ToString());
             string responsavel = data["@"].ToString();
@@ -59,7 +70,19 @@ namespace MaisCultura.Biblioteca
             Desconectar();
             return ++codigo;
         }
-        
+
+        public int MaxCodigoImagem()
+        {
+            int codigo = 0;
+
+            MySqlDataReader data = Query("MaxCodigoImagem");
+            while (data.Read())
+                codigo = Int32.Parse(data["Max"].ToString());
+
+            Desconectar();
+            return ++codigo;
+        }
+
         public List<Categoria> BuscarCategorias(int codigo_evento)
         {
             List<Categoria> categorias = new List<Categoria>();
@@ -176,8 +199,10 @@ namespace MaisCultura.Biblioteca
             return eventos;
         }
 
-        public void Criar(Evento evento)
-        { 
+        public void Criar(Evento evento, string link)
+        {
+            string max_imagem = "";
+
             NonQuery("CadastrarEvento",
                 ("pCodigo", MaxCodigo()),
                 ("pResponsavel", evento.Responsavel),
@@ -185,6 +210,13 @@ namespace MaisCultura.Biblioteca
                 ("pLocal", evento.Local),
                 ("pDescricao", evento.Descricao)    
             );
+
+            max_imagem = MaxCodigoImagem().ToString();
+            Desconectar();
+
+            AdicionarImagem(link, evento.Codigo);
+            AdicionarDatas(evento.Codigo, evento.Dias);
+            AdicionarCategorias(evento.Codigo, evento.Categorias);
         }
 
         public List<Categoria> ListarCategorias()
@@ -289,6 +321,25 @@ namespace MaisCultura.Biblioteca
             Desconectar();
 
             return resposta;
+        }
+
+        public void AdicionarData(int codigoEvento, DiaEvento dia)
+        {
+            NonQuery("CadastrarDiaEvento", ("pCodigoEvento", codigoEvento), ("pData", DateToSqlDate(dia.Data)), ("pInicio", $"{dia.Inicio}:00"), ("pFim", $"{dia.Fim}:00"));
+        }
+
+        public void AdicionarDatas(int codigoEvento, List<DiaEvento> dias)
+        {
+            foreach (DiaEvento dia in dias)
+                AdicionarData(codigoEvento, dia);
+        }
+
+        public void AdicionarImagem(string link, int codigoEvento)
+        {
+            string maxImagem = MaxCodigoImagem().ToString();
+
+            NonQuery("CadastrarImagem", ("pCodigo", maxImagem), ("pImagem", link));
+            NonQuery("AdicionarImagemEvento", ("pCodigoEvento", codigoEvento), ("pCodigoImagem", maxImagem));
         }
     }
 }

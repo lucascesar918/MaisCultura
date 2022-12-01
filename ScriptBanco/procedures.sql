@@ -35,7 +35,7 @@ BEGIN
 		LEFT JOIN imagem i
 			ON i.cd_imagem = ie.cd_imagem
 	GROUP BY e.cd_evento;
-END$$ 
+END$$
 
 DROP PROCEDURE IF EXISTS ListarCategorias$$
 CREATE PROCEDURE ListarCategorias()
@@ -470,7 +470,7 @@ DROP PROCEDURE IF EXISTS CadastrarCategoriaEvento$$
 CREATE PROCEDURE CadastrarCategoriaEvento(pEvento INT, pCategoria INT)
 BEGIN
 	INSERT INTO evento_categoria VALUES
-    (pCategoria, pEvento);
+    (pEvento, pCategoria);
 END$$
 
 DROP PROCEDURE IF EXISTS CadastrarDiaEvento$$
@@ -735,6 +735,30 @@ DROP PROCEDURE IF EXISTS BuscarSalvoUsuarioEvento$$
 CREATE PROCEDURE BuscarSalvoUsuarioEvento ( pUsuario VARCHAR(20), pEvento INT)
 BEGIN
 	SELECT * FROM salvar WHERE cd_evento = pEvento AND cd_usuario = pUsuario;
+END$$
+
+DROP PROCEDURE IF EXISTS MaxCodigoImagem$$
+CREATE PROCEDURE MaxCodigoImagem()
+BEGIN
+	SELECT MAX(cd_imagem) "Max" from imagem;
+END$$
+
+DROP PROCEDURE IF EXISTS CadastrarImagem$$
+CREATE PROCEDURE CadastrarImagem(pCodigo INT, pImagem TEXT)
+BEGIN
+	INSERT INTO imagem VALUES (pCodigo, pImagem);
+END$$
+
+DROP PROCEDURE IF EXISTS AdicionarImagemEvento$$
+CREATE PROCEDURE AdicionarImagemEvento(pCodigoImagem INT, pCodigoEvento INT)
+BEGIN
+	INSERT INTO imagem_evento VALUES (pCodigoEvento, pCodigoImagem);
+END$$
+
+DROP PROCEDURE IF EXISTS CadastrarDiaEvento$$
+CREATE PROCEDURE CadastrarDiaEvento(pCodigoEvento INT, pData DATE, pInicio TIME, pFim TIME)
+BEGIN
+	INSERT INTO dia_evento VALUES (pCodigoEvento, pData, pInicio, pFim);
 END$$
 
 DELIMITER ;

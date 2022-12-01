@@ -124,14 +124,19 @@ namespace MaisCultura.Site
             listBoxDtHr.Items.RemoveAt(listBoxDtHr.SelectedIndex);
         }
 
-
         protected void btnAddEvento_Click(object sender, EventArgs e)
         {
             DiaEvento ValueToDiaEvento(string value)
             {
                 string[] splitValue = value.Split('-');
 
-                return new DiaEvento(splitValue[0], splitValue[1], splitValue[2]);
+                string dia = splitValue[0].Substring(0,2);
+                string mes = splitValue[0].Substring(3,2);
+                string ano = splitValue[0].Substring(6,4);
+
+                string data = $"{ano}-{mes}-{dia}"; ;
+
+                return new DiaEvento(data, $"{splitValue[1]}:00", $"{splitValue[2]}:00");
             }
 
             Evento Evento;
@@ -146,7 +151,7 @@ namespace MaisCultura.Site
 
             Evento = new Evento(ListaEvento.MaxCodigo(), Login.Codigo, txtTituloEvento.Text, $"{ddlUF.SelectedItem.Text}, {txtCidade.Text}, {txtEndereco.Text}", txtBoxDescricao.Text, Categorias, Dias);
 
-            ListaEvento.Criar(Evento);
+            ListaEvento.Criar(Evento, txtLinkImg.Text);
 
             Response.Redirect($"eventos.aspx?l={Login.Codigo}");
         }
