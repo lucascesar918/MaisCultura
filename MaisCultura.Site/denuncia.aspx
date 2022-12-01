@@ -18,7 +18,7 @@
         <form id="form1" runat="server">
             <header class="header header-primaria">
                 <figure class="figure-header">
-                    <a href="eventos.aspx">
+                    <asp:Literal ID="litLogo" runat="server"></asp:Literal>
                     <img src="Images/logoNomeMenor.png" class="logo-header" />
                         </a>
                 </figure>

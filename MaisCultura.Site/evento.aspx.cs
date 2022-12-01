@@ -75,7 +75,7 @@ namespace MaisCultura.Site
                 bool save = ListaEvento.VerificarSalvo(Login.Codigo, int.Parse(Request.QueryString["e"]));
                 cbxSave.Checked = save;
 
-                if (Login.Tipo == "Criador de Eventos")
+                if (Login.Tipo == "Criador de Eventos" || Login.Tipo == "Empresa")
                     litDpdMeusEventos.Text = $"<a href='meus-eventos.aspx?l={Login.Codigo}'>Meus Eventos</a>";
 
                 litSair.Text = $"<a href='evento.aspx?e={Request.QueryString["e"]}'>Sair</a>";

@@ -16,11 +16,15 @@
 
     <body>
         <form id="form1" runat="server">
+
+            <div id="shade4" class="shade"></div>
+            <div id="shade5" class="shade"></div>
+
             <header class="header header-primaria">
                 <figure class="figure-header">
-                    <a href="eventos.aspx">
-                    <img src="Images/logoNomeMenor.png" class="logo-header" />
-                        </a>
+                    <asp:Literal ID="litLogo" runat="server"></asp:Literal>
+                        <img src="Images/logoNomeMenor.png" class="logo-header" />
+                    </a>
                 </figure>
 
                 <article class="buttons">
@@ -32,10 +36,9 @@
                 <div class="menuUsuario">
                     <asp:Button CssClass="dropbtn" ID="dropbtnUsuario" runat="server" Text="Nome" />
                     <div class="dropdown-content">
-                    <asp:Literal ID="litDropDownHome" runat="server"></asp:Literal>  <%--Possível aplicar databinder--%>
-                    <asp:Literal ID="litDropDownPerfil" runat="server"></asp:Literal>
-                    <asp:Literal ID="litDropDownDenuncias" runat="server"></asp:Literal>
-                    <a href="eventos.aspx">Sair</a>
+                        <asp:Literal ID="litDropDownHome" runat="server"></asp:Literal>  <%--Possível aplicar databinder--%>
+                        <asp:Literal ID="litDropDownDenuncias" runat="server"></asp:Literal>
+                        <a href="eventos.aspx">Sair</a>
                     </div>
                 </div>
                 <asp:Literal ID="litImgPerfil" runat="server"></asp:Literal>
@@ -91,71 +94,13 @@
                                 </div>
                             </section>
                         </div>
-                        <div class="interessesEsalvos">
-                            <div class="botoes">
-                                <asp:Button ID="btnInteresse" runat="server" Text="Interesses"
-                                    CssClass="titleInteresse" />
 
-                                <asp:Button ID="btnSalvos" runat="server" Text="Salvos" CssClass="titleSalvos" />
+                        <h2 ID="meusEventos" runat="server">Meus Eventos</h2>
+
+                        <div class="event-manager">
+                            <div class="eventos">
+                                <asp:Literal ID="litEventos" runat="server"></asp:Literal>
                             </div>
-                            <a href="evento.aspx">
-                                <section class="card">
-                                    <article class="card-header">
-                                        <figure>
-                                            <img src="Images/perfil526ace.png" alt="imagem de perfil" class="perfil" />
-                                        </figure>
-
-                                        <article class="card-header-nome">
-                                            <h2>Bárbara Pera</h2>
-                                            <h5>@barbara</h5>
-                                        </article>
-
-                                        <figure>
-                                            <img src="Images/save.png" alt="Salvar" class="save" />
-                                        </figure>
-                                    </article>
-
-                                    <article class="card-tittle">
-                                        <h2>Interclasse EE Ablas Filho vs Etecaf</h2>
-                                    </article>
-
-                                    <article class="card-tags">
-                                        <h2 class="tag">Esporte</h2>
-                                        <h2 class="tag">Futebol</h2>
-                                    </article>
-
-                                    <article class="card-image">
-                                        <figure>
-                                            <img src="Images/interclasse.jpg" alt="Interclasse de cria"
-                                                class="foto-evento" />
-                                        </figure>
-                                    </article>
-
-                                    <article class="card-dateTime dateTime">
-                                        <article class="card-dateTime date">
-                                            <figure>
-                                                <img src="Images/calendar.png" alt="Calendar icon"
-                                                    class="calendar-icon" />
-                                            </figure>
-                                            <h3>02/10 a 10/10</h3>
-                                        </article>
-
-                                        <article class="card-dateTime time">
-                                            <figure>
-                                                <img src="Images/time.png" alt="Time icon" class="time-icon" />
-                                            </figure>
-                                            <h3>15:10</h3>
-                                        </article>
-                                    </article>
-
-                                    <article class="card-local">
-                                        <figure>
-                                            <img src="Images/local.png" alt="Local icon" class="local-icon" />
-                                        </figure>
-                                        <h3>Santos, SP</h3>
-                                    </article>
-                                </section>
-                            </a>
                         </div>
 
                     </section>
@@ -176,7 +121,7 @@
                 </main>
             </section>
 
-            <div id="boxExcluir" style="display: none; box-shadow: 5px 5px 8px black; position: fixed">
+            <div id="boxExcluir" class="excluir pop">
 
                 <h3 class="h3"> Você tem certeza que deseja excluir sua conta? </h3>
                 <div class="boxBtn">
@@ -186,7 +131,7 @@
 
             </div>
 
-            <div id="box" class="hidden">
+            <div id="box" class="preferencia pop">
 
                 <h3 class="h3"> Editar Preferências </h3>
                 <h3 class="h3Edit"> Preferências </h3>
@@ -205,10 +150,7 @@
 
             </div>
 
-            <div id="boxSenha" style="display: none; box-shadow: 5px 5px 8px black; position: fixed;">
-
-                <button id="sumirPopupSenha"
-                    style="position: relative; top: 0px; right: 0px; align-self: flex-end; width: 20px; height: 30px;">X</button>
+            <div id="boxSenha" class="senha pop">
                 <h3 class="h3"> Alterar Senha</h3>
 
                 <asp:TextBox CssClass="inputSenha" ID="txtSenhaAntiga" placeholder="Senha antiga" runat="server">
@@ -216,11 +158,14 @@
                 <asp:TextBox CssClass="inputSenha" ID="txtSenhaNova" placeholder="Senha nova" runat="server">
                 </asp:TextBox>
                 <asp:Button CssClass="btnSenha" ID="btnSenha" runat="server" Text="Alterar" OnClick="btnSenha_Click" />
+                <asp:Button CssClass="Fechar" ID="sumirPopupSenha" runat="server" Text="Fechar"/>
             </div>
         </form>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
         <script type="text/javascript" src="js/perfil.js"></script>
+        <script type="text/javascript" src="js/CadastroLogin.js"></script>
     </body>
 
     </html>

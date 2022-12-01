@@ -25,12 +25,12 @@ namespace MaisCultura
                 litLogo.Text = $"<a href='eventos.aspx?l={Login.Codigo}'>";
                 litUsuario.Text = $"<a href='meu-perfil.aspx?l={Login.Codigo}'>{Login.Nome}</a>";
                 litDropDownHome.Text = $"<a href='eventos.aspx?l={Login.Codigo}'>Início</a>";
-                litDropDownPerfil.Text = $"<a href='meu-perfil.aspx?l={Login.Codigo}&u={Login.Codigo}'>Perfil</a>";
+                litDropDownPerfil.Text = $"<a href='meu-perfil.aspx?l={Login.Codigo}'>Perfil</a>";
                 litUsuario.Visible = true;
                 litImgPerfil.Text = $@"<a href='meu-perfil.aspx?l={Login.Codigo}'>
                     <img src='Images/perfil526ace.png' class='imgPerfil'>
                 </a>";
-                if (Login.Tipo != "Criador de Eventos")
+                if (Login.Tipo != "Criador de Eventos" && Login.Tipo != "Empresa")
                     Response.Redirect($"erro.html?msg=Sem permissão para acessar essa página!" + (Login == null ? "" : $"&l={Login.Codigo}"));
             }
         }

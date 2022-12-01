@@ -33,6 +33,24 @@ namespace MaisCultura.Site
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
+        /// Controle ScriptManager1.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.ScriptManager ScriptManager1;
+
+        /// <summary>
+        /// Controle litLogo.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal litLogo;
+
+        /// <summary>
         /// Controle btnLog.
         /// </summary>
         /// <remarks>
@@ -51,13 +69,13 @@ namespace MaisCultura.Site
         protected global::System.Web.UI.WebControls.Button btnCad;
 
         /// <summary>
-        /// Controle dropbtnUsuario.
+        /// Controle litUsuario.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button dropbtnUsuario;
+        protected global::System.Web.UI.WebControls.Literal litUsuario;
 
         /// <summary>
         /// Controle litDropDownHome.
@@ -78,13 +96,22 @@ namespace MaisCultura.Site
         protected global::System.Web.UI.WebControls.Literal litDropDownPerfil;
 
         /// <summary>
-        /// Controle litDropDownDenuncias.
+        /// Controle litDpdMeusEventos.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal litDropDownDenuncias;
+        protected global::System.Web.UI.WebControls.Literal litDpdMeusEventos;
+
+        /// <summary>
+        /// Controle litSair.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal litSair;
 
         /// <summary>
         /// Controle litImgPerfil.
@@ -132,13 +159,13 @@ namespace MaisCultura.Site
         protected global::System.Web.UI.WebControls.Label lblTUser;
 
         /// <summary>
-        /// Controle litEventosCria.
+        /// Controle litEventos.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal litEventosCria;
+        protected global::System.Web.UI.WebControls.Literal litEventos;
 
         /// <summary>
         /// Controle lblMedia.
@@ -150,6 +177,15 @@ namespace MaisCultura.Site
         protected global::System.Web.UI.WebControls.Label lblMedia;
 
         /// <summary>
+        /// Controle updPnlAvaliacoes.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel updPnlAvaliacoes;
+
+        /// <summary>
         /// Controle litAvaliacoes.
         /// </summary>
         /// <remarks>
@@ -159,75 +195,147 @@ namespace MaisCultura.Site
         protected global::System.Web.UI.WebControls.Literal litAvaliacoes;
 
         /// <summary>
-        /// Controle pnlAval.
+        /// Controle txtBoxUser.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlAval;
+        protected global::System.Web.UI.WebControls.TextBox txtBoxUser;
 
         /// <summary>
-        /// Controle umaEstrela.
+        /// Controle txtBoxSenha.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton umaEstrela;
+        protected global::System.Web.UI.WebControls.TextBox txtBoxSenha;
 
         /// <summary>
-        /// Controle duasEstrelas.
+        /// Controle btnLogar.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton duasEstrelas;
+        protected global::System.Web.UI.WebControls.Button btnLogar;
 
         /// <summary>
-        /// Controle tresEstrelas.
+        /// Controle btnSairLogin.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton tresEstrelas;
+        protected global::System.Web.UI.WebControls.Button btnSairLogin;
 
         /// <summary>
-        /// Controle quatroEstrelas.
+        /// Controle txtBoxNome.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton quatroEstrelas;
+        protected global::System.Web.UI.WebControls.TextBox txtBoxNome;
 
         /// <summary>
-        /// Controle cincoEstrelas.
+        /// Controle txtBoxSobrenome.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton cincoEstrelas;
+        protected global::System.Web.UI.WebControls.TextBox txtBoxSobrenome;
 
         /// <summary>
-        /// Controle txtBoxAvaliacao.
+        /// Controle txtBoxEmail.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtBoxAvaliacao;
+        protected global::System.Web.UI.WebControls.TextBox txtBoxEmail;
 
         /// <summary>
-        /// Controle btnAvaliar.
+        /// Controle txtBoxNmUsuario.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAvaliar;
+        protected global::System.Web.UI.WebControls.TextBox txtBoxNmUsuario;
+
+        /// <summary>
+        /// Controle txtBoxSenhaCad.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtBoxSenhaCad;
+
+        /// <summary>
+        /// Controle ddlTipoUser.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlTipoUser;
+
+        /// <summary>
+        /// Controle lblNasc.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblNasc;
+
+        /// <summary>
+        /// Controle txtData.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtData;
+
+        /// <summary>
+        /// Controle lblSexo.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblSexo;
+
+        /// <summary>
+        /// Controle ddlSexo.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlSexo;
+
+        /// <summary>
+        /// Controle btnCadastrar.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCadastrar;
+
+        /// <summary>
+        /// Controle btnSairCad.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSairCad;
     }
 }

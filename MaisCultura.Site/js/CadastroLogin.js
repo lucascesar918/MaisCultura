@@ -17,6 +17,36 @@
         $("html, body").css({ 'overflow': 'hidden' });
     });
 
+    $("#alteraSenha").click(function (e) {
+        e.preventDefault();
+        window.scrollTo(0, 0);
+        $("#boxSenha").toggle();
+        $("#shad4").toggle();
+        $("html, body").css({ 'overflow': 'hidden' });
+    });
+
+    $("#btnExcluirConta").click(function (e) {
+        e.preventDefault();
+        window.scrollTo(0, 0);
+        $("#boxExcluir").toggle();
+        $("#shade5").toggle();
+        $("html, body").css({ 'overflow': 'hidden' });
+    });
+
+    $("#sumirPopupSenha").click(function (e) {
+        e.preventDefault();
+        $("#boxSenha").toggle();
+        $("#shade4").toggle();
+        $("html").css({ 'overflow': 'auto' });
+    });
+
+    $("#cancelarExcluir").click(function (e) {
+        e.preventDefault();
+        $("#boxExcluir").toggle();
+        $("#shade5").toggle();
+        $("html").css({ 'overflow': 'auto' });
+    });
+
     $("#btnSairCad").click(function (e) {
         e.preventDefault();
         $("#cad").toggle();
@@ -91,4 +121,17 @@
         $("html").css({ 'overflow': 'auto' });
     });
 
+    $("#shade4").click(function (e) {
+        e.preventDefault();
+        $("#boxSenha").toggle();
+        $("#shade4").toggle();
+        $("html").css({ 'overflow': 'auto' });
+    });
+
+    $("#shade5").click(function (e) {
+        e.preventDefault();
+        $("#boxExcluir").toggle();
+        $("#shade5").toggle();
+        $("html").css({ 'overflow': 'auto' });
+    });
 });

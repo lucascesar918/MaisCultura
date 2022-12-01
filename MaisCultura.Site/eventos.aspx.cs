@@ -24,7 +24,7 @@ namespace MaisCultura
                 Login = ListaUsuario.Buscar(Request.QueryString["l"]);
                 litLogo.Text = $"<a href='eventos.aspx?l={Login.Codigo}'>";
                 litUsuario.Text = $"<a href='meu-perfil.aspx?l={Login.Codigo}'>{Login.Nome}</a>";
-                litDropDownPerfil.Text = $"<a href='meu-perfil.aspx?l={Login.Codigo}&u={Login.Codigo}'>Perfil</a>";
+                litDropDownPerfil.Text = $"<a href='meu-perfil.aspx?l={Login.Codigo}'>Perfil</a>";
                 if (Login.Tipo == "Administrador")                                                              //Logado
                     litDropDownDenuncias.Text = $"<a href='denuncias.aspx?l={Login.Codigo}'>Denúncias</a>";
                 litUsuario.Visible = true;
