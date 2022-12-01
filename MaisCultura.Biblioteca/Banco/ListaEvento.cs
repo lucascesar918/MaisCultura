@@ -53,12 +53,10 @@ namespace MaisCultura.Biblioteca
             int codigo = 0;
 
             MySqlDataReader data = Query("MaxCodigoEvento");
-
             while (data.Read())
                 codigo = Int32.Parse(data["Max"].ToString());
 
             Desconectar();
-
             return ++codigo;
         }
         
@@ -259,34 +257,10 @@ namespace MaisCultura.Biblioteca
             NonQuery("RemoverInteresse", ("pUsuario", codigoUsuario), ("pEvento", codigoEvento));
         }
 
-        public bool InteresseUsuarioEvento(string codigoUsuario, int codigoEvento)
-        {
-            MySqlDataReader data = Query("BuscarInteresseUsuarioEvento", ("pUsuario", codigoUsuario), ("pEvento", codigoEvento));
-
-            bool resposta = data.HasRows;
-
-            Desconectar();
-
-            return resposta;
-        }
-
         public (List<Evento>, List<Evento>) GetDiffFeed(string codigo)
         {
             List<Evento> AllEventos = Listar();         //  Todos
-            List<Evento> Creator = Feed(codigo);    //  Feed
-            List<Evento> Diff = new List<Evento>();     //  Todos - Feed
-
-            foreach (Evento evento in AllEventos)
-                if (!Creator.Contains(evento))
-                    Diff.Add(evento);
-
-            return (Diff, Creator);
-        }
-
-        public (List<Evento>, List<Evento>) GetFeedCreator(string codigo)
-        {
-            List<Evento> AllEventos = Listar();         //  Todos
-            List<Evento> Preferencia = BuscarPorUsuario(codigo);    //  Feed
+            List<Evento> Preferencia = Feed(codigo);    //  Feed
             List<Evento> Diff = new List<Evento>();     //  Todos - Feed
 
             foreach (Evento evento in AllEventos)

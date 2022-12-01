@@ -22,25 +22,25 @@ namespace MaisCultura
             if (Request.QueryString["l"] != null)
             {
                 Login = ListaUsuario.Buscar(Request.QueryString["l"]);
-                litLogo.Text = $"<a href='eventos.aspx?l={Login.Codigo}'>";
-                litUsuario.Text = $"<a href='meu-perfil.aspx?l={Login.Codigo}'>{Login.Nome}</a>";
-                litDropDownPerfil.Text = $"<a href='meu-perfil.aspx?l={Login.Codigo}'>Perfil</a>";
+                dropbtnUsuario.Text = Login.Nome;
+                litDropDownHome.Text = $"<a href='eventos.aspx?l={Login.Codigo}'>Início</a>";
+                litDropDownPerfil.Text = $"<a href='meu-perfil.aspx?l={Login.Codigo}&u={Login.Codigo}'>Perfil</a>";
                 if (Login.Tipo == "Administrador")                                                              //Logado
                     litDropDownDenuncias.Text = $"<a href='denuncias.aspx?l={Login.Codigo}'>Denúncias</a>";
-                litUsuario.Visible = true;
-                btnLog.Visible = false;
-                btnCad.Visible = false;
-                litImgPerfil.Text = $@"<a href='meu-perfil.aspx?l={Login.Codigo}'>
-                    <img src='Images/perfil526ace.png' class='imgPerfil'>
-                </a>";
 
                 if (Login.Tipo == "Criador de Eventos")
-                    litDpdMeusEventos.Text = $"<a href='meus-eventos.aspx?l={Login.Codigo}'>Meus Eventos</a>";
+                {
+                    litDropDownDenuncias.Text = $"<a href='criar-evento.aspx?l={Login.Codigo}'>Criar Evento</a>";
+                    litDropDownDenuncias.Text += $"<a href='meus-eventos.aspx?l={Login.Codigo}&u={Login.Codigo}'>Meus Eventos</a>";
+                }
+                dropbtnUsuario.Visible = true;
+                btnLog.Visible = false;
+                btnCad.Visible = false;
+                litImgPerfil.Text = $@"<img src='Images/perfil526ace.png' class='imgPerfil'>";
             }
             else
             {
-                litLogo.Text = $"<a href='eventos.aspx'>";
-                litUsuario.Visible = false;
+                dropbtnUsuario.Visible = false;
                 btnLog.Visible = true;                                                                          //Deslogado
                 btnCad.Visible = true;
             }
@@ -64,12 +64,8 @@ namespace MaisCultura
 
                 if (Login != null)
                 {
-                    if (Login.Codigo == evento.Responsavel)
-                        TagAPerfil = $"<a href='meu-perfil.aspx?l={Login.Codigo}&u={usuarioEvento.Codigo}'>";
-                    else
-                        TagAPerfil = $"<a href='perfil.aspx?l={Login.Codigo}&u={usuarioEvento.Codigo}'>";
-
                     TagAEvento = $"<a href='evento.aspx?l={Login.Codigo}&e={evento.Codigo}'>";
+                    TagAPerfil = $"<a href='perfil.aspx?l={Login.Codigo}&u={usuarioEvento.Codigo}'>";
                 }
 
                 litEventos.Text += $@"{ClassHidden}
@@ -97,9 +93,8 @@ namespace MaisCultura
 
                     <article class='card-tags'>";
                 foreach (Categoria categoria in categorias)
-                    litEventos.Text += $@"<h2 class='tag'>{categoria.Nome}</h2>";
-
-                litEventos.Text += $@"</article>
+                    litEventos.Text += $@"<h2 class='tag'>{categoria.Nome}</h2>
+                    </article>
 
                     <article class='card-image'>
                         {TagAEvento}
@@ -114,14 +109,14 @@ namespace MaisCultura
                             <figure>
                                 <img src='Images/calendar.png' alt='Ícone calendário' class='calendar-icon'>
                             </figure>
-                            <h3>{dias[0].Data.ToShortDateString()} a {dias[dias.Count - 1].Data.ToShortDateString()}</h3>
+                            <h3>{dias[0].Data} a {dias[dias.Count - 1].Data}</h3>
                         </article>
 
                         <article class='time'>
                             <figure>
                                 <img src='Images/time.png' alt='Ícone Tempo' class='time-icon'>
                             </figure>
-                            {dias[0].Inicio.ToShortTimeString()}
+                            {dias[0].Inicio}
                         </article>
                     </article>
 
@@ -200,6 +195,7 @@ namespace MaisCultura
                 return;
             if(CategoriasSelecionadas.Count < 3 && !CategoriasSelecionadas.Any(c=> c.Codigo == codigoCategoria))
                 CategoriasSelecionadas.Add(new Categoria(codigoCategoria, Botao.Text));
+          
 
         }
 
@@ -223,9 +219,9 @@ namespace MaisCultura
 
         protected void btnCadastrar_Click(object sender, EventArgs e)
         {
-            Usuario Cadastrado = new Usuario(txtBoxNmUsuario.Text, ddlTipoUser.Text, ddlSexo.Text, txtBoxNome.Text + txtBoxSobrenome.Text, txtBoxEmail.Text, txtBoxSenhaCad.Text, " ", txtData.Text, null);
+            Usuario Cadastro = new Usuario(txtBoxNmUsuario.Text, ddlTipoUser.Text, ddlSexo.Text, txtBoxNome.Text + txtBoxSobrenome.Text, txtBoxEmail.Text, txtBoxSenhaCad.Text, " ", txtData.Text, null);
 
-            ListaUsuario.CriarUsuario(Cadastrado);
+            ListaUsuario.CriarUsuario(Cadastro);
         }
 
         protected void btnCadastrar_Click1(object sender, EventArgs e)
