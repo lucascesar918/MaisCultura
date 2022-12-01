@@ -131,7 +131,7 @@ namespace MaisCultura.Biblioteca
             float media = 0;
 
             while (data.Read())
-                media = float.Parse(data["soma"].ToString());
+                media = data["soma"] != null ? float.Parse(data["soma"].ToString()) : 0;
 
             Desconectar();
             return media;

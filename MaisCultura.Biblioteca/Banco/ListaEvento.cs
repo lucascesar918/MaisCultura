@@ -147,13 +147,10 @@ namespace MaisCultura.Biblioteca
             return eventos;
         }
 
-
         public void AdicionarCategorias(int evento, List<Categoria> categorias)
         {
-
-            foreach (Categoria categoria in categorias) {
+            foreach (Categoria categoria in categorias)
                 NonQuery("CadastrarCategoriaEvento", ("pEvento", evento), ("pCategoria", categoria.Codigo));
-            }
         }
 
         public Evento Buscar(int codigo)
@@ -201,8 +198,6 @@ namespace MaisCultura.Biblioteca
 
         public void Criar(Evento evento, string link)
         {
-            string max_imagem = "";
-
             NonQuery("CadastrarEvento",
                 ("pCodigo", MaxCodigo()),
                 ("pResponsavel", evento.Responsavel),
@@ -210,9 +205,6 @@ namespace MaisCultura.Biblioteca
                 ("pLocal", evento.Local),
                 ("pDescricao", evento.Descricao)    
             );
-
-            max_imagem = MaxCodigoImagem().ToString();
-            Desconectar();
 
             AdicionarImagem(link, evento.Codigo);
             AdicionarDatas(evento.Codigo, evento.Dias);

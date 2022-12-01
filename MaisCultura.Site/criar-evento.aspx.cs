@@ -14,15 +14,14 @@ namespace MaisCultura.Site
         ListaUsuario ListaUsuario = new ListaUsuario();
 
         Usuario Login;
+        Evento Evento = new Evento(0, null, null, null, null, new List<Categoria>(), new List<DiaEvento>());
 
         void HandleLogin()
         {
-            Login = ListaUsuario.Buscar("adriano.fraga");
 
-            if (Request.QueryString["l"] != null || Login != null)
+            if (Request.QueryString["l"] != null)
             {
-                if (Request.QueryString["l"] != null)
-                    Login = ListaUsuario.Buscar(Request.QueryString["l"]);
+                Login = ListaUsuario.Buscar(Request.QueryString["l"]);
 
                 dropbtnUsuario.Text = Login.Nome;
                 litDropDownHome.Text = $"<a href='eventos.aspx?l={Login.Codigo}'>Início</a>";
@@ -139,17 +138,17 @@ namespace MaisCultura.Site
                 return new DiaEvento(data, $"{splitValue[1]}:00", $"{splitValue[2]}:00");
             }
 
-            Evento Evento;
-            List<Categoria> Categorias = new List<Categoria>();
-            List<DiaEvento> Dias = new List<DiaEvento>();
-
             foreach (ListItem item in listBoxCateg.Items)
-                Categorias.Add(new Categoria(Int32.Parse(item.Value), item.Text));
+                Evento.Categorias.Add(new Categoria(Int32.Parse(item.Value), item.Text));
 
             foreach (ListItem item in listBoxDtHr.Items)
-                Dias.Add(ValueToDiaEvento(item.Value));
+                Evento.Dias.Add(ValueToDiaEvento(item.Value));
 
-            Evento = new Evento(ListaEvento.MaxCodigo(), Login.Codigo, txtTituloEvento.Text, $"{ddlUF.SelectedItem.Text}, {txtCidade.Text}, {txtEndereco.Text}", txtBoxDescricao.Text, Categorias, Dias);
+            Evento.Codigo = ListaEvento.MaxCodigo();
+            Evento.Responsavel = Login.Codigo;
+            Evento.Titulo = txtTituloEvento.Text;
+            Evento.Local = $"{ddlUF.SelectedItem.Text}, {txtCidade.Text}, {txtEndereco.Text}";
+            Evento.Descricao = txtBoxDescricao.Text;
 
             ListaEvento.Criar(Evento, txtLinkImg.Text);
 
