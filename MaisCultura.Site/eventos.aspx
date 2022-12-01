@@ -94,8 +94,6 @@
                   </ItemTemplate>     
                 </asp:Repeater>
 
-                <asp:Button ID="btnVerMais" runat="server" Text="Ver mais categorias" class="filtros-subtitulos verMais"/>
-
                 <br />
 
                 <%--<h2 class="filtros-titulos">Local</h2>

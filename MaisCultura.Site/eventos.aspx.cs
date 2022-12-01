@@ -64,16 +64,12 @@ namespace MaisCultura
 
                 if (Login != null)
                 {
-                    if (Login.Nome == evento.Responsavel)
-                    {
-                        TagAEvento = $"<a href='meu-evento.aspx?l={Login.Codigo}&e={evento.Codigo}'>";
+                    if (Login.Codigo == evento.Responsavel)
                         TagAPerfil = $"<a href='meu-perfil.aspx?l={Login.Codigo}&u={usuarioEvento.Codigo}'>";
-                    }
                     else
-                    {
-                        TagAEvento = $"<a href='evento.aspx?l={Login.Codigo}&e={evento.Codigo}'>";
                         TagAPerfil = $"<a href='perfil.aspx?l={Login.Codigo}&u={usuarioEvento.Codigo}'>";
-                    }
+
+                    TagAEvento = $"<a href='evento.aspx?l={Login.Codigo}&e={evento.Codigo}'>";
                 }
 
                 litEventos.Text += $@"{ClassHidden}
