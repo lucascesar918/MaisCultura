@@ -212,9 +212,9 @@ BEGIN
 END$$
 
 DROP PROCEDURE IF EXISTS CadastrarDenuncia$$
-CREATE PROCEDURE CadastrarDenuncia(pCodigo INT, pEvento INT, )
+CREATE PROCEDURE CadastrarDenuncia(pCodigo INT, pEvento INT, pUsuario VARCHAR(20), pData DATE, pHora TIME)
 BEGIN
-	INSERT INTO denuncia VALUES (pCodigo, pResponsavel, pNome, pLocal, pDescricao);
+	INSERT INTO denuncia VALUES (pCodigo, pEvento, pUsuario, pData, pHora);
 END$$
 
 DROP PROCEDURE IF EXISTS ListarEventosFeed$$
