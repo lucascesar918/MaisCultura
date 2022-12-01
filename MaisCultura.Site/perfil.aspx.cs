@@ -16,7 +16,6 @@ namespace MaisCultura.Site
 
         Usuario Login;
         Usuario Usuario;
-        Evento Evento;
 
         string cdAux;
 
@@ -25,26 +24,22 @@ namespace MaisCultura.Site
             if (Request.QueryString["l"] != null)
             {
                 Login = ListaUsuario.Buscar(Request.QueryString["l"]);
-                litLogo.Text = $"<a href='eventos.aspx?l={Login.Codigo}'>";
-                litUsuario.Text = $"<a href='meu-perfil.aspx?l={Login.Codigo}'>{Login.Nome}</a>";
+                dropbtnUsuario.Text = Login.Nome;
                 litDropDownHome.Text = $"<a href='eventos.aspx?l={Login.Codigo}'>Início</a>";
-                litDropDownPerfil.Text = $"<a href='meu-perfil.aspx?l={Login.Codigo}'>Perfil</a>";
-                litUsuario.Visible = true;
+                litDropDownPerfil.Text = $"<a href='perfil.aspx?l={Login.Codigo}&u={Login.Codigo}'>Perfil</a>";
+                if (Login.Tipo == "Administrador")                                                              //Logado
+                    litDropDownDenuncias.Text = $"<a href='denuncias.aspx?l={Login.Codigo}'>Denúncias</a>";
+                dropbtnUsuario.Visible = true;
+                pnlAval.Visible = true;
                 btnLog.Visible = false;
                 btnCad.Visible = false;
-                litImgPerfil.Text = $@"<a href='meu-perfil.aspx?l={Login.Codigo}'>
-                    <img src='Images/perfil526ace.png' class='imgPerfil'>
-                </a>";
-                if (Login.Tipo == "Criador de Eventos" || Login.Tipo == "Empresa")
-                    litDpdMeusEventos.Text = $"<a href='meus-eventos.aspx?l={Login.Codigo}'>Meus Eventos</a>";
-
-                litSair.Text = $"<a href='perfil.aspx?u={Request.QueryString["u"]}'>Sair</a>";
+                litImgPerfil.Text = $@"<img src='Images/perfil526ace.png' class='imgPerfil'>";
             }
             else
             {
-                litLogo.Text = $"<a href='eventos.aspx'>";
-                litUsuario.Visible = false;
-                btnLog.Visible = true;
+                dropbtnUsuario.Visible = false;
+                pnlAval.Visible = false;
+                btnLog.Visible = true;                                                                          //Deslogado
                 btnCad.Visible = true;
             }
         }
@@ -56,55 +51,47 @@ namespace MaisCultura.Site
             if (Usuario == null)
                 Response.Redirect($"erro.html?msg=Tá vendo coisa? Esse usuário não existe!" + (Login == null ? "" : $"&l={Login.Codigo}"));
 
-            if (Usuario.Tipo != "Criador de Eventos" && Usuario.Tipo != "Empresa")
-                Response.Redirect($"erro.html?msg=Somente será possível ver o perfil de criadores de evento!" + (Login == null ? "" : $"&l={Login.Codigo}"));
-
             lblNmCompleto.Text = Usuario.Nome;
             lblArroba.Text = Usuario.Codigo;
             lblTUser.Text = Usuario.Tipo;
             litTittle.Text = Usuario.Nome;
         }
 
-        private void PrintarEventos(List<Evento> Eventos, bool hidden)
+        void CreateEvents(string codigo)
         {
-            foreach (Evento evento in Eventos)
+            litEventosCria.Text = "";
+
+            List<Evento> eventos = new List<Evento>();
+
+            eventos = ListaEvento.BuscarPorUsuario(codigo);
+
+            string todosEventos = "";
+
+            foreach (Evento evento in eventos)
             {
                 Usuario usuarioEvento = ListaUsuario.Buscar(evento.Responsavel);
                 List<Categoria> categorias = evento.Categorias;
                 List<DiaEvento> dias = evento.Dias;
 
-                string TagAEvento = $"<a href='evento.aspx?e={evento.Codigo}'>";
-                string TagAPerfil = $"<a href='perfil.aspx?u={usuarioEvento.Codigo}'>";
-                string ClassHidden = hidden ? "<section class='card hidden'>" : "<section class='card'>";
+                var TagA = $"<a href='evento.aspx?e={evento.Codigo}'>";
 
-                if (Login != null)
-                {
-                    if (Login.Codigo == evento.Responsavel)
-                        TagAPerfil = $"<a href='meu-perfil.aspx?l={Login.Codigo}&u={usuarioEvento.Codigo}'>";
-                    else
-                        TagAPerfil = $"<a href='perfil.aspx?l={Login.Codigo}&u={usuarioEvento.Codigo}'>";
+                if (Request.QueryString["l"] != null)
+                    TagA = $"<a href='evento.aspx?l={Login.Codigo}&e={evento.Codigo}'>";
 
-                    TagAEvento = $"<a href='evento.aspx?l={Login.Codigo}&e={evento.Codigo}'>";
-                }
-
-                litEventos.Text += $@"{ClassHidden}
+                todosEventos += $@"<section class='card'>
                     <article class='card-header'>
                         <figure>
-                            {TagAPerfil}
-                                <img src='Images/perfil.png' alt='Imagem de Perfil' class='perfil'>
-                            </a>
+                            <img src='Images/perfil.png' alt='Imagem de Perfil' class='perfil'>
                         </figure>
 
                         <article class='card-header-nome'>
-                            {TagAPerfil}
-                                <h2>{usuarioEvento.Nome}</h2>
-                                <h5>{usuarioEvento.Codigo}</h5>
-                            </a>
+                            <h2>{usuarioEvento.Nome}</h2>
+                            <h5>{usuarioEvento.Codigo}</h5>
                         </article>
 
                     </article>
 
-                    {TagAEvento}
+                    {TagA}
                         <article class='card-tittle'>
                                 <h2>{evento.Titulo}</h2>
                         </article>
@@ -112,12 +99,11 @@ namespace MaisCultura.Site
 
                     <article class='card-tags'>";
                 foreach (Categoria categoria in categorias)
-                    litEventos.Text += $@"<h2 class='tag'>{categoria.Nome}</h2>";
-
-                litEventos.Text += $@"</article>
+                    todosEventos += $@"<h2 class='tag'>{categoria.Nome}</h2>
+                    </article>
 
                     <article class='card-image'>
-                        {TagAEvento}
+                        {TagA}
                             <figure>
                                 <img src='{ListaEvento.BuscarImagem(evento.Codigo)[0]}' alt='Interclasse de cria' class='foto-evento'>
                             </figure>
@@ -144,52 +130,21 @@ namespace MaisCultura.Site
                         <figure>
                             <img src='Images/local.png' alt='Ícone Local' class='local-icon'>
                         </figure>
-                        <h3>{evento.Local}</h3>
+                        <h3>{evento.Local // Trocar pelo formato "Cidade, Estado" depois
+                        }</h3>
 
                     </article>
                 </section>";
-            }
-        }
 
-        private void ListarEventos(string usuario)
-        {
-
-            litEventos.Text = "";
-
-            List<Evento> Diff; // Eventos que não são da preferência do usuário
-            List<Evento> Feed; // Eventos de preferência do usuário
-
-            (Diff, Feed) = ListaEvento.GetFeedCreator(Usuario?.Codigo);
-
-            litEventos.Text = "";
-            PrintarEventos(Feed, false);
-            PrintarEventos(Diff, Feed.Count > 0);
-            MostrarAvaliacoes(Feed);
-        }
-
-
-        protected void Page_Load(object sender, EventArgs e)
-        {
-            HandleLogin();
-            HandleUser();
-            ListarEventos(Usuario.Codigo);
-            lblMedia.Text = ListaUsuario.BuscarMediaCriador(Usuario.Codigo).ToString();
-        }
-
-        void MostrarAvaliacoes(List<Evento> eventos)
-        {
-            litAvaliacoes.Text = "";
-
-            foreach (Evento evento in eventos)
-            {
                 foreach (Avaliacao avaliacao in ListaAvaliacao.BuscarPorEvento(evento.Codigo))
+                {
                     litAvaliacoes.Text += $@"<div class='umaAvaliacao'>
                                 <div class='infosAvaliador'>
                                     <section class='infosNmAtDtAv'>
                                         <figure>
                                             <img src='Images/perfil526ace.png' class='imgPerfilAvaliacao' />
                                         </figure>
-                                        <span>{avaliacao.CodigoUsuario}</span>
+                                        <span class='userAval'>{avaliacao.CodigoUsuario}</span>
                                     </section>
                                     <div class='notaAvaliacao'>
                                         <span>{avaliacao.Estrelas}</span>
@@ -202,37 +157,26 @@ namespace MaisCultura.Site
                                     <span>{avaliacao.Descricao}</span>
                                 </div>
                             </div>";
+                }
             }
+
+            litEventosCria.Text += $@"
+                <section class='eventosCriador' id='eventosCria'>
+                    <h2 class='h2'> Eventos do Criador </h2>
+
+                    <section class='feedEventos'>
+                        {todosEventos}
+                    </section>
+                </section>";
         }
 
-        protected void btnLog_Click(object sender, EventArgs e)
+
+        protected void Page_Load(object sender, EventArgs e)
         {
-            Login = ListaUsuario.BuscarLogin(txtBoxUser.Text, txtBoxSenha.Text);
-
-            if (Login != null)
-                Response.Redirect($"perfil.aspx?l={Login.Codigo}&u={Usuario.Codigo}");
-        }
-
-        protected void btnCad_Click(object sender, EventArgs e)
-        {
-            Usuario Cadastrado = new Usuario(txtBoxNmUsuario.Text, ddlTipoUser.Text, ddlSexo.Text, txtBoxNome.Text + txtBoxSobrenome.Text, txtBoxEmail.Text, txtBoxSenhaCad.Text, " ", txtData.Text, null);
-
-            ListaUsuario.CriarUsuario(Cadastrado);
-        }
-
-        protected void btnCadastrar_Click(object sender, EventArgs e)
-        {
-            Usuario Cadastrado = new Usuario(txtBoxNmUsuario.Text, ddlTipoUser.Text, ddlSexo.Text, txtBoxNome.Text + txtBoxSobrenome.Text, txtBoxEmail.Text, txtBoxSenhaCad.Text, " ", txtData.Text, null);
-
-            ListaUsuario.CriarUsuario(Cadastrado);
-        }
-
-        protected void btnLogar_Click(object sender, EventArgs e)
-        {
-            Login = ListaUsuario.BuscarLogin(txtBoxUser.Text, txtBoxSenha.Text);
-
-            if (Login != null)
-                Response.Redirect($"perfil.aspx?l={Login.Codigo}&u={Usuario.Codigo}");
+            HandleLogin();
+            HandleUser();
+            CreateEvents(Usuario.Codigo);
+            txtBoxAvaliacao.TextMode = TextBoxMode.MultiLine;
         }
     }
 }

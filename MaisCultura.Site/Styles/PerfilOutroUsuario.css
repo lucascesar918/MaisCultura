@@ -55,17 +55,10 @@ main {
     right: 0;
 }
 
-/*Css do Menu Dropdown*/
 .menuUsuario {
     position: relative;
     display: inline-block;
-    font-weight: 900;
 }
-
-    .menuUsuario a {
-        color: black;
-        font-size: 15px;
-    }
 
 .dropbtn {
     color: black;
@@ -74,15 +67,16 @@ main {
     border: none;
     cursor: pointer;
     background-color: transparent;
-    font-weight: 900;
+    font-weight: 600;
 }
 
 .dropdown-content {
     display: none;
     position: absolute;
     min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgb(0 0 0 / 20%);
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
+    font-weight: 600;
     border-radius: 5px;
 }
 
@@ -94,18 +88,14 @@ main {
         font-size: 12px;
     }
 
-
         .dropdown-content a:hover {
             background-color: #ffffff;
         }
-
 
 .menuUsuario:hover .dropdown-content {
     display: block;
     background-color: #f1f1f1;
 }
-
-/*Fim do Menu Dropdown*/
 
 .imgPerfil {
     width: 2.4vw;
@@ -199,17 +189,13 @@ main {
 }
 
 .button {
-    border-style: none;
-    border-color: inherit;
-    border-width: medium;
     width: 100px;
     height: 80%;
+    border: none;
     font-size: 12px;
     padding: 5px;
+    margin: 5px;
     border-radius: 2.5px;
-    margin-left: 5px;
-    margin-right: 5px;
-    margin-bottom: 5px;
 }
 
     .button:hover {
@@ -313,54 +299,16 @@ main {
     font-weight: 500;
 }
 
-.tag {
-    background: #D64558;
-    width: fit-content;
-    height: 19px;
-    border-radius: 20px;
-    font-size: 12px;
-    color: white;
-    margin: 5px;
-    padding: 6px;
-    padding-left: 13px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-}
-
-#meusEventos {
-    margin: 20px 15px;
-    margin-bottom: 0px;
-    font-size: 20px;
-}
-
-.event-manager {
-    display: flex;
-    justify-content: center;
-}
-
-.eventos {
-    display: flex;
-    width: 100%;
-    padding: 5px 0px 10px 0px;
-    margin: 10px 0px 10px 30px;
-    justify-content: left;
-    flex-wrap: wrap;
-    margin-left: 40px;
-}
-
 /* Css do Card*/
 .card {
-    width: 290px;
-    height: 420px;
+    width: 300px;
+    height: fit-content;
     display: flex;
     flex-direction: column;
     align-items: center;
     border-radius: 20px;
     border: 1px solid black;
     padding: 10px;
-    margin: 5px;
     transition: box-shadow;
     transition-duration: 0.3s;
     transition-timing-function: ease-in-out;
@@ -413,38 +361,12 @@ main {
     }
 
 .save {
-    width: 40px;
-    height: 40px;
-    cursor: pointer;
-    user-select: none;
-    background-size: cover;
-    border: none;
-    -webkit-tap-highlight-color: transparent;
-    background-color: transparent;
-}
-
-.salvo, naoSalvo {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.salvo {
-    animation: save 0.5s ease-in forwards;
-    background-image: url(../Images/save2.png);
-}
-
-.naoSalvo {
-    animation: unsave 0.5s ease-in reverse forwards;
-    background-image: url(../Images/save.png);
-}
-
-#updBtnSave {
-    height: 40px;
+    width: 25px;
+    height: 25px;
 }
 
 .card-tittle {
-    width: 96%;
+    width: 100%;
     padding: 10px;
 }
 
@@ -485,6 +407,7 @@ main {
     width: 100%;
     box-sizing: border-box;
     display: flex;
+    /* justify-content: space-between;*/
     font-size: 12px;
     font-weight: 400;
     padding-top: 2%;
@@ -497,17 +420,11 @@ main {
     justify-content: left;
 }
 
-    .date h3 {
-        font-size: 13px;
-    }
-
 .time {
-    width: 50%;
+    width: 100%;
     box-sizing: border-box;
     display: flex;
     justify-content: right;
-    color: #000;
-    font-palette: dark;
 }
 
 .dateTime, .card-local {
@@ -520,6 +437,22 @@ main {
     height: 16px;
     margin-right: 2px;
 }
+
+.tag {
+    background: #D64558;
+    width: fit-content;
+    height: fit-content;
+    border-radius: 20px;
+    font-size: 12px;
+    color: white;
+    margin: 5px;
+    padding: 2.5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
 /*Fim do Css do Card*/
 
 /*Section e Divisória dos Eventos do Criador*/
@@ -688,341 +621,4 @@ a{
     color: black;
 }
 
-.login {
-    background: #f1f1f1;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 13px;
-    border: 1px solid #526ace;
-    border-radius: 5px;
-    padding: 30px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 400px;
-    height: fit-content;
-    z-index: 4;
-}
 
-.headerLogin {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 10px;
-}
-
-    .headerLogin h4 {
-        font-size: 16px;
-        font-weight: 800;
-    }
-
-.txtLog {
-    width: 100%;
-    margin-bottom: 5px;
-    padding: 5px;
-    border: none;
-    border-radius: 5px;
-    background-color: #fff;
-}
-
-#txtData {
-    width: 100%;
-    box-sizing: border-box;
-    padding: 5px;
-    font-size: 12px;
-    border: none;
-    margin-bottom: 5px;
-    border-radius: 2.5px;
-}
-
-#btnLogar {
-    width: 100%;
-    padding: 5px;
-    border: 1px solid #526ace;
-    background-color: #526ace;
-    color: white;
-    border-radius: 5px;
-}
-
-#btnSairLogin {
-    width: 100%;
-    border: none;
-    font-size: 12px;
-    font-weight: 700;
-    color: black;
-    margin-top: 5px;
-}
-
-    #btnSairLogin:hover {
-        cursor: pointer;
-    }
-
-#btnSairCad {
-    width: 100%;
-    border: none;
-    font-size: 12px;
-    font-weight: 700;
-    color: black;
-    margin-top: 5px;
-}
-
-    #btnSairCad:hover {
-        cursor: pointer;
-    }
-
-.cadastrar {
-    background: #f1f1f1;
-    width: 450px;
-    padding: 30px;
-    height: fit-content;
-    display: flex;
-    flex-direction: column;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border: 1px solid #526ace;
-    border-radius: 5px;
-    z-index: 4;
-}
-
-.headerCad {
-    width: 100%;
-    padding: 10px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-}
-
-    .headerCad h4 {
-        font-size: 16px;
-        font-weight: 800;
-    }
-
-.nms {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin-bottom: 5px;
-}
-
-.txtCadNm {
-    width: 49%;
-    padding: 5px;
-    font-size: 12px;
-    border: none;
-    color: black;
-    border-radius: 2.5px;
-}
-
-    .txtCadNm::placeholder {
-        color: black;
-    }
-
-.txtCad {
-    width: 100%;
-    padding: 5px;
-    font-size: 12px;
-    margin-bottom: 5px;
-    border: none;
-    color: black;
-    border-radius: 2.5px;
-}
-
-    .txtCad::placeholder {
-        color: black;
-    }
-
-.dtNasc {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.ddlsDtNasc {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.txtCadDt {
-    width: 32%;
-    padding: 5px;
-    font-size: 12px;
-    margin-bottom: 5px;
-    border: none;
-    color: black;
-    border-radius: 2.5px;
-}
-
-#lblNasc {
-    font-size: 14px;
-    margin-bottom: 5px;
-}
-
-#ddlSexo {
-    width: 100%;
-    padding: 5px;
-    font-size: 12px;
-    margin-bottom: 5px;
-    border: none;
-    color: black;
-    border-radius: 2.5px;
-}
-
-.sexo {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-#lblSexo {
-    font-size: 14px;
-    margin-bottom: 5px;
-}
-
-#btnCadastrar {
-    width: 100%;
-    padding: 5px;
-    color: white;
-    background-color: #526ace;
-    border: none;
-    font-size: 13.5px;
-    border-radius: 2.5px;
-}
-
-    #btnCadastrar:hover {
-        cursor: pointer;
-    }
-
-.denuncia {
-    width: 450px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 30px;
-    position: absolute;
-    top: 25%;
-    left: 35%;
-    border: 1px solid #526ace;
-    border-radius: 2.5px;
-    background: #f1f1f1;
-}
-
-    .denuncia h4 {
-        font-size: 16.5px;
-        font-weight: 800;
-    }
-
-#lblMotivo {
-    font-size: 14px;
-    font-weight: 800;
-}
-
-#ddlMotivos {
-    padding: 5px;
-    background: #fff;
-    font-size: 12px;
-    width: 100%;
-    border: none;
-    border-radius: 2.5px;
-    margin-bottom: 5px;
-}
-
-#txtBoxDescProb {
-    height: 150px;
-    margin-bottom: 5px;
-    padding: 10px;
-    font-size: 12px;
-    width: 100%;
-    border-radius: 2.5px;
-    border: none;
-}
-
-    #txtBoxDescProb::placeholder {
-        font-size: 12px;
-    }
-
-#lblDesc {
-    font-size: 14px;
-    font-weight: 800;
-}
-
-#btnDenunciar {
-    padding: 5px;
-    width: 100%;
-    color: white;
-    background-color: #526ace;
-    font-size: 14px;
-    border-radius: 2.5px;
-    border: none;
-}
-
-#btnSairDenuncia {
-    width: 100%;
-    border: none;
-    font-size: 12px;
-    font-weight: 700;
-    color: black;
-    margin-top: 5px;
-}
-
-    #btnSairDenuncia:hover {
-        cursor: pointer;
-    }
-
-.error {
-    background: green;
-}
-
-.pop {
-    display: none;
-    z-index: 31;
-}
-
-.shade {
-    position: absolute;
-    top: 0%;
-    right: 0%;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.50);
-    z-index: 3;
-    display: none;
-}
-
-.shade2 {
-    position: absolute;
-    top: 0%;
-    right: 0%;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.50);
-    z-index: 3;
-    display: none;
-}
-
-.shade3 {
-    position: absolute;
-    top: 0%;
-    right: 0%;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.50);
-    z-index: 3;
-    display: none;
-}
-
-.hidden {
-    display: none !important;
-}
