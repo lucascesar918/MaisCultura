@@ -34,15 +34,20 @@ namespace MaisCultura.Biblioteca
             return ++codigo;
         }
 
-        public void CriarDenuncia(Denuncia denuncia)
+        public void CriarDenuncia(int cdEvento, string cdUsuario, int cdMotivo, string nmDesc)
         {
             NonQuery("CadastrarDenuncia",
                 ("pCodigo", MaxCodigo()),
-                ("pEvento", denuncia.CodigoEvento),
-                ("pUsuario ", denuncia.CodigoUsuario),
-                ("pData ", denuncia.Data)
-                //("pHora", denuncia.)                   COMO EU PEGO A HORA DO DATETIME???
+                ("pEvento", cdEvento),
+                ("pUsuario", cdUsuario),
+                ("pMotivo", cdMotivo),
+                ("pDesc", nmDesc)
             );
+        }
+
+        public void ListarMotivos()
+        {
+            Desconectar();
         }
 
         public List<Denuncia> Listar() {

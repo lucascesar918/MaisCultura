@@ -8,6 +8,7 @@ using MaisCultura.Biblioteca;
 using System.Web.Services;
 using System.Web.UI.HtmlControls;
 using System.Web.Services.Description;
+using MySql.Data.MySqlClient;
 
 namespace MaisCultura.Site
 {
@@ -25,7 +26,7 @@ namespace MaisCultura.Site
         public static void salvarEvento(string codigoUsuario, int codigoEvento)
         {
             ListaEvento ListaEvento = new ListaEvento();
-            ListaEvento.Interessar(codigoUsuario, codigoEvento);
+            ListaEvento.Salvar(codigoUsuario, codigoEvento);
         }
 
         [WebMethod]
@@ -183,6 +184,8 @@ namespace MaisCultura.Site
                     litCategorias.Text += $"<span class='tag'>{categoria.Nome}</span>";
 
                 MostrarAvaliacoes();
+
+                ListarMotivos();
             }
         }
 
@@ -274,6 +277,20 @@ namespace MaisCultura.Site
             }
         }
 
+        void ListarMotivos()
+        {
+            Banco banco = new Banco();
+
+            MySqlDataReader data = banco.Query("ListarMotivos");
+
+            ddlMotivos.DataSource = data;
+            ddlMotivos.DataTextField = "Nome";
+            ddlMotivos.DataValueField = "Codigo";
+            ddlMotivos.DataBind();
+
+            ListaDenuncia.ListarMotivos();
+        }
+
         protected void btnLog_Click(object sender, EventArgs e)
         {
             Login = ListaUsuario.BuscarLogin(txtBoxUser.Text, txtBoxSenha.Text);
@@ -358,53 +375,57 @@ namespace MaisCultura.Site
 
         protected void btnInteresse_Click(object sender, EventArgs e)
         {
-            if (Request.QueryString["l"] == null)
-            {
-                ScriptManager.RegisterClientScriptBlock(Page, Page.GetType(), "funciona",
-                    @"<script type='text/javascript'> document.getElementById('btnLog').click(); </script>", true);
-                return;
-            }
+            //if (Request.QueryString["l"] == null)
+            //{
+            //    ScriptManager.RegisterClientScriptBlock(Page, Page.GetType(), "funciona",
+            //        @"<script type='text/javascript'> document.getElementById('btnLog').click(); </script>", true);
+            //    return;
+            //}
 
-            if (btnInteresse.Text == "Demonstrar Interesse")
-            {
-                btnInteresse.CssClass = "Int";
-                btnInteresse.Text = "Interesse Demonstrado";
-                ListaEvento.Interessar(Request.QueryString["l"], int.Parse(Request.QueryString["e"]));
-            }
-            else
-            {
-                btnInteresse.CssClass = "naoInt";
-                btnInteresse.Text = "Demonstrar Interesse";
-                ListaEvento.CancelarInteresse(Request.QueryString["l"], int.Parse(Request.QueryString["e"]));
-            }
+            //if (btnInteresse.Text == "Demonstrar Interesse")
+            //{
+            //    btnInteresse.CssClass = "Int";
+            //    btnInteresse.Text = "Interesse Demonstrado";
+            //    ListaEvento.Interessar(Request.QueryString["l"], int.Parse(Request.QueryString["e"]));
+            //}
+            //else
+            //{
+            //    btnInteresse.CssClass = "naoInt";
+            //    btnInteresse.Text = "Demonstrar Interesse";
+            //    ListaEvento.CancelarInteresse(Request.QueryString["l"], int.Parse(Request.QueryString["e"]));
+            //}
         }
 
         protected void cbxSave_CheckedChanged(object sender, EventArgs e)
         {
-            if (Request.QueryString["l"] == null)
-            {
-                ScriptManager.RegisterClientScriptBlock(Page, Page.GetType(), "mensagem",
-                    @"$('#btnLog').click(function (e) {{
-                        e.preventDefault();
-                        window.scrollTo(0, 0);
-                        $('#log').toggle();
-                        $('#shade2').toggle();
-                        $('html, body').css({{ 'overflow': 'hidden' }});
-                    }});
-                    $('#btnLog').click();", true);
-                cbxSave.Checked = false;
-                ScriptManager.RegisterClientScriptBlock(Page, Page.GetType(), "FuncionaPorFavor", "<script type=\"text/javascript\"> document.getElementById('cbxSave').checked = false </script>", false);
-            }
-            else
-            {
-                cbxSave.Checked = true;
-                ScriptManager.RegisterClientScriptBlock(Page, Page.GetType(), "AgoraVai", "<script type=\"text/javascript\"> document.getElementById('cbxSave').checked = true </script>", false);
-            }
+            //if (Request.QueryString["l"] == null)
+            //{
+            //    ScriptManager.RegisterClientScriptBlock(Page, Page.GetType(), "mensagem",
+            //        @"$('#btnLog').click(function (e) {{
+            //            e.preventDefault();
+            //            window.scrollTo(0, 0);
+            //            $('#log').toggle();
+            //            $('#shade2').toggle();
+            //            $('html, body').css({{ 'overflow': 'hidden' }});
+            //        }});
+            //        $('#btnLog').click();", true);
+            //    cbxSave.Checked = false;
+            //    ScriptManager.RegisterClientScriptBlock(Page, Page.GetType(), "FuncionaPorFavor", "<script type=\"text/javascript\"> document.getElementById('cbxSave').checked = false </script>", false);
+            //}
+            //else
+            //{
+            //    cbxSave.Checked = true;
+            //    ScriptManager.RegisterClientScriptBlock(Page, Page.GetType(), "AgoraVai", "<script type=\"text/javascript\"> document.getElementById('cbxSave').checked = true </script>", false);
+            //}
         }
 
         protected void btnDenunciar_Click(object sender, EventArgs e)
         {
-            //ainda vai dar certo, confia Lucas
+            int evento = int.Parse(Request.QueryString["e"]);
+            int motivo = int.Parse(ddlMotivos.SelectedValue);
+            string desc = txtBoxDescProb.Text;
+
+            ListaDenuncia.CriarDenuncia(evento, Login.Codigo, motivo, desc);
         }
     }
 }

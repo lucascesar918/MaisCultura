@@ -799,7 +799,11 @@ td {
     margin-top: 10px;
 }
 
-#btnDenuncia:hover{
+    #btnDenuncia:hover {
+        cursor: pointer;
+    }
+
+#btnDenunciar:hover{
     cursor:pointer;
 }
 

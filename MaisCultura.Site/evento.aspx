@@ -311,13 +311,6 @@ Acontecerão aulas de Karatê e Judô em dias intercalados. Nos dias 2 e 4 haver
             </div>
             <asp:Label ID="lblMotivo" runat="server" Text="Motivação"></asp:Label>
             <asp:DropDownList ID="ddlMotivos" runat="server">
-                <asp:ListItem runat="server">Má organização</asp:ListItem>
-                <asp:ListItem runat="server">Má localização</asp:ListItem>
-                <asp:ListItem runat="server">Local inapropriado</asp:ListItem>
-                <asp:ListItem runat="server">Promessa não cumprida</asp:ListItem>
-                <asp:ListItem runat="server">Falta de segurança</asp:ListItem>
-                <asp:ListItem runat="server">Fraude</asp:ListItem>
-                <asp:ListItem runat="server">Outros</asp:ListItem>
             </asp:DropDownList>
             <asp:Label ID="lblDesc" runat="server" Text="Descrição do problema"></asp:Label>
             <asp:TextBox ID="txtBoxDescProb" runat="server" mode="multiline"

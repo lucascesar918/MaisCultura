@@ -40,9 +40,10 @@
             return $("#btnLog").click();
         }
 
+        window.scrollTo(0, 0);
         $("#denuncia").toggle();
         $("#shade3").toggle();
-        $("html").css({ 'overflow': 'auto' });
+        $("html").css({ 'overflow': 'hidden' });
     });
 
     $("#btnInteresse").click(function (e) {

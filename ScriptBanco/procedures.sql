@@ -46,6 +46,16 @@ BEGIN
 	FROM categoria;
 END$$
 
+DROP PROCEDURE IF EXISTS ListarMotivos$$
+CREATE PROCEDURE ListarMotivos()
+BEGIN
+	SELECT
+		cd_motivo as "Codigo", 
+		nm_motivo "Nome" 
+	FROM lista_motivo
+	ORDER BY nm_motivo;
+END$$
+
 DROP PROCEDURE IF EXISTS MediaAvaliacao$$
 CREATE PROCEDURE MediaAvaliacao( pEvento INT )
 BEGIN
@@ -212,9 +222,10 @@ BEGIN
 END$$
 
 DROP PROCEDURE IF EXISTS CadastrarDenuncia$$
-CREATE PROCEDURE CadastrarDenuncia(pCodigo INT, pEvento INT, pUsuario VARCHAR(20), pData DATE, pHora TIME)
+CREATE PROCEDURE CadastrarDenuncia(pCodigo INT, pEvento INT, pUsuario VARCHAR(20), pMotivo INT, pDesc TEXT)
 BEGIN
-	INSERT INTO denuncia VALUES (pCodigo, pEvento, pUsuario, pData, pHora);
+	INSERT INTO denuncia VALUES (pCodigo, pEvento, pUsuario, CURDATE(), CURTIME());
+	INSERT INTO motivo VALUES (pMotivo, pCodigo, pDesc);
 END$$
 
 DROP PROCEDURE IF EXISTS ListarEventosFeed$$
