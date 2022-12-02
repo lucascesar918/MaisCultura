@@ -141,8 +141,8 @@
 
             <section class="headerLogin">
                 <h4 class="titleLogin">Entrar</h4>
-
             </section>
+            <asp:Label ID="lblStatusLogin" runat="server" Text="" style="align-self: center; margin: auto;" ForeColor="Red"></asp:Label>
 
             <asp:TextBox ID="txtBoxUser" runat="server" placeholder="Seu nome de usuário" CssClass="txtLog"></asp:TextBox>
 

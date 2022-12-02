@@ -232,6 +232,12 @@ namespace MaisCultura
 
             if (Login != null)
                 Response.Redirect($"eventos.aspx?l={Login.Codigo}");
+            else
+            {
+                lblStatusLogin.Text = "<br>Usuário e/ou senha inválidos!";
+                txtBoxUser.Text = "";
+                txtBoxSenha.Text = "";
+            }
         }
 
         protected void btnCadastrar_Click(object sender, EventArgs e)
