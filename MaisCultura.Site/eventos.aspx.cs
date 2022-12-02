@@ -222,8 +222,6 @@ namespace MaisCultura
             if (!int.TryParse(Botao.CommandArgument, out var codigoCategoria))
                 return;
             CategoriasSelecionadas.RemoveAll((c) => c.Codigo == codigoCategoria);
-
-
         }
 
         protected void btnLogar_Click(object sender, EventArgs e)
@@ -234,7 +232,7 @@ namespace MaisCultura
                 Response.Redirect($"eventos.aspx?l={Login.Codigo}");
             else
             {
-                lblStatusLogin.Text = "<br>Usuário e/ou senha inválidos!";
+                lblStatusLogin.Text = "Usuário e/ou senha inválidos!";
                 txtBoxUser.Text = "";
                 txtBoxSenha.Text = "";
             }

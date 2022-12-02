@@ -39,7 +39,6 @@
                     </div>
                 </div>
                 <asp:Literal ID="litImgPerfil" runat="server"></asp:Literal>
-                
             </article>
         </header>
 
