@@ -270,6 +270,19 @@ namespace MaisCultura.Biblioteca
             return (Diff, Preferencia);
         }
 
+        public (List<Evento>, List<Evento>) GetFeedCreator(string codigo)
+        {
+            List<Evento> AllEventos = Listar();         //  Todos
+            List<Evento> Creator = BuscarPorUsuario(codigo);    //  Feed
+            List<Evento> Diff = new List<Evento>();     //  Todos - Feed
+
+            foreach (Evento evento in AllEventos)
+                if (!Creator.Contains(evento))
+                    Diff.Add(evento);
+
+            return (Diff, Creator);
+        }
+
         public void Salvar(string codigoUsuario, int codigoEvento)
         {
             NonQuery("AdicionarSalvo", ("pUsuario", codigoUsuario), ("pEvento", codigoEvento));

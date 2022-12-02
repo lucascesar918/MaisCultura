@@ -43,10 +43,10 @@ namespace MaisCultura.Site
             if (Request.QueryString["l"] != null)
             {
                 Login = ListaUsuario.Buscar(Request.QueryString["l"]);      //Logado
-                dropbtnUsuario.Text = Login.Nome;
+                litUsuario.Text = Login.Nome;
                 litDropDownHome.Text = $"<a href='eventos.aspx?l={Login.Codigo}'>Início</a>";
                 litDropDownPerfil.Text = $"<a href='perfil.aspx?l={Login.Codigo}'>Perfil</a>";
-                dropbtnUsuario.Visible = true;
+                litUsuario.Visible = true;
                 pnlAval.Visible= true;
                 btnLog.Visible = false;
                 btnCad.Visible = false;
@@ -56,7 +56,7 @@ namespace MaisCultura.Site
             }
             else
             {
-                dropbtnUsuario.Visible = false;                             //Deslogado
+                litUsuario.Visible = false;                             //Deslogado
                 pnlAval.Visible = false;
                 btnLog.Visible = true;
                 btnCad.Visible = true;
@@ -75,7 +75,7 @@ namespace MaisCultura.Site
                 titleResponsavel.Text = ListaUsuario.Buscar(Evento.Responsavel).Nome;
                 lblArroba.Text = '@'+Evento.Responsavel;
                 lblNotaResp.Text = ListaUsuario.BuscarMediaCriador(Evento.Responsavel).ToString();
-                lblNmrInteresse.Text = ListaEvento.BuscarInteresses(Evento.Codigo).ToString();
+                litNmrInteresse.Text = ListaEvento.BuscarInteresses(Evento.Codigo).ToString();
                 litData.Text = Evento.Dias[0].Data;
                 litHrInicio.Text = Evento.Dias[0].Inicio;
                 litHrFim.Text = Evento.Dias[0].Fim;
