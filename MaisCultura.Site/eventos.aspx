@@ -25,9 +25,7 @@
 
         <header class="header-primaria">
             <figure class="figure-header">
-                <a href="eventos.aspx">
-                <img src="Images/logoNomeMenor.png" class="logo-header"/>
-                    </a>
+                <asp:Literal ID="litLogoHeader" runat="server"></asp:Literal>
             </figure>
 
             <article class="buttons">

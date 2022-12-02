@@ -33,6 +33,15 @@ namespace MaisCultura.Site
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
+        /// litLogoHeader control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal litLogoHeader;
+
+        /// <summary>
         /// btnLog control.
         /// </summary>
         /// <remarks>

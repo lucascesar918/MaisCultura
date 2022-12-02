@@ -37,15 +37,25 @@ namespace MaisCultura.Site
                     litDropDownDenuncias.Text += $"<a href='meus-eventos.aspx?l={Login.Codigo}&u={Login.Codigo}'>Meus Eventos</a>";
                 }
                 dropbtnUsuario.Visible = true;
+                pnlAval.Visible = true;
                 btnLog.Visible = false;
                 btnCad.Visible = false;
                 litImgPerfil.Text = $@"<img src='Images/perfil526ace.png' class='imgPerfil'>";
+                bool save = ListaEvento.VerificarSalvo(Login.Codigo, int.Parse(Request.QueryString["e"]));
+                cbxSave.Checked = save;
+                litLogoHeader.Text = $@"<a href='eventos.aspx?l={Login.Codigo}'>
+                    <img src = 'Images/logoNomeMenor.png' class='logo-header'/>
+                </a>";
             }
             else
             {
                 dropbtnUsuario.Visible = false;
+                pnlAval.Visible = false;
                 btnLog.Visible = true;                                                                          //Deslogado
                 btnCad.Visible = true;
+                litLogoHeader.Text = $@"<a href='eventos.aspx'>
+                    <img src = 'Images/logoNomeMenor.png' class='logo-header'/>
+                </a>";
             }
         }
 
@@ -71,28 +81,6 @@ namespace MaisCultura.Site
 
             litCategorias.Text = "";
 
-            if (Request.QueryString["l"] != null)
-            {
-                Login = ListaUsuario.Buscar(Request.QueryString["l"]);      //Logado
-                dropbtnUsuario.Text = Login.Nome;
-                litDropDownHome.Text = $"<a href='eventos.aspx?l={Login.Codigo}'>Início</a>";
-                litDropDownPerfil.Text = $"<a href='perfil.aspx?l={Login.Codigo}'>Perfil</a>";
-                dropbtnUsuario.Visible = true;
-                pnlAval.Visible= true;
-                btnLog.Visible = false;
-                btnCad.Visible = false;
-                litImgPerfil.Text = $@"<img src='Images/perfil526ace.png' class='imgPerfil'>";
-                bool save = ListaEvento.VerificarSalvo(Login.Codigo, int.Parse(Request.QueryString["e"]));
-                cbxSave.Checked = save;
-            }
-            else
-            {
-                dropbtnUsuario.Visible = false;                             //Deslogado
-                pnlAval.Visible = false;
-                btnLog.Visible = true;
-                btnCad.Visible = true;
-            }
-
             if (Request.QueryString["e"] != null)
             {
                 Evento = ListaEvento.Buscar(Int32.Parse(Request.QueryString["e"]));
@@ -100,6 +88,7 @@ namespace MaisCultura.Site
 
             if (Evento != null)
             {
+                litTitle.Text = Evento.Titulo;
                 lblTituloEvento.Text = Evento.Titulo;
                 lblLocalEvento.Text = Evento.Local;
                 lblDescEvento.Text = Evento.Descricao;

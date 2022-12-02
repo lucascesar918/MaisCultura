@@ -44,10 +44,12 @@ namespace MaisCultura.Site
 
                 dropbtnUsuario.Visible = true;
                 litImgPerfil.Text = $@"<img src='Images/perfil526ace.png' class='imgPerfil'>";
+                litLogoHeader.Text = $@"<a href='eventos.aspx?l={Login.Codigo}'>
+                    <img src = 'Images/logoNomeMenor.png' class='logo-header'/>
+                </a>";
             }
             else
             {
-                dropbtnUsuario.Visible = false;
                 Response.Redirect("erro.html?msg=O que você está tentando fazer? Você não tem permissão para isso!");
             }
         }

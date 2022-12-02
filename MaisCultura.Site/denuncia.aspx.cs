@@ -31,6 +31,9 @@ namespace MaisCultura
                 litEventos.Text = $"<a href=\"eventos.aspx?l={Login.Codigo}\">Eventos</a>";
                 dropbtnUsuario.Text = Login.Nome;
                 litPerfil.Text = $"<a href=\"perfil.aspx?u={Login.Codigo}&l={Login.Codigo}\">Perfil</a>";
+                litLogoHeader.Text = $@"<a href='eventos.aspx?l={Login.Codigo}'>
+                    <img src = 'Images/logoNomeMenor.png' class='logo-header'/>
+                </a>";
             }
             else
                 Response.Redirect("erro.html?msg=O que você está fazendo aqui? 😯 Você não tem permissão para acessar essa página!");

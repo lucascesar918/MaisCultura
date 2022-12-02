@@ -28,6 +28,9 @@ namespace MaisCultura
                 btnLog.Visible = false;
                 btnCad.Visible = false;
                 litImgPerfil.Text = $@"<img src='Images/perfil526ace.png' class='imgPerfil'>";
+                litLogoHeader.Text = $@"<a href='eventos.aspx?l={Login.Codigo}'>
+                    <img src = 'Images/logoNomeMenor.png' class='logo-header'/>
+                </a>";
             }
             else
             {
