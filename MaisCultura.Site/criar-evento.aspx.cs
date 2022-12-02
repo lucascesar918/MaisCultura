@@ -28,7 +28,8 @@ namespace MaisCultura.Site
                 litDropDownHome.Text = $"<a href='eventos.aspx?l={Login.Codigo}'>Início</a>";
                 litDropDownPerfil.Text = $"<a href='meu-perfil.aspx?l={Login.Codigo}&u={Login.Codigo}'>Perfil</a>";
 
-                switch (Login.Tipo) {
+                switch (Login.Tipo)
+                {
                     case "Administrador":
                         litDropDownDenuncias.Text = $"<a href='denuncias.aspx?l={Login.Codigo}'>Denúncias</a>";
                         break;
@@ -82,7 +83,7 @@ namespace MaisCultura.Site
 
             listBoxDtHr.Items.Add(new ListItem($"Dia {data} das {hr_inicio} até às {hr_fim}", $"{data}-{hr_inicio}-{hr_fim}"));
         }
-        
+
         void StatusHandler(string status)
         {
             lblStatusListBox.ForeColor = System.Drawing.Color.Red;

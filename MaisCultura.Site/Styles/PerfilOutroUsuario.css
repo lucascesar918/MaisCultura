@@ -24,7 +24,7 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-   /* margin-top: 110px;*/
+    /* margin-top: 110px;*/
 }
 
 main {
@@ -134,14 +134,14 @@ main {
     transition-timing-function: ease-in-out;
 }
 
-.estrelaAval:hover{
-    transition: background-color, border-radius;
-    transition-duration: 0.3s;
-    transition-timing-function: ease-in-out;
-    cursor: pointer;
-    border-radius: 10px;
-    background-color: #ffffff;
-}
+    .estrelaAval:hover {
+        transition: background-color, border-radius;
+        transition-duration: 0.3s;
+        transition-timing-function: ease-in-out;
+        cursor: pointer;
+        border-radius: 10px;
+        background-color: #ffffff;
+    }
 
 /* Inicio da Faixa Voltar*/
 
@@ -178,7 +178,7 @@ main {
         cursor: pointer;
     }
 
-/*Fim da Faixa Voltar*/'
+/*Fim da Faixa Voltar*/ '
 
 .buttons {
     padding: 5px;
@@ -237,7 +237,7 @@ main {
     margin: 10px;
 }
 
-.userAval{
+.userAval {
     margin-left: 10px;
 }
 
@@ -268,12 +268,12 @@ main {
     font-weight: 700;
 }
 
-#lblTUser{
+#lblTUser {
     font-weight: 600;
     font-size: 14px;
 }
 
-#lblMedia{
+#lblMedia {
     font-size: 16px;
     font-weight: 900;
 }
@@ -467,7 +467,6 @@ main {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    
 }
 /*Fim da Section e Divisória dos Eventos do Criador*/
 
@@ -538,7 +537,7 @@ main {
     /*background-color: hotpink;*/
 }
 
-infosNmAtDtAv span{
+infosNmAtDtAv span {
     margin-left: 10px;
 }
 
@@ -552,7 +551,7 @@ infosNmAtDtAv span{
     align-items: center;
     /*background-color: yellow;*/
     width: 8%;
-   /* background-color: purple;*/
+    /* background-color: purple;*/
 }
 
 .textoAvaliacao {
@@ -616,9 +615,7 @@ infosNmAtDtAv span{
     cursor: pointer;
 }
 
-a{
+a {
     text-decoration: none;
     color: black;
 }
-
-

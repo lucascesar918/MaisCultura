@@ -15,18 +15,20 @@ namespace MaisCultura.Biblioteca
         {
             return str.Length > TamanhoMaximo ? str.Substring(0, TamanhoMaximo - 3) + "..." : str;
         }
- 
-        Evento DataReaderToEvento(MySqlDataReader data, bool Reticencias) {
+
+        Evento DataReaderToEvento(MySqlDataReader data, bool Reticencias)
+        {
             var cdEvento = Int32.Parse(data["Codigo"].ToString());
             string responsavel = data["@"].ToString();
             string local = data["Local"].ToString();
             string titulo = data["Titulo"].ToString();
             string descricao = data["Descricao"].ToString();
-            if (Reticencias) {
+            if (Reticencias)
+            {
                 titulo = AdicionarReticencia(titulo, 35);
                 local = AdicionarReticencia(local, 27);
             }
-            return new Evento( cdEvento,responsavel , titulo, local, descricao,  null, null);
+            return new Evento(cdEvento, responsavel, titulo, local, descricao, null, null);
         }
         public List<Evento> Listar()
         {
@@ -36,7 +38,7 @@ namespace MaisCultura.Biblioteca
 
             while (data.Read())
             {
-                Eventos.Add(DataReaderToEvento(data,false));
+                Eventos.Add(DataReaderToEvento(data, false));
             }
 
             Desconectar();
@@ -59,7 +61,7 @@ namespace MaisCultura.Biblioteca
             Desconectar();
             return ++codigo;
         }
-        
+
         public List<Categoria> BuscarCategorias(int codigo_evento)
         {
             List<Categoria> categorias = new List<Categoria>();
@@ -128,7 +130,8 @@ namespace MaisCultura.Biblioteca
         public void AdicionarCategorias(int evento, List<Categoria> categorias)
         {
 
-            foreach (Categoria categoria in categorias) {
+            foreach (Categoria categoria in categorias)
+            {
                 NonQuery("CadastrarCategoriaEvento", ("pEvento", evento), ("pCategoria", categoria.Codigo));
             }
         }
@@ -138,11 +141,11 @@ namespace MaisCultura.Biblioteca
             Evento evento = null;
 
 
-            MySqlDataReader data = Query("BuscarEvento", ("pCodigo", codigo)); 
+            MySqlDataReader data = Query("BuscarEvento", ("pCodigo", codigo));
 
             while (data.Read())
             {
-                evento = DataReaderToEvento(data, false);    
+                evento = DataReaderToEvento(data, false);
             }
 
             Desconectar();
@@ -177,19 +180,19 @@ namespace MaisCultura.Biblioteca
         }
 
         public void Criar(Evento evento)
-        { 
+        {
             NonQuery("CadastrarEvento",
                 ("pCodigo", MaxCodigo()),
                 ("pResponsavel", evento.Responsavel),
-                ("pNome"    , evento.Titulo),
+                ("pNome", evento.Titulo),
                 ("pLocal", evento.Local),
-                ("pDescricao", evento.Descricao)    
+                ("pDescricao", evento.Descricao)
             );
         }
 
         public List<Categoria> ListarCategorias()
         {
-            List<Categoria> categorias = new List<Categoria>(); 
+            List<Categoria> categorias = new List<Categoria>();
 
             MySqlDataReader data = Query("ListarCategorias");
             while (data.Read())
@@ -243,7 +246,8 @@ namespace MaisCultura.Biblioteca
             return interesses;
         }
 
-        public void Deletar(int codigo) {
+        public void Deletar(int codigo)
+        {
             NonQuery("DeletarEvento", ("pCodigo", codigo));
         }
 

@@ -405,7 +405,7 @@ body {
     width: 95%;
 }
 
-.boxPesquisa{
+.boxPesquisa {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -413,13 +413,13 @@ body {
     padding: 10px;
 }
 
-.meusEventos{
+.meusEventos {
     background-color: #ffffff;
     border-bottom: 1px solid black;
     font-size: 2.2vh;
 }
 
-.btns{
+.btns {
     padding: 20px;
     display: flex;
     flex-direction: row;
@@ -431,7 +431,7 @@ body {
     padding: 10px;
     color: white;
     background-color: #526ace;
-    border:  1px solid #526ace;
+    border: 1px solid #526ace;
     border-radius: 5px;
     font-weight: 800;
     transition: background-color, color, border;
@@ -450,12 +450,12 @@ body {
     }
 
 
-    .txtLocal::placeholder {
-        padding: 5px;
-        color: black;
-        font-weight: 400;
-        font-size: 12px;
-    }
+.txtLocal::placeholder {
+    padding: 5px;
+    color: black;
+    font-weight: 400;
+    font-size: 12px;
+}
 
 .dt {
     width: 100%;
@@ -512,7 +512,7 @@ body {
     width: 26px;
     height: 26px;
     margin-left: 15px;
-   /* display: flex;
+    /* display: flex;
     align-self: flex-end;*/
 }
 
@@ -524,7 +524,7 @@ body {
     width: 95%;
 }
 
-a{
+a {
     text-decoration: none;
     color: black;
 }

@@ -252,10 +252,10 @@
             delay: 400
         });
 
-        ScrollReveal().reveal('.card', { reset: true,delay: 200 ,interval: 50 });
+        ScrollReveal().reveal('.card', { reset: true, delay: 200, interval: 50 });
         ScrollReveal().reveal('.grafismo-header', { delay: 100, origin: 'right' })
         ScrollReveal().reveal('.p', { delay: 100, origin: 'right' });
-</script>
+    </script>
 
 </body>
 </html>

@@ -10,7 +10,8 @@ namespace MaisCultura
 {
     public partial class PainelDenuncias : System.Web.UI.Page
     {
-        string AdicionarReticencias(string str, int TamanhoMaximo) {
+        string AdicionarReticencias(string str, int TamanhoMaximo)
+        {
             return str.Length > TamanhoMaximo ? str.Substring(0, TamanhoMaximo - 3) + "..." : str;
         }
 

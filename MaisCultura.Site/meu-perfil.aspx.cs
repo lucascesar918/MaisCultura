@@ -63,7 +63,7 @@ namespace MaisCultura.Site
 
             if (txtSenhaAntiga.Text == txtSenhaNova.Text) return;
 
-            ListaUsuario.AlterarSenha(Login.Codigo ,txtSenhaNova.Text);
+            ListaUsuario.AlterarSenha(Login.Codigo, txtSenhaNova.Text);
         }
 
         protected void btnExcluirConta_Click(object sender, EventArgs e)

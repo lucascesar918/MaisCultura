@@ -70,7 +70,8 @@ namespace MaisCultura.Biblioteca
             return Avaliacoes;
         }
 
-        public void Avaliar(string codigoUsuario, int codigoEvento, string descricao, int estrelas) {
+        public void Avaliar(string codigoUsuario, int codigoEvento, string descricao, int estrelas)
+        {
             NonQuery("CadastrarAvaliacao", ("pUsuario", codigoUsuario), ("pEvento", codigoEvento), ("pDescricao", descricao), ("pEstrelas", estrelas));
         }
 
@@ -99,7 +100,8 @@ namespace MaisCultura.Biblioteca
             return aval[0];
         }
 
-        public void AlterarAvaliacao(string codigoUsuario, int codigoEvento, string descricao, int estrelas) {
+        public void AlterarAvaliacao(string codigoUsuario, int codigoEvento, string descricao, int estrelas)
+        {
             NonQuery("AlterarAvaliacao", ("pUsuario", codigoUsuario), ("pEvento", codigoEvento), ("pDescricao", descricao), ("pEstrelas", estrelas));
         }
 

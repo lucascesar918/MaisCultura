@@ -47,7 +47,7 @@ namespace MaisCultura.Site
                 litDropDownHome.Text = $"<a href='eventos.aspx?l={Login.Codigo}'>Início</a>";
                 litDropDownPerfil.Text = $"<a href='perfil.aspx?l={Login.Codigo}'>Perfil</a>";
                 litUsuario.Visible = true;
-                pnlAval.Visible= true;
+                pnlAval.Visible = true;
                 btnLog.Visible = false;
                 btnCad.Visible = false;
                 litImgPerfil.Text = $@"<img src='Images/perfil526ace.png' class='imgPerfil'>";
@@ -73,7 +73,7 @@ namespace MaisCultura.Site
                 lblLocalEvento.Text = Evento.Local;
                 lblDescEvento.Text = Evento.Descricao;
                 titleResponsavel.Text = ListaUsuario.Buscar(Evento.Responsavel).Nome;
-                lblArroba.Text = '@'+Evento.Responsavel;
+                lblArroba.Text = '@' + Evento.Responsavel;
                 lblNotaResp.Text = ListaUsuario.BuscarMediaCriador(Evento.Responsavel).ToString();
                 litNmrInteresse.Text = ListaEvento.BuscarInteresses(Evento.Codigo).ToString();
                 litData.Text = Evento.Dias[0].Data;
@@ -101,7 +101,8 @@ namespace MaisCultura.Site
 
                 for (int i = 0; i < imagens.Count; i++)
                 {
-                    if (i == 0){
+                    if (i == 0)
+                    {
                         CarrouselImages += $@"
                         <div class='carousel-item active'>
                               <img class='d-block w-100' src='{imagens[0]}' alt='Slide'>
@@ -150,7 +151,7 @@ namespace MaisCultura.Site
 
                 foreach (Categoria categoria in Evento.Categorias)
                     litCategorias.Text += $"<span class='ag'>{categoria.Nome}</span>";
-                
+
                 foreach (Avaliacao avaliacao in ListaAvaliacao.BuscarPorEvento(Evento.Codigo))
                     litAvaliacoes.Text += $@"<div class='umaAvaliacao'>
                                 <div class='infosAvaliador'>

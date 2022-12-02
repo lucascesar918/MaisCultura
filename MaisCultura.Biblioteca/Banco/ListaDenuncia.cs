@@ -8,7 +8,8 @@ namespace MaisCultura.Biblioteca
 {
     public class ListaDenuncia : Banco
     {
-        Denuncia DataReaderToDenuncia(MySqlDataReader data) {
+        Denuncia DataReaderToDenuncia(MySqlDataReader data)
+        {
 
             int CodigoDenuncia = Int32.Parse(data["CodigoDenuncia"].ToString());
             int CodigoEvento = Int32.Parse(data["CodigoEvento"].ToString());
@@ -17,7 +18,7 @@ namespace MaisCultura.Biblioteca
             //string Descricao = data["Descricao"].ToString();
             string Descricao = data["Descricao"].ToString();
             Motivo Motivo = new Motivo(Int32.Parse(data["CodigoMotivo"].ToString()), data["Motivo"].ToString());
-            return new Denuncia(CodigoDenuncia , CodigoEvento, Descricao, CodigoUsuario, Data, Motivo);
+            return new Denuncia(CodigoDenuncia, CodigoEvento, Descricao, CodigoUsuario, Data, Motivo);
         }
 
         public int MaxCodigo()
@@ -50,7 +51,8 @@ namespace MaisCultura.Biblioteca
             Desconectar();
         }
 
-        public List<Denuncia> Listar() {
+        public List<Denuncia> Listar()
+        {
 
             List<Denuncia> Denuncias = new List<Denuncia>();
             MySqlDataReader data = Query("ListarDenuncias");
@@ -62,7 +64,8 @@ namespace MaisCultura.Biblioteca
             return Denuncias;
         }
 
-        public List<Denuncia> BuscarPorUsuario(string cdUsuario) { 
+        public List<Denuncia> BuscarPorUsuario(string cdUsuario)
+        {
 
             List<Denuncia> denuncias = new List<Denuncia>();
             MySqlDataReader data = Query("BuscarDenunciasUsuario", ("pCodigo", cdUsuario));
@@ -74,7 +77,8 @@ namespace MaisCultura.Biblioteca
             return denuncias;
         }
 
-        public List<Denuncia> BuscarPorEvento(int cdEvento) {
+        public List<Denuncia> BuscarPorEvento(int cdEvento)
+        {
 
             List<Denuncia> denuncias = new List<Denuncia>();
             MySqlDataReader data = Query("BuscarDenunciasEvento", ("pEvento", cdEvento));
@@ -86,7 +90,8 @@ namespace MaisCultura.Biblioteca
             return denuncias;
         }
 
-        public List<Denuncia> BuscarPorUsuarioEvento(string cdUsuario, int cdEvento) {
+        public List<Denuncia> BuscarPorUsuarioEvento(string cdUsuario, int cdEvento)
+        {
 
             List<Denuncia> denuncias = new List<Denuncia>();
             MySqlDataReader data = Query("BuscarDenunciasUsuarioEvento", ("pCodigo", cdUsuario), ("pEvento", cdEvento));
@@ -98,7 +103,8 @@ namespace MaisCultura.Biblioteca
             return denuncias;
         }
 
-        public Denuncia Buscar(int codigo) {
+        public Denuncia Buscar(int codigo)
+        {
 
             Denuncia denuncias = null;
             MySqlDataReader data = Query("BuscarDenuncia", ("pCodigo", codigo));

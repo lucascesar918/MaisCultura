@@ -17,8 +17,8 @@
         const paramsURL = new URLSearchParams(window.location.search);
 
         // Query strings
-            // "login" para o código de usuário que está logado
-            // "msg" para a mensagem de erro dinâmica
+        // "login" para o código de usuário que está logado
+        // "msg" para a mensagem de erro dinâmica
 
         var login = paramsURL.get("l");
         var msg = paramsURL.get("msg").length == 0 ? "Isso é uma página de erro, não era pra você estar aqui!" : paramsURL.get("msg"); // Lida com as ocasiões do usuário entrar sem motivo na página ou realmente por um erro
@@ -31,11 +31,11 @@
         $(document).ready(function (e) {
             $("#msgErro").text(msg);
 
-            $("button").click(function (e){
+            $("button").click(function (e) {
                 window.location.replace(login == null ? "eventos.aspx" : `eventos.aspx?l=${login}`); //Lida com as ocasiões do usuário vir para a página de erro logado ou não
             });
         })
-        
+
     </script>
 </body>
 </html>

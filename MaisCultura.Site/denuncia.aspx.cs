@@ -34,7 +34,7 @@ namespace MaisCultura
             }
             else
                 Response.Redirect("erro.html?msg=O que você está fazendo aqui? 😯 Você não tem permissão para acessar essa página!");
-            
+
 
         }
 

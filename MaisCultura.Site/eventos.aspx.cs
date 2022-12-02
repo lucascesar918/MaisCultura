@@ -48,9 +48,10 @@ namespace MaisCultura
         {
             get => ViewState["CategoriasSelecionadas"] as List<Categoria>;
             set => ViewState["CategoriasSelecionadas"] = value;
-        } 
+        }
 
-        private void PrintarEventos(List<Evento> Eventos, bool hidden) {
+        private void PrintarEventos(List<Evento> Eventos, bool hidden)
+        {
             foreach (Evento evento in Eventos)
             {
                 Usuario usuarioEvento = ListaUsuario.Buscar(evento.Responsavel);
@@ -123,17 +124,16 @@ namespace MaisCultura
                         <figure>
                             <img src='Images/local.png' alt='Ícone Local' class='local-icon'>
                         </figure>
-                        <h3>{
-                            evento.Local
-                        }</h3>
+                        <h3>{evento.Local}</h3>
 
                     </article>
                 </section>";
             }
         }
 
-        private void ListarEventos(string usuario) {
-           
+        private void ListarEventos(string usuario)
+        {
+
             litEventos.Text = "";
 
             List<Evento> Diff; // Eventos que não são da preferência do usuário
@@ -143,7 +143,7 @@ namespace MaisCultura
 
             Feed = Feed.FindAll((e) => Filtro.Verificar(e));
             Diff = Diff.FindAll((e) => Filtro.Verificar(e));
-           
+
             litEventos.Text = "";
             PrintarEventos(Feed, false);
             PrintarEventos(Diff, Feed.Count > 0);
@@ -159,7 +159,8 @@ namespace MaisCultura
         }
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack){
+            if (!IsPostBack)
+            {
                 var Categorias = ListaEvento.ListarCategorias();
                 filtrosCategorias.DataSource = Categorias;
                 filtrosCategorias.DataBind();
@@ -184,17 +185,17 @@ namespace MaisCultura
             ListarEventos(Login?.Codigo);
 
             LoadComplete += Page_Load;
-            
+
         }
-        
+
         protected void ClickCategoria(object sender, EventArgs e)
         {
             var Botao = (Button)sender;
             if (!int.TryParse(Botao.CommandArgument, out var codigoCategoria))
                 return;
-            if(CategoriasSelecionadas.Count < 3 && !CategoriasSelecionadas.Any(c=> c.Codigo == codigoCategoria))
+            if (CategoriasSelecionadas.Count < 3 && !CategoriasSelecionadas.Any(c => c.Codigo == codigoCategoria))
                 CategoriasSelecionadas.Add(new Categoria(codigoCategoria, Botao.Text));
-          
+
 
         }
 
@@ -207,7 +208,7 @@ namespace MaisCultura
 
 
         }
- 
+
         protected void btnLogar_Click(object sender, EventArgs e)
         {
             Login = ListaUsuario.BuscarLogin(txtBoxUser.Text, txtBoxSenha.Text);

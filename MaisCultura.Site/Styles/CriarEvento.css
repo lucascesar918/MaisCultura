@@ -17,16 +17,15 @@ body {
     height: 100%;
     background-color: #f1f1f1;
 }
- 
 
-.all{
+
+.all {
     /*background-color: mediumpurple;*/
     height: 100%;
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    
 }
 
 
@@ -79,7 +78,6 @@ main {
     min-width: fit-content;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
-   
     border-radius: 5px;
 }
 
@@ -142,8 +140,8 @@ main {
 /*Fim da Faixa Voltar*/
 
 .infos {
-/*    background-color: crimson;
-*/    display: flex;
+    /*    background-color: crimson;
+*/ display: flex;
     flex-direction: row;
     justify-content: center;
     height: 100%;
@@ -152,64 +150,63 @@ main {
     height: fit-content;
 }
 
-.addCategs{
+.addCategs {
     width: 20%;
-/*    background-color: orangered;
-*/    display: flex;
+    /*    background-color: orangered;
+*/ display: flex;
     flex-direction: column;
     align-items: center;
-
     padding: 10px;
 }
 
 .txts {
     padding: 10px;
-/*    background-color: darkseagreen;
-*/    width: 80%;
+    /*    background-color: darkseagreen;
+*/ width: 80%;
     box-sizing: border-box;
     height: fit-content;
 }
 
 .local {
-/*    background-color: hotpink;
-*/    display: flex;
+    /*    background-color: hotpink;
+*/ display: flex;
     flex-direction: row;
     justify-content: space-between;
     padding: 10px;
     align-items: center;
 }
 
-#ddlUF{
+#ddlUF {
     width: fit-content;
 }
 
 
 
-.divDtHr{
-/*    background-color: lightpink;
-*/    display: flex;
+.divDtHr {
+    /*    background-color: lightpink;
+*/ display: flex;
     flex-direction: row;
     justify-content: space-between;
     padding-bottom: 10px;
     align-items: center;
 }
 
-.divDts{
-/*    background-color: deeppink;
-*/    display: flex;
+.divDts {
+    /*    background-color: deeppink;
+*/ display: flex;
     flex-direction: column;
     padding: 0px 10px 0px 10px;
 }
 
 
-.txtBoxDtHr{
+.txtBoxDtHr {
     width: fit-content;
     padding: 10px;
     border: 1px solid #526ace;
     border-radius: 5px;
 }
 
-.txtBox{
+.txtBox {
     width: 100%;
     padding: 10px;
     border: 1px solid #526ace;
@@ -218,18 +215,18 @@ main {
     border-radius: 5px;
 }
 
-.txtBox::placeholder{
-    color: black;
-}
+    .txtBox::placeholder {
+        color: black;
+    }
 
-.label{
+.label {
     font-size: 2.2vh;
     margin: 10px;
 }
 
 
 
-#btnAdicionarDtHr, #btnRemoverDtHr{
+#btnAdicionarDtHr, #btnRemoverDtHr {
     border: none;
     background-color: #526ace;
     color: white;
@@ -241,17 +238,17 @@ main {
     width: 35px;
     height: 35px;
     border-radius: 2.5px;
-    font-weight:900;
+    font-weight: 900;
 }
 
 
-#ddlCategs{
+#ddlCategs {
     width: 80%;
     border: 1px solid #526ace;
     border-radius: 2.5px;
 }
 
-#listBoxCateg{
+#listBoxCateg {
     width: 100%;
     height: 40%;
     padding: 10px;
@@ -259,16 +256,16 @@ main {
     border-radius: 5px 0px 0px 5px;
 }
 
-.categs{
+.categs {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-/*    background-color: lawngreen;
-*/    width: 100%;
+    /*    background-color: lawngreen;
+*/ width: 100%;
     margin-bottom: 10px;
 }
 
-#btnAddCateg, #btnRmCateg{
+#btnAddCateg, #btnRmCateg {
     width: 25px;
     height: 25px;
     font-size: 15px;
@@ -280,10 +277,10 @@ main {
 }
 
 
-.divTitle{
+.divTitle {
     width: 100%;
-/*    background-color: indianred;
-*/    /*padding: 0px;*/
+    /*    background-color: indianred;
+*/ /*padding: 0px;*/
     border-bottom: 1px solid black;
     font-size: 20px;
     font-weight: 800;
@@ -294,14 +291,14 @@ main {
     margin-bottom: 10px;
 }
 
-.h2{
+.h2 {
     padding: 10px;
 }
 
-.outrosInfoEvento{
+.outrosInfoEvento {
     padding: 10px;
-/*    background-color: blueviolet;
-*/    display: flex;
+    /*    background-color: blueviolet;
+*/ display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -310,16 +307,16 @@ main {
 
 
 
-.tituloEvento{
-    padding:10px;
+.tituloEvento {
+    padding: 10px;
 }
 
-#txtBoxAvaliacao{
+#txtBoxAvaliacao {
     width: 100%;
     padding: 10px;
     border: none;
     border-radius: 5px;
-    margin-top:10px;
+    margin-top: 10px;
     background-color: #f1f1f1;
     box-sizing: border-box;
     height: 130px;
@@ -341,18 +338,18 @@ main {
     transition-timing-function: ease-in-out;
 }
 
-#btnAddEvento:hover{
-    cursor: pointer;
-    border: 1px solid #526ace;
-    background: #ffffff;
-    color: #526ace;
-    transition: border, color, background;
-    transition-duration: 0.3s;
-    transition-timing-function: ease-in-out;
-}
+    #btnAddEvento:hover {
+        cursor: pointer;
+        border: 1px solid #526ace;
+        background: #ffffff;
+        color: #526ace;
+        transition: border, color, background;
+        transition-duration: 0.3s;
+        transition-timing-function: ease-in-out;
+    }
 
 
-button{
+button {
     cursor: pointer;
 }
 
@@ -361,21 +358,19 @@ button{
     border-radius: 5px 0px 0px 5px;
 }*/
 
-#itemListaDtHr{
+#itemListaDtHr {
     padding: 10px;
 }
 
-table{
+table {
     font-size: 15px;
     padding: 10px;
 }
 
-td{
+td {
     text-align: center;
 }
 
-#txtCidade{
+#txtCidade {
     width: 70%;
 }
-
-
