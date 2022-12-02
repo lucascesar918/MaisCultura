@@ -69,7 +69,10 @@ namespace MaisCultura.Site
                 bool save = ListaEvento.VerificarSalvo(Login.Codigo, int.Parse(Request.QueryString["e"]));
                 cbxSave.Checked = save;
 
-                verificarAvalicao();
+                if (!IsPostBack)
+                    verificarAvalicao();
+    
+                verificarInteresse();
             }
             else
             {
@@ -169,28 +172,7 @@ namespace MaisCultura.Site
                 foreach (Categoria categoria in Evento.Categorias)
                     litCategorias.Text += $"<span class='tag'>{categoria.Nome}</span>";
 
-                litAvaliacoes.Text = "";
-
-                foreach (Avaliacao avaliacao in ListaAvaliacao.BuscarPorEvento(Evento.Codigo))
-                    litAvaliacoes.Text += $@"<div class='umaAvaliacao'>
-                                <div class='infosAvaliador'>
-                                    <section class='infosNmAtDtAv'>
-                                        <figure>
-                                            <img src='Images/perfil526ace.png' class='imgPerfilAvaliacao' />
-                                        </figure>
-                                        <span>{avaliacao.CodigoUsuario}</span>
-                                    </section>
-                                    <div class='notaAvaliacao'>
-                                        <span>{avaliacao.Estrelas}</span>
-                                        <figure>
-                                            <img src='Images/star.png' class='imgEstrelaMedia' />
-                                        </figure>
-                                    </div>
-                                </div>
-                                <div class='textoAvaliacao'>
-                                    <span>{avaliacao.Descricao}</span>
-                                </div>
-                            </div>";
+                mostrarAvaliacoes();
 
                 PreencherDdlMotivos();
             }
@@ -273,9 +255,36 @@ namespace MaisCultura.Site
 
             MySqlDataReader data = banco.Query("ListarMotivos");
 
+            ddlMotivos.DataSource = data;
             ddlMotivos.DataTextField = "Nome";
             ddlMotivos.DataValueField = "Codigo";
-            ddlMotivos.DataSource = data;
+            ddlMotivos.DataBind();
+        }
+
+        void mostrarAvaliacoes()
+        {
+            litAvaliacoes.Text = "";
+
+            foreach (Avaliacao avaliacao in ListaAvaliacao.BuscarPorEvento(int.Parse(Request.QueryString["e"])))
+                litAvaliacoes.Text += $@"<div class='umaAvaliacao'>
+                                <div class='infosAvaliador'>
+                                    <section class='infosNmAtDtAv'>
+                                        <figure>
+                                            <img src='Images/perfil526ace.png' class='imgPerfilAvaliacao' />
+                                        </figure>
+                                        <span>{avaliacao.CodigoUsuario}</span>
+                                    </section>
+                                    <div class='notaAvaliacao'>
+                                        <span>{avaliacao.Estrelas}</span>
+                                        <figure>
+                                            <img src='Images/star.png' class='imgEstrelaMedia' />
+                                        </figure>
+                                    </div>
+                                </div>
+                                <div class='textoAvaliacao'>
+                                    <span>{avaliacao.Descricao}</span>
+                                </div>
+                            </div>";
         }
 
         void verificarAvalicao()
@@ -284,9 +293,18 @@ namespace MaisCultura.Site
                 return;
 
             Avaliacao aval = ListaAvaliacao.BuscarAvaliacaoPorUsuarioEvento(Login.Codigo, int.Parse(Request.QueryString["e"]));
-
+            
             txtBoxAvaliacao.Text = aval.Descricao;
             colocarEstrelas(aval.Estrelas);
+        }
+
+        void verificarInteresse()
+        {
+            if (ListaEvento.VerificarInteresse(Login.Codigo, int.Parse(Request.QueryString["e"])))
+            {
+                btnInteresse.Text = "Interesse Demonstrado";
+                btnInteresse.CssClass = "Int";
+            }
         }
 
         protected void umaEstrela_Click(object sender, ImageClickEventArgs e)
@@ -333,7 +351,12 @@ namespace MaisCultura.Site
             else
                 estrelas = 1;
 
-            ListaAvaliacao.Avaliar(Login.Codigo, Evento.Codigo, texto, estrelas);
+            if (ListaAvaliacao.VerificarAvaliacaoPorUsuarioEvento(Login.Codigo, int.Parse(Request.QueryString["e"])))
+                ListaAvaliacao.AlterarAvaliacao(Login.Codigo, int.Parse(Request.QueryString["e"]), texto, estrelas);
+            else
+                ListaAvaliacao.Avaliar(Login.Codigo, int.Parse(Request.QueryString["e"]), texto, estrelas);
+
+            mostrarAvaliacoes();
         }
 
         protected void btnDenunciar_Click(object sender, EventArgs e)

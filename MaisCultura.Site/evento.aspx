@@ -156,10 +156,10 @@ Acontecerão aulas de Karatê e Judô em dias intercalados. Nos dias 2 e 4 haver
                                         <asp:Button ID="btnAvaliar" runat="server" Text="Enviar Avaliação" OnClick="btnAvaliar_Click"/>
                                     </section>
                                 </asp:Panel>
-
                             </ContentTemplate>
                         </asp:UpdatePanel>
 
+                        
 
                     </section>
                 </section>
