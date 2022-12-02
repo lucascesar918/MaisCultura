@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
     <link rel="stylesheet" type="text/css" href="Styles/PerfilOutroUsuario.css" />
 
@@ -15,6 +16,8 @@
 </head>
 <body>
     <form id="form1" runat="server">
+        <div id="shade" class="shade"></div>
+        <div id="shade2" class="shade"></div>
 
         <header class="header-primaria">
             <figure class="figure-header">
@@ -85,40 +88,89 @@
                         
                         <asp:Literal ID="litAvaliacoes" runat="server"></asp:Literal>
                         
-                        <asp:Panel ID="pnlAval" runat="server">
-                            <section class="suaAvaliacao">
-                                <div class="suaNota">
-                                    <h4> Deixe uma nota sobre esse criador... </h4>
-
-                                    <div class="estrelas">
-                                        <asp:ImageButton ID="umaEstrela" runat="server" CssClass="estrelaAval" ImageUrl="~/Images/star.png" />
-                                        <asp:ImageButton ID="duasEstrelas" runat="server" CssClass="estrelaAval" ImageUrl="~/Images/star.png" />
-                                        <asp:ImageButton ID="tresEstrelas" runat="server" CssClass="estrelaAval" ImageUrl="~/Images/star.png" />
-                                        <asp:ImageButton ID="quatroEstrelas" runat="server" CssClass="estrelaAval" ImageUrl="~/Images/star.png" />
-                                        <asp:ImageButton ID="cincoEstrelas" runat="server" CssClass="estrelaAval" ImageUrl="~/Images/star.png" />
-                                    </div>
-
-                                    <%--<asp:DropDownList ID="ddlEstrelas" runat="server">
-                                        <asp:ListItem Text="Uma estrela" Value="1"></asp:ListItem>
-                                        <asp:ListItem Text="Duas estrelas" Value="2"></asp:ListItem>
-                                        <asp:ListItem Text="Três estrelas" Value="3"></asp:ListItem>
-                                        <asp:ListItem Text="Quatro estrelas" Value="4"></asp:ListItem>
-                                        <asp:ListItem Text="Cinco estrelas" Value="5"></asp:ListItem>
-                                    </asp:DropDownList>--%>
-                                </div>
-
-                                <div class="seuTexto">
-                                    <asp:TextBox ID="txtBoxAvaliacao" runat="server" mode="multiline" placeholder="Deixe aqui sua avaliação sobre esse criador..."></asp:TextBox>
-                                </div>
-
-                                <asp:Button ID="btnAvaliar" runat="server" Text="Enviar Avaliação" />
-                            </section>
-                        </asp:Panel>
-                        
                     </section>
                 </section> 
+
+                <div class="login pop" id="log">
+
+                <section class="headerLogin">
+                    <h4 class="titleLogin">Entrar</h4>
+
+                </section>
+
+                <asp:TextBox ID="txtBoxUser" runat="server" placeholder="Seu nome de usuário" CssClass="txtLog"></asp:TextBox>
+
+                <asp:TextBox ID="txtBoxSenha" runat="server" placeholder="Sua senha" CssClass="txtLog" type="password"></asp:TextBox>
+
+                <asp:Button ID="btnLogar" runat="server" Text="Entrar" OnClick="btnLogar_Click" />
+                <asp:Button ID="btnSairLogin" runat="server" Text="Fechar" />
+            </div>
+
+            <div class="cadastrar pop" id="cad">
+
+                <section class="headerCad">
+                    <h4 class="titleCad">Cadastrar</h4>
+                </section>
+
+                <div class="nms">
+                    <asp:TextBox ID="txtBoxNome" runat="server" placeholder="Seu nome" CssClass="txtCadNm"></asp:TextBox>
+                    <asp:TextBox ID="txtBoxSobrenome" runat="server" placeholder="Seu sobrenome" CssClass="txtCadNm"></asp:TextBox>
+                </div>
+
+                <asp:TextBox ID="txtBoxEmail" runat="server" placeholder="Seu email" CssClass="txtCad"></asp:TextBox>
+
+                <asp:TextBox ID="txtBoxNmUsuario" runat="server" placeholder="Seu nome de usuário" CssClass="txtCad"></asp:TextBox>
+
+                <asp:TextBox ID="txtBoxSenhaCad" runat="server" placeholder="Sua senha" CssClass="txtCad"></asp:TextBox>
+
+                <asp:DropDownList ID="ddlTipoUser" runat="server" CssClass="txtCad">
+                    <asp:ListItem runat="server" CssClass="listDdl" Value="Usuário Comum">
+                        Usuário Comum
+                    </asp:ListItem>
+
+                    <asp:ListItem runat="server" CssClass="listDdl" Value="Criador de Eventos">
+                        Criador de Eventos
+                    </asp:ListItem>
+
+                    <asp:ListItem runat="server" CssClass="listDdl" Value="Empresa">
+                        Empresa
+                    </asp:ListItem> 
+                </asp:DropDownList> 
+
+                <div class="dtNasc">
+                    <asp:Label ID="lblNasc" runat="server" Text="Data de Nascimento"></asp:Label>
+
+                    <div class="ddlsDtNasc">
+
+                        <asp:TextBox ID="txtData" runat="server" type="date"> CssClass="txtCadDt" ID="dia"</asp:TextBox>
+                    </div>          
+                </div>
+            
+                <div class="sexo">
+                    <asp:Label ID="lblSexo" runat="server" Text="Sexo"></asp:Label>
+
+                    <asp:DropDownList ID="ddlSexo" runat="server">
+                        <asp:ListItem runat="server" CssClass="listDdl" Value="M">
+                            Masculino
+                        </asp:ListItem>
+
+                        <asp:ListItem runat="server" CssClass="listDdl" Value="F">
+                            Feminino
+                        </asp:ListItem>
+
+                        <asp:ListItem runat="server" CssClass="listDdl" Value="NO">
+                            Desejo não informar
+                        </asp:ListItem>
+                    </asp:DropDownList>
+                </div>
+
+                <asp:Button ID="btnCadastrar" runat="server" Text="Cadastrar" OnClick="btnCadastrar_Click1"/>
+                <asp:Button ID="btnSairCad" runat="server" Text="Fechar"/>
+            </div>
             </main>
         </section>
     </form>
+
+    <script type="text/javascript" src="js/CadastroLogin.js"></script>
 </body>
 </html>

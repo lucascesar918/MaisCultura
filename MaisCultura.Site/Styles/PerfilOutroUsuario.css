@@ -1,5 +1,5 @@
 ﻿* {
-    margin: 0;
+    margin: 1px 0 0 0;
     padding: 0;
     font-family: 'Montserrat';
 }
@@ -178,7 +178,7 @@ main {
         cursor: pointer;
     }
 
-/*Fim da Faixa Voltar*/ '
+/*Fim da Faixa Voltar*/ 
 
 .buttons {
     padding: 5px;
@@ -192,7 +192,7 @@ main {
     width: 100px;
     height: 80%;
     border: none;
-    font-size: 12px;
+    font-size: 15px;
     padding: 5px;
     margin: 5px;
     border-radius: 2.5px;
@@ -309,6 +309,7 @@ main {
     border-radius: 20px;
     border: 1px solid black;
     padding: 10px;
+    margin: 0px 15px;
     transition: box-shadow;
     transition-duration: 0.3s;
     transition-timing-function: ease-in-out;
@@ -466,7 +467,7 @@ main {
     padding: 30px 0px 30px 0px;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content: flex-start;
 }
 /*Fim da Section e Divisória dos Eventos do Criador*/
 
@@ -547,7 +548,7 @@ infosNmAtDtAv span {
 .notaAvaliacao {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
     /*background-color: yellow;*/
     width: 8%;
@@ -618,4 +619,318 @@ infosNmAtDtAv span {
 a {
     text-decoration: none;
     color: black;
+}
+
+
+.btnCadastrar {
+    background-color: #526ace;
+    color: white;
+    padding: 10px;
+    height: fit-content;
+    width: 100%;
+    box-sizing: border-box;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+
+#txtData {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 5px;
+    font-size: 14px;
+    border: none;
+    border-radius: 2.5px;
+    background-color: #babaca;
+    padding: 10px;
+    font-weight: bold;
+}
+
+.input:hover {
+    filter: opacity(90%);
+}
+
+.input::placeholder {
+    color: black;
+}
+
+.usuario:hover {
+    filter: opacity(90%);
+}
+
+.data:hover {
+    filter: opacity(90%);
+}
+
+.erro {
+    color: red;
+    text-align: center;
+    width: 100%;
+    font-size: 12pt;
+    padding-top: 0px;
+    margin-top: 10px;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+    font-size: 2vh;
+}
+
+.sair {
+    position: absolute;
+    right: 1%;
+    top: 1%;
+    cursor: pointer;
+}
+
+.login {
+    background: #f1f1f1;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 13px;
+    border: 1px solid #526ace;
+    border-radius: 5px;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+    height: fit-content;
+}
+
+.headerLogin {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+    .headerLogin h4 {
+        font-size: 18px;
+        font-weight: 800;
+    }
+
+
+.txtLog {
+    width: 100%;
+    margin-bottom: 5px;
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    background-color: #fff;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+#btnLogar {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #526ace;
+    background-color: #526ace;
+    color: white;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+#btnSairLogin {
+    width: 100%;
+    border: none;
+    font-size: 12px;
+    font-weight: 700;
+    color: black;
+    margin-top: 5px;
+}
+
+    #btnSairLogin:hover {
+        cursor: pointer;
+    }
+
+#btnSairCad {
+    width: 100%;
+    border: none;
+    font-size: 12px;
+    font-weight: 700;
+    color: black;
+    margin-top: 5px;
+}
+
+    #btnSairCad:hover {
+        cursor: pointer;
+    }
+
+.cadastrar {
+    background: #FFFAF6;
+    width: 450px;
+    padding: 15px 40px 40px 40px;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 2px solid #526ace;
+    border-radius: 15px;
+}
+
+.headerCad {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 8px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 17px;
+    border-bottom: solid 2px #526ace;
+}
+
+    .headerCad h4 {
+        font-size: 2vh;
+        font-weight: 800;
+    }
+
+.nms {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 5px;
+    box-sizing: border-box;
+}
+
+.txtCadNm {
+    background-color: #babaca;
+    width: 46%;
+    padding: 10px;
+    font-size: 1.7vh;
+    font-weight: bold;
+    border: none;
+    color: black;
+    outline: none;
+    border-radius: 5px;
+    margin-left: 1px;
+}
+
+    .txtCadNm::placeholder {
+        color: black;
+    }
+
+.txtCad {
+    background-color: #babaca;
+    width: 100%;
+    padding: 10px;
+    font-size: 1.7vh;
+    font-weight: bold;
+    margin-bottom: 5px;
+    border: none;
+    outline: none;
+    color: black;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+    .txtCad::placeholder {
+        color: black;
+    }
+
+.dtNasc {
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    margin-bottom: 10px;
+}
+
+.ddlsDtNasc {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.txtCadDt {
+    width: 32%;
+    padding: 5px;
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    border: none;
+    color: black;
+    border-radius: 2.5px;
+}
+
+#lblNasc {
+    font-size: 2vh;
+    margin-bottom: 5px;
+}
+
+#ddlSexo {
+    background-color: #babaca;
+    width: 100%;
+    padding: 10px;
+    font-size: 1.7vh;
+    font-weight: bold;
+    margin-bottom: 5px;
+    border: none;
+    color: black;
+    border-radius: 5px;
+}
+
+.sexo {
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+#lblSexo {
+    font-size: 2vh;
+    margin-bottom: 5px;
+}
+
+#ddlTipoUser {
+    margin-bottom: 5px;
+}
+
+#btnCadastrar {
+    width: 100%;
+    padding: 10px;
+    color: white;
+    background-color: #526ace;
+    border: none;
+    font-size: 1.7vh;
+    font-weight: bold;
+    border-radius: 2.5px;
+}
+
+    #btnCadastrar:hover {
+        cursor: pointer;
+    }
+
+.pop {
+    display: none;
+    z-index: 31;
+}
+
+.shade {
+    position: absolute;
+    top: 0%;
+    right: 0%;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0, 0.7);
+    z-index: 2;
+    display: none;
+}
+
+.hidden {
+    display: none !important;
 }

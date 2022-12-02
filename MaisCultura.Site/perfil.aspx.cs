@@ -30,7 +30,6 @@ namespace MaisCultura.Site
                 if (Login.Tipo == "Administrador")                                                              //Logado
                     litDropDownDenuncias.Text = $"<a href='denuncias.aspx?l={Login.Codigo}'>Denúncias</a>";
                 dropbtnUsuario.Visible = true;
-                pnlAval.Visible = true;
                 btnLog.Visible = false;
                 btnCad.Visible = false;
                 litImgPerfil.Text = $@"<img src='Images/perfil526ace.png' class='imgPerfil'>";
@@ -38,7 +37,6 @@ namespace MaisCultura.Site
             else
             {
                 dropbtnUsuario.Visible = false;
-                pnlAval.Visible = false;
                 btnLog.Visible = true;                                                                          //Deslogado
                 btnCad.Visible = true;
             }
@@ -99,8 +97,9 @@ namespace MaisCultura.Site
 
                     <article class='card-tags'>";
                 foreach (Categoria categoria in categorias)
-                    todosEventos += $@"<h2 class='tag'>{categoria.Nome}</h2>
-                    </article>
+                    todosEventos += $@"<h2 class='tag'>{categoria.Nome}</h2>";
+                
+                todosEventos += $@"</article>
 
                     <article class='card-image'>
                         {TagA}
@@ -136,8 +135,9 @@ namespace MaisCultura.Site
                     </article>
                 </section>";
 
+                litAvaliacoes.Text = "";
+
                 foreach (Avaliacao avaliacao in ListaAvaliacao.BuscarPorEvento(evento.Codigo))
-                {
                     litAvaliacoes.Text += $@"<div class='umaAvaliacao'>
                                 <div class='infosAvaliador'>
                                     <section class='infosNmAtDtAv'>
@@ -157,7 +157,6 @@ namespace MaisCultura.Site
                                     <span>{avaliacao.Descricao}</span>
                                 </div>
                             </div>";
-                }
             }
 
             litEventosCria.Text += $@"
@@ -176,7 +175,21 @@ namespace MaisCultura.Site
             HandleLogin();
             HandleUser();
             CreateEvents(Usuario.Codigo);
-            txtBoxAvaliacao.TextMode = TextBoxMode.MultiLine;
+        }
+
+        protected void btnLogar_Click(object sender, EventArgs e)
+        {
+            Login = ListaUsuario.BuscarLogin(txtBoxUser.Text, txtBoxSenha.Text);
+
+            if (Login != null)
+                Response.Redirect($"perfil.aspx?l={Login.Codigo}&u={Usuario.Codigo}");
+        }
+
+        protected void btnCadastrar_Click1(object sender, EventArgs e)
+        {
+            Usuario Cadastro = new Usuario(txtBoxNmUsuario.Text, ddlTipoUser.Text, ddlSexo.Text, txtBoxNome.Text + txtBoxSobrenome.Text, txtBoxEmail.Text, txtBoxSenhaCad.Text, " ", txtData.Text, null);
+
+            ListaUsuario.CriarUsuario(Cadastro);
         }
     }
 }

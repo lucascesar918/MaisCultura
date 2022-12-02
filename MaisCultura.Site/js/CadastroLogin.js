@@ -6,7 +6,6 @@
         $("#cad").toggle();
         $("#shade").toggle();
         $("html, body").css({ 'overflow': 'hidden' });
-
     });
 
     $("#btnLog").click(function (e) {
