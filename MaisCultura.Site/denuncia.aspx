@@ -18,24 +18,24 @@
         <form id="form1" runat="server">
             <header class="header header-primaria">
                 <figure class="figure-header">
-                    <a href="eventos.aspx">
-                    <img src="Images/logoNomeMenor.png" class="logo-header" />
-                        </a>
+                    <asp:Literal ID="litLogo" runat="server"></asp:Literal>
+                        <img src="Images/logoNomeMenor.png" class="logo-header" />
+                    </a>
                 </figure>
 
                 <article class="usuario">
                     <div class="menuUsuario">
-                        <asp:Button CssClass="dropbtn" ID="dropbtnUsuario" runat="server" Text="Lucas César" />
+                        <asp:Literal ID="litUsuario" runat="server"></asp:Literal>
+
                         <div class="dropdown-content">
-                            <asp:Literal ID="litEventos" runat="server"></asp:Literal>
-                            <a href="PainelDenuncias.aspx">Denúncias</a>
+                            <asp:Literal ID="litHome" runat="server"></asp:Literal>
                             <asp:Literal ID="litPerfil" runat="server"></asp:Literal>
-                            <a href="Inicio.aspx">Sair</a>
+                            <asp:Literal ID="litAdicionais" runat="server"></asp:Literal>
+                            <a href="eventos.aspx">Sair</a>
                         </div>
                     </div>
-
-                    <img src="Images/perfil526ace.png" class="imgPerfil">
-
+                    <asp:Literal ID="litImgPerfil" runat="server"></asp:Literal>
+                
                 </article>
             </header>
 

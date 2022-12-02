@@ -37,13 +37,11 @@
 
        
         <header class="header-primaria">
-
             <figure class="figure-header">
                 <asp:Literal ID="litLogo" runat="server"></asp:Literal>
                     <img src="Images/logoNomeMenor.png" class="logo-header" />
                 </a>
             </figure>
-
 
             <article class="buttons">
                 <asp:Button ID="btnLog" runat="server" Text="Entrar" class="button button-log" OnClick="btnLog_Click" />
@@ -55,15 +53,14 @@
                     <asp:Literal ID="litUsuario" runat="server"></asp:Literal>
 
                     <div class="dropdown-content">
-                        <asp:Literal ID="litDropDownHome" runat="server"></asp:Literal>
-                        <asp:Literal ID="litDropDownPerfil" runat="server"></asp:Literal>
-                        <asp:Literal ID="litDpdMeusEventos" runat="server"></asp:Literal>
+                        <asp:Literal ID="litHome" runat="server"></asp:Literal>
+                        <asp:Literal ID="litPerfil" runat="server"></asp:Literal>
+                        <asp:Literal ID="litAdicionais" runat="server"></asp:Literal>
                         <asp:Literal ID="litSair" runat="server"></asp:Literal>
                     </div>
                 </div>
-
                 <asp:Literal ID="litImgPerfil" runat="server"></asp:Literal>
-
+                
             </article>
         </header>
 

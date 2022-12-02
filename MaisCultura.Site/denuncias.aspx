@@ -18,24 +18,20 @@
     <form id="form1" runat="server">
         <header class="header header-primaria">
             <figure class="figure-header">
-                <a href="eventos.aspx">                
+                <asp:Literal ID="litLogo" runat="server"></asp:Literal>
                     <img src="Images/logoNomeMenor.png" class="logo-header" />
-                    </a>
+                </a>
             </figure>
-
-            <article class="buttons">
-                <asp:Button ID="btnLog" runat="server" Text="Entrar" class="button button-log" />
-                <asp:Button ID="btnCad" runat="server" Text="Cadastrar" class="button button-cad" />
-            </article>
 
             <article class="usuario">
                 <div class="menuUsuario">
-                    <asp:Button CssClass="dropbtn" ID="dropbtnUsuario" runat="server" Text="Nome" />
+                    <asp:Literal ID="litUsuario" runat="server"></asp:Literal>
+
                     <div class="dropdown-content">
-                    <asp:Literal ID="litDropDownHome" runat="server"></asp:Literal>
-                    <asp:Literal ID="litDropDownPerfil" runat="server"></asp:Literal>
-                    <asp:Literal ID="litDropDownDenuncias" runat="server"></asp:Literal>
-                    <a href="eventos.aspx">Sair</a>
+                        <asp:Literal ID="litHome" runat="server"></asp:Literal>
+                        <asp:Literal ID="litPerfil" runat="server"></asp:Literal>
+                        <asp:Literal ID="litAdicionais" runat="server"></asp:Literal>
+                        <a href="eventos.aspx">Sair</a>
                     </div>
                 </div>
                 <asp:Literal ID="litImgPerfil" runat="server"></asp:Literal>

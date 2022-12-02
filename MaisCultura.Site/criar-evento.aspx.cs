@@ -24,14 +24,15 @@ namespace MaisCultura.Site
                 if (Request.QueryString["l"] != null)
                     Login = ListaUsuario.Buscar(Request.QueryString["l"]);
 
-                dropbtnUsuario.Text = Login.Nome;
-                litDropDownHome.Text = $"<a href='eventos.aspx?l={Login.Codigo}'>Início</a>";
-                litDropDownPerfil.Text = $"<a href='meu-perfil.aspx?l={Login.Codigo}&u={Login.Codigo}'>Perfil</a>";
+                litLogo.Text = $"<a href='eventos.aspx?l={Login.Codigo}'>";
+                litUsuario.Text = $"<a href='meu-perfil.aspx?l={Login.Codigo}'>{Login.Nome}</a>";
+                litHome.Text = $"<a href='eventos.aspx?l={Login.Codigo}'>Início</a>";
+                litPerfil.Text = $"<a href='meu-perfil.aspx?l={Login.Codigo}'>Perfil</a>";
 
                 switch (Login.Tipo)
                 {
                     case "Administrador":
-                        litDropDownDenuncias.Text = $"<a href='denuncias.aspx?l={Login.Codigo}'>Denúncias</a>";
+                        litAdicionais.Text = $"<a href='denuncias.aspx?l={Login.Codigo}'>Denúncias</a>";
                         break;
 
                     case "Usuário Comum":
@@ -39,17 +40,18 @@ namespace MaisCultura.Site
                         break;
 
                     default:
-                        litDropDownDenuncias.Text = $"<a href='criar-evento.aspx?l={Login.Codigo}'>Criar Evento</a>";
-                        litDropDownDenuncias.Text += $"<a href='meus-eventos.aspx?l={Login.Codigo}&u={Login.Codigo}'>Meus Eventos</a>";
+                        litAdicionais.Text = $"<a href='meus-eventos.aspx?l={Login.Codigo}'>Meus Eventos</a>";
                         break;
                 }
 
-                dropbtnUsuario.Visible = true;
-                litImgPerfil.Text = $@"<img src='Images/perfil526ace.png' class='imgPerfil'>";
+                litUsuario.Visible = true;
+                litImgPerfil.Text = $@"<a href='meu-perfil.aspx?l={Login.Codigo}'>
+                    <img src='Images/perfil526ace.png' class='imgPerfil'>
+                </a>";
             }
             else
             {
-                dropbtnUsuario.Visible = false;
+                litUsuario.Visible = false;
                 Response.Redirect("erro.html?msg=O que você está tentando fazer? Você não tem permissão para isso!");
             }
         }

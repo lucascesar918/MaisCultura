@@ -69,31 +69,31 @@ namespace MaisCultura.Site
         protected global::System.Web.UI.WebControls.Literal litUsuario;
 
         /// <summary>
-        /// Controle litDropDownHome.
+        /// Controle litHome.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal litDropDownHome;
+        protected global::System.Web.UI.WebControls.Literal litHome;
 
         /// <summary>
-        /// Controle litDropDownPerfil.
+        /// Controle litPerfil.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal litDropDownPerfil;
+        protected global::System.Web.UI.WebControls.Literal litPerfil;
 
         /// <summary>
-        /// Controle litDpdMeusEventos.
+        /// Controle litAdicionais.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal litDpdMeusEventos;
+        protected global::System.Web.UI.WebControls.Literal litAdicionais;
 
         /// <summary>
         /// Controle litSair.

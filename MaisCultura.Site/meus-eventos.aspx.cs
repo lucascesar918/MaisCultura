@@ -22,16 +22,31 @@ namespace MaisCultura
             if (Request.QueryString["l"] != null)
             {
                 Login = ListaUsuario.Buscar(Request.QueryString["l"]);
+
                 litLogo.Text = $"<a href='eventos.aspx?l={Login.Codigo}'>";
                 litUsuario.Text = $"<a href='meu-perfil.aspx?l={Login.Codigo}'>{Login.Nome}</a>";
-                litDropDownHome.Text = $"<a href='eventos.aspx?l={Login.Codigo}'>Início</a>";
-                litDropDownPerfil.Text = $"<a href='meu-perfil.aspx?l={Login.Codigo}&u={Login.Codigo}'>Perfil</a>";
+                litHome.Text = $"<a href='eventos.aspx?l={Login.Codigo}'>Início</a>";
+                litPerfil.Text = $"<a href='meu-perfil.aspx?l={Login.Codigo}'>Perfil</a>";
+
+                switch (Login.Tipo)
+                {
+                    case "Administrador":
+                        litAdicionais.Text = $"<a href='denuncias.aspx?l={Login.Codigo}'>Denúncias</a>";
+                        break;
+
+                    case "Usuário Comum":
+                        Response.Redirect($"erro.html?msg=O que você está tentando fazer? Você não tem permissão para isso! Torne-se um criador de eventos primeiro.&l={Login.Codigo}");
+                        break;
+
+                    default:
+                        litAdicionais.Text = $"<a href='criar-evento.aspx?l={Login.Codigo}'>Criar Evento</a>";
+                        break;
+                }
+
                 litUsuario.Visible = true;
                 litImgPerfil.Text = $@"<a href='meu-perfil.aspx?l={Login.Codigo}'>
                     <img src='Images/perfil526ace.png' class='imgPerfil'>
                 </a>";
-                if (Login.Tipo != "Criador de Eventos")
-                    Response.Redirect($"erro.html?msg=Sem permissão para acessar essa página!" + (Login == null ? "" : $"&l={Login.Codigo}"));
             }
         }
 

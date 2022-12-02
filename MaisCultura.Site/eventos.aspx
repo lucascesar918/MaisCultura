@@ -23,7 +23,7 @@
         <div id="shade" class="shade"></div>
         <div id="shade2" class="shade"></div>
 
-        <header class="header-primaria">
+         <header class="header-primaria">
             <figure class="figure-header">
                 <asp:Literal ID="litLogo" runat="server"></asp:Literal>
                     <img src="Images/logoNomeMenor.png" class="logo-header"/>
@@ -38,11 +38,10 @@
             <article class="usuario">
                 <div class="menuUsuario">
                     <asp:Literal ID="litUsuario" runat="server"></asp:Literal>
-                    
+
                     <div class="dropdown-content">
-                        <asp:Literal ID="litDropDownPerfil" runat="server"></asp:Literal>
-                        <asp:Literal ID="litDropDownDenuncias" runat="server"></asp:Literal>
-                        <asp:Literal ID="litDpdMeusEventos" runat="server"></asp:Literal>
+                        <asp:Literal ID="litPerfil" runat="server"></asp:Literal>
+                        <asp:Literal ID="litAdicionais" runat="server"></asp:Literal>
                         <a href="eventos.aspx">Sair</a>
                     </div>
                 </div>

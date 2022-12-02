@@ -21,9 +21,9 @@
 
         <header class="header-primaria">
             <figure class="figure-header">
-                <a href="eventos.aspx">
-                <img src="Images/logoNomeMenor.png" class="logo-header"/>
-                    </a>
+                <asp:Literal ID="litLogo" runat="server"></asp:Literal>
+                    <img src="Images/logoNomeMenor.png" class="logo-header" />
+                </a>
             </figure>
 
             <article class="buttons">
@@ -33,12 +33,13 @@
 
             <article class="usuario">
                 <div class="menuUsuario">
-                    <asp:Button CssClass="dropbtn" ID="dropbtnUsuario" runat="server" Text="Nome" />
+                    <asp:Literal ID="litUsuario" runat="server"></asp:Literal>
+
                     <div class="dropdown-content">
-                    <asp:Literal ID="litDropDownHome" runat="server"></asp:Literal>
-                    <asp:Literal ID="litDropDownPerfil" runat="server"></asp:Literal>
-                    <asp:Literal ID="litDropDownDenuncias" runat="server"></asp:Literal>
-                    <a href="eventos.aspx">Sair</a>
+                        <asp:Literal ID="litHome" runat="server"></asp:Literal>
+                        <asp:Literal ID="litPerfil" runat="server"></asp:Literal>
+                        <asp:Literal ID="litAdicionais" runat="server"></asp:Literal>
+                        <asp:Literal ID="litSair" runat="server"></asp:Literal>
                     </div>
                 </div>
                 <asp:Literal ID="litImgPerfil" runat="server"></asp:Literal>

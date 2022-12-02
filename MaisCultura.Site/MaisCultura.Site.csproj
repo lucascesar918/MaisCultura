@@ -113,7 +113,6 @@
     <Content Include="evento.aspx" />
     <Content Include="Images\star2.png" />
     <Content Include="Images\star.png" />
-    <Content Include="meu-evento.aspx" />
     <Content Include="eventos.aspx" />
     <Content Include="Images\Background_Grafismo_Hexagono.png" />
     <Content Include="Images\calendar.png" />
@@ -167,13 +166,6 @@
     </Compile>
     <Compile Include="evento.aspx.designer.cs">
       <DependentUpon>evento.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="meu-evento.aspx.cs">
-      <DependentUpon>meu-evento.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="meu-evento.aspx.designer.cs">
-      <DependentUpon>meu-evento.aspx</DependentUpon>
     </Compile>
     <Compile Include="eventos.aspx.cs">
       <DependentUpon>eventos.aspx</DependentUpon>

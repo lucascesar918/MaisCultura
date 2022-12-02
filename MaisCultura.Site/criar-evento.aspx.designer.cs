@@ -24,40 +24,49 @@ namespace MaisCultura.Site
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// Controle dropbtnUsuario.
+        /// Controle litLogo.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button dropbtnUsuario;
+        protected global::System.Web.UI.WebControls.Literal litLogo;
 
         /// <summary>
-        /// Controle litDropDownHome.
+        /// Controle litUsuario.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal litDropDownHome;
+        protected global::System.Web.UI.WebControls.Literal litUsuario;
 
         /// <summary>
-        /// Controle litDropDownPerfil.
+        /// Controle litHome.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal litDropDownPerfil;
+        protected global::System.Web.UI.WebControls.Literal litHome;
 
         /// <summary>
-        /// Controle litDropDownDenuncias.
+        /// Controle litPerfil.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal litDropDownDenuncias;
+        protected global::System.Web.UI.WebControls.Literal litPerfil;
+
+        /// <summary>
+        /// Controle litAdicionais.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal litAdicionais;
 
         /// <summary>
         /// Controle litImgPerfil.

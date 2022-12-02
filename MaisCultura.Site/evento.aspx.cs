@@ -58,14 +58,37 @@ namespace MaisCultura.Site
             if (Request.QueryString["l"] != null)
             {
                 Login = ListaUsuario.Buscar(Request.QueryString["l"]);      //Logado
-                litUsuario.Text = Login.Nome;
-                litDropDownHome.Text = $"<a href='eventos.aspx?l={Login.Codigo}'>Início</a>";
-                litDropDownPerfil.Text = $"<a href='perfil.aspx?l={Login.Codigo}'>Perfil</a>";
-                litUsuario.Visible = true;
-                pnlAval.Visible = true;
+
+                litLogo.Text = $"<a href='eventos.aspx?l={Login.Codigo}'>";
+                litUsuario.Text = $"<a href='meu-perfil.aspx?l={Login.Codigo}'>{Login.Nome}</a>";
+                litHome.Text = $"<a href='eventos.aspx?l={Login.Codigo}'>Início</a>";
+                litPerfil.Text = $"<a href='meu-perfil.aspx?l={Login.Codigo}'>Perfil</a>";
+                litSair.Text = $"<a href='evento.aspx?e={Request.QueryString["e"]}'>Sair</a>";
+
+                switch (Login.Tipo)
+                {
+                    case "Administrador":
+                        litAdicionais.Text = $"<a href='denuncias.aspx?l={Login.Codigo}'>Denúncias</a>";
+                        break;
+
+                    case "Usuário Comum":
+                        litAdicionais.Text = "";
+                        break;
+
+                    default:
+                        litAdicionais.Text = $"<a href='criar-evento.aspx?l={Login.Codigo}'>Criar Evento</a>";
+                        litAdicionais.Text += $"<a href='meus-eventos.aspx?l={Login.Codigo}'>Meus Eventos</a>";
+                        break;
+                }
+
                 btnLog.Visible = false;
                 btnCad.Visible = false;
-                litImgPerfil.Text = $@"<img src='Images/perfil526ace.png' class='imgPerfil'>";
+                litUsuario.Visible = true;
+                litImgPerfil.Text = $@"<a href='meu-perfil.aspx?l={Login.Codigo}'>
+                    <img src='Images/perfil526ace.png' class='imgPerfil'>
+                </a>";
+
+                pnlAval.Visible = true;
                 bool save = ListaEvento.VerificarSalvo(Login.Codigo, int.Parse(Request.QueryString["e"]));
                 cbxSave.Checked = save;
 
@@ -76,8 +99,9 @@ namespace MaisCultura.Site
             }
             else
             {
-                litUsuario.Visible = false;                             //Deslogado
-                pnlAval.Visible = false;
+                litLogo.Text = $"<a href='eventos.aspx'>";
+                litUsuario.Visible = false;
+                pnlAval.Visible = false;                             //Deslogado
                 btnLog.Visible = true;
                 btnCad.Visible = true;
             }
