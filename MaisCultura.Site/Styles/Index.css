@@ -254,10 +254,10 @@ body {
     background: none;
     border: none;
     color: #fff;
-    width: 84px;
+    width: fit-content;
     height: fit-content;
     font-size: 12px;
-    padding: 5px;
+    padding: 10px;
     margin: 5px;
     border-radius: 2.5px;
 }
@@ -294,6 +294,10 @@ body {
     display: flex;
     flex-direction: row;
     align-items: center;
+}
+
+.section-limpar {
+    margin-right: 10px;
 }
 
 .section-tags {
