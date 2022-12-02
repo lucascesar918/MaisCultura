@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using MaisCultura.Biblioteca;
 using System.Web.Services;
+using MySql.Data.MySqlClient;
 
 namespace MaisCultura.Site
 {
@@ -33,6 +34,20 @@ namespace MaisCultura.Site
             ListaEvento.CancelarSalvo(codigoUsuario, codigoEvento);
         }
 
+        [WebMethod]
+        public static void DemonstrarInteresse(string codigoUsuario, int codigoEvento)
+        {
+            ListaEvento ListaEvento = new ListaEvento();
+            ListaEvento.Interessar(codigoUsuario, codigoEvento);
+        }
+
+        [WebMethod]
+        public static void RemoverInteresse(string codigoUsuario, int codigoEvento)
+        {
+            ListaEvento ListaEvento = new ListaEvento();
+            ListaEvento.CancelarInteresse(codigoUsuario, codigoEvento);
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             txtBoxAvaliacao.TextMode = TextBoxMode.MultiLine;
@@ -53,6 +68,8 @@ namespace MaisCultura.Site
                 litImgPerfil.Text = $@"<img src='Images/perfil526ace.png' class='imgPerfil'>";
                 bool save = ListaEvento.VerificarSalvo(Login.Codigo, int.Parse(Request.QueryString["e"]));
                 cbxSave.Checked = save;
+
+                verificarAvalicao();
             }
             else
             {
@@ -150,7 +167,9 @@ namespace MaisCultura.Site
                 }
 
                 foreach (Categoria categoria in Evento.Categorias)
-                    litCategorias.Text += $"<span class='ag'>{categoria.Nome}</span>";
+                    litCategorias.Text += $"<span class='tag'>{categoria.Nome}</span>";
+
+                litAvaliacoes.Text = "";
 
                 foreach (Avaliacao avaliacao in ListaAvaliacao.BuscarPorEvento(Evento.Codigo))
                     litAvaliacoes.Text += $@"<div class='umaAvaliacao'>
@@ -172,6 +191,49 @@ namespace MaisCultura.Site
                                     <span>{avaliacao.Descricao}</span>
                                 </div>
                             </div>";
+
+                PreencherDdlMotivos();
+            }
+        }
+
+        void colocarEstrelas (int numero){
+            switch (numero)
+            {
+                case 1:
+                    umaEstrela.ImageUrl = "~/Images/star.png";
+                    duasEstrelas.ImageUrl = "~/Images/star2.png";
+                    tresEstrelas.ImageUrl = "~/Images/star2.png";
+                    quatroEstrelas.ImageUrl = "~/Images/star2.png";
+                    cincoEstrelas.ImageUrl = "~/Images/star2.png";
+                    break;
+                case 2:
+                    umaEstrela.ImageUrl = "~/Images/star.png";
+                    duasEstrelas.ImageUrl = "~/Images/star.png";
+                    tresEstrelas.ImageUrl = "~/Images/star2.png";
+                    quatroEstrelas.ImageUrl = "~/Images/star2.png";
+                    cincoEstrelas.ImageUrl = "~/Images/star2.png";
+                    break;
+                case 3:
+                    umaEstrela.ImageUrl = "~/Images/star.png";
+                    duasEstrelas.ImageUrl = "~/Images/star.png";
+                    tresEstrelas.ImageUrl = "~/Images/star.png";
+                    quatroEstrelas.ImageUrl = "~/Images/star2.png";
+                    cincoEstrelas.ImageUrl = "~/Images/star2.png";
+                    break;
+                case 4:
+                    umaEstrela.ImageUrl = "~/Images/star.png";
+                    duasEstrelas.ImageUrl = "~/Images/star.png";
+                    tresEstrelas.ImageUrl = "~/Images/star.png";
+                    quatroEstrelas.ImageUrl = "~/Images/star.png";
+                    cincoEstrelas.ImageUrl = "~/Images/star2.png";
+                    break;
+                case 5:
+                    umaEstrela.ImageUrl = "~/Images/star.png";
+                    duasEstrelas.ImageUrl = "~/Images/star.png";
+                    tresEstrelas.ImageUrl = "~/Images/star.png";
+                    quatroEstrelas.ImageUrl = "~/Images/star.png";
+                    cincoEstrelas.ImageUrl = "~/Images/star.png";
+                    break;
             }
         }
 
@@ -181,6 +243,14 @@ namespace MaisCultura.Site
 
             if (Login != null)
                 Response.Redirect($"evento.aspx?l={Login.Codigo}&e={Evento.Codigo}");
+        }
+
+        protected void btnLogar_Click(object sender, EventArgs e)
+        {
+            Login = ListaUsuario.BuscarLogin(txtBoxUser.Text, txtBoxSenha.Text);
+
+            if (Login != null)
+                Response.Redirect($"evento.aspx?e={Evento.Codigo}&l={Login.Codigo}");
         }
 
         protected void btnCad_Click(object sender, EventArgs e)
@@ -195,6 +265,83 @@ namespace MaisCultura.Site
             Usuario Cadastrado = new Usuario(txtBoxNmUsuario.Text, ddlTipoUser.Text, ddlSexo.Text, txtBoxNome.Text + txtBoxSobrenome.Text, txtBoxEmail.Text, txtBoxSenhaCad.Text, " ", txtData.Text, null);
 
             ListaUsuario.CriarUsuario(Cadastrado);
+        }
+
+        void PreencherDdlMotivos()
+        {
+            Banco banco = new Banco();
+
+            MySqlDataReader data = banco.Query("ListarMotivos");
+
+            ddlMotivos.DataTextField = "Nome";
+            ddlMotivos.DataValueField = "Codigo";
+            ddlMotivos.DataSource = data;
+        }
+
+        void verificarAvalicao()
+        {
+            if (!ListaAvaliacao.VerificarAvaliacaoPorUsuarioEvento(Login.Codigo, int.Parse(Request.QueryString["e"])))
+                return;
+
+            Avaliacao aval = ListaAvaliacao.BuscarAvaliacaoPorUsuarioEvento(Login.Codigo, int.Parse(Request.QueryString["e"]));
+
+            txtBoxAvaliacao.Text = aval.Descricao;
+            colocarEstrelas(aval.Estrelas);
+        }
+
+        protected void umaEstrela_Click(object sender, ImageClickEventArgs e)
+        {
+            colocarEstrelas(1);
+        }
+
+        protected void duasEstrelas_Click(object sender, ImageClickEventArgs e)
+        {
+            colocarEstrelas(2);
+        }
+
+        protected void tresEstrelas_Click(object sender, ImageClickEventArgs e)
+        {
+            colocarEstrelas(3);
+        }
+
+        protected void quatroEstrelas_Click(object sender, ImageClickEventArgs e)
+        {
+            colocarEstrelas(4);
+        }
+
+        protected void cincoEstrelas_Click(object sender, ImageClickEventArgs e)
+        {
+            colocarEstrelas(5);
+        }
+
+        protected void btnAvaliar_Click(object sender, EventArgs e)
+        {
+            string texto = txtBoxAvaliacao.Text;
+            int estrelas = 0;
+
+            if (duasEstrelas.ImageUrl == "~/Images/star.png")
+                if (tresEstrelas.ImageUrl == "~/Images/star.png")
+                    if (quatroEstrelas.ImageUrl == "~/Images/star.png")
+                        if (cincoEstrelas.ImageUrl == "~/Images/star.png")
+                            estrelas = 5;
+                        else
+                            estrelas = 4;
+                    else
+                        estrelas = 3;
+                else
+                    estrelas = 2;
+            else
+                estrelas = 1;
+
+            ListaAvaliacao.Avaliar(Login.Codigo, Evento.Codigo, texto, estrelas);
+        }
+
+        protected void btnDenunciar_Click(object sender, EventArgs e)
+        {
+            string texto = txtBoxDescProb.Text;
+            int motivo = int.Parse(ddlMotivos.SelectedValue);
+
+            ListaDenuncia.CriarDenuncia(Evento.Codigo, Login.Codigo, motivo, texto);
         }
     }
 }

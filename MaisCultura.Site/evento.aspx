@@ -82,7 +82,7 @@
                             CssClass="titulo"></asp:Label>
 
                         <label class="chk">
-                            <asp:CheckBox ID="cbxSave" runat="server" OnCheckedChanged="cbxSave_CheckedChanged" />
+                            <asp:CheckBox ID="cbxSave" runat="server"/>
                             <%--<input id="cbxSave" type="checkbox" runat="server" />--%>
                             <span id="spnSave" runat="server"></span>
                         </label>
@@ -199,7 +199,7 @@ Acontecerão aulas de Karatê e Judô em dias intercalados. Nos dias 2 e 4 haver
                                 pessoas já demonstraram interesse em participar
                             </h4>
 
-                            <asp:Button ID="btnInteresse" runat="server" Text="Demonstrar Interesse" CssClass="naoInt" OnClick="btnInteresse_Click" />
+                            <asp:Button ID="btnInteresse" runat="server" Text="Demonstrar Interesse" CssClass="naoInt"/>
                         </ContentTemplate>
                     </asp:UpdatePanel>
                 </section>
