@@ -748,6 +748,11 @@ td {
     border-radius: 5px;
 }
 
+    #btnLogar:hover {
+        cursor: pointer;
+        background: #293d90;
+    }
+
 #btnSairLogin {
     width: 100%;
     border: none;
@@ -899,6 +904,7 @@ td {
 
     #btnCadastrar:hover {
         cursor: pointer;
+        background: #293d90;
     }
 
 .denuncia {

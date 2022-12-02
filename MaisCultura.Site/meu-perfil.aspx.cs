@@ -58,8 +58,7 @@ namespace MaisCultura.Site
         {
             HandleLogin();
 
-            //litEventos.Text = $"<a href=\"eventos.aspx?u={usuario.Codigo}\">Eventos</a>";
-            dropbtnUsuario.Text = Login.Nome;
+            //litEventos.Text = $"<a href=\"eventos.aspx?u={usuario.Codigo}\">Eventos</a>
             lblNomeUsuario.Text = Login.Nome;
             lblArroba.Text = $"@{Login.Codigo}";
             lblEmail.Text = Login.Email;

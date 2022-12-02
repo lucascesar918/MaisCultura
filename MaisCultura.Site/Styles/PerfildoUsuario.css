@@ -60,6 +60,11 @@ html {
     display: inline-block;
 }
 
+    .menuUsuario a {
+        font-size: 15px;
+        color: black;
+    }
+
 .dropbtn {
     color: black;
     padding: 10px;

@@ -795,6 +795,11 @@ body {
     font-size: 14px;
 }
 
+    #btnLogar:hover {
+        cursor: pointer;
+        background: #293d90;
+    }
+
 #btnSairLogin {
     width: 100%;
     border: none;
@@ -971,6 +976,7 @@ body {
 
     #btnCadastrar:hover {
         cursor: pointer;
+        background: #293d90;
     }
 
 .pop {
