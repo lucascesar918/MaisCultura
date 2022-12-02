@@ -65,6 +65,60 @@ namespace MaisCultura.Site
             lblStatusListBox.Text = "";
         }
 
+        void StatusHandler(string status)
+        {
+            switch (status)
+            {
+                case "null_categ":
+                    lblStatusListBox.Text = "Selecione uma categoria!";
+                    return;
+
+                case "max_categ":
+                    lblStatusListBox.Text = "O máximo de categorias foi atingido!";
+                    return;
+
+                case "min_title":
+                    lblStatusGeral.Text = "Título do evento muito curto!";
+                    return;
+
+                case "null_location":
+                    lblStatusGeral.Text = "Informe a localização do evento corretamente!";
+                    return;
+
+                case "overbound_location":
+                    lblStatusGeral.Text = "Endereço muito longo!";
+                    return;
+
+                case "mismatch_date":
+                    lblStatusGeral.Text = "Preencha a data do evento corretamente!";
+                    return;
+
+                case "overbound_link":
+                    lblStatusGeral.Text = "Tente encurtar o link da imagem!";
+                    return;
+
+                case "null_description":
+                    lblStatusGeral.Text = "Nos conte mais sobre seu evento!";
+                    return;
+            }
+        }
+
+        bool CheckInputs()
+        {
+            string local = $"{ddlUF.SelectedItem.Text}, {txtCidade.Text}, {txtEndereco.Text}";
+            lblStatusGeral.Text = lblStatusListBox.Text = "";
+
+            if (txtTituloEvento.Text.Length <= 5) { StatusHandler("min_title"); return true; }
+            if (local.Length <= 6) { StatusHandler("null_location"); return true; }
+            if (local.Length >= 1000) { StatusHandler("overbound_location"); return true; }
+            if (listBoxDtHr.Items.Count == 0) { StatusHandler("mismatch_date"); return true; }
+            if (listBoxCateg.Items.Count == 0) { StatusHandler("null_categ"); return true; }
+            if (txtLinkImg.Text.Length >= 150) { StatusHandler("overbound_link"); return true; }
+            if (txtBoxDescricao.Text.Length <= 10) { StatusHandler("null_description"); return true; }
+
+            return false;
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             HandleLogin();
@@ -82,22 +136,6 @@ namespace MaisCultura.Site
             listBoxDtHr.Items.Add(new ListItem($"Dia {data} das {hr_inicio} até às {hr_fim}", $"{data}-{hr_inicio}-{hr_fim}"));
         }
         
-        void StatusHandler(string status)
-        {
-            lblStatusListBox.ForeColor = System.Drawing.Color.Red;
-
-            switch (status)
-            {
-                case "null_categ":
-                    lblStatusListBox.Text = "Selecione uma categoria!";
-                    return;
-
-                case "max_categ":
-                    lblStatusListBox.Text = "O máximo de categorias foi atingido!";
-                    return;
-            }
-        }
-
         protected void btnAddCateg_Click(object sender, EventArgs e)
         {
             if (ddlCategs.SelectedItem == null) { StatusHandler("null_categ"); return; }
@@ -125,6 +163,8 @@ namespace MaisCultura.Site
 
         protected void btnAddEvento_Click(object sender, EventArgs e)
         {
+            if (CheckInputs()) return;
+
             DiaEvento ValueToDiaEvento(string value)
             {
                 string[] splitValue = value.Split('-');

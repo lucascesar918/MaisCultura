@@ -54,7 +54,7 @@
                         <div class="tituloEvento">
                             <asp:Label ID="Label5" runat="server" Text="Título:" CssClass="label"></asp:Label>
                             <asp:TextBox ID="txtTituloEvento" runat="server"
-                                placeholder="Insira aqui o título do evento" CssClass="txtBox"></asp:TextBox>
+                                placeholder="Insira aqui o título do evento" CssClass="txtBox" MaxLength="140"></asp:TextBox>
                         </div>
 
                         <div class="local">
@@ -126,6 +126,8 @@
                             <asp:TextBox ID="txtBoxDescricao" runat="server" mode="multiline"
                                 placeholder="Insira aqui a descrição do evento"></asp:TextBox>
 
+                            <asp:Label ID="lblStatusGeral" runat="server" ForeColor="Red"></asp:Label>
+
                             <asp:Button ID="btnAddEvento" runat="server" Text="Finalizar Criação" OnClick="btnAddEvento_Click" />
                         </div>
                     </div>
@@ -139,7 +141,7 @@
                         </div>
 
                         <asp:ListBox ID="listBoxCateg" runat="server" CssClass="listBox" Rows="3"></asp:ListBox>
-                        <asp:Label ID="lblStatusListBox" runat="server"></asp:Label>
+                        <asp:Label ID="lblStatusListBox" runat="server" ForeColor="Red"></asp:Label>
                     </div>
                 </section>
             </main>
