@@ -150,22 +150,22 @@ namespace MaisCultura.Site
         protected global::System.Web.UI.WebControls.Label lblSexo;
 
         /// <summary>
-        /// Controle btnInteresse.
+        /// Controle meusEventos.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnInteresse;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl meusEventos;
 
         /// <summary>
-        /// Controle btnSalvos.
+        /// Controle litEventos.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSalvos;
+        protected global::System.Web.UI.WebControls.Literal litEventos;
 
         /// <summary>
         /// Controle litPrefs.
