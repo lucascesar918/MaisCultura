@@ -59,13 +59,17 @@
             document.getElementById("btnInteresse").classList.add("Int");
             document.getElementById("btnInteresse").classList.remove("naoInt");
             document.getElementById("btnInteresse").value = "Interesse Demonstrado";
+            $("#btnInteresse").css('pointer-events', 'none');
             PageMethods.DemonstrarInteresse(usuario, evento);
+            $("#btnInteresse").css('pointer-events', 'auto');
         }
         else {
             document.getElementById("btnInteresse").classList.add("naoInt");
             document.getElementById("btnInteresse").classList.remove("Int");
             document.getElementById("btnInteresse").value = "Demonstrar Interesse";
+            $("#btnInteresse").css('pointer-events', 'none');
             PageMethods.RemoverInteresse(usuario, evento);
+            $("#btnInteresse").css('pointer-events', 'auto');
         }
     });
 
