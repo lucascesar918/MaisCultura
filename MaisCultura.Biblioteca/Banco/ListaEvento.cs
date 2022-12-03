@@ -31,11 +31,11 @@ namespace MaisCultura.Biblioteca
             var cdEvento = Int32.Parse(data["Codigo"].ToString());
             string responsavel = data["@"].ToString();
 
-            if (data["Local"].ToString().Length())
-            {
-
-            }
             string local = data["Local"].ToString();
+
+            if (data["Local"].ToString().Length > 35)
+                local = data["Local"].ToString().Substring(0, 35) + "...";
+
             string titulo = data["Titulo"].ToString();
             string descricao = data["Descricao"].ToString();
             if (Reticencias) {
