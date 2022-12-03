@@ -348,6 +348,31 @@ main {
         transition-timing-function: ease-in-out;
     }
 
+    #txtBoxDescricao{
+        width: 100%;
+        border: #526ace 1px solid;
+        height: 200px;
+        padding: 10px;
+        box-sizing: border-box;
+        border-radius: 5px;
+        margin-top: 10px;
+    }
+
+
+    a{
+        text-decoration: none;
+        color: black;
+    }
+
+    .menuUsuario a{
+        font-size: 12px;
+    }
+
+
+    #listBoxDtHr{
+        border: #526ace 1px solid;
+
+    }
 
 button {
     cursor: pointer;
