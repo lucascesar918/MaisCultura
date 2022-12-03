@@ -1,19 +1,32 @@
-﻿$("#alteraSenha").click(function (e) {
-    e.preventDefault();
-    $("#boxSenha").toggle();
-});
+﻿$(document).ready(function (e) {
+    $("#alteraSenha").click(function (e) {
+        e.preventDefault();
+        $("#boxSenha").toggle();
+    });
 
-$("#sumirPopupSenha").click(function (e) {
-    e.preventDefault();
-    $("#boxSenha").toggle();
-});
+    $("#sumirPopupSenha").click(function (e) {
+        e.preventDefault();
+        $("#boxSenha").toggle();
+    });
 
-$("#btnExcluirConta").click(function (e) {
-    e.preventDefault();
-    $("#boxExcluir").toggle();
-});
+    $("#btnExcluirConta").click(function (e) {
+        e.preventDefault();
+        $("#boxExcluir").toggle();
+    });
 
-$("#cancelarExcluir").click(function (e) {
-    e.preventDefault();
-    $("#boxExcluir").toggle();
-});
+    $("#cancelarExcluir").click(function (e) {
+        e.preventDefault();
+        $("#boxExcluir").toggle();
+    });
+
+    $("#btnEditarPreferencias").click(function (e) {
+        e.preventDefault();
+        $("#boxExcluir").toggle();
+    });
+
+    $("#cancelarExcluir").click(function (e) {
+        e.preventDefault();
+        $("#boxExcluir").toggle();
+    });
+})
+})

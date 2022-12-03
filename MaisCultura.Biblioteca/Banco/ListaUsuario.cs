@@ -114,6 +114,18 @@ namespace MaisCultura.Biblioteca
                 NonQuery("CadastrarPreferencia", ("pUsuario", codigo), ("pCategoria", preferencia.Codigo));
         }
 
+        public void DeletarPreferencia(string codigo, List<Categoria> preferencias)
+        {
+            foreach (Categoria preferencia in preferencias)
+                NonQuery("DeletarPreferencia", ("pUsuario", codigo), ("pCategoria", preferencia.Codigo));
+        }
+
+        public void AlterarPreferencia(string codigo, List<Categoria> preferencias)
+        {
+            foreach (Categoria preferencia in preferencias)
+                NonQuery("AlterarPreferencia", ("pUsuario", codigo), ("pCategoria", preferencia.Codigo));
+        }
+
         public List<Avaliacao> BuscarAvaliacoes(string codigo)
         {
             List<Avaliacao> avaliacoes = new List<Avaliacao>();

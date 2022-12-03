@@ -467,6 +467,12 @@ BEGIN
     (pCategoria, pUsuario);
 END$$
 
+DROP PROCEDURE IF EXISTS DeletarPreferencia$$
+CREATE PROCEDURE DeletarPreferencia(pUsuario VARCHAR(20))
+BEGIN
+	DELETE FROM preferencia WHERE cd_usuario = pCodigo AND cd_categoria = pCategoria;
+END$$
+
 DROP PROCEDURE IF EXISTS AlterarPreferencia$$
 CREATE PROCEDURE AlterarPreferencia(pCategoria INT, pUsuario VARCHAR(20))
 BEGIN
@@ -707,25 +713,55 @@ DROP PROCEDURE IF EXISTS DeletarDenunciaEvento$$
 CREATE PROCEDURE DeletarDenunciaEvento(pCodigo INT)
 BEGIN
 	DECLARE codigo INT DEFAULT 0;
+	DECLARE parar INT DEFAULT 0;
+	
+	DECLARE dados CURSOR FOR 
+		SELECT d.cd_denuncia
+		FROM evento e 
+		JOIN denuncia d ON (e.cd_evento = d.cd_evento) 
+		WHERE e.cd_evento = pCodigo;
+	
+	DECLARE CONTINUE HANDLER FOR NOT FOUND
+		SET parar = 1;
 
-	SELECT d.cd_denuncia INTO codigo
-	FROM evento e 
-	JOIN denuncia d ON (e.cd_evento = d.cd_evento) 
-	WHERE e.cd_evento = pCodigo;
+	OPEN dados;
 
-	CALL DeletarDenuncia(codigo);
+	todos:LOOP
+		FETCH dados INTO codigo;
+
+		IF (parar = 1) THEN
+			LEAVE todos;
+		END IF;
+
+		CALL DeletarDenuncia(codigo);
+	END LOOP;
 END$$
 
 DROP PROCEDURE IF EXISTS DeletarDenunciaUsuario$$
 CREATE PROCEDURE DeletarDenunciaUsuario(pCodigo VARCHAR(20))
 BEGIN
 	DECLARE codigo INT DEFAULT 0;
+	DECLARE parar INT DEFAULT 0;
+	
+	DECLARE dados CURSOR FOR 
+		SELECT cd_denuncia
+		FROM denuncia
+		WHERE cd_usuario = pCodigo;
+	
+	DECLARE CONTINUE HANDLER FOR NOT FOUND
+		SET parar = 1;
 
-	SELECT cd_denuncia INTO codigo
-	FROM denuncia
-	WHERE cd_usuario = pCodigo;
+	OPEN dados;
 
-	CALL DeletarDenuncia(codigo);
+	todos:LOOP
+		FETCH dados INTO codigo;
+
+		IF (parar = 1) THEN
+			LEAVE todos;
+		END IF;
+
+		CALL DeletarDenuncia(codigo);
+	END LOOP;
 END$$
 
 DROP PROCEDURE IF EXISTS BuscarInteressesEvento$$

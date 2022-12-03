@@ -611,6 +611,10 @@ a {
     font-size: 15px;
 }
 
+    #alteraSenha:hover{
+        cursor: pointer;
+    }
+
 #boxSenha {
     display: flex;
     flex-direction: column;
