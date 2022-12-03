@@ -85,6 +85,7 @@ namespace MaisCultura.Site
             eventos = ListaEvento.BuscarPorUsuario(codigo);
 
             string todosEventos = "";
+            litAvaliacoes.Text = "";
 
             foreach (Evento evento in eventos)
             {
@@ -155,8 +156,6 @@ namespace MaisCultura.Site
 
                     </article>
                 </section>";
-
-                litAvaliacoes.Text = "";
 
                 foreach (Avaliacao avaliacao in ListaAvaliacao.BuscarPorEvento(evento.Codigo))
                     litAvaliacoes.Text += $@"<div class='umaAvaliacao'>

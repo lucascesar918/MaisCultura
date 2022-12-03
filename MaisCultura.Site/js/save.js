@@ -10,6 +10,7 @@
     var evento = urlParams.get("e");
 
     if ($("#cbxSave").prop("checked") == true) {
+        $("#cbxSave").enable = false;
         PageMethods.salvarEvento(usuario, evento);
     }
     else {
