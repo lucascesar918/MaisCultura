@@ -282,6 +282,17 @@ namespace MaisCultura.Biblioteca
             NonQuery("RemoverInteresse", ("pUsuario", codigoUsuario), ("pEvento", codigoEvento));
         }
 
+        public bool VerificarInteresse(string codigoUsuario, int codigoEvento)
+        {
+            MySqlDataReader data = Query("BuscarInteresseUsuarioEvento", ("pUsuario", codigoUsuario), ("pEvento", codigoEvento));
+
+            bool resposta = data.HasRows;
+
+            Desconectar();
+
+            return resposta;
+        }
+
         public (List<Evento>, List<Evento>) GetDiffFeed(string codigo)
         {
             List<Evento> AllEventos = Listar();         //  Todos
@@ -293,6 +304,19 @@ namespace MaisCultura.Biblioteca
                     Diff.Add(evento);
 
             return (Diff, Preferencia);
+        }
+
+        public (List<Evento>, List<Evento>) GetFeedCreator(string codigo)
+        {
+            List<Evento> AllEventos = Listar();         //  Todos
+            List<Evento> Creator = BuscarPorUsuario(codigo);    //  Feed
+            List<Evento> Diff = new List<Evento>();     //  Todos - Feed
+
+            foreach (Evento evento in AllEventos)
+                if (!Creator.Contains(evento))
+                    Diff.Add(evento);
+
+            return (Diff, Creator);
         }
 
         public void Salvar(string codigoUsuario, int codigoEvento)
