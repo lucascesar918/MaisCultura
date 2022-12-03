@@ -232,7 +232,7 @@ Acontecerão aulas de Karatê e Judô em dias intercalados. Nos dias 2 e 4 haver
 
         <div class="login pop" id="log">
             <section class="headerLogin">
-                <h4 class="titleLogin">Entre em sua conta!</h4>
+                <h4 class="titleLogin">Entrar</h4>
             </section>
             <asp:TextBox ID="txtBoxUser" runat="server" placeholder="Seu nome de usuário" CssClass="txtLog">
             </asp:TextBox>
@@ -243,7 +243,7 @@ Acontecerão aulas de Karatê e Judô em dias intercalados. Nos dias 2 e 4 haver
         <div class="cadastrar pop" id="cad">
 
             <section class="headerCad">
-                <h4 class="titleCad">Faça seu cadastro!</h4>
+                <h4 class="titleCad">Cadastrar</h4>
             </section>
 
             <div class="nms">

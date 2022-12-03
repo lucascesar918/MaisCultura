@@ -6,9 +6,9 @@
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
     <script src="https://unpkg.com/scrollreveal@4"></script>
@@ -27,7 +27,7 @@
             <figure class="figure-header">
                 <asp:Literal ID="litLogo" runat="server"></asp:Literal>
                     <img src="Images/logoNomeMenor.png" class="logo-header"/>
-                </a>
+                
             </figure>
 
             <article class="buttons">
@@ -106,7 +106,7 @@
 
                 <h2 class="filtros-titulos aval">Avaliação</h2>
                 <asp:DropDownList ID="dpdAval" runat="server" CssClass="dpdAval" AutoPostBack="true">
-                    <asp:ListItem Value="null" selected>Todos</asp:ListItem>
+                    <asp:ListItem Value="null">Todos</asp:ListItem>
                     <asp:ListItem Value="1">Uma estrela</asp:ListItem>
                     <asp:ListItem Value="2">Duas estrelas</asp:ListItem>
                     <asp:ListItem Value="3">Três estrelas</asp:ListItem>

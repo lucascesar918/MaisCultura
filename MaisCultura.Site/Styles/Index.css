@@ -101,26 +101,14 @@ body {
     font-weight: 700;
 }
 
-    .menuUsuario:hover {
-        cursor: pointer;
-    }
-
-    .menuUsuario a {
-        color: black;
-        font-size: 15px;
-    }
-
-        .menuUsuario a:hover {
-            text-decoration: none;
-        }
-
-#litUsuario {
+.dropbtn {
     color: black;
     padding: 10px;
     font-size: 15px;
     border: none;
     cursor: pointer;
     background-color: transparent;
+    font-weight: 700;
 }
 
 
@@ -157,7 +145,7 @@ body {
 }
 
 .header-primaria {
-    height: 45px;
+    height: 50px;
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -215,19 +203,29 @@ body {
 #btnCad {
     border: none;
     background-color: #526ace;
+    transition: 0.3s;
     color: white;
+    border: solid #526ace 2px;
 }
+    #btnCad:hover {
 
-.button {
-    width: 100px;
-    height: 80%;
-    border: none;
-    font-size: 15px;
-    font-weight: 600;
-    padding: 5px;
-    margin: 5px;
-    border-radius: 2.5px;
-}
+        filter: brightness(85%);
+
+        /*color: black;
+        background-color: transparent;
+        border: solid #526ace 2px;*/
+    }
+
+    .button {
+        width: 100px;
+        height: 80%;
+        border: none;
+        font-size: 15px;
+        font-weight: 600;
+        padding: 5px;
+        margin: 5px;
+        border-radius: 2.5px;
+    }
 
     .button:hover {
         cursor: pointer;
@@ -235,10 +233,15 @@ body {
 
 .button-log {
     background: none;
+    transition: 0.3s;
+    border: solid #526ace 2px;
 }
 
     .button-log:hover {
-        background-color: #f1f1f4;
+        /*filter: brightness(100%);*/
+         background-color: #526ACE;
+        color: white;
+        border: solid white 2px;
     }
 
 .button-cad {
@@ -254,12 +257,11 @@ body {
     background: none;
     border: none;
     color: #fff;
-    width: fit-content;
-    height: fit-content;
-    font-size: 12px;
-    padding: 10px;
+    width: 150px;
+    height: 100%;
+    font-size: 1.5vh;
+    padding: 5px;
     margin: 5px;
-    border-radius: 2.5px;
 }
 
     .button-clear:hover {
@@ -269,17 +271,16 @@ body {
 
 .button-exclude {
     box-sizing: content-box;
-    width: fit-content;
-    height: fit-content;
+    width: 12px;
+    height: 12px;
     font-size: 1.2rem;
     font-weight: 600;
+    text-align: center;
     border-radius: 50%;
     background: none;
     border: none;
     margin: 5px;
     margin-right: 0px;
-    margin-left: 5px;
-    padding: 3px 6px;
 }
 
     .button-exclude:hover {
@@ -287,17 +288,13 @@ body {
     }
 
 .nav {
-    height: 50px;
+    height: 55px;
     width: 100%;
     justify-content: left;
     background: #333333;
     display: flex;
     flex-direction: row;
     align-items: center;
-}
-
-.section-limpar {
-    margin-right: 10px;
 }
 
 .section-tags {
@@ -312,7 +309,7 @@ body {
     width: fit-content;
     height: 19px;
     border-radius: 20px;
-    font-size: 12px;
+    font-size: 1.3vh;
     color: white;
     margin: 5px;
     padding: 6px;
@@ -321,6 +318,7 @@ body {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    cursor: pointer;
 }
 
 .principal {
@@ -355,7 +353,7 @@ body {
     }
 
 .filtros-titulos {
-    font-size: 16;
+    font-size: 1.7vh;
     margin-bottom: 5px;
 }
 
@@ -368,11 +366,11 @@ body {
     align-items: center;
     height: fit-content;
     width: fit-content;
-    font-size: 14px;
+    font-size: 1.5vh;
     padding: 5px 5px 5px 5px;
     margin: 5px 5px 5px 0px;
     border: none;
-    border-radius: 12px;
+    border-radius: 15px;
 }
 
 .categoria:hover {
@@ -423,11 +421,10 @@ body {
     height: 30px;
     box-sizing: border-box;
     margin-bottom: 1vh;
-    font-size: 12px;
+    font-size: 1.5vh;
     border: 1px solid #526ace;
     border-radius: 15px;
     padding: 15px;
-    font-weight: bold;
     font-weight: bold;
 }
 
@@ -447,7 +444,7 @@ body {
     border: none;
     border-bottom: 1px solid #526ace;
     outline: none;
-    font-size: 12px;
+    font-size: 1.5vh;
     padding: 5px;
     cursor: pointer;
 }
@@ -490,6 +487,8 @@ body {
     border: none;
     background-color: transparent;
     width: 95%;
+    font-size: 1.5vh;
+    outline: none;
 }
 
 .event-manager {
@@ -511,7 +510,7 @@ body {
 /* Css do Card*/
 .card {
     width: 290px;
-    height: 420px;
+    min-height: 0px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -525,9 +524,8 @@ body {
     background-color: #ffffff;
 }
 
+
     .card:hover {
-        transition-duration: 0.3s;
-        transition-timing-function: ease-in-out;
         box-shadow: #526ace 0px 0px 0px 2px inset, rgb(255, 255, 255) 10px 10px 0px -3px, #4dade2 10px 10px, rgb(255, 255, 255) 20px 20px 0px -3px, #fcb646 20px 20px;
         /* rgb(255, 255, 255) 10px 10px 0px -3px,
             #7bdf97 10px 10px,
@@ -537,8 +535,12 @@ body {
             #d64558 30px 30px;*/
         /*rgb(255, 255, 255) 40px 40px 0px -3px,*/
         /*rgb(255, 85, 85)*/ /*#526ace 40px  40px;*/
-        transform: scaleX(2), scaleY(2);
     }
+
+.endereco {
+    text-align: justify;
+    width: 70%;
+}
 
 .card-header {
     width: 100%;
@@ -549,8 +551,8 @@ body {
 }
 
 .perfil {
-    width: 3vw;
-    height: 3vw;
+    width: 5vh;
+    height: 5vh;
     margin: 5px;
 }
 
@@ -562,11 +564,11 @@ body {
 }
 
     .card-header-nome h2 {
-        font-size: 15px;
+        font-size: 1.5vh;
     }
 
     .card-header-nome h5 {
-        font-size: 12px;
+        font-size: 1.3vh;
         font-weight: 400;
     }
 
@@ -602,12 +604,14 @@ body {
 }
 
 .card-tittle {
-    width: 96%;
+    width: 100%;
     padding: 10px;
 }
 
     .card-tittle h2 {
-        font-size: 15px;
+        font-size: 190%;
+        text-align: left;
+        width: 90%;
     }
 
 .card-tags {
@@ -617,11 +621,13 @@ body {
     justify-content: space-around;
     align-items: center;
     margin-top: 10px;
+    padding-top: 15px;
+    border-top: solid gray 1px;
 }
 
     .card-tags .tag {
         background: #526ACE;
-        padding: 5px;
+        padding: 4px;
         height: auto;
         margin-right: 0px;
         font-weight: 400;
@@ -666,6 +672,8 @@ body {
     justify-content: right;
     color: #000;
     font-palette: dark;
+    font-size: 1.2vh;
+    font-weight: bold;
 }
 
 .dateTime, .card-local {
@@ -698,9 +706,9 @@ body {
     width: 100%;
     box-sizing: border-box;
     padding: 5px;
-    font-size: 14px;
+    font-size: 1.7vh;
     border: none;
-    border-radius: 2.5px;
+    border-radius: 5px;
     background-color: #babaca;
     padding: 10px;
     font-weight: bold;
@@ -748,64 +756,69 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: 13px;
-    border: 1px solid #526ace;
-    border-radius: 5px;
+    border: 2px solid #526ace;
+    border-radius: 15px;
     padding: 40px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 400px;
+    width: 450px;
+    min-height: 200px;
     height: fit-content;
 }
 
 .headerLogin {
     width: 100%;
+    box-sizing: border-box;
+    padding-bottom: 8px;
     display: flex;
     flex-direction: row;
-    justify-content: center;
     align-items: center;
-    margin-bottom: 10px;
+    justify-content: center;
+    margin-bottom: 17px;
+    border-bottom: solid 2px #526ace;
 }
 
     .headerLogin h4 {
-        font-size: 18px;
+        font-size: 2vh;
         font-weight: 800;
     }
 
 
 .txtLog {
+    background-color: #babaca;
     width: 100%;
+    padding: 10px;
+    font-size: 1.7vh;
+    font-weight: bold;
     margin-bottom: 5px;
-    padding: 5px;
     border: none;
+    outline: none;
+    color: black;
     border-radius: 5px;
-    background-color: #fff;
     box-sizing: border-box;
-    font-size: 14px;
+    font-weight: bold;
 }
 
 #btnLogar {
     width: 100%;
-    padding: 5px;
-    border: 1px solid #526ace;
-    background-color: #526ace;
+    padding: 10px;
     color: white;
-    border-radius: 5px;
-    font-size: 14px;
+    background-color: #526ace;
+    border: none;
+    font-size: 1.7vh;
+    font-weight: bold;
+    border-radius: 2.5px;
+    cursor: pointer;
 }
-
-    #btnLogar:hover {
-        cursor: pointer;
-        background: #293d90;
-    }
 
 #btnSairLogin {
     width: 100%;
     border: none;
-    font-size: 12px;
+    font-size: 1.5vh;
     font-weight: 700;
-    color: black;
+    color: red;
     margin-top: 5px;
 }
 
@@ -816,10 +829,11 @@ body {
 #btnSairCad {
     width: 100%;
     border: none;
-    font-size: 12px;
+    font-size: 1.5vh;
     font-weight: 700;
-    color: black;
+    color: red;
     margin-top: 5px;
+    background-color: transparent;
 }
 
     #btnSairCad:hover {
@@ -976,7 +990,6 @@ body {
 
     #btnCadastrar:hover {
         cursor: pointer;
-        background: #293d90;
     }
 
 .pop {

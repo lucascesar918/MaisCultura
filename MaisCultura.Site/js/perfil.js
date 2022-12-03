@@ -29,4 +29,3 @@
         $("#boxExcluir").toggle();
     });
 })
-})
