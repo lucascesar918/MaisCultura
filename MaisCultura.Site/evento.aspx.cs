@@ -20,6 +20,45 @@ namespace MaisCultura.Site
         Evento Evento;
 
         [WebMethod]
+        void HandleLogin()
+        {
+            if (Request.QueryString["l"] != null)
+            {
+                Login = ListaUsuario.Buscar(Request.QueryString["l"]);
+                dropbtnUsuario.Text = Login.Nome;
+                litDropDownHome.Text = $"<a href='eventos.aspx?l={Login.Codigo}'>Início</a>";
+                litDropDownPerfil.Text = $"<a href='meu-perfil.aspx?l={Login.Codigo}&u={Login.Codigo}'>Perfil</a>";
+                if (Login.Tipo == "Administrador")                                                              //Logado
+                    litDropDownDenuncias.Text = $"<a href='denuncias.aspx?l={Login.Codigo}'>Denúncias</a>";
+
+                if (Login.Tipo == "Criador de Eventos")
+                {
+                    litDropDownDenuncias.Text = $"<a href='criar-evento.aspx?l={Login.Codigo}'>Criar Evento</a>";
+                    litDropDownDenuncias.Text += $"<a href='meus-eventos.aspx?l={Login.Codigo}&u={Login.Codigo}'>Meus Eventos</a>";
+                }
+                dropbtnUsuario.Visible = true;
+                pnlAval.Visible = true;
+                btnLog.Visible = false;
+                btnCad.Visible = false;
+                litImgPerfil.Text = $@"<img src='Images/perfil526ace.png' class='imgPerfil'>";
+                bool save = ListaEvento.VerificarSalvo(Login.Codigo, int.Parse(Request.QueryString["e"]));
+                cbxSave.Checked = save;
+                litLogoHeader.Text = $@"<a href='eventos.aspx?l={Login.Codigo}'>
+                    <img src = 'Images/logoNomeMenor.png' class='logo-header'/>
+                </a>";
+            }
+            else
+            {
+                dropbtnUsuario.Visible = false;
+                pnlAval.Visible = false;
+                btnLog.Visible = true;                                                                          //Deslogado
+                btnCad.Visible = true;
+                litLogoHeader.Text = $@"<a href='eventos.aspx'>
+                    <img src = 'Images/logoNomeMenor.png' class='logo-header'/>
+                </a>";
+            }
+        }
+
         public static void salvarEvento(string codigoUsuario, int codigoEvento)
         {
             ListaEvento ListaEvento = new ListaEvento();
@@ -38,29 +77,9 @@ namespace MaisCultura.Site
             txtBoxAvaliacao.TextMode = TextBoxMode.MultiLine;
             txtBoxDescProb.TextMode = TextBoxMode.MultiLine;
 
-            litCategorias.Text = "";
+            HandleLogin();
 
-            if (Request.QueryString["l"] != null)
-            {
-                Login = ListaUsuario.Buscar(Request.QueryString["l"]);      //Logado
-                dropbtnUsuario.Text = Login.Nome;
-                litDropDownHome.Text = $"<a href='eventos.aspx?l={Login.Codigo}'>Início</a>";
-                litDropDownPerfil.Text = $"<a href='perfil.aspx?l={Login.Codigo}'>Perfil</a>";
-                dropbtnUsuario.Visible = true;
-                pnlAval.Visible= true;
-                btnLog.Visible = false;
-                btnCad.Visible = false;
-                litImgPerfil.Text = $@"<img src='Images/perfil526ace.png' class='imgPerfil'>";
-                bool save = ListaEvento.VerificarSalvo(Login.Codigo, int.Parse(Request.QueryString["e"]));
-                cbxSave.Checked = save;
-            }
-            else
-            {
-                dropbtnUsuario.Visible = false;                             //Deslogado
-                pnlAval.Visible = false;
-                btnLog.Visible = true;
-                btnCad.Visible = true;
-            }
+            litCategorias.Text = "";
 
             if (Request.QueryString["e"] != null)
             {
@@ -69,6 +88,7 @@ namespace MaisCultura.Site
 
             if (Evento != null)
             {
+                litTitle.Text = Evento.Titulo;
                 lblTituloEvento.Text = Evento.Titulo;
                 lblLocalEvento.Text = Evento.Local;
                 lblDescEvento.Text = Evento.Descricao;
@@ -180,6 +200,12 @@ namespace MaisCultura.Site
 
             if (Login != null)
                 Response.Redirect($"evento.aspx?l={Login.Codigo}&e={Evento.Codigo}");
+            else
+            {
+                lblStatusLogin.Text = "Usuário e/ou senha inválidos!";
+                txtBoxUser.Text = "";
+                txtBoxSenha.Text = "";
+            }
         }
 
         protected void btnCad_Click(object sender, EventArgs e)
@@ -194,6 +220,20 @@ namespace MaisCultura.Site
             Usuario Cadastrado = new Usuario(txtBoxNmUsuario.Text, ddlTipoUser.Text, ddlSexo.Text, txtBoxNome.Text + txtBoxSobrenome.Text, txtBoxEmail.Text, txtBoxSenhaCad.Text, " ", txtData.Text, null);
 
             ListaUsuario.CriarUsuario(Cadastrado);
+        }
+
+        protected void btnLogar_Click(object sender, EventArgs e)
+        {
+            Login = ListaUsuario.BuscarLogin(txtBoxUser.Text, txtBoxSenha.Text);
+
+            if (Login != null)
+                Response.Redirect($"evento.aspx?l={Login.Codigo}&e={Evento.Codigo}");
+            else
+            {
+                lblStatusLogin.Text = "Usuário e/ou senha inválidos!";
+                txtBoxUser.Text = "";
+                txtBoxSenha.Text = "";
+            }
         }
     }
 }

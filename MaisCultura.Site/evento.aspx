@@ -23,7 +23,7 @@
 
     <link href="Styles/EventoEspecifico.css" rel="stylesheet" type="text/css" />
 
-    <title>+Cultura | Evento Específico</title>
+    <title>+Cultura | <asp:Literal ID="litTitle" runat="server"></asp:Literal></title>
 </head>
 
 <body>
@@ -39,29 +39,27 @@
         <header class="header-primaria">
 
             <figure class="figure-header">
-                 <a href="eventos.aspx">
-                <img src="Images/logoNomeMenor.png" class="logo-header" />
-                </a>
+                <asp:Literal ID="litLogoHeader" runat="server"></asp:Literal>
             </figure>
 
 
             <article class="buttons">
-                <asp:Button ID="btnLog" runat="server" Text="Entrar" class="button button-log" OnClick="btnLog_Click" />
-                <asp:Button ID="btnCad" runat="server" Text="Cadastrar" class="button button-cad" OnClick="btnCad_Click" />
+                <asp:Button ID="btnLog" runat="server" Text="Entrar" class="button button-log" />
+                <asp:Button ID="btnCad" runat="server" Text="Cadastrar" class="button button-cad" />
             </article>
 
             <article class="usuario">
                 <div class="menuUsuario">
                     <asp:Button CssClass="dropbtn" ID="dropbtnUsuario" runat="server" Text="Nome" />
                     <div class="dropdown-content">
-                        <asp:Literal ID="litDropDownHome" runat="server"></asp:Literal>
-                        <asp:Literal ID="litDropDownPerfil" runat="server"></asp:Literal>
-                        <a href="eventos.aspx">Sair</a>
+                    <asp:Literal ID="litDropDownHome" runat="server"></asp:Literal>
+                    <asp:Literal ID="litDropDownPerfil" runat="server"></asp:Literal>
+                    <asp:Literal ID="litDropDownDenuncias" runat="server"></asp:Literal>
+                    <a href="eventos.aspx">Sair</a>
                     </div>
                 </div>
-
                 <asp:Literal ID="litImgPerfil" runat="server"></asp:Literal>
-
+                
             </article>
         </header>
 
@@ -218,12 +216,12 @@ Acontecerão aulas de Karatê e Judô em dias intercalados. Nos dias 2 e 4 haver
 
         <div class="login pop" id="log">
             <section class="headerLogin">
-                <h4 class="titleLogin">Entre em sua conta!</h4>
+                <h4 class="titleLogin">Entrar</h4>
             </section>
-            <asp:TextBox ID="txtBoxUser" runat="server" placeholder="Seu nome de usuário" CssClass="txtLog">
-            </asp:TextBox>
-            <asp:TextBox ID="txtBoxSenha" runat="server" placeholder="Sua senha" CssClass="txtLog"></asp:TextBox>
-            <asp:Button ID="btnLogar" runat="server" Text="Entrar" />
+            <asp:Label ID="lblStatusLogin" runat="server" Text="" style="align-self: center; margin: auto;" ForeColor="Red"></asp:Label>
+            <asp:TextBox ID="txtBoxUser" runat="server" placeholder="Seu nome de usuário" CssClass="txtLog"></asp:TextBox>
+            <asp:TextBox ID="txtBoxSenha" runat="server" placeholder="Sua senha" CssClass="txtLog" type="password"></asp:TextBox>
+            <asp:Button ID="btnLogar" runat="server" Text="Entrar" OnClick="btnLogar_Click" />
             <asp:Button ID="btnSairLogin" runat="server" Text="Fechar" />
         </div>
         <div class="cadastrar pop" id="cad">

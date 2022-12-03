@@ -78,20 +78,12 @@ namespace MaisCultura.Biblioteca
 
         public void NonQuery(string comando, params (string nome, object valor)[] parametros)
         {
-            try
-            {
-                Conectar();
+            Conectar();
 
-                MySqlCommand cSQL = CriarProcedure(comando, parametros);
+            MySqlCommand cSQL = CriarProcedure(comando, parametros);
 
-                cSQL.ExecuteNonQuery();
-                Desconectar();
-
-            }
-            catch
-            {
-                throw new Exception("Erro ao executar comando no servidor!");
-            }
+            cSQL.ExecuteNonQuery();
+            Desconectar();
         }
     }
 }

@@ -17,8 +17,6 @@ namespace MaisCultura.Site
         Usuario Login;
         Usuario Usuario;
 
-        string cdAux;
-
         void HandleLogin()
         {
             if (Request.QueryString["l"] != null)
@@ -26,21 +24,33 @@ namespace MaisCultura.Site
                 Login = ListaUsuario.Buscar(Request.QueryString["l"]);
                 dropbtnUsuario.Text = Login.Nome;
                 litDropDownHome.Text = $"<a href='eventos.aspx?l={Login.Codigo}'>Início</a>";
-                litDropDownPerfil.Text = $"<a href='perfil.aspx?l={Login.Codigo}&u={Login.Codigo}'>Perfil</a>";
+                litDropDownPerfil.Text = $"<a href='meu-perfil.aspx?l={Login.Codigo}&u={Login.Codigo}'>Perfil</a>";
                 if (Login.Tipo == "Administrador")                                                              //Logado
                     litDropDownDenuncias.Text = $"<a href='denuncias.aspx?l={Login.Codigo}'>Denúncias</a>";
-                dropbtnUsuario.Visible = true;
+
+                if (Login.Tipo == "Criador de Eventos")
+                {
+                    litDropDownDenuncias.Text = $"<a href='criar-evento.aspx?l={Login.Codigo}'>Criar Evento</a>";
+                    litDropDownDenuncias.Text += $"<a href='meus-eventos.aspx?l={Login.Codigo}&u={Login.Codigo}'>Meus Eventos</a>";
+                }
                 pnlAval.Visible = true;
+                dropbtnUsuario.Visible = true;
                 btnLog.Visible = false;
                 btnCad.Visible = false;
                 litImgPerfil.Text = $@"<img src='Images/perfil526ace.png' class='imgPerfil'>";
+                litLogoHeader.Text = $@"<a href='eventos.aspx?l={Login.Codigo}'>
+                    <img src = 'Images/logoNomeMenor.png' class='logo-header'/>
+                </a>";
             }
             else
             {
-                dropbtnUsuario.Visible = false;
                 pnlAval.Visible = false;
+                dropbtnUsuario.Visible = false;
                 btnLog.Visible = true;                                                                          //Deslogado
                 btnCad.Visible = true;
+                litLogoHeader.Text = $@"<a href='eventos.aspx'>
+                    <img src = 'Images/logoNomeMenor.png' class='logo-header'/>
+                </a>";
             }
         }
 
