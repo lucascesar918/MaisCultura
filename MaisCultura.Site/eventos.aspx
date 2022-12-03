@@ -168,7 +168,7 @@
 
             <asp:TextBox ID="txtBoxNmUsuario" runat="server" placeholder="Seu nome de usuário" CssClass="txtCad"></asp:TextBox>
 
-            <asp:TextBox ID="txtBoxSenhaCad" runat="server" placeholder="Sua senha" CssClass="txtCad"></asp:TextBox>
+            <asp:TextBox TextMode="Password" ID="txtBoxSenhaCad" runat="server" placeholder="Sua senha" CssClass="txtCad"></asp:TextBox>
 
             <asp:DropDownList ID="ddlTipoUser" runat="server" CssClass="txtCad">
                 <asp:ListItem runat="server" CssClass="listDdl" Value="Usuário Comum">

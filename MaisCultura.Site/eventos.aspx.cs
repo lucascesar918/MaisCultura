@@ -139,7 +139,7 @@ namespace MaisCultura
                         <figure>
                             <img src='Images/local.png' alt='Ícone Local' class='local-icon'>
                         </figure>
-                        <h3>{
+                        <h3 class='endereco'>{
                             evento.Local
                         }</h3>
 
