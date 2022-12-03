@@ -30,6 +30,15 @@ body {
     padding: 10px 0px 10px 0px;
 }
 
+a{
+    text-decoration: none;
+    color: black;
+}
+
+.menuUsuario a{
+    font-size: 12px;
+}
+
 .usuario {
     display: flex;
     align-items: center;

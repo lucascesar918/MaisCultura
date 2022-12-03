@@ -132,6 +132,10 @@ body {
     flex-wrap: wrap;
 }
 
+.menuUsuario a{
+    font-size: 12px;
+}
+
 a {
     text-decoration: none;
     color: black;
