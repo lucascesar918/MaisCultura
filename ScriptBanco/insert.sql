@@ -27,7 +27,7 @@ INSERT INTO categoria VALUES
 (13, "Manifestação"),
 (14, "Workshop"),
 (15, "Entretenimento"),
-(16, "Arte Cênica");
+(16, "Artes Cênicas");
 
 INSERT INTO lista_motivo VALUES
 (1, "Má organização"),
