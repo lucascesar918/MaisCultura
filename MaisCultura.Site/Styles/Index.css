@@ -700,6 +700,11 @@ body {
     font-size: 15px;
 }
 
+.menuUsuario a {
+
+    font-size: 1.5vh;
+
+}
 
 #txtData {
     width: 100%;
