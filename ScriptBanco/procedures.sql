@@ -46,6 +46,16 @@ BEGIN
 	FROM categoria;
 END$$
 
+DROP PROCEDURE IF EXISTS ListarMotivos$$
+CREATE PROCEDURE ListarMotivos()
+BEGIN
+	SELECT
+		cd_motivo as "Codigo", 
+		nm_motivo "Nome" 
+	FROM lista_motivo
+	ORDER BY nm_motivo;
+END$$
+
 DROP PROCEDURE IF EXISTS MediaAvaliacao$$
 CREATE PROCEDURE MediaAvaliacao( pEvento INT )
 BEGIN
@@ -211,6 +221,13 @@ BEGIN
 	INSERT INTO evento VALUES (pCodigo, pResponsavel, pNome, pLocal, pDescricao);
 END$$
 
+DROP PROCEDURE IF EXISTS CadastrarDenuncia$$
+CREATE PROCEDURE CadastrarDenuncia(pCodigo INT, pEvento INT, pUsuario VARCHAR(20), pMotivo INT, pDesc TEXT)
+BEGIN
+	INSERT INTO denuncia VALUES (pCodigo, pEvento, pUsuario, CURDATE(), CURTIME());
+	INSERT INTO motivo VALUES (pMotivo, pCodigo, pDesc);
+END$$
+
 DROP PROCEDURE IF EXISTS ListarEventosFeed$$
 CREATE PROCEDURE ListarEventosFeed( pUsuario VARCHAR(20) )
 BEGIN
@@ -332,12 +349,6 @@ BEGIN
 	GROUP BY de.dt_dia;
 END$$
 
-DROP PROCEDURE IF EXISTS BuscarInteressesEvento$$
-CREATE PROCEDURE BuscarInteressesEvento( pEvento INT )
-BEGIN
-	SELECT count(cd_usuario) "Interesses" FROM interesse WHERE cd_evento = pEvento;
-END$$
-
 DROP PROCEDURE IF EXISTS BuscarImagemEvento$$
 CREATE PROCEDURE BuscarImagemEvento( pEvento INT )
 BEGIN
@@ -372,6 +383,29 @@ BEGIN
 	FROM avaliacao a
 	JOIN usuario u ON (u.cd_usuario = a.cd_usuario)
 	WHERE a.cd_usuario = pUsuario;
+END$$
+
+DROP PROCEDURE IF EXISTS BuscarAvaliacaoEventoUsuario$$
+CREATE PROCEDURE BuscarAvaliacaoEventoUsuario( pEvento INT, pUsuario VARCHAR(20) )
+BEGIN
+	SELECT 
+		u.nm_usuario "Nome",
+		a.cd_usuario "@",
+		a.ds_avaliacao "Descricao",
+		a.qt_estrela "Estrelas"
+	FROM avaliacao a
+	JOIN usuario u ON (u.cd_usuario = a.cd_usuario)
+	WHERE a.cd_evento = pEvento and a.cd_usuario = pUsuario;
+END$$
+
+DROP PROCEDURE IF EXISTS AlterarAvaliacao$$
+CREATE PROCEDURE AlterarAvaliacao( pEvento INT, pUsuario VARCHAR(20), pDescricao TEXT, pEstrelas INT)
+BEGIN
+	UPDATE avaliacao
+	SET 
+		ds_avaliacao = pDescricao,
+		qt_estrela = pEstrelas
+	WHERE cd_evento = pEvento and cd_usuario = pUsuario;
 END$$
 
 DROP PROCEDURE IF EXISTS CadastrarAvaliacao$$
@@ -418,11 +452,25 @@ BEGIN
 	FROM evento;
 END$$
 
+DROP PROCEDURE IF EXISTS MaxCodigoDenuncia$$
+CREATE PROCEDURE MaxCodigoDenuncia()
+BEGIN
+	SELECT
+		MAX(cd_denuncia) "Max" 
+	FROM denuncia;
+END$$
+
 DROP PROCEDURE IF EXISTS CadastrarPreferencia$$
 CREATE PROCEDURE CadastrarPreferencia(pCategoria INT, pUsuario VARCHAR(20))
 BEGIN
 	INSERT INTO preferencia VALUES
     (pCategoria, pUsuario);
+END$$
+
+DROP PROCEDURE IF EXISTS DeletarPreferencia$$
+CREATE PROCEDURE DeletarPreferencia(pUsuario VARCHAR(20))
+BEGIN
+	DELETE FROM preferencia WHERE cd_usuario = pCodigo AND cd_categoria = pCategoria;
 END$$
 
 DROP PROCEDURE IF EXISTS AlterarPreferencia$$
@@ -665,31 +713,67 @@ DROP PROCEDURE IF EXISTS DeletarDenunciaEvento$$
 CREATE PROCEDURE DeletarDenunciaEvento(pCodigo INT)
 BEGIN
 	DECLARE codigo INT DEFAULT 0;
+	DECLARE parar INT DEFAULT 0;
+	
+	DECLARE dados CURSOR FOR 
+		SELECT d.cd_denuncia
+		FROM evento e 
+		JOIN denuncia d ON (e.cd_evento = d.cd_evento) 
+		WHERE e.cd_evento = pCodigo;
+	
+	DECLARE CONTINUE HANDLER FOR NOT FOUND
+		SET parar = 1;
 
-	SELECT d.cd_denuncia INTO codigo
-	FROM evento e 
-	JOIN denuncia d ON (e.cd_evento = d.cd_evento) 
-	WHERE e.cd_evento = pCodigo;
+	OPEN dados;
 
-	CALL DeletarDenuncia(codigo);
+	todos:LOOP
+		FETCH dados INTO codigo;
+
+		IF (parar = 1) THEN
+			LEAVE todos;
+		END IF;
+
+		CALL DeletarDenuncia(codigo);
+	END LOOP;
 END$$
 
 DROP PROCEDURE IF EXISTS DeletarDenunciaUsuario$$
 CREATE PROCEDURE DeletarDenunciaUsuario(pCodigo VARCHAR(20))
 BEGIN
 	DECLARE codigo INT DEFAULT 0;
+	DECLARE parar INT DEFAULT 0;
+	
+	DECLARE dados CURSOR FOR 
+		SELECT cd_denuncia
+		FROM denuncia
+		WHERE cd_usuario = pCodigo;
+	
+	DECLARE CONTINUE HANDLER FOR NOT FOUND
+		SET parar = 1;
 
-	SELECT cd_denuncia INTO codigo
-	FROM denuncia
-	WHERE cd_usuario = pCodigo;
+	OPEN dados;
 
-	CALL DeletarDenuncia(codigo);
+	todos:LOOP
+		FETCH dados INTO codigo;
+
+		IF (parar = 1) THEN
+			LEAVE todos;
+		END IF;
+
+		CALL DeletarDenuncia(codigo);
+	END LOOP;
 END$$
 
 DROP PROCEDURE IF EXISTS BuscarInteressesEvento$$
 CREATE PROCEDURE BuscarInteressesEvento(pEvento INT)
 BEGIN
 	SELECT COUNT(cd_evento) "Soma" FROM interesse WHERE cd_evento = pEvento;
+END$$
+
+DROP PROCEDURE IF EXISTS BuscarInteresseUsuarioEvento$$
+CREATE PROCEDURE BuscarInteresseUsuarioEvento(pUsuario VARCHAR(20), pEvento INT)
+BEGIN
+	SELECT * FROM interesse WHERE cd_evento = pEvento AND cd_usuario = pUsuario;
 END$$
 
 DROP PROCEDURE IF EXISTS DeletarAvaliacao$$

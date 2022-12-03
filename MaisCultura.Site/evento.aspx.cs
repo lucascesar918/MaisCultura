@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using MaisCultura.Biblioteca;
 using System.Web.Services;
+using MySql.Data.MySqlClient;
 
 namespace MaisCultura.Site
 {
@@ -33,6 +34,20 @@ namespace MaisCultura.Site
             ListaEvento.CancelarSalvo(codigoUsuario, codigoEvento);
         }
 
+        [WebMethod]
+        public static void DemonstrarInteresse(string codigoUsuario, int codigoEvento)
+        {
+            ListaEvento ListaEvento = new ListaEvento();
+            ListaEvento.Interessar(codigoUsuario, codigoEvento);
+        }
+
+        [WebMethod]
+        public static void RemoverInteresse(string codigoUsuario, int codigoEvento)
+        {
+            ListaEvento ListaEvento = new ListaEvento();
+            ListaEvento.CancelarInteresse(codigoUsuario, codigoEvento);
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             txtBoxAvaliacao.TextMode = TextBoxMode.MultiLine;
@@ -43,21 +58,50 @@ namespace MaisCultura.Site
             if (Request.QueryString["l"] != null)
             {
                 Login = ListaUsuario.Buscar(Request.QueryString["l"]);      //Logado
-                dropbtnUsuario.Text = Login.Nome;
-                litDropDownHome.Text = $"<a href='eventos.aspx?l={Login.Codigo}'>Início</a>";
-                litDropDownPerfil.Text = $"<a href='perfil.aspx?l={Login.Codigo}'>Perfil</a>";
-                dropbtnUsuario.Visible = true;
-                pnlAval.Visible= true;
+
+                litLogo.Text = $"<a href='eventos.aspx?l={Login.Codigo}'>";
+                litUsuario.Text = $"<a href='meu-perfil.aspx?l={Login.Codigo}'>{Login.Nome}</a>";
+                litHome.Text = $"<a href='eventos.aspx?l={Login.Codigo}'>Início</a>";
+                litPerfil.Text = $"<a href='meu-perfil.aspx?l={Login.Codigo}'>Perfil</a>";
+                litSair.Text = $"<a href='evento.aspx?e={Request.QueryString["e"]}'>Sair</a>";
+
+                switch (Login.Tipo)
+                {
+                    case "Administrador":
+                        litAdicionais.Text = $"<a href='denuncias.aspx?l={Login.Codigo}'>Denúncias</a>";
+                        break;
+
+                    case "Usuário Comum":
+                        litAdicionais.Text = "";
+                        break;
+
+                    default:
+                        litAdicionais.Text = $"<a href='criar-evento.aspx?l={Login.Codigo}'>Criar Evento</a>";
+                        litAdicionais.Text += $"<a href='meus-eventos.aspx?l={Login.Codigo}'>Meus Eventos</a>";
+                        break;
+                }
+
                 btnLog.Visible = false;
                 btnCad.Visible = false;
-                litImgPerfil.Text = $@"<img src='Images/perfil526ace.png' class='imgPerfil'>";
+                litUsuario.Visible = true;
+                litImgPerfil.Text = $@"<a href='meu-perfil.aspx?l={Login.Codigo}'>
+                    <img src='Images/perfil526ace.png' class='imgPerfil'>
+                </a>";
+
+                pnlAval.Visible = true;
                 bool save = ListaEvento.VerificarSalvo(Login.Codigo, int.Parse(Request.QueryString["e"]));
                 cbxSave.Checked = save;
+
+                if (!IsPostBack)
+                    verificarAvalicao();
+    
+                verificarInteresse();
             }
             else
             {
-                dropbtnUsuario.Visible = false;                             //Deslogado
-                pnlAval.Visible = false;
+                litLogo.Text = $"<a href='eventos.aspx'>";
+                litUsuario.Visible = false;
+                pnlAval.Visible = false;                             //Deslogado
                 btnLog.Visible = true;
                 btnCad.Visible = true;
             }
@@ -73,9 +117,9 @@ namespace MaisCultura.Site
                 lblLocalEvento.Text = Evento.Local;
                 lblDescEvento.Text = Evento.Descricao;
                 titleResponsavel.Text = ListaUsuario.Buscar(Evento.Responsavel).Nome;
-                lblArroba.Text = '@'+Evento.Responsavel;
+                lblArroba.Text = '@' + Evento.Responsavel;
                 lblNotaResp.Text = ListaUsuario.BuscarMediaCriador(Evento.Responsavel).ToString();
-                lblNmrInteresse.Text = ListaEvento.BuscarInteresses(Evento.Codigo).ToString();
+                litNmrInteresse.Text = ListaEvento.BuscarInteresses(Evento.Codigo).ToString();
                 litData.Text = Evento.Dias[0].Data;
                 litHrInicio.Text = Evento.Dias[0].Inicio;
                 litHrFim.Text = Evento.Dias[0].Fim;
@@ -101,7 +145,8 @@ namespace MaisCultura.Site
 
                 for (int i = 0; i < imagens.Count; i++)
                 {
-                    if (i == 0){
+                    if (i == 0)
+                    {
                         CarrouselImages += $@"
                         <div class='carousel-item active'>
                               <img class='d-block w-100' src='{imagens[0]}' alt='Slide'>
@@ -149,10 +194,103 @@ namespace MaisCultura.Site
                 }
 
                 foreach (Categoria categoria in Evento.Categorias)
-                    litCategorias.Text += $"<span class='ag'>{categoria.Nome}</span>";
-                
-                foreach (Avaliacao avaliacao in ListaAvaliacao.BuscarPorEvento(Evento.Codigo))
-                    litAvaliacoes.Text += $@"<div class='umaAvaliacao'>
+                    litCategorias.Text += $"<span class='tag'>{categoria.Nome}</span>";
+
+                mostrarAvaliacoes();
+
+                PreencherDdlMotivos();
+            }
+        }
+
+        void colocarEstrelas (int numero){
+            switch (numero)
+            {
+                case 1:
+                    umaEstrela.ImageUrl = "~/Images/star.png";
+                    duasEstrelas.ImageUrl = "~/Images/star2.png";
+                    tresEstrelas.ImageUrl = "~/Images/star2.png";
+                    quatroEstrelas.ImageUrl = "~/Images/star2.png";
+                    cincoEstrelas.ImageUrl = "~/Images/star2.png";
+                    break;
+                case 2:
+                    umaEstrela.ImageUrl = "~/Images/star.png";
+                    duasEstrelas.ImageUrl = "~/Images/star.png";
+                    tresEstrelas.ImageUrl = "~/Images/star2.png";
+                    quatroEstrelas.ImageUrl = "~/Images/star2.png";
+                    cincoEstrelas.ImageUrl = "~/Images/star2.png";
+                    break;
+                case 3:
+                    umaEstrela.ImageUrl = "~/Images/star.png";
+                    duasEstrelas.ImageUrl = "~/Images/star.png";
+                    tresEstrelas.ImageUrl = "~/Images/star.png";
+                    quatroEstrelas.ImageUrl = "~/Images/star2.png";
+                    cincoEstrelas.ImageUrl = "~/Images/star2.png";
+                    break;
+                case 4:
+                    umaEstrela.ImageUrl = "~/Images/star.png";
+                    duasEstrelas.ImageUrl = "~/Images/star.png";
+                    tresEstrelas.ImageUrl = "~/Images/star.png";
+                    quatroEstrelas.ImageUrl = "~/Images/star.png";
+                    cincoEstrelas.ImageUrl = "~/Images/star2.png";
+                    break;
+                case 5:
+                    umaEstrela.ImageUrl = "~/Images/star.png";
+                    duasEstrelas.ImageUrl = "~/Images/star.png";
+                    tresEstrelas.ImageUrl = "~/Images/star.png";
+                    quatroEstrelas.ImageUrl = "~/Images/star.png";
+                    cincoEstrelas.ImageUrl = "~/Images/star.png";
+                    break;
+            }
+        }
+
+        protected void btnLog_Click(object sender, EventArgs e)
+        {
+            Login = ListaUsuario.BuscarLogin(txtBoxUser.Text, txtBoxSenha.Text);
+
+            if (Login != null)
+                Response.Redirect($"evento.aspx?l={Login.Codigo}&e={Evento.Codigo}");
+        }
+
+        protected void btnLogar_Click(object sender, EventArgs e)
+        {
+            Login = ListaUsuario.BuscarLogin(txtBoxUser.Text, txtBoxSenha.Text);
+
+            if (Login != null)
+                Response.Redirect($"evento.aspx?e={Evento.Codigo}&l={Login.Codigo}");
+        }
+
+        protected void btnCad_Click(object sender, EventArgs e)
+        {
+            Usuario Cadastrado = new Usuario(txtBoxNmUsuario.Text, ddlTipoUser.Text, ddlSexo.Text, txtBoxNome.Text + txtBoxSobrenome.Text, txtBoxEmail.Text, txtBoxSenhaCad.Text, " ", txtData.Text, null);
+
+            ListaUsuario.CriarUsuario(Cadastrado);
+        }
+
+        protected void btnCadastrar_Click(object sender, EventArgs e)
+        {
+            Usuario Cadastrado = new Usuario(txtBoxNmUsuario.Text, ddlTipoUser.Text, ddlSexo.Text, txtBoxNome.Text + txtBoxSobrenome.Text, txtBoxEmail.Text, txtBoxSenhaCad.Text, " ", txtData.Text, null);
+
+            ListaUsuario.CriarUsuario(Cadastrado);
+        }
+
+        void PreencherDdlMotivos()
+        {
+            Banco banco = new Banco();
+
+            MySqlDataReader data = banco.Query("ListarMotivos");
+
+            ddlMotivos.DataSource = data;
+            ddlMotivos.DataTextField = "Nome";
+            ddlMotivos.DataValueField = "Codigo";
+            ddlMotivos.DataBind();
+        }
+
+        void mostrarAvaliacoes()
+        {
+            litAvaliacoes.Text = "";
+
+            foreach (Avaliacao avaliacao in ListaAvaliacao.BuscarPorEvento(int.Parse(Request.QueryString["e"])))
+                litAvaliacoes.Text += $@"<div class='umaAvaliacao'>
                                 <div class='infosAvaliador'>
                                     <section class='infosNmAtDtAv'>
                                         <figure>
@@ -171,29 +309,86 @@ namespace MaisCultura.Site
                                     <span>{avaliacao.Descricao}</span>
                                 </div>
                             </div>";
+        }
+
+        void verificarAvalicao()
+        {
+            if (!ListaAvaliacao.VerificarAvaliacaoPorUsuarioEvento(Login.Codigo, int.Parse(Request.QueryString["e"])))
+                return;
+
+            Avaliacao aval = ListaAvaliacao.BuscarAvaliacaoPorUsuarioEvento(Login.Codigo, int.Parse(Request.QueryString["e"]));
+            
+            txtBoxAvaliacao.Text = aval.Descricao;
+            colocarEstrelas(aval.Estrelas);
+        }
+
+        void verificarInteresse()
+        {
+            if (ListaEvento.VerificarInteresse(Login.Codigo, int.Parse(Request.QueryString["e"])))
+            {
+                btnInteresse.Text = "Interesse Demonstrado";
+                btnInteresse.CssClass = "Int";
             }
         }
 
-        protected void btnLog_Click(object sender, EventArgs e)
+        protected void umaEstrela_Click(object sender, ImageClickEventArgs e)
         {
-            Login = ListaUsuario.BuscarLogin(txtBoxUser.Text, txtBoxSenha.Text);
-
-            if (Login != null)
-                Response.Redirect($"evento.aspx?l={Login.Codigo}&e={Evento.Codigo}");
+            colocarEstrelas(1);
         }
 
-        protected void btnCad_Click(object sender, EventArgs e)
+        protected void duasEstrelas_Click(object sender, ImageClickEventArgs e)
         {
-            Usuario Cadastrado = new Usuario(txtBoxNmUsuario.Text, ddlTipoUser.Text, ddlSexo.Text, txtBoxNome.Text + txtBoxSobrenome.Text, txtBoxEmail.Text, txtBoxSenhaCad.Text, " ", txtData.Text, null);
-
-            ListaUsuario.CriarUsuario(Cadastrado);
+            colocarEstrelas(2);
         }
 
-        protected void btnCadastrar_Click(object sender, EventArgs e)
+        protected void tresEstrelas_Click(object sender, ImageClickEventArgs e)
         {
-            Usuario Cadastrado = new Usuario(txtBoxNmUsuario.Text, ddlTipoUser.Text, ddlSexo.Text, txtBoxNome.Text + txtBoxSobrenome.Text, txtBoxEmail.Text, txtBoxSenhaCad.Text, " ", txtData.Text, null);
+            colocarEstrelas(3);
+        }
 
-            ListaUsuario.CriarUsuario(Cadastrado);
+        protected void quatroEstrelas_Click(object sender, ImageClickEventArgs e)
+        {
+            colocarEstrelas(4);
+        }
+
+        protected void cincoEstrelas_Click(object sender, ImageClickEventArgs e)
+        {
+            colocarEstrelas(5);
+        }
+
+        protected void btnAvaliar_Click(object sender, EventArgs e)
+        {
+            string texto = txtBoxAvaliacao.Text;
+            int estrelas = 0;
+
+            if (duasEstrelas.ImageUrl == "~/Images/star.png")
+                if (tresEstrelas.ImageUrl == "~/Images/star.png")
+                    if (quatroEstrelas.ImageUrl == "~/Images/star.png")
+                        if (cincoEstrelas.ImageUrl == "~/Images/star.png")
+                            estrelas = 5;
+                        else
+                            estrelas = 4;
+                    else
+                        estrelas = 3;
+                else
+                    estrelas = 2;
+            else
+                estrelas = 1;
+
+            if (ListaAvaliacao.VerificarAvaliacaoPorUsuarioEvento(Login.Codigo, int.Parse(Request.QueryString["e"])))
+                ListaAvaliacao.AlterarAvaliacao(Login.Codigo, int.Parse(Request.QueryString["e"]), texto, estrelas);
+            else
+                ListaAvaliacao.Avaliar(Login.Codigo, int.Parse(Request.QueryString["e"]), texto, estrelas);
+
+            mostrarAvaliacoes();
+        }
+
+        protected void btnDenunciar_Click(object sender, EventArgs e)
+        {
+            string texto = txtBoxDescProb.Text;
+            int motivo = int.Parse(ddlMotivos.SelectedValue);
+
+            ListaDenuncia.CriarDenuncia(Evento.Codigo, Login.Codigo, motivo, texto);
         }
     }
 }

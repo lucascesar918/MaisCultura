@@ -35,7 +35,7 @@ namespace MaisCultura.Biblioteca
             }
 
             Desconectar();
-            foreach(Usuario usuario in Usuarios)
+            foreach (Usuario usuario in Usuarios)
                 usuario.Preferencias = BuscarPreferencias(usuario.Codigo);
 
             return Usuarios;
@@ -50,7 +50,7 @@ namespace MaisCultura.Biblioteca
             while (data.Read()) usuario = DataReaderToUsuario(data);
             Desconectar();
 
-            if(usuario != null) usuario.Preferencias = BuscarPreferencias(usuario.Codigo);
+            if (usuario != null) usuario.Preferencias = BuscarPreferencias(usuario.Codigo);
 
             return usuario;
         }
@@ -114,11 +114,23 @@ namespace MaisCultura.Biblioteca
                 NonQuery("CadastrarPreferencia", ("pUsuario", codigo), ("pCategoria", preferencia.Codigo));
         }
 
+        public void DeletarPreferencia(string codigo, List<Categoria> preferencias)
+        {
+            foreach (Categoria preferencia in preferencias)
+                NonQuery("DeletarPreferencia", ("pUsuario", codigo), ("pCategoria", preferencia.Codigo));
+        }
+
+        public void AlterarPreferencia(string codigo, List<Categoria> preferencias)
+        {
+            foreach (Categoria preferencia in preferencias)
+                NonQuery("AlterarPreferencia", ("pUsuario", codigo), ("pCategoria", preferencia.Codigo));
+        }
+
         public List<Avaliacao> BuscarAvaliacoes(string codigo)
         {
             List<Avaliacao> avaliacoes = new List<Avaliacao>();
             MySqlDataReader data = Query("BuscarAvaliacoesUsuario", ("pUsuario", codigo));
-            
+
             while (data.Read())
                 avaliacoes.Add(new Avaliacao(data["@"].ToString(), Int32.Parse(data["CodigoEvento"].ToString()), data["Descricao"].ToString(), Int32.Parse(data["Estrelas"].ToString())));
 
@@ -138,7 +150,7 @@ namespace MaisCultura.Biblioteca
 
             Desconectar();
             return media;
-        } 
+        }
 
         public void Deletar(string codigo)
         {

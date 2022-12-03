@@ -33,6 +33,15 @@ namespace MaisCultura.Site
         protected global::System.Web.UI.ScriptManager ScriptManager1;
 
         /// <summary>
+        /// Controle litLogo.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal litLogo;
+
+        /// <summary>
         /// Controle btnLog.
         /// </summary>
         /// <remarks>
@@ -51,31 +60,49 @@ namespace MaisCultura.Site
         protected global::System.Web.UI.WebControls.Button btnCad;
 
         /// <summary>
-        /// Controle dropbtnUsuario.
+        /// Controle litUsuario.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button dropbtnUsuario;
+        protected global::System.Web.UI.WebControls.Literal litUsuario;
 
         /// <summary>
-        /// Controle litDropDownHome.
+        /// Controle litHome.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal litDropDownHome;
+        protected global::System.Web.UI.WebControls.Literal litHome;
 
         /// <summary>
-        /// Controle litDropDownPerfil.
+        /// Controle litPerfil.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal litDropDownPerfil;
+        protected global::System.Web.UI.WebControls.Literal litPerfil;
+
+        /// <summary>
+        /// Controle litAdicionais.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal litAdicionais;
+
+        /// <summary>
+        /// Controle litSair.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal litSair;
 
         /// <summary>
         /// Controle litImgPerfil.
@@ -111,7 +138,16 @@ namespace MaisCultura.Site
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox cbxSave;
+        protected global::System.Web.UI.WebControls.CheckBox cbxSave;
+
+        /// <summary>
+        /// Controle spnSave.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl spnSave;
 
         /// <summary>
         /// Controle litCategorias.
@@ -150,6 +186,15 @@ namespace MaisCultura.Site
         protected global::System.Web.UI.WebControls.Label lblDescEvento;
 
         /// <summary>
+        /// Controle updPnlAvaliacoes.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel updPnlAvaliacoes;
+
+        /// <summary>
         /// Controle litAvaliacoes.
         /// </summary>
         /// <remarks>
@@ -166,6 +211,15 @@ namespace MaisCultura.Site
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel pnlAval;
+
+        /// <summary>
+        /// Controle updPnlEstrelas.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel updPnlEstrelas;
 
         /// <summary>
         /// Controle umaEstrela.
@@ -276,15 +330,6 @@ namespace MaisCultura.Site
         protected global::System.Web.UI.WebControls.Label lblArroba;
 
         /// <summary>
-        /// Controle lblNmrInteresse.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblNmrInteresse;
-
-        /// <summary>
         /// Controle updBtnInteresse.
         /// </summary>
         /// <remarks>
@@ -292,6 +337,15 @@ namespace MaisCultura.Site
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel updBtnInteresse;
+
+        /// <summary>
+        /// Controle litNmrInteresse.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal litNmrInteresse;
 
         /// <summary>
         /// Controle btnInteresse.

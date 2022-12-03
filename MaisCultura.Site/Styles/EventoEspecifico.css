@@ -40,12 +40,12 @@ html {
     background: #f1f1f1;
 }
 
-body{
+body {
     height: 100%;
     background-color: #f1f1f1;
 }
 
-form{
+form {
     height: 100%;
 }
 
@@ -71,7 +71,7 @@ form{
     z-index: 2;
 }
 
-figure{
+figure {
     margin: 0 !important;
 }
 
@@ -96,7 +96,6 @@ figure{
     width: 110px !important;
     height: 55px !important;
     padding: 10px;
-    
 }
 
 .usuario {
@@ -111,7 +110,19 @@ figure{
     display: inline-block;
 }
 
-.dropbtn {
+    .menuUsuario:hover {
+        cursor: pointer;
+    }
+
+    .menuUsuario a {
+        color: black;
+    }
+
+        .menuUsuario a:hover {
+            text-decoration: none;
+        }
+
+#litUsuario {
     color: black;
     padding: 10px;
     font-size: 15px;
@@ -126,7 +137,6 @@ figure{
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
-    
     border-radius: 5px;
 }
 
@@ -214,12 +224,11 @@ figure{
     margin: auto;
     display: flex;
     justify-content: left;
-   /* margin-top: 95px;
+    /* margin-top: 95px;
     margin-bottom: 35px;*/
 }
 
 .corpo {
-    
     width: 75%;
     height: 100%;
     padding: 15px;
@@ -228,16 +237,16 @@ figure{
 .header-corpo {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;  
+    justify-content: space-between;
     margin-bottom: 10px;
 }
 
-.tituloSave{
+.tituloSave {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-   padding: 10px;
+    padding: 10px;
 }
 
 .titulo {
@@ -248,7 +257,7 @@ figure{
     margin-bottom: 0px !important;
 }
 
-#lblDtAval{
+#lblDtAval {
     font-size: 14px;
     font-weight: 400;
 }
@@ -281,23 +290,22 @@ figure{
     margin-bottom: 0px !important;
 }
 
-#lblLocalEvento{
+#lblLocalEvento {
     font-size: 15px;
 }
 
-#lblDescEvento{
-    
+#lblDescEvento {
     font-size: 15px;
     font-weight: 500;
 }
 
-.txtDescricao{
+.txtDescricao {
     background-color: #f1f1f1;
     padding: 10px;
     border-radius: 5px;
 }
 
-#lblNmUser{
+#lblNmUser {
     font-size: 14px;
 }
 
@@ -327,7 +335,6 @@ figure{
     }
 
 .lateral {
-    
     width: 35%;
     height: 100%;
     padding: 15px;
@@ -338,7 +345,6 @@ figure{
     flex-direction: row;
     align-items: center;
     justify-content: left;
-   
     padding: 10px;
     margin-top: 10px;
 }
@@ -356,19 +362,19 @@ figure{
         font-weight: 600;
     }
 
-.descricao{
+.descricao {
     margin-top: 10px;
     height: fit-content;
 }
 
-.tituloDesc{
+.tituloDesc {
     font-size: 18px;
     font-weight: 900;
     margin-bottom: 0px !important;
     padding-top: 5px;
 }
 
-.descricao p{
+.descricao p {
     margin-bottom: 0px !important;
     background: #f1f1f1;
     padding: 10px;
@@ -421,7 +427,7 @@ figure{
 .imgPerfilAvaliacao {
     width: 2.8vw;
     height: 2.8vw;
-    margin: 5px;
+    margin-right: 15px;
 }
 
 .imgEstrelaMedia {
@@ -430,9 +436,10 @@ figure{
     margin: 5px;
 }
 
-.estrelaAval{
-    width: 1.2vw;
-    height: 1.2vw;
+.estrelaAval {
+    width: 25px;
+    height: 25px;
+    margin: 0px 5px;
 }
 
 .nmrMedia {
@@ -468,38 +475,37 @@ figure{
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
-    width: 35%;
+    justify-content: left;
 }
 
-.infosNmAtDtAv span{
-    font-size: 18px;
-}
+    .infosNmAtDtAv span {
+        font-size: 18px;
+    }
 
-.infosNmAtDtAv h4 {
-    font-size: 15px !important;
-    margin-bottom: 0px !important;
-}
+    .infosNmAtDtAv h4 {
+        font-size: 15px !important;
+        margin-bottom: 0px !important;
+    }
 
-.infosNmAtDtAv h5 {
-    font-size: 15px !important;
-    margin-bottom: 0px !important;
-}
+    .infosNmAtDtAv h5 {
+        font-size: 15px !important;
+        margin-bottom: 0px !important;
+    }
 
-.infosNmAtDtAv h6 {
-    font-size: 15px !important;
-    margin-bottom: 0px !important;
-}
+    .infosNmAtDtAv h6 {
+        font-size: 15px !important;
+        margin-bottom: 0px !important;
+    }
 
 .notaAvaliacao {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
     width: 5%;
 }
 
-#lblNotaAvaliacao{
+#lblNotaAvaliacao {
     font-size: 16px;
 }
 
@@ -510,10 +516,10 @@ figure{
     font-weight: 400 !important;
 }
 
-.textoAvaliacao span{
-    font-weight: 400 !important;
-}
-   
+    .textoAvaliacao span {
+        font-weight: 400 !important;
+    }
+
 .suaAvaliacao {
     display: flex;
     flex-direction: column;
@@ -531,7 +537,7 @@ figure{
     font-size: 15px;
 }
 
-.estrelas{
+.estrelas {
     width: 20%;
     display: flex;
     flex-direction: row;
@@ -555,6 +561,7 @@ figure{
     border: none;
     border-radius: 5px;
     height: 150px;
+    padding: 10px 15px;
 }
 
     #txtBoxAvaliacao::placeholder {
@@ -562,18 +569,18 @@ figure{
         font-size: 15px;
     }
 
-.avaliacaodoCriador{
+.avaliacaodoCriador {
     margin-top: 10px;
 }
 
-.avaliacaodoCriador h2{
-    font-size: 18px;
-    margin-bottom: 0px !important;
-    font-weight: 900;
-    padding-top: 10px;
-}
+    .avaliacaodoCriador h2 {
+        font-size: 18px;
+        margin-bottom: 0px !important;
+        font-weight: 900;
+        padding-top: 10px;
+    }
 
-.nmrMedia figure{
+.nmrMedia figure {
     margin-bottom: 0px !important;
     padding: 10px;
 }
@@ -610,7 +617,7 @@ figure{
         cursor: pointer;
     }
 
-.responsavel{
+.responsavel {
     width: 100%;
     height: fit-content;
     background: #f1f1f1;
@@ -642,13 +649,13 @@ figure{
     padding: 5px;
 }
 
-.perfilResp{
+.perfilResp {
     height: 4vw;
     width: 4vw;
     margin: 10px;
 }
 
-.nmMedia{
+.nmMedia {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -656,37 +663,42 @@ figure{
     justify-content: space-between;
 }
 
-.notas{
+    .nmMedia a:hover {
+        cursor: pointer;
+        text-decoration: none;
+    }
+
+.notas {
     display: flex;
     flex-direction: row;
     align-items: center;
 }
 
-.notas figure{
-    margin: 0 !important;
-}
+    .notas figure {
+        margin: 0 !important;
+    }
 
 .titleResponsavel {
     margin-bottom: 0px !important;
     font-size: 16px;
 }
 
-.notaResp{
+.notaResp {
     margin-bottom: 0px !important;
     font-size: 15px;
 }
 
-.starResp{
+.starResp {
     width: 1vw;
     height: 1vw;
 }
 
-.arrobaResp{
+.arrobaResp {
     font-size: 14px !important;
     margin: 10px;
 }
 
-.interesses{
+.interesses {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -738,7 +750,7 @@ figure{
         transition-timing-function: ease-in-out;
     }
 
-.nmrInteresse{
+.nmrInteresse {
     margin-bottom: 0px !important;
     font-size: 15px;
     padding: 10px;
@@ -755,13 +767,13 @@ figure{
     border-bottom: 1px solid black;
 }
 
-table{
+table {
     font-size: 12px;
     border: none;
     margin: 5px;
 }
 
-th{
+th {
     font-size: 14px;
     font-weight: 900;
     color: #526ace;
@@ -771,7 +783,7 @@ td {
     font-size: 12.5px;
 }
 
-#btnDenuncia{
+#btnDenuncia {
     width: 100%;
     box-sizing: border-box;
     background: transparent;
@@ -781,11 +793,15 @@ td {
     margin-top: 10px;
 }
 
-#btnDenuncia:hover{
-    cursor:pointer;
+    #btnDenuncia:hover {
+        cursor: pointer;
+    }
+
+#btnDenunciar:hover {
+    cursor: pointer;
 }
 
-.login{
+.login {
     background: #f1f1f1;
     position: fixed;
     top: 50%;
@@ -804,7 +820,7 @@ td {
     z-index: 4;
 }
 
-.headerLogin{
+.headerLogin {
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -813,12 +829,12 @@ td {
     margin-bottom: 10px;
 }
 
-.headerLogin h4{
-    font-size: 16px;
-    font-weight: 800;
-}
+    .headerLogin h4 {
+        font-size: 16px;
+        font-weight: 800;
+    }
 
-.txtLog{
+.txtLog {
     width: 100%;
     margin-bottom: 5px;
     padding: 5px;
@@ -827,9 +843,9 @@ td {
     background-color: #fff;
 }
 
-#txtData{
-    width:100%;
-    box-sizing:border-box;
+#txtData {
+    width: 100%;
+    box-sizing: border-box;
     padding: 5px;
     font-size: 12px;
     border: none;
@@ -846,7 +862,12 @@ td {
     border-radius: 5px;
 }
 
-#btnSairLogin{
+    #btnLogar:hover {
+        cursor: pointer;
+        background: #293d90;
+    }
+
+#btnSairLogin {
     width: 100%;
     border: none;
     font-size: 12px;
@@ -855,9 +876,9 @@ td {
     margin-top: 5px;
 }
 
-#btnSairLogin:hover{
-    cursor: pointer;
-}
+    #btnSairLogin:hover {
+        cursor: pointer;
+    }
 
 #btnSairCad {
     width: 100%;
@@ -888,7 +909,7 @@ td {
     z-index: 4;
 }
 
-.headerCad{
+.headerCad {
     width: 100%;
     padding: 10px;
     display: flex;
@@ -897,12 +918,12 @@ td {
     justify-content: center;
 }
 
-.headerCad h4{
-    font-size: 16px;
-    font-weight: 800;
-}
+    .headerCad h4 {
+        font-size: 16px;
+        font-weight: 800;
+    }
 
-.nms{
+.nms {
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -919,11 +940,11 @@ td {
     border-radius: 2.5px;
 }
 
-.txtCadNm::placeholder{
-    color: black;
-}
+    .txtCadNm::placeholder {
+        color: black;
+    }
 
-.txtCad{
+.txtCad {
     width: 100%;
     padding: 5px;
     font-size: 12px;
@@ -933,11 +954,11 @@ td {
     border-radius: 2.5px;
 }
 
-.txtCad::placeholder{
-    color: black;
-}
+    .txtCad::placeholder {
+        color: black;
+    }
 
-.dtNasc{
+.dtNasc {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -959,10 +980,9 @@ td {
     border: none;
     color: black;
     border-radius: 2.5px;
-
 }
 
-#lblNasc{
+#lblNasc {
     font-size: 14px;
     margin-bottom: 5px;
 }
@@ -977,18 +997,18 @@ td {
     border-radius: 2.5px;
 }
 
-.sexo{
+.sexo {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-#lblSexo{
+#lblSexo {
     font-size: 14px;
     margin-bottom: 5px;
 }
 
-#btnCadastrar{
+#btnCadastrar {
     width: 100%;
     padding: 5px;
     color: white;
@@ -998,11 +1018,12 @@ td {
     border-radius: 2.5px;
 }
 
-#btnCadastrar:hover{
-    cursor: pointer;
-}
+    #btnCadastrar:hover {
+        cursor: pointer;
+        background: #293d90;
+    }
 
-.denuncia{
+.denuncia {
     width: 450px;
     display: flex;
     flex-direction: column;
@@ -1017,17 +1038,17 @@ td {
     background: #f1f1f1;
 }
 
-.denuncia h4{
-    font-size: 16.5px;
-    font-weight: 800;
-}
+    .denuncia h4 {
+        font-size: 16.5px;
+        font-weight: 800;
+    }
 
-#lblMotivo{
+#lblMotivo {
     font-size: 14px;
     font-weight: 800;
 }
 
-#ddlMotivos{
+#ddlMotivos {
     padding: 5px;
     background: #fff;
     font-size: 12px;
@@ -1047,16 +1068,16 @@ td {
     border: none;
 }
 
-#txtBoxDescProb::placeholder{
-    font-size: 12px;
-}
+    #txtBoxDescProb::placeholder {
+        font-size: 12px;
+    }
 
 #lblDesc {
     font-size: 14px;
     font-weight: 800;
 }
 
-#btnDenunciar{
+#btnDenunciar {
     padding: 5px;
     width: 100%;
     color: white;
@@ -1075,11 +1096,11 @@ td {
     margin-top: 5px;
 }
 
-#btnSairDenuncia:hover{
-    cursor: pointer;
-}
+    #btnSairDenuncia:hover {
+        cursor: pointer;
+    }
 
-.error{
+.error {
     background: green;
 }
 
@@ -1121,6 +1142,6 @@ td {
     display: none;
 }
 
-.hidden{
+.hidden {
     display: none !important;
 }

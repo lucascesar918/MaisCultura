@@ -5,13 +5,15 @@
     color: #000;
 }
 
-@keyframes save{
-    0%{
+@keyframes save {
+    0% {
         transform: scale(0);
     }
+
     50% {
         transform: scale(1.2);
     }
+
     100% {
         transform: scale(1);
     }
@@ -32,7 +34,7 @@
 }
 
 @media screen and (max-width: 1366px) {
-    
+
     .icon {
         margin-right: 10px !important;
     }
@@ -45,7 +47,7 @@
         margin-left: 26px !important;
     }
 
-    .icon{
+    .icon {
         margin-left: 14px !important;
     }
 }
@@ -55,7 +57,7 @@ a {
     color: black;
 }
 
-html{
+html {
     font-size: 10px;
     overflow-y: scroll;
 }
@@ -74,15 +76,15 @@ html{
         border: 1px solid #11111147;
     }
 
-body{
-    overflow:hidden;
+body {
+    overflow: hidden;
 }
 
 .header {
     width: 100%;
     display: flex;
     justify-content: space-between;
-    align-items: center; 
+    align-items: center;
 }
 
 
@@ -99,14 +101,26 @@ body{
     font-weight: 700;
 }
 
-.dropbtn {
+    .menuUsuario:hover {
+        cursor: pointer;
+    }
+
+    .menuUsuario a {
+        color: black;
+        font-size: 15px;
+    }
+
+        .menuUsuario a:hover {
+            text-decoration: none;
+        }
+
+#litUsuario {
     color: black;
     padding: 10px;
     font-size: 15px;
     border: none;
     cursor: pointer;
     background-color: transparent;
-    font-weight: 700;
 }
 
 
@@ -163,47 +177,47 @@ body{
     align-items: center;
     margin-top: 60px;
 }
- 
+
 .logo-header {
     width: 90px;
     height: 35px;
     padding: 10px;
 }
- 
+
 .grafismo-header {
     width: 72vw;
     height: 22vh;
 }
- 
+
 .header-texto {
     width: 280px;
     height: 60px;
     background: #fff;
     margin: 20px;
 }
- 
-.header-texto p {
-    font-size: 25px;
-}
- 
+
+    .header-texto p {
+        font-size: 25px;
+    }
+
 .highlight {
-    color: #526ACE; 
+    color: #526ACE;
 }
- 
+
 .buttons {
     padding: 5px;
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;   
+    justify-content: space-between;
 }
 
-#btnCad{
+#btnCad {
     border: none;
     background-color: #526ace;
     color: white;
 }
- 
+
 .button {
     width: 100px;
     height: 80%;
@@ -214,70 +228,76 @@ body{
     margin: 5px;
     border-radius: 2.5px;
 }
- 
+
     .button:hover {
         cursor: pointer;
     }
- 
+
 .button-log {
     background: none;
 }
- 
+
     .button-log:hover {
         background-color: #f1f1f4;
     }
- 
+
 .button-cad {
     background: #526ACE;
     color: white;
 }
- 
+
     .button-cad:hover {
         background: #293d90;
     }
- 
+
 .button-clear {
     background: none;
     border: none;
     color: #fff;
-    width: 150px;
-    height: 100%;
-    font-size: 1.5vh;
-    padding: 5px;
-    margin: 5px; 
-
+    width: fit-content;
+    height: fit-content;
+    font-size: 12px;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 2.5px;
 }
+
     .button-clear:hover {
         background: #505050;
-	    cursor: pointer;
+        cursor: pointer;
     }
 
 .button-exclude {
     box-sizing: content-box;
-    width: 12px;
-    height: 12px;
+    width: fit-content;
+    height: fit-content;
     font-size: 1.2rem;
     font-weight: 600;
-    text-align: center;
     border-radius: 50%;
     background: none;
     border: none;
     margin: 5px;
     margin-right: 0px;
+    margin-left: 5px;
+    padding: 3px 6px;
 }
 
     .button-exclude:hover {
         background-color: rgba(241, 241, 244, 0.5);
     }
- 
+
 .nav {
-    height: 55px;
+    height: 50px;
     width: 100%;
     justify-content: left;
     background: #333333;
     display: flex;
     flex-direction: row;
     align-items: center;
+}
+
+.section-limpar {
+    margin-right: 10px;
 }
 
 .section-tags {
@@ -292,7 +312,7 @@ body{
     width: fit-content;
     height: 19px;
     border-radius: 20px;
-    font-size: 1.3vh;
+    font-size: 12px;
     color: white;
     margin: 5px;
     padding: 6px;
@@ -301,7 +321,6 @@ body{
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    cursor:pointer;
 }
 
 .principal {
@@ -310,7 +329,7 @@ body{
     background: #f1f1f1;
     height: 100%;
 }
- 
+
 .filtros {
     height: auto;
     width: 15%;
@@ -336,7 +355,7 @@ body{
     }
 
 .filtros-titulos {
-    font-size: 1.7vh;
+    font-size: 16;
     margin-bottom: 5px;
 }
 
@@ -349,11 +368,11 @@ body{
     align-items: center;
     height: fit-content;
     width: fit-content;
-    font-size: 1.5vh;
+    font-size: 14px;
     padding: 5px 5px 5px 5px;
     margin: 5px 5px 5px 0px;
     border: none;
-    border-radius: 15px;
+    border-radius: 12px;
 }
 
 .categoria:hover {
@@ -392,22 +411,23 @@ body{
     font-weight: bold;
 }
 
-.txtLocal::placeholder{
-    padding: 5px;
-    color: black;
-    font-weight: 400;
-    font-size: 12px;
-}
+    .txtLocal::placeholder {
+        padding: 5px;
+        color: black;
+        font-weight: 400;
+        font-size: 12px;
+    }
 
 .dt {
     width: 100%;
     height: 30px;
     box-sizing: border-box;
     margin-bottom: 1vh;
-    font-size: 1.5vh;
+    font-size: 12px;
     border: 1px solid #526ace;
     border-radius: 15px;
     padding: 15px;
+    font-weight: bold;
     font-weight: bold;
 }
 
@@ -427,7 +447,7 @@ body{
     border: none;
     border-bottom: 1px solid #526ace;
     outline: none;
-    font-size: 1.5vh;
+    font-size: 12px;
     padding: 5px;
     cursor: pointer;
 }
@@ -452,7 +472,7 @@ body{
 
 
 
-.inputPesquisa{
+.inputPesquisa {
     background: #fff;
     width: 100%;
     padding: 10px;
@@ -462,7 +482,7 @@ body{
 .icon {
     width: 26px;
     height: 26px;
-    margin-top:5px;
+    margin-top: 5px;
 }
 
 .txtPesquisa {
@@ -470,18 +490,16 @@ body{
     border: none;
     background-color: transparent;
     width: 95%;
-    font-size: 1.5vh;
-    outline: none;
 }
 
-.event-manager{
+.event-manager {
     display: flex;
     justify-content: center;
 }
 
 .eventos {
     padding: 15px;
-    display: flex; 
+    display: flex;
     width: 90%;
     justify-content: left;
     flex-wrap: wrap;
@@ -493,7 +511,7 @@ body{
 /* Css do Card*/
 .card {
     width: 290px;
-    min-height: 0px;
+    height: 420px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -507,8 +525,9 @@ body{
     background-color: #ffffff;
 }
 
-
     .card:hover {
+        transition-duration: 0.3s;
+        transition-timing-function: ease-in-out;
         box-shadow: #526ace 0px 0px 0px 2px inset, rgb(255, 255, 255) 10px 10px 0px -3px, #4dade2 10px 10px, rgb(255, 255, 255) 20px 20px 0px -3px, #fcb646 20px 20px;
         /* rgb(255, 255, 255) 10px 10px 0px -3px,
             #7bdf97 10px 10px,
@@ -518,14 +537,8 @@ body{
             #d64558 30px 30px;*/
         /*rgb(255, 255, 255) 40px 40px 0px -3px,*/
         /*rgb(255, 85, 85)*/ /*#526ace 40px  40px;*/
+        transform: scaleX(2), scaleY(2);
     }
-
-.endereco {
-
-    text-align:justify;
-    width: 70%;
-
-}
 
 .card-header {
     width: 100%;
@@ -536,8 +549,8 @@ body{
 }
 
 .perfil {
-    width: 5vh;
-    height: 5vh;
+    width: 3vw;
+    height: 3vw;
     margin: 5px;
 }
 
@@ -549,11 +562,11 @@ body{
 }
 
     .card-header-nome h2 {
-        font-size: 1.5vh;
+        font-size: 15px;
     }
 
     .card-header-nome h5 {
-        font-size: 1.3vh;
+        font-size: 12px;
         font-weight: 400;
     }
 
@@ -589,14 +602,12 @@ body{
 }
 
 .card-tittle {
-    width: 100%;
+    width: 96%;
     padding: 10px;
 }
 
     .card-tittle h2 {
-        font-size: 190%;
-        text-align: left;
-        width: 90%;
+        font-size: 15px;
     }
 
 .card-tags {
@@ -606,8 +617,6 @@ body{
     justify-content: space-around;
     align-items: center;
     margin-top: 10px;
-    padding-top: 15px;
-    border-top: solid gray 1px;
 }
 
     .card-tags .tag {
@@ -646,9 +655,9 @@ body{
     justify-content: left;
 }
 
-.date h3{
-    font-size: 13px;
-}
+    .date h3 {
+        font-size: 13px;
+    }
 
 .time {
     width: 50%;
@@ -657,8 +666,6 @@ body{
     justify-content: right;
     color: #000;
     font-palette: dark;
-    font-size: 1.2vh;
-    font-weight: bold;
 }
 
 .dateTime, .card-local {
@@ -693,7 +700,7 @@ body{
     padding: 5px;
     font-size: 14px;
     border: none;
-    border-radius: 5px;
+    border-radius: 2.5px;
     background-color: #babaca;
     padding: 10px;
     font-weight: bold;
@@ -741,28 +748,24 @@ body{
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: 13px;
-    border: 2px solid #526ace;
-    border-radius: 15px;
+    border: 1px solid #526ace;
+    border-radius: 5px;
     padding: 40px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 450px;
-    min-height: 200px;
+    width: 400px;
     height: fit-content;
 }
 
 .headerLogin {
     width: 100%;
-    box-sizing: border-box;
-    padding-bottom: 8px;
     display: flex;
     flex-direction: row;
-    align-items: center;
     justify-content: center;
-    margin-bottom: 17px;
-    border-bottom: solid 2px #526ace;
+    align-items: center;
+    margin-bottom: 10px;
 }
 
     .headerLogin h4 {
@@ -772,38 +775,37 @@ body{
 
 
 .txtLog {
-    background-color: #babaca;
     width: 100%;
-    padding: 10px;
-    font-size: 1.7vh;
-    font-weight: bold;
     margin-bottom: 5px;
+    padding: 5px;
     border: none;
-    outline: none;
-    color: black;
     border-radius: 5px;
+    background-color: #fff;
     box-sizing: border-box;
-    font-weight: bold;
+    font-size: 14px;
 }
 
 #btnLogar {
     width: 100%;
-    padding: 10px;
-    color: white;
+    padding: 5px;
+    border: 1px solid #526ace;
     background-color: #526ace;
-    border: none;
-    font-size: 1.7vh;
-    font-weight: bold;
-    border-radius: 2.5px;
-    cursor:pointer;
+    color: white;
+    border-radius: 5px;
+    font-size: 14px;
 }
+
+    #btnLogar:hover {
+        cursor: pointer;
+        background: #293d90;
+    }
 
 #btnSairLogin {
     width: 100%;
     border: none;
-    font-size: 1.5vh;
+    font-size: 12px;
     font-weight: 700;
-    color: red;
+    color: black;
     margin-top: 5px;
 }
 
@@ -888,9 +890,7 @@ body{
     padding: 10px;
     font-size: 1.7vh;
     font-weight: bold;
-
     margin-bottom: 5px;
-
     border: none;
     outline: none;
     color: black;
@@ -959,7 +959,7 @@ body{
     margin-bottom: 5px;
 }
 
-#ddlTipoUser{
+#ddlTipoUser {
     margin-bottom: 5px;
 }
 
@@ -976,6 +976,7 @@ body{
 
     #btnCadastrar:hover {
         cursor: pointer;
+        background: #293d90;
     }
 
 .pop {
@@ -994,7 +995,7 @@ body{
     display: none;
 }
 
-.hidden{
+.hidden {
     display: none !important;
 }
 

@@ -37,13 +37,11 @@
 
        
         <header class="header-primaria">
-
             <figure class="figure-header">
-                 <a href="eventos.aspx">
-                <img src="Images/logoNomeMenor.png" class="logo-header" />
+                <asp:Literal ID="litLogo" runat="server"></asp:Literal>
+                    <img src="Images/logoNomeMenor.png" class="logo-header" />
                 </a>
             </figure>
-
 
             <article class="buttons">
                 <asp:Button ID="btnLog" runat="server" Text="Entrar" class="button button-log" OnClick="btnLog_Click" />
@@ -52,16 +50,17 @@
 
             <article class="usuario">
                 <div class="menuUsuario">
-                    <asp:Button CssClass="dropbtn" ID="dropbtnUsuario" runat="server" Text="Nome" />
+                    <asp:Literal ID="litUsuario" runat="server"></asp:Literal>
+
                     <div class="dropdown-content">
-                        <asp:Literal ID="litDropDownHome" runat="server"></asp:Literal>
-                        <asp:Literal ID="litDropDownPerfil" runat="server"></asp:Literal>
-                        <a href="eventos.aspx">Sair</a>
+                        <asp:Literal ID="litHome" runat="server"></asp:Literal>
+                        <asp:Literal ID="litPerfil" runat="server"></asp:Literal>
+                        <asp:Literal ID="litAdicionais" runat="server"></asp:Literal>
+                        <asp:Literal ID="litSair" runat="server"></asp:Literal>
                     </div>
                 </div>
-
                 <asp:Literal ID="litImgPerfil" runat="server"></asp:Literal>
-
+                
             </article>
         </header>
 
@@ -80,8 +79,9 @@
                             CssClass="titulo"></asp:Label>
 
                         <label class="chk">
-                            <input id="cbxSave" type="checkbox" runat="server" />
-                            <span id="spnSave"></span>
+                            <asp:CheckBox ID="cbxSave" runat="server"/>
+                            <%--<input id="cbxSave" type="checkbox" runat="server" />--%>
+                            <span id="spnSave" runat="server"></span>
                         </label>
 
                     </div>
@@ -115,34 +115,48 @@ Acontecerão aulas de Karatê e Judô em dias intercalados. Nos dias 2 e 4 haver
                 <section class="avaliacaodoCriador">
                     <h2 class="h2">Avaliações do Evento </h2>
                     <section class="avaliacoes">
-                        <asp:Literal ID="litAvaliacoes" runat="server"></asp:Literal>
+                        <asp:UpdatePanel ID="updPnlAvaliacoes" runat="server">
+                            <ContentTemplate>
+                                <asp:Literal ID="litAvaliacoes" runat="server"></asp:Literal>
 
-                        <asp:Panel ID="pnlAval" runat="server">
-                            <section class="suaAvaliacao">
-                                <div class="suaNota">
-                                    <h4>Deixe uma nota sobre esse criador... </h4>
-                                    <div class="estrelas">
-                                        <asp:ImageButton ID="umaEstrela" runat="server" CssClass="estrelaAval" ImageUrl="~/Images/star.png" />
-                                        <asp:ImageButton ID="duasEstrelas" runat="server" CssClass="estrelaAval" ImageUrl="~/Images/star.png" />
-                                        <asp:ImageButton ID="tresEstrelas" runat="server" CssClass="estrelaAval" ImageUrl="~/Images/star.png" />
-                                        <asp:ImageButton ID="quatroEstrelas" runat="server" CssClass="estrelaAval" ImageUrl="~/Images/star.png" />
-                                        <asp:ImageButton ID="cincoEstrelas" runat="server" CssClass="estrelaAval" ImageUrl="~/Images/star.png" />
-                                    </div>
-                                    <%-- <asp:DropDownList ID="ddlEstrelas" runat="server">
-                                        <asp:ListItem Text="Uma estrela" Value="1"></asp:ListItem>
-                                        <asp:ListItem Text="Duas estrelas" Value="2"></asp:ListItem>
-                                        <asp:ListItem Text="Três estrelas" Value="3"></asp:ListItem>
-                                        <asp:ListItem Text="Quatro estrelas" Value="4"></asp:ListItem>
-                                        <asp:ListItem Text="Cinco estrelas" Value="5"></asp:ListItem>
-                                    </asp:DropDownList>--%>
-                                </div>
-                                <div class="seuTexto">
-                                    <asp:TextBox ID="txtBoxAvaliacao" runat="server" mode="multiline"
-                                        placeholder="Deixe aqui sua avaliação sobre esse criador..."></asp:TextBox>
-                                </div>
-                                <asp:Button ID="btnAvaliar" runat="server" Text="Enviar Avaliação" />
-                            </section>
-                        </asp:Panel>
+                                <asp:Panel ID="pnlAval" runat="server">
+
+                                    <section class="suaAvaliacao">
+                                        <div class="suaNota">
+                                            <h4>Deixe uma nota sobre esse criador... </h4>
+
+                                            <asp:UpdatePanel ID="updPnlEstrelas" runat="server">
+                                                <ContentTemplate>
+                                                    <div class="estrelas">
+                                                        <asp:ImageButton ID="umaEstrela" runat="server" CssClass="estrelaAval" ImageUrl="~/Images/star.png" OnClick="umaEstrela_Click" />
+                                                        <asp:ImageButton ID="duasEstrelas" runat="server" CssClass="estrelaAval" ImageUrl="~/Images/star2.png" OnClick="duasEstrelas_Click" />
+                                                        <asp:ImageButton ID="tresEstrelas" runat="server" CssClass="estrelaAval" ImageUrl="~/Images/star2.png" OnClick="tresEstrelas_Click" />
+                                                        <asp:ImageButton ID="quatroEstrelas" runat="server" CssClass="estrelaAval" ImageUrl="~/Images/star2.png" OnClick="quatroEstrelas_Click" />
+                                                        <asp:ImageButton ID="cincoEstrelas" runat="server" CssClass="estrelaAval" ImageUrl="~/Images/star2.png" OnClick="cincoEstrelas_Click" />
+                                                    </div>
+                                                </ContentTemplate>
+                                                <Triggers>
+                                                    <asp:AsyncPostBackTrigger ControlID="umaEstrela" />
+                                                    <asp:AsyncPostBackTrigger ControlID="duasEstrelas" />
+                                                    <asp:AsyncPostBackTrigger ControlID="tresEstrelas" />
+                                                    <asp:AsyncPostBackTrigger ControlID="quatroEstrelas" />
+                                                    <asp:AsyncPostBackTrigger ControlID="cincoEstrelas" />
+                                                </Triggers>
+                                            </asp:UpdatePanel>
+
+                                        </div>
+
+                                        <div class="seuTexto">
+                                            <asp:TextBox ID="txtBoxAvaliacao" runat="server" mode="multiline"
+                                                placeholder="Deixe aqui sua avaliação sobre esse criador..."></asp:TextBox>
+                                        </div>
+                                        <asp:Button ID="btnAvaliar" runat="server" Text="Enviar Avaliação" OnClick="btnAvaliar_Click"/>
+                                    </section>
+                                </asp:Panel>
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
+
+                        
 
                     </section>
                 </section>
@@ -175,14 +189,14 @@ Acontecerão aulas de Karatê e Judô em dias intercalados. Nos dias 2 e 4 haver
                 </section>
 
                 <section class="interesses">
-                    <h4 class="nmrInteresse">
-                        <asp:Label ID="lblNmrInteresse" runat="server" Text="580"></asp:Label>
-                        pessoas já demonstraram interesse em participar
-                    </h4>
-
                     <asp:UpdatePanel ID="updBtnInteresse" runat="server" UpdateMode="Conditional">
                         <ContentTemplate>
-                            <asp:Button ID="btnInteresse" runat="server" Text="Demonstrar Interesse" CssClass="naoInt" AutoPostBack="False" />
+                            <h4 class="nmrInteresse">
+                                <asp:Literal ID="litNmrInteresse" runat="server" />
+                                pessoas já demonstraram interesse em participar
+                            </h4>
+
+                            <asp:Button ID="btnInteresse" runat="server" Text="Demonstrar Interesse" CssClass="naoInt"/>
                         </ContentTemplate>
                     </asp:UpdatePanel>
                 </section>
@@ -222,8 +236,8 @@ Acontecerão aulas de Karatê e Judô em dias intercalados. Nos dias 2 e 4 haver
             </section>
             <asp:TextBox ID="txtBoxUser" runat="server" placeholder="Seu nome de usuário" CssClass="txtLog">
             </asp:TextBox>
-            <asp:TextBox ID="txtBoxSenha" runat="server" placeholder="Sua senha" CssClass="txtLog"></asp:TextBox>
-            <asp:Button ID="btnLogar" runat="server" Text="Entrar" />
+            <asp:TextBox ID="txtBoxSenha" runat="server" placeholder="Sua senha" CssClass="txtLog" type="password"></asp:TextBox>
+            <asp:Button ID="btnLogar" runat="server" Text="Entrar" OnClick="btnLogar_Click"/>
             <asp:Button ID="btnSairLogin" runat="server" Text="Fechar" />
         </div>
         <div class="cadastrar pop" id="cad">
@@ -294,20 +308,12 @@ Acontecerão aulas de Karatê e Judô em dias intercalados. Nos dias 2 e 4 haver
             </div>
             <asp:Label ID="lblMotivo" runat="server" Text="Motivação"></asp:Label>
             <asp:DropDownList ID="ddlMotivos" runat="server">
-                <asp:ListItem runat="server">Má organização</asp:ListItem>
-                <asp:ListItem runat="server">Má localização</asp:ListItem>
-                <asp:ListItem runat="server">Local inapropriado</asp:ListItem>
-                <asp:ListItem runat="server">Promessa não cumprida</asp:ListItem>
-                <asp:ListItem runat="server">Falta de segurança</asp:ListItem>
-                <asp:ListItem runat="server">Fraude</asp:ListItem>
-                <asp:ListItem runat="server">Outros</asp:ListItem>
             </asp:DropDownList>
             <asp:Label ID="lblDesc" runat="server" Text="Descrição do problema"></asp:Label>
             <asp:TextBox ID="txtBoxDescProb" runat="server" mode="multiline"
                 placeholder="Escreva aqui a descrição do problema que você encontrou."></asp:TextBox>
-            <asp:Button ID="btnDenunciar" runat="server" Text="Enviar reclamação" />
+            <asp:Button ID="btnDenunciar" runat="server" Text="Enviar reclamação" OnClick="btnDenunciar_Click" />
             <asp:Button ID="btnSairDenuncia" runat="server" Text="Fechar" />
-
         </div>
 
         <div class="error pop" id="error">

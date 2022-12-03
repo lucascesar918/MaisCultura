@@ -23,11 +23,11 @@
         <div id="shade" class="shade"></div>
         <div id="shade2" class="shade"></div>
 
-        <header class="header-primaria">
+         <header class="header-primaria">
             <figure class="figure-header">
-                <a href="eventos.aspx">
-                <img src="Images/logoNomeMenor.png" class="logo-header"/>
-                    </a>
+                <asp:Literal ID="litLogo" runat="server"></asp:Literal>
+                    <img src="Images/logoNomeMenor.png" class="logo-header"/>
+                </a>
             </figure>
 
             <article class="buttons">
@@ -37,12 +37,12 @@
 
             <article class="usuario">
                 <div class="menuUsuario">
-                    <asp:Button CssClass="dropbtn" ID="dropbtnUsuario" runat="server" Text="Nome" />
+                    <asp:Literal ID="litUsuario" runat="server"></asp:Literal>
+
                     <div class="dropdown-content">
-                    <asp:Literal ID="litDropDownHome" runat="server"></asp:Literal>
-                    <asp:Literal ID="litDropDownPerfil" runat="server"></asp:Literal>
-                    <asp:Literal ID="litDropDownDenuncias" runat="server"></asp:Literal>
-                    <a href="eventos.aspx">Sair</a>
+                        <asp:Literal ID="litPerfil" runat="server"></asp:Literal>
+                        <asp:Literal ID="litAdicionais" runat="server"></asp:Literal>
+                        <a href="eventos.aspx">Sair</a>
                     </div>
                 </div>
                 <asp:Literal ID="litImgPerfil" runat="server"></asp:Literal>
@@ -92,8 +92,6 @@
                        <asp:Button class="filtros-subtitulos categoria" runat="server" OnClick="ClickCategoria" CommandArgument="<%# GetCodigoCategoria(Container.DataItem) %>" Text="<%#  GetNomeCategoria(Container.DataItem) %>"></asp:Button> 
                   </ItemTemplate>     
                 </asp:Repeater>
-
-                <asp:Button ID="btnVerMais" runat="server" Text="Ver mais categorias" class="filtros-subtitulos verMais"/>
 
                 <br />
 
@@ -253,10 +251,10 @@
             delay: 400
         });
 
-        ScrollReveal().reveal('.card', { reset: true,delay: 200 ,interval: 50 });
+        ScrollReveal().reveal('.card', { reset: true, delay: 200, interval: 50 });
         ScrollReveal().reveal('.grafismo-header', { delay: 100, origin: 'right' })
         ScrollReveal().reveal('.p', { delay: 100, origin: 'right' });
-</script>
+    </script>
 
 </body>
 </html>

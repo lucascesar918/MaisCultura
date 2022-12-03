@@ -27,14 +27,30 @@ namespace MaisCultura
                 if (Login.Tipo != "Administrador")                                                              //Logado
                     Response.Redirect($"erro.html?msg=O que você está fazendo aqui? 😯 Você não tem permissão para acessar essa página!&l={Login.Codigo}");
 
-                dropbtnUsuario.Text = Login.Nome;
-                litEventos.Text = $"<a href=\"eventos.aspx?l={Login.Codigo}\">Eventos</a>";
-                dropbtnUsuario.Text = Login.Nome;
-                litPerfil.Text = $"<a href=\"perfil.aspx?u={Login.Codigo}&l={Login.Codigo}\">Perfil</a>";
+                litLogo.Text = $"<a href='eventos.aspx?l={Login.Codigo}'>";
+                litUsuario.Text = $"<a href='meu-perfil.aspx?l={Login.Codigo}'>{Login.Nome}</a>";
+                litHome.Text = $"<a href='eventos.aspx?l={Login.Codigo}'>Início</a>";
+                litPerfil.Text = $"<a href='meu-perfil.aspx?l={Login.Codigo}'>Perfil</a>";
+
+                switch (Login.Tipo)
+                {
+                    case "Administrador":
+                        litAdicionais.Text = $"<a href='denuncias.aspx?l={Login.Codigo}'>Denúncias</a>";
+                        break;
+
+                    default:
+                        Response.Redirect("erro.html?msg=O que você está fazendo aqui? 😯 Você não tem permissão para acessar essa página!");
+                        break;
+                }
+
+                litUsuario.Visible = true;
+                litImgPerfil.Text = $@"<a href='meu-perfil.aspx?l={Login.Codigo}'>
+                    <img src='Images/perfil526ace.png' class='imgPerfil'>
+                </a>";
             }
             else
                 Response.Redirect("erro.html?msg=O que você está fazendo aqui? 😯 Você não tem permissão para acessar essa página!");
-            
+
 
         }
 

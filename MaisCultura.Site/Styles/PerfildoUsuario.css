@@ -24,11 +24,12 @@ form {
 
 main {
     width: 70%;
-    height: 100%;
+    height: fit-content;
     background-color: #ffffff;
     display: flex;
     flex-direction: row;
     justify-content: center;
+    padding-bottom: 25px;
 }
 
 html {
@@ -59,6 +60,11 @@ html {
     display: inline-block;
 }
 
+    .menuUsuario a {
+        font-size: 15px;
+        color: black;
+    }
+
 .dropbtn {
     color: black;
     padding: 10px;
@@ -74,7 +80,6 @@ html {
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
-    
     border-radius: 5px;
 }
 
@@ -309,16 +314,41 @@ a {
     cursor: pointer;
 }
 
+.tag {
+    background: #D64558;
+    width: fit-content;
+    height: 19px;
+    border-radius: 20px;
+    font-size: 12px;
+    color: white;
+    margin: 5px;
+    padding: 6px;
+    padding-left: 13px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.eventos {
+    padding: 15px;
+    display: flex;
+    width: 90%;
+    justify-content: left;
+    flex-wrap: wrap;
+}
+
 /* Css do Card*/
 .card {
-    width: 300px;
-    height: fit-content;
+    width: 290px;
+    height: 420px;
     display: flex;
     flex-direction: column;
     align-items: center;
     border-radius: 20px;
     border: 1px solid black;
     padding: 10px;
+    margin: 5px;
     transition: box-shadow;
     transition-duration: 0.3s;
     transition-timing-function: ease-in-out;
@@ -371,12 +401,38 @@ a {
     }
 
 .save {
-    width: 25px;
-    height: 25px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    user-select: none;
+    background-size: cover;
+    border: none;
+    -webkit-tap-highlight-color: transparent;
+    background-color: transparent;
+}
+
+.salvo, naoSalvo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.salvo {
+    animation: save 0.5s ease-in forwards;
+    background-image: url(../Images/save2.png);
+}
+
+.naoSalvo {
+    animation: unsave 0.5s ease-in reverse forwards;
+    background-image: url(../Images/save.png);
+}
+
+#updBtnSave {
+    height: 40px;
 }
 
 .card-tittle {
-    width: 100%;
+    width: 96%;
     padding: 10px;
 }
 
@@ -417,7 +473,6 @@ a {
     width: 100%;
     box-sizing: border-box;
     display: flex;
-    /* justify-content: space-between;*/
     font-size: 12px;
     font-weight: 400;
     padding-top: 2%;
@@ -430,11 +485,17 @@ a {
     justify-content: left;
 }
 
+    .date h3 {
+        font-size: 13px;
+    }
+
 .time {
-    width: 100%;
+    width: 50%;
     box-sizing: border-box;
     display: flex;
     justify-content: right;
+    color: #000;
+    font-palette: dark;
 }
 
 .dateTime, .card-local {
@@ -447,38 +508,20 @@ a {
     height: 16px;
     margin-right: 2px;
 }
-
-.tag {
-    background: #D64558;
-    width: fit-content;
-    /*padding: 0vh;
-    padding-left: 1.5vh;
-    padding-right: 0.5vh;*/
-    height: fit-content;
-    border-radius: 20px;
-    /* margin-right: 1vw;*/
-    font-size: 12px;
-    /*margin-top: 0.2vh;*/
-    color: white;
-    /*padding: 10px;*/
-    margin: 5px;
-    padding: 2.5px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-}
-
 /*Fim do Css do Card*/
 
 .interessesEsalvos {
     width: 100%;
     padding: 10px 0px 10px 0px;
-    margin: 10px 0px 10px 10px;
+    margin: 10px 0px 10px 15px;
     display: flex;
     justify-content: space-around;
     flex-direction: column;
     box-sizing: border-box;
+}
+
+.meusEventos{
+    font-size: 20px;
 }
 
 .hidden {
@@ -568,6 +611,10 @@ a {
     font-size: 15px;
 }
 
+    #alteraSenha:hover{
+        cursor: pointer;
+    }
+
 #boxSenha {
     display: flex;
     flex-direction: column;
@@ -604,7 +651,8 @@ a {
     padding: 5px;
     border-radius: 5px;
 }
-.title{
+
+.title {
     font-size: 18px;
     width: 25%;
 }

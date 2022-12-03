@@ -8,6 +8,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
         <link rel="stylesheet" type="text/css" href="Styles/PerfildoUsuario.css" />
 
@@ -18,30 +19,26 @@
         <form id="form1" runat="server">
             <header class="header header-primaria">
                 <figure class="figure-header">
-                    <a href="eventos.aspx">
-                    <img src="Images/logoNomeMenor.png" class="logo-header" />
-                        </a>
+                    <asp:Literal ID="litLogo" runat="server"></asp:Literal>
+                        <img src="Images/logoNomeMenor.png" class="logo-header" />
+                    </a>
                 </figure>
 
-                <article class="buttons">
-                <asp:Button ID="btnLog" runat="server" Text="Entrar" class="button button-log" />
-                <asp:Button ID="btnCad" runat="server" Text="Cadastrar" class="button button-cad" />
-            </article>
+                <article class="usuario">
+                    <div class="menuUsuario">
+                        <asp:Literal ID="litUsuario" runat="server"></asp:Literal>
 
-            <article class="usuario">
-                <div class="menuUsuario">
-                    <asp:Button CssClass="dropbtn" ID="dropbtnUsuario" runat="server" Text="Nome" />
-                    <div class="dropdown-content">
-                    <asp:Literal ID="litDropDownHome" runat="server"></asp:Literal>  <%--Possível aplicar databinder--%>
-                    <asp:Literal ID="litDropDownPerfil" runat="server"></asp:Literal>
-                    <asp:Literal ID="litDropDownDenuncias" runat="server"></asp:Literal>
-                    <a href="eventos.aspx">Sair</a>
+                        <div class="dropdown-content">
+                            <asp:Literal ID="litHome" runat="server"></asp:Literal>
+                            <asp:Literal ID="litAdicionais" runat="server"></asp:Literal>
+                            <a href="eventos.aspx">Sair</a>
+                        </div>
                     </div>
-                </div>
-                <asp:Literal ID="litImgPerfil" runat="server"></asp:Literal>
+                    <asp:Literal ID="litImgPerfil" runat="server"></asp:Literal>
                 
-            </article>
+                </article>
             </header>
+
             <section class="sectionBack">
                 <asp:Button ID="btnVoltar" runat="server" Text="Voltar"
                     OnClientClick="JavaScript:window.history.back(1); return false;" />
@@ -91,71 +88,14 @@
                                 </div>
                             </section>
                         </div>
-                        <div class="interessesEsalvos">
-                            <div class="botoes">
-                                <asp:Button ID="btnInteresse" runat="server" Text="Interesses"
-                                    CssClass="titleInteresse" />
+                        <div class="interessesEsalvos" id="meusEventos" runat="server">
+                            <h2 class="meusEventos">Meus Eventos</h2>
 
-                                <asp:Button ID="btnSalvos" runat="server" Text="Salvos" CssClass="titleSalvos" />
+                            <div class="eventos">
+                        
+                                <asp:Literal ID="litEventos" runat="server"></asp:Literal>
+                            
                             </div>
-                            <a href="evento.aspx">
-                                <section class="card">
-                                    <article class="card-header">
-                                        <figure>
-                                            <img src="Images/perfil526ace.png" alt="imagem de perfil" class="perfil" />
-                                        </figure>
-
-                                        <article class="card-header-nome">
-                                            <h2>Bárbara Pera</h2>
-                                            <h5>@barbara</h5>
-                                        </article>
-
-                                        <figure>
-                                            <img src="Images/save.png" alt="Salvar" class="save" />
-                                        </figure>
-                                    </article>
-
-                                    <article class="card-tittle">
-                                        <h2>Interclasse EE Ablas Filho vs Etecaf</h2>
-                                    </article>
-
-                                    <article class="card-tags">
-                                        <h2 class="tag">Esporte</h2>
-                                        <h2 class="tag">Futebol</h2>
-                                    </article>
-
-                                    <article class="card-image">
-                                        <figure>
-                                            <img src="Images/interclasse.jpg" alt="Interclasse de cria"
-                                                class="foto-evento" />
-                                        </figure>
-                                    </article>
-
-                                    <article class="card-dateTime dateTime">
-                                        <article class="card-dateTime date">
-                                            <figure>
-                                                <img src="Images/calendar.png" alt="Calendar icon"
-                                                    class="calendar-icon" />
-                                            </figure>
-                                            <h3>02/10 a 10/10</h3>
-                                        </article>
-
-                                        <article class="card-dateTime time">
-                                            <figure>
-                                                <img src="Images/time.png" alt="Time icon" class="time-icon" />
-                                            </figure>
-                                            <h3>15:10</h3>
-                                        </article>
-                                    </article>
-
-                                    <article class="card-local">
-                                        <figure>
-                                            <img src="Images/local.png" alt="Local icon" class="local-icon" />
-                                        </figure>
-                                        <h3>Santos, SP</h3>
-                                    </article>
-                                </section>
-                            </a>
                         </div>
 
                     </section>
@@ -219,7 +159,6 @@
             </div>
         </form>
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script type="text/javascript" src="js/perfil.js"></script>
     </body>
 

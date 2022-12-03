@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace MaisCultura.Biblioteca
 {
-    public class Filtro 
+    public class Filtro
     {
         public string Titulo { get; set; }
         public IList<Categoria> Categorias { get; set; }

@@ -97,7 +97,6 @@ body {
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
-    
     border-radius: 5px;
 }
 
@@ -119,6 +118,7 @@ body {
     display: block;
     background-color: #f1f1f1;
 }
+
 .imgPerfil {
     width: 2.4vw;
     height: 2.4vw;
@@ -231,7 +231,7 @@ body {
 }
 
 
-#lblDtAval{
+#lblDtAval {
     font-size: 14px;
     font-weight: 400;
 }
@@ -239,7 +239,6 @@ body {
 
 
 .tags {
-    
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -749,6 +748,11 @@ td {
     border-radius: 5px;
 }
 
+    #btnLogar:hover {
+        cursor: pointer;
+        background: #293d90;
+    }
+
 #btnSairLogin {
     width: 100%;
     border: none;
@@ -900,6 +904,7 @@ td {
 
     #btnCadastrar:hover {
         cursor: pointer;
+        background: #293d90;
     }
 
 .denuncia {
@@ -983,7 +988,7 @@ td {
     background: green;
 }
 
-.btnsEvento{
+.btnsEvento {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1041,7 +1046,7 @@ td {
     }
 
 
-.certezaExcluir{
+.certezaExcluir {
     width: 350px;
     padding: 30px;
     position: absolute;
@@ -1056,7 +1061,7 @@ td {
     justify-content: center;
 }
 
-#lblCerteza{
+#lblCerteza {
     font-size: 18px;
     padding: 5px;
     text-align: center;
@@ -1077,15 +1082,15 @@ td {
     margin-bottom: 5px;
 }
 
-#btnExcluirEvento:hover{
-    transition: background, color, border;
-    transition-duration: 0.3s;
-    transition-timing-function: ease-in-out;
-    border: 1px solid #526ace;
-    background: white;
-    color: #526ace;
-    cursor: pointer;
-}
+    #btnExcluirEvento:hover {
+        transition: background, color, border;
+        transition-duration: 0.3s;
+        transition-timing-function: ease-in-out;
+        border: 1px solid #526ace;
+        background: white;
+        color: #526ace;
+        cursor: pointer;
+    }
 
 #btnCancelar {
     padding: 5px;
@@ -1112,40 +1117,39 @@ td {
     }
 
 
-    .edicao{
-        position: absolute;
-        top: 3%;
-        left: 25%;
-        width: 650px;
-        height: fit-content;
-        padding: 20px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        border: 1px solid #526ace;
-        border-radius: 5px;
-        background: #f1f1f1;
-    }
+.edicao {
+    position: absolute;
+    top: 3%;
+    left: 25%;
+    width: 650px;
+    height: fit-content;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #526ace;
+    border-radius: 5px;
+    background: #f1f1f1;
+}
 
-    #txtBoxTitulo{
-        width: 100%;
-        box-sizing: border-box;
-        padding: 5px;
-        font-size: 13.5px;
-        border: none;
-        border-radius: 2.5px;
-        margin-bottom: 5px;
-    }
+#txtBoxTitulo {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 5px;
+    font-size: 13.5px;
+    border: none;
+    border-radius: 2.5px;
+    margin-bottom: 5px;
+}
 
-    .localEvento{
-        width: 100%;
-        box-sizing: border-box;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-       
-    }
+.localEvento {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
 
 #txtBoxEndereco {
     width: 38%;
@@ -1179,7 +1183,7 @@ td {
 
 
 
-.addCategs{
+.addCategs {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -1187,7 +1191,7 @@ td {
     margin-bottom: 5px;
 }
 
-#ddlCategs{
+#ddlCategs {
     width: 90%;
     padding: 5px;
     font-size: 13px;
@@ -1195,7 +1199,7 @@ td {
     border-radius: 2.5px;
 }
 
-#btnAddCateg{
+#btnAddCateg {
     width: 25px;
     height: 25px;
     font-size: 16px;
@@ -1205,7 +1209,7 @@ td {
     color: white;
 }
 
-#lblCategs{
+#lblCategs {
     font-size: 15px;
     margin-bottom: 5px;
 }
@@ -1214,7 +1218,7 @@ td {
     font-size: 13px;
 }
 
-#listBoxCategs{
+#listBoxCategs {
     width: 100%;
     box-sizing: border-box;
     padding: 5px;
@@ -1223,7 +1227,7 @@ td {
     border-radius: 2.5px;
 }
 
-.addDtHr{
+.addDtHr {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -1232,7 +1236,7 @@ td {
     width: 100%;
 }
 
-#dtHrInicio{
+#dtHrInicio {
     padding: 5px;
     font-size: 12px;
     border: none;
@@ -1248,7 +1252,7 @@ td {
     width: 30%;
 }
 
-#lblDtHrInicio{
+#lblDtHrInicio {
     font-size: 12px;
 }
 
@@ -1256,7 +1260,7 @@ td {
     font-size: 12px;
 }
 
-#btnAddDtHr{
+#btnAddDtHr {
     width: 25px;
     height: 25px;
     font-size: 14px;
@@ -1265,23 +1269,23 @@ td {
     color: white;
 }
 
-.headerEdicao{
+.headerEdicao {
     margin-bottom: 5px;
     padding: 5px;
     text-align: center;
 }
 
-#lblEdicao{
+#lblEdicao {
     font-size: 14px;
 }
 
-.resto{
+.resto {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-#txtBoxLinkImg{
+#txtBoxLinkImg {
     width: 100%;
     box-sizing: border-box;
     padding: 5px;
@@ -1291,7 +1295,7 @@ td {
     margin-bottom: 5px;
 }
 
-#txtBoxDescEvento{
+#txtBoxDescEvento {
     width: 100%;
     box-sizing: border-box;
     padding: 5px;
@@ -1302,7 +1306,7 @@ td {
     margin-bottom: 5px;
 }
 
-#btnEditarFim{
+#btnEditarFim {
     font-size: 12px;
     width: 100%;
     box-sizing: border-box;
