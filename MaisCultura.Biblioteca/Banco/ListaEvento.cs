@@ -15,21 +15,31 @@ namespace MaisCultura.Biblioteca
         {
             return str.Length > TamanhoMaximo ? str.Substring(0, TamanhoMaximo - 3) + "..." : str;
         }
-
-        Evento DataReaderToEvento(MySqlDataReader data, bool Reticencias)
+ 
+        string DateToSqlDate(string data)
         {
+            string dia = data.Substring(0, 2);
+            string mes = data.Substring(3, 2);
+            string ano = data.Substring(6, 4);
+
+            string dataConv = $"{ano}-{mes}-{dia}"; ;
+
+            return dataConv;
+        }
+
+        Evento DataReaderToEvento(MySqlDataReader data, bool Reticencias) {
             var cdEvento = Int32.Parse(data["Codigo"].ToString());
             string responsavel = data["@"].ToString();
             string local = data["Local"].ToString();
             string titulo = data["Titulo"].ToString();
             string descricao = data["Descricao"].ToString();
-            if (Reticencias)
-            {
+            if (Reticencias) {
                 titulo = AdicionarReticencia(titulo, 35);
                 local = AdicionarReticencia(local, 27);
             }
-            return new Evento(cdEvento, responsavel, titulo, local, descricao, null, null);
+            return new Evento( cdEvento,responsavel , titulo, local, descricao,  null, null);
         }
+
         public List<Evento> Listar()
         {
 
@@ -38,7 +48,7 @@ namespace MaisCultura.Biblioteca
 
             while (data.Read())
             {
-                Eventos.Add(DataReaderToEvento(data, false));
+                Eventos.Add(DataReaderToEvento(data,false));
             }
 
             Desconectar();
@@ -55,6 +65,18 @@ namespace MaisCultura.Biblioteca
             int codigo = 0;
 
             MySqlDataReader data = Query("MaxCodigoEvento");
+            while (data.Read())
+                codigo = Int32.Parse(data["Max"].ToString());
+
+            Desconectar();
+            return ++codigo;
+        }
+
+        public int MaxCodigoImagem()
+        {
+            int codigo = 0;
+
+            MySqlDataReader data = Query("MaxCodigoImagem");
             while (data.Read())
                 codigo = Int32.Parse(data["Max"].ToString());
 
@@ -126,14 +148,10 @@ namespace MaisCultura.Biblioteca
             return eventos;
         }
 
-
         public void AdicionarCategorias(int evento, List<Categoria> categorias)
         {
-
             foreach (Categoria categoria in categorias)
-            {
                 NonQuery("CadastrarCategoriaEvento", ("pEvento", evento), ("pCategoria", categoria.Codigo));
-            }
         }
 
         public Evento Buscar(int codigo)
@@ -141,11 +159,11 @@ namespace MaisCultura.Biblioteca
             Evento evento = null;
 
 
-            MySqlDataReader data = Query("BuscarEvento", ("pCodigo", codigo));
+            MySqlDataReader data = Query("BuscarEvento", ("pCodigo", codigo)); 
 
             while (data.Read())
             {
-                evento = DataReaderToEvento(data, false);
+                evento = DataReaderToEvento(data, false);    
             }
 
             Desconectar();
@@ -179,20 +197,24 @@ namespace MaisCultura.Biblioteca
             return eventos;
         }
 
-        public void Criar(Evento evento)
+        public void Criar(Evento evento, string link)
         {
             NonQuery("CadastrarEvento",
                 ("pCodigo", MaxCodigo()),
                 ("pResponsavel", evento.Responsavel),
-                ("pNome", evento.Titulo),
+                ("pNome"    , evento.Titulo),
                 ("pLocal", evento.Local),
-                ("pDescricao", evento.Descricao)
+                ("pDescricao", evento.Descricao)    
             );
+
+            AdicionarImagem(link, evento.Codigo);
+            AdicionarDatas(evento.Codigo, evento.Dias);
+            AdicionarCategorias(evento.Codigo, evento.Categorias);
         }
 
         public List<Categoria> ListarCategorias()
         {
-            List<Categoria> categorias = new List<Categoria>();
+            List<Categoria> categorias = new List<Categoria>(); 
 
             MySqlDataReader data = Query("ListarCategorias");
             while (data.Read())
@@ -246,8 +268,7 @@ namespace MaisCultura.Biblioteca
             return interesses;
         }
 
-        public void Deletar(int codigo)
-        {
+        public void Deletar(int codigo) {
             NonQuery("DeletarEvento", ("pCodigo", codigo));
         }
 
@@ -261,17 +282,6 @@ namespace MaisCultura.Biblioteca
             NonQuery("RemoverInteresse", ("pUsuario", codigoUsuario), ("pEvento", codigoEvento));
         }
 
-        public bool VerificarInteresse(string codigoUsuario, int codigoEvento)
-        {
-            MySqlDataReader data = Query("BuscarInteresseUsuarioEvento", ("pUsuario", codigoUsuario), ("pEvento", codigoEvento));
-
-            bool resposta = data.HasRows;
-
-            Desconectar();
-
-            return resposta;
-        }
-
         public (List<Evento>, List<Evento>) GetDiffFeed(string codigo)
         {
             List<Evento> AllEventos = Listar();         //  Todos
@@ -283,19 +293,6 @@ namespace MaisCultura.Biblioteca
                     Diff.Add(evento);
 
             return (Diff, Preferencia);
-        }
-
-        public (List<Evento>, List<Evento>) GetFeedCreator(string codigo)
-        {
-            List<Evento> AllEventos = Listar();         //  Todos
-            List<Evento> Creator = BuscarPorUsuario(codigo);    //  Feed
-            List<Evento> Diff = new List<Evento>();     //  Todos - Feed
-
-            foreach (Evento evento in AllEventos)
-                if (!Creator.Contains(evento))
-                    Diff.Add(evento);
-
-            return (Diff, Creator);
         }
 
         public void Salvar(string codigoUsuario, int codigoEvento)
@@ -317,6 +314,25 @@ namespace MaisCultura.Biblioteca
             Desconectar();
 
             return resposta;
+        }
+
+        public void AdicionarData(int codigoEvento, DiaEvento dia)
+        {
+            NonQuery("CadastrarDiaEvento", ("pCodigoEvento", codigoEvento), ("pData", DateToSqlDate(dia.Data)), ("pInicio", $"{dia.Inicio}:00"), ("pFim", $"{dia.Fim}:00"));
+        }
+
+        public void AdicionarDatas(int codigoEvento, List<DiaEvento> dias)
+        {
+            foreach (DiaEvento dia in dias)
+                AdicionarData(codigoEvento, dia);
+        }
+
+        public void AdicionarImagem(string link, int codigoEvento)
+        {
+            string maxImagem = MaxCodigoImagem().ToString();
+
+            NonQuery("CadastrarImagem", ("pCodigo", maxImagem), ("pImagem", link));
+            NonQuery("AdicionarImagemEvento", ("pCodigoEvento", codigoEvento), ("pCodigoImagem", maxImagem));
         }
     }
 }
