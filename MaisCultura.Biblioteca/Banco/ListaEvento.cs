@@ -30,6 +30,11 @@ namespace MaisCultura.Biblioteca
         Evento DataReaderToEvento(MySqlDataReader data, bool Reticencias) {
             var cdEvento = Int32.Parse(data["Codigo"].ToString());
             string responsavel = data["@"].ToString();
+
+            if (data["Local"].ToString().Length())
+            {
+
+            }
             string local = data["Local"].ToString();
             string titulo = data["Titulo"].ToString();
             string descricao = data["Descricao"].ToString();

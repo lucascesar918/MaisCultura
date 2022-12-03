@@ -111,6 +111,7 @@
     <Content Include="denuncia.aspx" />
     <Content Include="erro.html" />
     <Content Include="evento.aspx" />
+    <Content Include="Images\favicon.ico" />
     <Content Include="Images\star2.png" />
     <Content Include="Images\star.png" />
     <Content Include="eventos.aspx" />

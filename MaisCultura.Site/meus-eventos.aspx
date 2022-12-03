@@ -10,6 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" type="text/css" href="Styles/EventosdoCriador.css" />
+    <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
 
     <title>+Cultura | Meus Eventos </title>
 </head>

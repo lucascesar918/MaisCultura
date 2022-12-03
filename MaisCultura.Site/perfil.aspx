@@ -12,6 +12,8 @@
 
     <link rel="stylesheet" type="text/css" href="Styles/PerfilOutroUsuario.css" />
 
+    <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+
     <title> +Cultura | <asp:Literal ID="litTittle" runat="server"></asp:Literal> </title>
 </head>
 <body>

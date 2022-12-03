@@ -187,10 +187,14 @@ figure {
 
 .button-log {
     background: none;
+    transition: 0.3s;
+    border: solid #526ace 2px;
 }
 
     .button-log:hover {
-        background-color: #f1f1f4;
+        background-color: #526ACE;
+        color: white;
+        border: solid white 2px;
     }
 
 .button-cad {
@@ -808,49 +812,86 @@ td {
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: 13px;
-    border: 1px solid #526ace;
-    border-radius: 5px;
-    padding: 30px;
+    border: 2px solid #526ace;
+    border-radius: 15px;
+    padding: 40px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 400px;
+    width: 450px;
+    min-height: 200px;
     height: fit-content;
-    z-index: 4;
 }
 
 .headerLogin {
     width: 100%;
+    box-sizing: border-box;
+    padding-bottom: 8px;
     display: flex;
     flex-direction: row;
-    justify-content: center;
     align-items: center;
-    margin-bottom: 10px;
+    justify-content: center;
+    margin-bottom: 17px;
+    border-bottom: solid 2px #526ace;
 }
 
     .headerLogin h4 {
-        font-size: 16px;
+        font-size: 2vh;
         font-weight: 800;
     }
 
+
 .txtLog {
+    background-color: #babaca;
     width: 100%;
+    padding: 10px;
+    font-size: 1.7vh;
+    font-weight: bold;
     margin-bottom: 5px;
-    padding: 5px;
     border: none;
+    outline: none;
+    color: black;
     border-radius: 5px;
-    background-color: #fff;
+    box-sizing: border-box;
+    font-weight: bold;
 }
+
+#btnLogar {
+    width: 100%;
+    padding: 10px;
+    color: white;
+    background-color: #526ace;
+    border: none;
+    font-size: 1.7vh;
+    font-weight: bold;
+    border-radius: 2.5px;
+    cursor: pointer;
+}
+
+#btnSairLogin {
+    width: 100%;
+    border: none;
+    font-size: 1.5vh;
+    font-weight: 700;
+    color: red;
+    margin-top: 5px;
+}
+
+    #btnSairLogin:hover {
+        cursor: pointer;
+    }
 
 #txtData {
     width: 100%;
     box-sizing: border-box;
     padding: 5px;
-    font-size: 12px;
+    font-size: 1.7vh;
     border: none;
-    margin-bottom: 5px;
-    border-radius: 2.5px;
+    border-radius: 5px;
+    background-color: #babaca;
+    padding: 10px;
+    font-weight: bold;
 }
 
 #btnLogar {
@@ -867,12 +908,13 @@ td {
         background: #293d90;
     }
 
+
 #btnSairLogin {
     width: 100%;
     border: none;
-    font-size: 12px;
+    font-size: 1.5vh;
     font-weight: 700;
-    color: black;
+    color: red;
     margin-top: 5px;
 }
 
@@ -880,13 +922,15 @@ td {
         cursor: pointer;
     }
 
+
 #btnSairCad {
     width: 100%;
     border: none;
-    font-size: 12px;
+    font-size: 1.5vh;
     font-weight: 700;
-    color: black;
+    color: red;
     margin-top: 5px;
+    background-color: transparent;
 }
 
     #btnSairCad:hover {
@@ -894,9 +938,9 @@ td {
     }
 
 .cadastrar {
-    background: #f1f1f1;
-    width: 450px;
-    padding: 30px;
+    background: #FFFAF6;
+    width: 550px;
+    padding: 15px 40px 40px 40px;
     height: fit-content;
     display: flex;
     flex-direction: column;
@@ -904,22 +948,24 @@ td {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    border: 1px solid #526ace;
-    border-radius: 5px;
-    z-index: 4;
+    border: 2px solid #526ace;
+    border-radius: 15px;
 }
 
 .headerCad {
     width: 100%;
-    padding: 10px;
+    box-sizing: border-box;
+    padding: 8px;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    margin-bottom: 17px;
+    border-bottom: solid 2px #526ace;
 }
 
     .headerCad h4 {
-        font-size: 16px;
+        font-size: 2vh;
         font-weight: 800;
     }
 
@@ -929,15 +975,19 @@ td {
     flex-direction: row;
     justify-content: space-between;
     margin-bottom: 5px;
+    box-sizing: border-box;
 }
-
 .txtCadNm {
-    width: 49%;
-    padding: 5px;
-    font-size: 12px;
+    background-color: #babaca;
+    width: 50%;
+    padding: 10px;
+    font-size: 1.7vh;
+    font-weight: bold;
     border: none;
     color: black;
-    border-radius: 2.5px;
+    outline: none;
+    border-radius: 5px;
+    margin-left: 1px;
 }
 
     .txtCadNm::placeholder {
@@ -945,23 +995,30 @@ td {
     }
 
 .txtCad {
+    background-color: #babaca;
     width: 100%;
-    padding: 5px;
-    font-size: 12px;
+    padding: 10px;
+    font-size: 1.7vh;
+    font-weight: bold;
     margin-bottom: 5px;
     border: none;
+    outline: none;
     color: black;
-    border-radius: 2.5px;
+    border-radius: 5px;
+    box-sizing: border-box;
 }
 
     .txtCad::placeholder {
         color: black;
     }
 
+
 .dtNasc {
+    font-weight: bold;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: start;
+    margin-bottom: 10px;
 }
 
 .ddlsDtNasc {
@@ -976,6 +1033,7 @@ td {
     width: 32%;
     padding: 5px;
     font-size: 12px;
+    font-weight: bold;
     margin-bottom: 5px;
     border: none;
     color: black;
@@ -983,44 +1041,49 @@ td {
 }
 
 #lblNasc {
-    font-size: 14px;
+    font-size: 2vh;
     margin-bottom: 5px;
 }
 
+
 #ddlSexo {
+    background-color: #babaca;
     width: 100%;
-    padding: 5px;
-    font-size: 12px;
+    padding: 10px;
+    font-size: 1.7vh;
+    font-weight: bold;
     margin-bottom: 5px;
     border: none;
     color: black;
-    border-radius: 2.5px;
+    border-radius: 5px;
 }
 
 .sexo {
+    font-size: 20px;
+    font-weight: bold;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: start;
 }
 
 #lblSexo {
-    font-size: 14px;
+    font-size: 2vh;
     margin-bottom: 5px;
 }
 
 #btnCadastrar {
     width: 100%;
-    padding: 5px;
+    padding: 10px;
     color: white;
     background-color: #526ace;
     border: none;
-    font-size: 13.5px;
+    font-size: 1.7vh;
+    font-weight: bold;
     border-radius: 2.5px;
 }
 
     #btnCadastrar:hover {
         cursor: pointer;
-        background: #293d90;
     }
 
 .denuncia {
