@@ -1,5 +1,5 @@
 # MaisCultura
-Projeto de TCC +Cultura
++Cultura é uma plataforma voltada para a divulgação de eventos culturais e artísticos. Nosso projeto faz isso facilitando o contato entre pessoas que gostariam de participar de eventos artísticos e culturais com pequenos artistas que desejam divulgar seus eventos.
 
 ## Observações
 
